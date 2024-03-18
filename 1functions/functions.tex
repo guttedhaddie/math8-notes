@@ -1,0 +1,1178 @@
+\graphicspath{{1functions/asy/}}
+\thispagestyle{empty}
+
+\title{Math 8 --- Functions and Modeling}
+\author{Neil Donaldson}
+\date{\today}
+\maketitle	
+
+\section*{Introduction}
+
+The purpose of this course is provide some conceptual foundation to several mathematical topics commonly encountered at grade-school level. The job of a teacher is often one of \emph{selection}; choosing examples and explanations suited to the level and experience of your students. To do this effectively, you need to understand concepts at a higher level than you'll likely ever teach. Not all of our topics are central to the grade-school curriculum, and it is not our goal to teach you \emph{how} to teach, though the ideas and approaches we'll explore are in the most part suitable for a grade-school audience. As such, the \emph{mathematics} in this course shouldn't be difficult, requiring at most elementary calculus and a tiny bit of linear algebra; you should instead spend your time considering how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\par
+
+\begin{minipage}[t]{0.72\linewidth}\vspace{0pt}
+We start with two motivational problems.\footnotemark
+\begin{enumerate}
+  \item You wish to travel across the surface of a cube between two opposite vertices so that your path is as short as possible.\par
+  Should you follow the path indicated?\par
+  If yes, explain why.\par
+  If not, how should you find the shortest path?
+\end{enumerate}
+\end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
+\flushright\includegraphics{intro-cube_0}
+\end{minipage}\smallbreak
+
+\begin{minipage}[t]{0.51\linewidth}\vspace{0pt}
+\begin{enumerate}\setcounter{enumi}{1}
+  \item Two houses are to be connected to the electricity supply using a single connection.\par
+  How should we determine where to place the connection so as to minimize the required length of wire?\par
+  What information do you need in order to find the connection point?
+\end{enumerate}
+\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+\flushright\includegraphics[scale=0.9]{intro-elec}
+\end{minipage}\medbreak
+
+\footnotetext{We are grateful to materials from UT Austin's UTeach program for suggesting several of the examples in this course including these motivational problems.}
+
+The point of these exercises isn't merely to find the right answer! Consider how you might discuss these problems with grade-school students of different levels. Why might calculus \emph{not} be a sensible approach? Are there commonalities between the two problems? Brainstorm some strategies and see if you can find different approaches.
+
+%Unfold for the first then straight line. Reflection helps for the second: make equal angle, so split the distance between the houses in same ratio as the distances from the houses to the wire (similar triangles).
+
+\goodbreak
+
+\section{Sets \&\ Functions}
+
+\subsection{Basic Definitions}
+
+In this section we refresh the notion of a function. Consider how central this is to mathematics. Do you remember when you first encountered functions? How would you define \emph{function} to someone with limited mathematical knowledge? Would you use words like \emph{rule, assign, element, domain, vertical line test,} etc.? How helpful are these to your audience?
+
+\begin{examples}{}{funcbasic}
+How would you explain the idea that the following do or do not represent functions?\vspace{-5pt}
+\begin{enumerate}\itemsep0pt
+  \item $y=x^2$
+  \item Mon: fish,\quad Tue: pork,\quad Wed: fajitas,\quad Thur: carbonara,\quad Fri: pizza
+  \item $(3,5)$, $(2,6)$, $(4,2)$, $(3,1)$.
+  \item $x^2=y^2$
+\end{enumerate}
+\end{examples}
+
+After trying to explain these, perhaps you settle on a semi-formal definition such as the following:
+\begin{quote}
+A function $f$ is rule which assigns to each input $x$ exactly one output $f(x)$.
+\end{quote}
+Is this a useful definition? In what ways is it imprecise? How much does this matter?\medbreak
+
+The answers to these questions plainly depend on your audience; from a formal palate a teacher should \emph{select} enough to convey what they think is important without overburdening and intimidating your students. As a teacher you need a more complete picture, which begins by thinking about what exactly are allowed to be \emph{inputs} and \emph{outputs.}
+
+\begin{defn}{}{}
+A \emph{set} $A$ is a collection of objects, known as \emph{elements.}\footnotemark{} The notation $a\in A$ means that $a$ is an element of $A$, sometime reads `$a$ lies in $A$.' Sets are usually written upper case and elements lower.\par
+\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
+A set $B$ is a \emph{subset} of a set $A$, written $B\subseteq A$, if every element of $B$ is also an element of $A$. That is:
+\[b\in B\implies b\in A\]
+In the picture, we have $B\subseteq A$, $a\in A$, $b\in B$ and $a\not\in B$.
+\end{minipage}\hfill\begin{minipage}[t]{0.24\linewidth}\vspace{-12pt}
+\flushright\includegraphics[scale=0.95]{functions-subset}
+\end{minipage}
+\end{defn}
+
+\footnotetext{This is good enough for our purposes. It typically takes a term of set theory to convince you that this really isn't a good definition; selection again!}
+
+
+\begin{examples}{}{}
+\exstart Suppose the elements of a set $A$ are the numbers 1, 3, 5, 7 and 9. The simplest way to write this is in \emph{roster notation}: list the elements (in any order!) between curly brackets
+\[A=\{1,3,5,7,9\}\]
+\begin{enumerate}\setcounter{enumi}{1}
+  \item[]$B=\{3,5,7\}$ is a subset of $A$. Subsets are commonly denoted using \emph{set-builder notation}:
+	\[\{a\in A:\text{condition on $a$}\}\]
+	For example, $B=\{a\in A:2<a<8\}$, ``The set $a$ in $A$ such that $a$ is strictly between 2 and 8." Can you express $B$ in other ways using set-builder notation? 
+  \goodbreak
+  
+  \item You should be familiar with common sets of numbers: we use various combinations of roster and set-builder notation to informally define these.
+  \begin{description}
+		\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance $5\in\N$ but $-3\not\in\N$.
+		\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance $-4\in\Z$ but $\frac 45\not\in\Z$.
+		\item[Rational numbers] or fractions: $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$; in this case $p=-6$ is an integer, and $q=7$ a natural number.
+		\item[Real numbers] $\R$: for instance $\sqrt 2\in\R$. A formal definition is difficult, but you should be used to visualizing the real line. \emph{Intervals} are particularly important subsets, e.g.
+		\[[-4,\pi)=\{x\in\R:-4\le x<\pi\}\]
+		is a half-open interval.
+		\item[Complex numbers] $\C=\bigl\{x+iy:x,y\in\R\bigr\}$.
+	\end{description}
+	You should be comfortable with the subset relationships between these sets
+	\[\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C\]
+	You should have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational.
+\end{enumerate}
+\end{examples}
+
+\smallskip
+
+The reason we need this language is that the inputs and outputs of a function are \emph{elements} of sets.
+
+\begin{defn}{}{function}
+The \emph{Cartesian product} of sets $A,B$ is the set of \emph{ordered pairs}
+\[A\times B=\bigl\{(a,b):a\in A,b\in B\bigr\}\]
+A \emph{function} from $A$ to $B$ is a non-empty subset $f\subseteq A\times B$ which satisfies the \emph{vertical line test}
+\[\text{For each $a\in A$, there is a \emph{unique} $b\in B$ such that $(a,b)\in f$} \tag{$\ast$}\]
+Rather than write $(a,b)\in f$, we use the more familiar notation
+\[f:A\to B\quad\text{and}\quad f(a)=b\]
+To a function $f:A\to B$ are associated three sets:\footnotemark
+\begin{itemize}\itemsep0pt
+  \item Domain: $\dom f=A$ is the set of \emph{inputs.}
+  \item Codomain: $\operatorname{codom} f=B$ is the set of \emph{possible outputs.}
+  \item Range: $\operatorname{range} f=\{b\in B:b=f(a)\text{ for some }a\in A\}$ is the set of \emph{realized outputs.}
+\end{itemize}
+We call $A$ the \emph{domain} and $B$ the \emph{codomain} of the function (the set of \emph{possible} outputs).
+\end{defn}
+
+
+\footnotetext{Even more formally, these sets make sense for any subset $f\subseteq A\times B$ (such is called a \emph{relation} from $A$ to $B$). For instance $\dom f=\{a\in A:(a,b)\in f\text{ for some }b\in B\}$. For a relation to be a function, we \emph{require} $\dom f=A$; this is the \emph{for each} part of $(\ast)$ in Definition \ref{defn:function}.}
+
+
+Wow! Is the definition you should give to 10\th{} graders, or even to freshman calculus students?
+\smallbreak
+
+Think through each of Examples \ref{ex:funcbasic} in this formal context. To do this properly, we have to carefully label the constituent sets. For instance:
+ 
+\begin{examples*}{\ref{ex:funcbasic} cont}{}
+Revisit our earlier examples in this language. For number 2 we could choose
+\begin{gather*}
+A=\bigl\{\text{Mon, Tue, Wed, Thu, Fri}\bigr\},\qquad B=\bigl\{\text{carbonara, fajitas, fish, pizza, pork}\bigr\},\\[5pt]
+f=\bigl\{(\text{Mon,\ fish}),\ (\text{Tue,\ pork}),\ (\text{Wed,\ fajitas}),\ (\text{Thu,\ carbonara}),\ (\text{Fri,\ pizza})\bigr\}
+\end{gather*}
+Is it clear where we made a \emph{choice}? What would be another choice? Try the other examples yourself.
+\end{examples*}
+
+
+\boldsubsubsection{Representing Functions}
+
+You should be familiar with several ways in which we could represent a function.
+
+\begin{example}{}{introfunction}
+Consider the familiar \emph{formula} $f(x)=x^2$ in several contexts.
+\begin{description}\itemsep8pt
+  \begin{minipage}[t]{0.7\linewidth}\vspace{-5pt}
+  	\item \emph{Table}\lstsp This presentation might be beneficial if the domain is a small set. For instance, the table on the right shows the situation with $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$
+  
+  	\item \emph{Arrows}\lstsp A pictorial arrow diagram might also be helpful for illustrating situations with small domains.
+  
+  
+  	\item \emph{Graph}\lstsp This is simply the set of ordered pairs $\bigl(x,f(x)\bigr)$: in the context of Definition \ref{defn:function}, \emph{the graph is the function!}\smallbreak
+	 	Formulæ whose inputs and outputs are real numbers are common enough that two conventions are followed:
+	 	\begin{itemize}
+	 	  \item The \textcolor{red}{domain} is \emph{implied} to be all real numbers for which the formula makes sense: in this case all real numbers!
+			\item The codomain is taken to be the set of real numbers.
+		\end{itemize}
+		In the absence of additional information, our formula implies that $f:\R\to\R$.\smallbreak
+		
+	The \textcolor{Brown}{range} of the function is the set of all possible outputs, in this case
+	\[\operatorname{range}f=\{x^2:x\in\R\}=[0,\infty)\]
+	is the half-open interval of non-negative real numbers.\smallbreak
+		
+	For `calculus-type' functions like these, the vertical line test really involves \textcolor{Green}{vertical lines}; every vertical line intersects the graph in exactly one point.\smallbreak
+	In the picture, the \textcolor{orange}{dots} are the graph when the domain is the finite set $\{-1,0,1,2,3\}$.
+  \end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
+  	\flushright$\begin{array}{c|ccccc@{}}
+	x&-1&0&1&2&3\\\hline
+	f(x)&1&0&1&4&9
+	\end{array}$\bigbreak
+	\includegraphics[scale=0.95]{functions-quad2}\bigbreak
+	\includegraphics[scale=0.95]{functions-quad}
+  \end{minipage}
+\end{description}
+\end{example}
+
+Other ways to represent functions are possible
+
+
+\clearpage
+
+
+\begin{exercises}{}{}
+\exstart Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$. 
+
+\begin{enumerate}\setcounter{enumi}{1}
+	\item Temperature readings $T$ were recorded every two hours from midnight to noon. Time $t$ was measured in hours from midnight.
+  \[\begin{array}{l|ccccccc}
+  t&0&2&4&6&8&10&12\\\hline
+  T\ (^\circ\mathrm{F})&82&75&74&75&84&90&93
+  \end{array}\]
+  \begin{enumerate}
+    \item Use the readings to sketch a rough graph of $T$ as a function of $t$.
+    \item Use your graph to estimate the temperature at 10:30\,a.m.
+  \end{enumerate}
+  
+  
+  \item State parts 1, 3 and 4 of Examples \ref{ex:funcbasic} using the formal language of Definition \ref{defn:function}. If you have a function, state the domain and range and explain how you know you have a function. If you don't have a function, explain why not.\par
+  (\emph{There is no single correct answer to these, since insufficient information is provided})
+  
+  \item\begin{enumerate}
+    \item Let $A=\{1,3,5,7,9\}$. Explain in words what is meant by the set $B=\{x\in A:x^2>10\}$, and state $B$ in roster notation.
+    \item Find the set $C=\{x\in\N:(x-1)^2<16\}$ in roster notation.
+    \item Find the Cartesian product $B\times C$ in roster notation. Is it the same as $C\times B$?
+  \end{enumerate}
+  
+  \item Suppose that $f:\{-2,-1,0,1,2\}\to\R$ is defined by the formula $f(x)=x^3-4x+1$.\par
+  Describe $f$ using a table, an arrow diagram and a graph.
+  
+  \item The unit circle is often represented by the implicit equation $x^2+y^2=1$.
+  \begin{enumerate}
+    \item Draw the circle and explain why the full circle isn't the graph of a function.
+    \item Describe \emph{two} functions whose domains are the closed interval $[-1,1]$ and whose graphs together comprise the circle. What are the ranges of the two functions?
+  \end{enumerate}
+  
+  
+\end{enumerate}
+\end{exercises}
+
+
+\clearpage
+
+
+
+\subsection{Linear Polynomials}
+
+Perhaps the simplest functions are the \emph{linear polynomials}, so named because their graph is a straight line;\footnote{Don't confuse this with the meaning of a \emph{linear function} from linear algebra; in general $f(\lambda x)\neq \lambda f(x)$ for a linear polynomial.} $y=f(x)=mx+c$ where $m,c$ are constants. These functions make for very easy models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. 
+
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{}{}
+Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.\smallbreak
+Substitute both points into the equation and solve
+\begin{align*}
+\begin{cases}
+3=m+c\\
+1=4m+c
+\end{cases}
+&\implies -2=3m\\
+&\implies m=-\frac 23,\quad c=3-m=\frac{11}3
+\end{align*}
+The \emph{\textcolor{Brown}{gradient}} or \textcolor{Brown}{\emph{slope} $m$} represents how far one climbs/falls on travelling one unit to the right.\smallbreak
+The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the line with the $y$-axis.
+\tcblower
+\flushright\includegraphics{line-line}
+\end{example}
+
+There is some bookkeeping to do here: how do we know that every straight line corresponds to such a linear function? This follows fairly easily from a useful fact regarding parametrizations.
+
+\begin{thm}{}{lineparametrize}
+The set of points on the line through distinct points $A$ and $B$ is
+\[\ell_{A,B}=\bigl\{(1-t)A+tB:t\in\R\bigr\}\]
+\end{thm}
+
+\begin{proof}
+There are several ways to think about this; we use what is essentially \emph{vector addition}.\par
+\begin{minipage}[t]{0.6\linewidth}\vspace{-5pt}
+Certainly the set of points
+\[\ell_{O,B-A}=\{t(B-A):t\in\R\}\]
+describes the straight line through the origin and the point $B-A$. We simply \textcolor{Brown}{shift} this line by $A$.\smallbreak
+The locations of the points corresponding to various values of $t$ are \textcolor{Green}{marked}.
+\end{minipage}\hfill\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+\flushright\includegraphics{line-line2}
+\end{minipage}
+\end{proof}
+
+\begin{example}{}{}
+The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
+\[(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)\]
+By solving for $t$ in terms of $x$, we see that this has equation
+\[y=6-2t=6-2\cdot\frac{3-x}{4} =\frac 12x-\frac 92\]
+\end{example}
+
+\goodbreak
+
+\begin{exercises}{}{}
+	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function for the cost of gasoline as a function of time.
+%\par
+%   (\emph{There are multiple correct answers, depending on your decision how to measure time}!)
+\begin{enumerate}\setcounter{enumi}{1}
+  \item You have a choice of three different cell-phone plans.
+  \begin{enumerate}
+    \item No monthly charge and 10\textcent{} per minute for all calls.
+    \item \$10 per month and 5\textcent{} per minute for all calls.
+    \item \$30 per month, regardless of how many calls you make.
+  \end{enumerate}
+  How should you determine which of the plans to purchase?
+    
+    
+    \item Suppose $y=mx+c$ is the equation of a linear function. By choosing any two points $A,B$ on this line, find an explicit parametrization in the style of Theorem \ref{thm:lineparametrize}.
+    
+    \item Suppose $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. If $x_1\neq x_0$, find the equation $y=mx+c$ of the line through these points.\par
+    (\emph{You should recognize $m$ as the familiar `rise over run'})
+    
+    
+    \item Suppose that a linear polynomial $f(x)=mx+c$ is also a \emph{linear function}:
+    \[\text{For all }\lambda,x\in\R,\quad f(\lambda x)=\lambda f(x)\]
+    What can you say about $f$?
+  \end{enumerate}
+\end{exercises}
+
+% We can repeat such an analysis in general.
+% \begin{itemize}
+%   \item Given $y=mx+c$, let $A=(0,c)$ and $B=(1,m+c)$, the line through these consists of the points
+% 	\[(x,y)=(1-t)A+tB=\bigl(t,(1-t)c+t(m+c)\bigr) =(t,mt+c)\]
+% 	all of which satisfy $y=mx+c$.
+% 	\item Conversely, the line through $A=(x_0,y_0)$ and $B=(x_1,y_1)$ is parametrized by
+% 	\begin{gather*}
+% 	(x,y)=(1-t)A+tB =\bigl(x_0+(x_1-x_0)t,y_0+(y_1-y_0)t \bigr)\\
+% 	\implies y=y_0+(y_1-y_0)t=y_0+(y_1-y_0)\frac{x-x_0}{x_1-x_0} =\frac{y_1-y_0}{x_1-x_0}x +\frac{y_0x_1-x_0y_1}{x_1-x_0}
+% 	\end{gather*}
+% 	which has the form $y=mx+c$ with gradient $m=\frac{y_1-y_0}{x_1-x_0}$ given by the familiar `rise over run.'
+% \end{itemize} 
+
+% Homework get symmetric form. and see works for vertical lines
+% In view of this discussion, a more symmetric formula for a straight line is available.
+% 
+% \begin{cor}{}{}
+% The equation through $A=(x_0,x_1)$ and $B=(x_1,y_1)$ has equation
+% \[((y_1\]
+% \end{cor}
+
+\clearpage
+
+\subsection{Quadratic Polynomials}
+
+Quadratic polynomials are functions of the form $y=f(x)=ax^2+bx+c$ where $a\neq 0$. The simplest is $y=x^2$, the standard parabola opening upwards. Here are commonly encountered activities:
+\begin{enumerate}\itemsep0pt
+  \item Find the \emph{roots/zeros} of $f$, the solutions to the equation $f(x)=0$.
+  \item Sketch the \emph{graph} of the function $f$.
+  \item Use quadratic functions to model a real-world problem.
+\end{enumerate}
+
+You likely know two methods for finding zeros: factorizing and the quadratic formula, each of which has its difficulties. With experience it is easy to spot that 
+\[x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5\]
+though this requires some creativity and can therefore be difficult for grade-school students, particularly when the coefficients are large. Students often prefer the quadratic formula since it always works, though at the cost of some intimidating algebra.
+We'll think about factorization shortly. First, we see how the method of \emph{completing the square} lies behind both the quadratic formula and the standard approach to graphing quadratic functions.
+
+\begin{example}{}{quadraticeasy}
+Describe/graph the parabola $y=-3x^2+12x+4$.\par
+\begin{minipage}[t]{0.62\linewidth}\vspace{-5pt}
+Pay attention to the $x$ terms; $-3x^2+12x=-3(x^2-\textcolor{red}{4}x)$. Now
+\[-3(x-\textcolor{red}{2})^2=-3(x^2-\textcolor{red}{4}x+4)=-3x^2+12x-12\]
+gives most of what we want. Note how we \emph{divided the \textcolor{red}{$x$-coefficient} by two.} Now tidy up,
+\[y=(-3x^2+12x-12)+16=-3(x-2)^2+16\]
+\end{minipage}\hfill\begin{minipage}[t]{0.27\linewidth}\vspace{-15pt}
+\flushright\includegraphics[scale=0.9]{poly-quad2}
+\end{minipage}\medbreak
+The parabola therefore opens downwards with its \textcolor{Green}{apex} at $(x,y)=(2,16)$.
+\end{example}
+
+This is easy to repeat in general:
+\begin{align*}
+ax^2+bx+c&=a\left(x^2+\frac bax\right)+c =a\left[\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}\right]+c\\
+&=a\left(x+\frac b{2a}\right)^2-\frac{b^2-4ac}{4a}
+\end{align*}
+\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+The graph is that of the standard parabola which has been:
+\begin{enumerate}\itemsep0pt
+  \item Vertically scaled by $a$;
+  \item Shifted horizontally so that the apex is at $x=-\frac b{2a}$;
+  \item Shifted vertically by $\frac{4ac-b^2}{4a}$
+\end{enumerate}
+Completing the square therefore yields the \emph{quadratic formula.}
+\end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{-60pt}
+\flushright\includegraphics[scale=0.9]{poly-quad}
+\end{minipage}
+
+\begin{thm}{}{}
+If $a\neq 0$, then $ax^2+bx+c=0\iff x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
+\end{thm}
+
+\goodbreak
+
+\begin{example*}{\ref{ex:quadraticeasy} cont}{}
+Our analysis suggests two methods for finding the \textcolor{purple}{roots}.
+\begin{enumerate}
+  \item Quadratic formula: with $a=-3$, $b=12$, $c=4$, we have
+  \[x=\dfrac{-12\pm\sqrt{12^2-4(-3)\cdot 4}}{2(-3)} =\dfrac{-12\pm 4\sqrt{3^2+3}}{-6} =2\pm\dfrac{\sqrt{12}}{3} =2\pm\dfrac{2\sqrt{3}}{3}\]
+  While it is always tempting to jump for a formula, it often leads to difficult surd expressions. We simplified by noticing the common factor of $4^2$ inside the square root. Without this, we'd be faced with $\sqrt{144+48}=\sqrt{192}$.
+  \item Use the fact that we've already completed the square:
+  \[-3(x-2)^2+16=0\iff (x-2)^2=\frac{16}3\iff x=2\pm\frac 4{\sqrt 3}\]
+  In many cases it is simpler to complete the square than to use the quadratic formula---remember that they are equivalent!
+\end{enumerate}
+\end{example*}
+
+
+Polynomials are often employed in modelling due to their simplicity and ease of evaluation. As you saw in calculus, the motion of a falling body, or of any projectile can be modelled using quadratic polynomials, an observation going back to at least to Galileo in the early 1600s: the distance travelled by a falling body is proportional to the \emph{square} of the time taken $y(t)-y(0)\propto t^2$.
+
+\begin{example}{}{quadseqgraph}
+A body is dropped from a height of 125 meters, taking exactly 5 seconds to reach the ground. Its height at time $t$ seconds is given by $y(t)=125-5t^2$\,m.\smallbreak
+\begin{minipage}[t]{0.68\linewidth}\vspace{-8pt}
+This certainly fits Galileo's observation: $y(t)-y(0)=-5t^2$ is indeed proportional to $t^2$.\smallbreak
+Over each interval of 1\,s, we may ask how far the body falls; we summarize in a table.
+\[
+\begin{array}{c|ccccccccccc}
+t&0&&1&&2&&3&&4&&5\\\hline
+y(t)&125&&120&&105&&80&&45&&0\\\hline
+y(t)-y(0)&0&&-5&&-20&&-45&&-80&&-125\\\hline
+\Delta y&&\makebox[0pt][c]{$-5$}&&\makebox[0pt][c]{$-15$}&&\makebox[0pt][c]{$-25$}&&\makebox[0pt][c]{$-35$}&&\makebox[0pt][c]{$-45$}
+\end{array}
+\]
+\end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{-25pt}
+\flushright\includegraphics{poly-quad5}
+\end{minipage}\medbreak
+Since each interval has duration 1\,s, each $\Delta y$ is the \emph{average speed} of the falling body over that interval.
+\end{example}
+
+You'll have seen problems like this in calculus; likely you want to \emph{differentiate} to find the \emph{velocity} $y(t)=-10t$\,m/s and \emph{acceleration} $y''(t)=-10$\,m/s$^2$. However, historically and in introductory calculus, it is problems like these that \emph{motivate the definition} of the derivative: the last line of the table really does suggest that speed is a linear function!\par
+Armed with calculus, Galileo's observation is indeed that the height $y(t)$ solves the differential equation
+\[\diff[^2y]{t^2}=-g\]
+where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2$ or 10\,m/s$^2$. Though unless you are explicitly teaching calculus, or Newtonian Physics, this is probably a bad place to start! 
+
+
+
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{frisbee}
+Your frisbee is stuck 15\,m up a tree. Standing 10\,m away from the base, you throw a ball with the intent of knocking the frisbee out of the tree.\smallbreak
+The standard approach to modelling such problems involves considering the horizontal and vertical motions separately.
+\begin{quote}
+\emph{Horizontal}\lstsp $x(t)=pt+q$ is a \emph{linear function} of time.\smallbreak
+\emph{Vertical}\lstsp $y(t)=-10t^2+rt+s$ is a \emph{quadratic function} of time.
+\end{quote}
+Substituting for $t$ yields a quadratic function for the \textcolor{blue}{trajectory}
+\[y(x)=ax^2+bx+c\]
+We'll leave the details of the solution of this problem to Exercise \ref{exs:frisbee}. For the present, consider why there are \emph{multiple answers}; can you explain why \emph{without} explicitly solving the problem?
+\tcblower
+\flushright\includegraphics[scale=0.88]{tree1}
+\end{example}
+
+
+\begin{exercises}{}{}
+\exstart Complete the square for each quadratic function, use it to find the range and to graph the function.
+\begin{enumerate}\setcounter{enumi}{1}  
+  \item[]\begin{enumerate}
+    \item $f(x)=x^2-6x+5$ %$(x-3)^2-4$
+    \item $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
+    \item $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
+  \end{enumerate}
+  %For part (a), also find two intervals $(-\infty,k]$ and $[k,\infty)$ (same $k$!) on which $f$ is invertible. For each interval, compute the inverse function $f^{-1}$.
+  
+  
+  \item For the quadratic function $y=2x^2-5x+7$, produce a table for $x\in\{0,1,2,3,4,5,6\}$ similarly to that in Example \ref{ex:quadseqgraph}. What do you observe about $\Delta y$?
+  
+  
+	\item\begin{enumerate}
+	  \item Find the equations of all quadratic polynomial functions which pass through the points $(1,3)$ and $(2,4)$.
+		\item More generally, if $P=(a,b)$ and $Q=(c,d)$ are given, where $c\neq a$, find all quadratic functions whose graphs contain $P$ and $Q$.
+	\end{enumerate}
+  
+  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}).
+  \begin{enumerate}
+    \item Assume that you're standing at the origin and the frisbee is at the point $(10,15)$. Find all trajectories.
+    \item (Hard)\lstsp Find a formula linking the initial speed and gradient of the parabola (the initial speed and direction in which you throw the ball).
+    \begin{enumerate}
+			\item If you throw the ball in such a way that the initial \emph{vertical} speed of the ball is twice its \emph{horizontal} speed, find how fast you have to throw the ball in order to hit the frisbee.
+      \item What is the \emph{minimum} speed at which you could throw the ball if you want to dislodge the frisbee?
+    \end{enumerate}
+    (\emph{Hint: You'll need some calculus! In the language of the original problem, the initial slope is $m=\frac rp$ and speed $v=\sqrt{p^2+r^2}$; why?})
+	\end{enumerate}
+
+
+\end{enumerate}
+\end{exercises}
+
+\clearpage
+
+
+
+\subsection{Polynomials, Factorization \& the Rational Roots Theorem}
+
+Recall our simple example of factorization in the previous section
+\[x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5\]
+That this approach provides \emph{all} roots depends on several familiar algebraic facts:
+\begin{enumerate}
+  \item Factor Theorem: $f(c)=0\iff x-c$ is a \emph{factor} of $f(x)$.
+  \item No zero-divisors: $pq=0\iff p=0$ or $q=0$. 
+  \item A quadratic has \emph{at most two} distinct roots.
+\end{enumerate}
+We'll examine this more closely at the end of this section. However, for students first learning about factorization, it isn't the \emph{why} that's the challenge, it's the \emph{how.} Multiplying out $(x-3)(x+5)$ is mechanical, but factorizing requires some creativity; we can't really factor without somehow knowing that 3 and $-5$ are roots! Beyond making a lucky guess, how do we go about this? 
+
+\begin{example}{}{ratroots1}
+Let's re-examine $f(x)=x^2+2x-15=0$ in a couple of stages.
+\begin{description}
+\item[\normalfont\emph{Integer solutions}] The simplest type of root would be an \emph{integer} $n$. If $f(n)=0$, observe that
+\begin{align*}
+n^2+2n-15=0&\implies n(n+2)=15\implies \text{15 is divisible by $n$}\\
+&\implies n=\pm 1,\pm 3,\pm 5,\pm 15
+\end{align*}
+There are only \emph{eight possible candidates.} It doesn't take long to test all of them:
+\[
+\begin{array}{c|cccccccc}
+n&1&-1&\textcolor{red}{3}&-3&5&\textcolor{red}{-5}&15&-15\\\hline
+f(n)&-12&-17&\textcolor{red}{0}&-12&20&\textcolor{red}{0}&240&180
+\end{array}
+\]
+The two integer solutions are therefore $x=3$ and $x=-5$.
+\item[\normalfont\emph{Rational Solutions}] If you believe that a quadratic polynomial has \emph{at most} two solutions, then you're done. The next simplest possibility, however, is that a solution be a \emph{rational number} $x=\frac pq$ where we may assume this is in \emph{lowest terms}.\footnotemark{} Substituting into the polynomial, we see that
+\[\frac{p^2}{q^2}+2\frac pq-15=0\iff p^2+2pq-15q^2=0\]
+Remembering that $p,q$ are \emph{integers,} we rearrange this equation in two ways:
+\begin{description}
+  \item[$\textcolor{blue}{p}(p+2q)=15q^2$]\lstsp Since the \textcolor{blue}{left side} is a multiple of $p$, so also is the \emph{right.} Since $p,q$ have no common factors, it follows that $p$ divides into 15 (15 is a multiple of $p$).
+  \item[$p^2=\textcolor{red}{q}(15q-2p)$]\lstsp Since the \textcolor{red}{right side} is a multiple of $q$, so also is the \emph{left.} Since $p,q$ have no common factors, we conclude that $q=1$.
+\end{description}
+The upshot is that the only rational solutions to $f(x)=0$ are the two \emph{integers} we've already found!
+\end{description}
+\end{example}
+
+\footnotetext{I.e.{} $p\in\Z$ and $q\in\N$ have no common factors: $\gcd(p,q)=1$.}
+
+\goodbreak
+
+\begin{defn}{}{}
+A \emph{degree $n$ polynomial} is any function of the form
+\[f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\]
+where the \emph{coefficients} $a_k$ are constants with $a_n\neq 0$.
+\end{defn}
+
+A quadratic polynomial has degree 2 and a linear polynomial $mx+c$ degree one\footnote{A non-zero constant polynomial has degree zero. Convention is for the \emph{zero polynomial} $y\equiv 0$ to have degree $-\infty$, so that the theorem $\operatorname{deg} fg=\operatorname{deg} f+\operatorname{deg} g$ holds for all polynomials.} (if $m\neq 0$).\smallbreak
+
+Our analysis in Example \ref{ex:ratroots1} is easily generalized in a famous result.
+
+\begin{thm}{Rational Roots}{}
+Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in lowest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
+\end{thm}
+
+\begin{proof}
+Substitute into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-10pt}
+\[\underbrace{a_np^n+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{red}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+a_0q^n}^{\text{divisible by $\textcolor{blue}{q}$}}=0\]
+By considering the braced terms and recalling that $p,q$ have no common factors, we conclude that $a_n$ is divisible by $q$ and $a_0$ by $p$.
+\end{proof}
+
+
+\begin{examples}{}{}
+\exstart If $x=\frac pq$ is a rational root in lowest terms of $f(x)=2x^2-x-3$, then $q\in\{1,2\}$ and $p\in{\pm 1,\pm 3}$. The possibilities are therefore
+\[x\in\bigl\{\pm 1,\pm 3,\pm\tfrac 12,\pm\tfrac 32\bigr\}\]
+all of which are easily checked:
+\[
+\begin{array}{c|cccccccc}
+x&1&\textcolor{red}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{red}{\frac 32}&-\frac 32\\\hline
+f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3
+\end{array}
+\]
+The two roots are indicated and the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
+\begin{enumerate}\setcounter{enumi}{1}
+  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only  possibilities would be $\pm 1, \pm 5$. However none of these work,
+  \[f(1)=4,\quad f(-1)=2,\quad f(5)=80,\quad f(-5)=-170\]
+  whence $f(x)=0$ has no rational roots.
+\end{enumerate}
+\end{examples}
+
+Unless there are very few candidates, it can be time-consuming to check them all by hand. Moreover, unless you find $n$ distinct rational solutions, you still don't know that you've found everything. The rational roots theorem is therefore typically used together with factorization; it really just gives you some options for where to start. This still isn't easy, as the next example shows.
+\goodbreak
+
+\begin{example}{}{factoreasy}
+Consider the cubic function $f(x)=x^3-x^2-7x+10$. The rational roots theorem gives us eight candidates: $x=\pm 1,\pm 2,\pm 5,\pm 10$. It is not difficult to try the first few of these in your head: by inspection, we see that
+\[f(2)=8-4-14+10=0\]
+and the factor theorem says that $x-2$ must be a factor. The factorization can be performed in various ways. Here are three options, though all are essentially versions of the same process.
+\begin{description}
+	\item[\normalfont\emph{Long division}]\lstsp You should have practiced this in high-school!
+  \[\polylongdiv{x^3-x^2-7x+10}{x-2} \implies x^3-x^2-7x+10=(x-2)(x^2+x-5)\]
+  \item[\normalfont\emph{Multiply out and solve}]\lstsp We know that $f(x)=(x-2)q(x)$ where $q(x)$ is some quadratic polynomial. Thus let $q(x)=ax^2+bx+c$ and multiply out:
+  \[x^3-x^2-7x+10=(x-2)(ax^2+bx+c) =ax^3+(b-2a)x^2+(c-2b)x-2c\]
+  Equating coefficients, we obtain the same factorization as before,
+  \[a=1,\quad b=-1+2a=1,\quad c=\frac{10}{-2}=-5\]
+  \item[\normalfont\emph{Term-by-term factorization}]\lstsp With practice you can factorize in one line with no working!
+  \begin{enumeratea}
+    \item The first term must be $\textcolor{red}{x^2}$ to create $\textcolor{red}{x^3}$
+    \[\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\textcolor{Green}{\,-\,7x}\textcolor{purple}{\,+\,10}=(x-2)(\textcolor{red}{x^2}\,+\cdots)=\textcolor{red}{x^3}\,-2x^2+\cdots\]
+    \item To correct the \textcolor{blue}{$x^2$} term, add $\textcolor{Green}{x}$:
+    \[(x-2)(x^2+\,\textcolor{Green}{x}\,+\cdots)=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,2x}+\cdots\]
+    \item To correct the \textcolor{Green}{$x$} term, subtract $\textcolor{purple}{5}$:
+    \[(x-2)(x^2+x-\textcolor{purple}{\,5})=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,7x}\textcolor{purple}{\,+\,10}\]
+    \item Since the last term $\textcolor{purple}{10}$ is correct, the factorization worked!
+	\end{enumeratea}
+\end{description}
+	
+	You might have seen other approaches involving arranging the coefficients in a table; the calculations required to complete the table are \emph{exactly} those seen above; all these methods are the same!
+\end{example}
+
+\goodbreak
+
+\boldsubsubsection{Why Does Factorization Work?}
+
+
+The theory behind factorization relies on some algebra. Here is a \emph{brief} treatment.
+
+\begin{thm}{Factor Theorem}{}
+Suppose $f(x)$ is a degree $n$ polynomial. Then:
+\begin{enumerate}
+  \item A value $c$ is a root if and only if $f(x)=(x-c)q(x)$ for some (degree $n-1$) polynomial $q(x)$.
+  \item The polynomial has \emph{at most} $n$ distinct roots.
+\end{enumerate} 
+\end{thm}
+
+\begin{proof}
+\begin{enumerate}
+  \item ($\Leftarrow$)\lstsp This is essentially trivial: $f(x)=(x-c)q(x)\implies f(c)=(c-c)q(c)=0$.\smallbreak
+($\Rightarrow$)\lstsp This relies on the \emph{division algorithm for polynomials}: if $f,g$ are polynomials, then there exist unique polynomials $q,r$ with\footnotemark{}
+% \footnote{Let $S=\{f(x)-g(x)q(x):q(x)\in\R[x]\}$. If $0\in S$  stop; $g$ divides $f$. Otherwise, let $k=\min S$ (exists by well-ordering) and let $r(x)=f(x)-g(x)q(x)=a_kx^k+\cdots$ have degree $k$. If $g(x)=b_jx^j+\cdots$ has degree $j\le k$, observe that
+% \[f(x)-g(x)\bigl(q(x)+\tfrac{a_k}{b_j}x^{k-j}\bigr)=r(x)-a_kx^k-\cdots\]
+% has degree $<k=\deg r$: contradiction. Thus $\deg r<\deg g$.\smallbreak
+% For uniqueness, suppose had two candidates $r_1,r_2$, then
+% \[r_1-r_2=g(q_2-q_1)\]
+% But $\deg(r_1-r_2)<\deg g$ and $\deg(g(q_2-q_1))\ge \deg g$ is a contradiction unless $q_1=q_2$ and both sides are zero.}
+\[f(x)=g(x)q(x)+r(x)\quad \text{and}\quad \deg r<\deg g\]
+In the special case where $g(x)=x-c$ is linear, then $r(x)$ must be a constant and so
+\[f(x)=(x-c)q(x)+f(c)\]
+\item Suppose $c_1,\ldots,c_n$ are distinct real roots. By part 1, $f(x)=(x-c_1)q_1(x)$. Since
+\[0=f(c_2)=(c_2-c_1)q_1(c_2)\implies q_1(c_2)=0\]
+we may then factor $x-c_2$ out of $q_1(x)$ to obtain
+\[f(x)=(x-c_1)(x-c_2)q_2(x)\]
+Repeat this process to factor out all $n$ linear polynomials $x-c_k$:
+\[f(x)=(x-c_1)\cdots(x-c_n)q_n\]
+where $q_n\neq 0$ is \emph{constant.} Plainly $f(c)=(c-c_1)\cdots(c-c_n)q_n=0\iff c=c_j$  for some $j$, so there are no other roots.\qedhere
+\end{enumerate}
+\end{proof}
+
+\footnotetext{For a given example, $q,r$ may be found by long-division. This is similar (and may be proved similarly) to the more familiar division algorithm for integers: if $m,n$ are integers, then there exist unique integers $q,r$ for which
+\[m=qn+r\ \text{ and }\ 0\le r<\nm n\]
+In grade-school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ remainder $r$); e.g.{} $23\div 4=5\,\textsf{r}\,3$ corresponds to $23=5\times 4+3$.}
+
+\begin{example*}{\ref{ex:factoreasy} cont}{}
+We know that $f(x)=x^3-x^2-7x+10=(x-2)(x^2+x-5)$. But then
+\[f(x)=0\iff x-2=0\ \text{ or }\ x^2+x-5=0\]
+The former gives the root $x=2$, and the latter can be attacked via the quadratic formula or completing the square; the polynomial therefore has exactly three roots
+\[x=2,\frac{-1\pm\sqrt{21}}2\] 
+\end{example*}
+
+
+\begin{example}{}{}
+We finish with a quick example of how long division (or any other factorization method as in Example \ref{ex:factoreasy}) computes the ingredients in the division algorithm.\smallbreak
+If $f(x)=x^3+7x^2-2$ and $g(x)=x^2-2$, then\par
+\begin{minipage}[t]{0.35\linewidth}\vspace{-13pt}
+\[\polylongdiv{x^3+7x^2-2}{x^2-2}\]
+\end{minipage}\hfill\begin{minipage}[t]{0.6\linewidth}\vspace{10pt}
+$\negthickspace\implies x^3+7x^2-2=(x^2-2)(x+7)+(2x+12)$\medbreak
+Otherwise said, $f(x)=g(x)q(x)+r(x)$, where\medbreak
+$q(x)=x+7$, \ $r(x)=2x+12$ \ and \ $\deg r=1<2=\deg g$.
+\end{minipage}
+\end{example}
+
+\goodbreak
+
+
+
+\begin{exercises}{}{}
+\exstart Apply the rational root theorem to the polynomial $x^3+2x^2-x-2$ and use it to factorize the polynomial.
+\begin{enumerate}\setcounter{enumi}{1}
+  \item Repeat the previous question for the polynomial $6x^2+x-2$.
+
+	\item Use the rational roots theorem to prove that the polynomial $2x^5-3x+7$ has no rational roots.
+  
+  \item Factorize the following polynomials and thereby find their (real) roots. Explain your steps carefully.
+  \begin{enumerate}
+    \item $f(x)=x^3+2x^2-3x$ %$(x-1)(x+3)x$
+    \item $f(x)=x^4-13x^2+36$ %$(x^2-9)(x^2-4)$
+    \item $f(x)=x^3-7x-6$ %(x+2)(x^2-2x-3)
+  \end{enumerate}
+  
+  
+  \item Show that the polynomial $f(x)=x^6-2x^5-x^4-4x^3-4x^2-4x-6$ %$=(x+1)(x^5-3x^4+2x^3-6x^2+2x-6)=(x-3)(x+1)(x^4+2x^2+2)$
+  has exactly two real roots by factorizing it.
+	
+	\item The polynomial $f(x)=2x^4-3x^3+2x^2+3x-9$ has only one rational root. Find it and factorize the polynomial as $f(x)=g(x)q(x)$ where $\deg g=1$.
+	
+	
+	\item Find unique polynomials $q(x)$ and $r(x)$ for which $f(x)=g(x)q(x)+r(x)$ and $\deg r<\deg g$.
+	\begin{enumerate}
+	  \item $f(x)=x^3+1$ and $g(x)=x+2$.
+	  \item	$f(x)=x^4+x^3-2$ and $g(x)=x^2+1$.
+	\end{enumerate}  
+
+  \item Let $f(x)=ax^3+bx^2+cx+d$ be a cubic polynomial. `Complete the cube' by finding a constant $k$ such that
+  \[f(x)=a(x-k)^3+p(x-k)+q\]
+  has no $(x-k)^2$ term (here $p,q$ are constants).\par
+  (\emph{Hint: evaluate $f(x+k)$})
+  
+  \item Suppose that $\deg f=k$ and $\deg g=l$.
+  \begin{enumerate}
+    \item Show that $\deg(fg)=kl$.
+    \item Is it always the case that $\deg(f+g)=\max(k,l)$? Why/why not?
+  \end{enumerate}
+\end{enumerate}
+\end{exercises}
+
+\clearpage
+
+
+\subsection{Inverse Functions \& the Horizontal Line Test}
+
+The informal idea of an inverse function is that $f^{-1}$ takes the \emph{output} of $f$ and returns its \emph{input} (and vice versa).
+
+\begin{example}{}{}
+Define a simple function using a table or an arrow diagram\par
+\begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
+\[\def\arraystretch{1.1}\begin{array}{c|cccc}
+x&1&2&3&4\\\hline
+f(x)&4&2&5&7
+\end{array}\qquad\begin{array}{c|cccc}
+y&4&2&5&7\\\hline
+f^{-1}(y)&1&2&3&4
+\end{array}
+\]
+Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down.
+\end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
+\flushright\includegraphics{inverse-easy}
+\end{minipage}
+% \par
+% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
+% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
+\end{example}
+
+\begin{defn}{}{inversefn}
+A function $f:A\to B$ is \emph{invertible} if it has an \emph{inverse function}: a function $f^{-1}:B\to A$ for which
+\[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
+for all possible inputs $x\in A$ and $y\in B$.
+\end{defn}
+
+Certainly the above example satisfies the input--output properties ($\ast$). Our main concern is identifying when a function is invertible, how to make it so if not, and how to find an inverse. To motivate this, we consider two simple examples.
+
+
+
+\begin{examples}{}{invexs}
+%\exstart Define a simple function using a table or an arrow diagram
+% \begin{enumerate}\setcounter{enumi}{1}
+% \begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
+% \item[]\[\def\arraystretch{1.1}\begin{array}{c|cccc}
+% x&1&2&3&4\\\hline
+% f(x)&4&2&5&7
+% \end{array}\qquad\begin{array}{c|cccc}
+% y&4&2&5&7\\\hline
+% f^{-1}(y)&1&2&3&4
+% \end{array}
+% \]
+% Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down. Certainly\vspace{-5pt}
+% \end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
+% \flushright\includegraphics{inverse-easy}
+% \end{minipage}\par
+% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
+% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
+\exstart The function $f(x)=2x$ has inverse $f^{-1}(y)=\frac y2$.
+\begin{enumerate}\setcounter{enumi}{1}
+\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
+	\item[]Again our input--output conditions $(\ast)$ are satisfied.\smallbreak
+	%These functions are so straightforward that it isn't worth mentioning domains and ranges: in both cases they may be assumed to be the entire real line $\R$.\smallbreak
+	The \textcolor{blue}{graph} admits an interpretation of $f^{-1}$ similar to the arrow diagram.
+	\begin{itemize}\itemsep2pt
+	  \item The function $f$ takes an input $x$, moves it \textcolor{Green}{vertically} to the graph and then \textcolor{Green}{projects} to the $y$-axis. This interpretation is precisely the vertical line test (Definition \ref{defn:function})!
+	  \item The inverse function \emph{reverses the arrows}: transport an input $y$ \textcolor{orange}{horizontally} to the graph and then \textcolor{orange}{project} to the $x$-axis.
+	\end{itemize}
+\end{minipage}\hfill\begin{minipage}[t]{0.2\linewidth}\vspace{-25pt}
+\flushright\includegraphics{inverses-line}
+\end{minipage}\smallbreak
+
+	
+\begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
+	\item\label{ex:invexs1} The graph of the function $f(x)=x^2-1$ is drawn. This time, when attempting to move a real number $y$ horizontally to the graph, we usually encounter one of two problems:
+	\begin{enumerate}\itemsep2pt
+	  \item If $y>-1$, we have \textcolor{orange}{two choices}.
+	  \item If $y<-1$, there is \textcolor{Purple}{no intersection}.
+	\end{enumerate}
+	The naïve approach of \emph{reversing the arrows} is insufficient to define an inverse. However, a simple remedy arises by staring at the graph:
+	\begin{itemize}\itemsep2pt
+	  \item Problem (a) goes away if we delete the \textcolor{blue}{left half} of the graph. Equivalently, we \emph{restrict the domain} of $f$ to $[0,\infty)$. 
+	  \item Problem (b) disappears if we insist that $y\ge-1$. Equivalently, we \emph{restrict the codomain} of $f$ to its \emph{range} $[-1,\infty)$. 
+	\end{itemize}
+\end{minipage}\hfill\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+\flushright\includegraphics{inverses-quad}
+\end{minipage}\medbreak	
+	After making these restrictions so that $f:[0,\infty)\to [-1,\infty)$, it is now easily checked that
+	\[f^{-1}(y)=\sqrt{y+1},\quad f^{-1}:[-1,\infty)\to[0,\infty)\]
+	satisfies our input--output conditions $(\ast)$ and is therefore the inverse of $f$:
+	\begin{gather*}
+	x\in [0,\infty)\implies f^{-1}\bigl(f(x)\bigr) =\sqrt{(x^2-1)+1}=x\\
+	y\in[-1,\infty)\implies f\bigl(f^{-1}(y)\bigr)=\bigl(\sqrt{y+1}\bigr)^2-1=y
+	\end{gather*}
+\end{enumerate}
+\end{examples}
+
+
+\boldinline{What makes a function invertible?}
+
+The fixes in our last example can be rephrased succinctly:
+% \begin{quote}
+\begin{center}
+$\tcbhighmath{\text{
+\emph{Horizontal line test}: every horizontal line must intersect the graph \emph{exactly once}}}$
+\end{center}
+% \end{quote}
+This unpacks to two conditions, each of which addresses one of the problems seen in the example.
+
+\begin{defn}{}{}
+Let $f:A\to B$ be a function. We say that $f$ is:
+\begin{enumeratea}
+\item \emph{1--1/one-to-one} if distinct inputs $x_1\neq x_2\in A$ have distinct outputs $f(x_1)\neq f(x_2)$. Equivalently,
+  \[\text{If $x_1,x_2\in A$, then }\ f(x_1)=f(x_2)\implies x_1=x_2\]
+  If $A,B$ are sets of real numbers, each horizontal line intersects the graph \textcolor{orange}{at most once}.
+  \item \emph{Onto} if $\operatorname{range}(f)=B$. Equivalently,
+  \[\text{Given $y\in B$, there is some $x\in A$ for which $y=f(x)$}\]
+  If $A,B\subseteq\R$, the horizontal line through $y\in B$ intersects the graph \textcolor{Purple}{at least once}.
+\end{enumeratea}
+\end{defn}
+
+Putting these ideas together, we see that a function is 1--1 and onto if and only if every $y\in B$ corresponds to a \emph{unique} $x\in A$ for which $y=f(x)$. In summary:
+
+\begin{thm}{}{}
+$f:A\to B$ is invertible if and only if it is 1--1 and onto. Its inverse is the function $f^{-1}:B\to A$ such that $f^{-1}(y)=x$ whenever $y=f(x)$.
+\end{thm}
+
+%Let us revisit our previous example in this context.
+
+\begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,II}{}
+Consider the properties:
+\begin{enumeratea}
+	\item $f(x_1)=f(x_2)\implies x_1^2-1=x_2^2-1\implies x_1^2=x_2^2\implies x_1=\pm x_2$.\par
+	To force $f$ to be 1--1, it is enough to \emph{restrict the domain} so that all $x$ have the same sign: the obvious choice is $\dom(f)=[0,\infty)$.
+	\item $\operatorname{range}(f)=\{x^2-1:x\in[0,\infty)\}=[-1,\infty)$. We force $f$ to be onto by \emph{restricting its codomain} to $[-1,\infty)$.
+\end{enumeratea}
+The inverse function is obtained by solving $y=x^2-1$ for $x$:
+\[x^2=y+1\implies x=f^{-1}(y)=\sqrt{y+1}\]
+where we use the \emph{positive square root} since $x\in[0,\infty)=\dom(f)$.
+\end{example*}
+\goodbreak
+
+
+\boldinline{An algorithm for inverting functions}
+
+Our discussion provides an algorithmic process for making a function $f:A\to B$ invertible and finding an inverse.
+\begin{enumeratea}\itemsep2pt
+	\item Check that $f$ is 1--1. If not, \emph{restrict the domain} until it is.
+	\item Check that $f$ is onto. If not, \emph{redefine} $B=\operatorname{range}(f)$.
+	\item Solve $y=f(x)$ for $x=f^{-1}(y)$.
+\end{enumeratea}
+
+Since we typically prefer $x$ as an input, it is common also to \emph{switch} $x,y$ at the end so that $y=f^{-1}(x)$. If $A,B\subseteq\R$, this switch is equivalent to \emph{reflecting the graph} in the line $y=x$.\smallbreak
+
+Note also that step (a) might involve some \emph{choice}; depending on how you restrict the domain, you can obtain multiple inverse functions! To see this in action, we return once more to our favorite example.
+
+\begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,III}{}
+Recall that if $f(x)=x^2-1$, then
+\[f(x_1)=f(x_2)\implies x_1=\pm x_2\]
+Instead of restricting the domain to $[0,\infty)$, we can force $f$ to be 1--1 by \emph{choosing} $\dom(f)=(-\infty,0]$. The range/codomain remains $[-1,\infty)$, but the inverse function is now different:
+\[x^2=y+1\implies x=-\sqrt{y+1}\in (-\infty,0]=\dom(f) \implies f^{-1}(x)=-\sqrt{x+1}\]
+This time the new domain for $f$ forced us to use the \emph{negative square root.}
+\begin{center}
+\begin{minipage}[t]{0.52\linewidth}\vspace{30pt}
+	\centering\includegraphics{inverses-combi}
+\end{minipage}\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+	\centering\begin{tabular}{@{}c@{}}
+		\includegraphics{inverses-combi2}\\[25pt]
+		\includegraphics{inverses-combi3}
+	\end{tabular}
+\end{minipage}
+\end{center}
+There is nothing stopping us from choosing other domains on which $f$ is 1--1, but these are certainly the most natural choices.
+\end{example*}
+
+\clearpage
+
+
+\iffalse
+\clearpage
+
+\boldsubsubsection{OLD Version}
+
+You've long been used to the idea of inverse functions: $g=f^{-1}$ means that $g$ takes the \emph{output} of $f$ and returns the \emph{input,} and vice versa.
+
+\begin{defn}{}{inversefn}
+Functions $f:A\to B$ and $g:B\to A$ are \emph{inverses} if two properties are satisfied:
+\begin{itemize}
+  \item Whenever $x\in A=\dom(f)$, we have $g\bigl(f(x)\bigr)=x$.
+  \item Whenever $x\in B=\dom(g)$, we have $f\bigl(g(x)\bigr)=x$.
+\end{itemize}
+A function $f:A\to B$ is \emph{invertible} if it has an inverse function $g:B\to A$. 
+\end{defn}
+
+\begin{example}{}{}
+The function $f(x)=2x$ has inverse $f^{-1}(x)=\frac 12x$.
+\end{example}
+
+The example shows the naïve way of approaching inverses. As is common in calculus/algebra, we defined functions using formulæ. Thankfully, if we follow standard conventions regarding the implied domain and codomain, then $f:\R\to\R$ and there is no problem with our example! Unfortunately, things are rarely so straightforward for almost any interesting function.
+
+% \begin{example}{}{}
+% Consider the formulæ $f(x)=x^2+2$ and $g(x)=\sqrt{x-2}$.
+% \begin{enumerate}
+%   \item Suppose $\dom(f)=A=\{1,2,3,4\}$ and $\operatorname{codom}(f)=B=\{3,6,11,18\}$.\par
+% \begin{minipage}[t]{0.7\linewidth}\vspace{-5pt}
+% It is easily checked that $g$ is the \emph{inverse function} to $f$, as is easily checked:
+% \[g\bigl(f(x)\bigr)=\sqrt{(x^2+2)-2}=x,\quad f\bigl(g(x)\bigr)=\bigl(\sqrt{x-2}\bigr)^2+2=x\]
+% All we are doing is reversing inputs and outputs. More formally, the domain and range/codomain switch over:
+% \end{minipage}\hfill
+% \begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
+% \hfill\includegraphics{inverse-easy}
+% \end{minipage}\smallbreak
+% \begin{gather*}
+% A=\dom(f)=\operatorname{range}(g)=\operatorname{codom}(g)\\
+% B=\dom(g)=\operatorname{range}(f)=\operatorname{codom}(f)
+% \end{gather*}
+% \end{enumerate}
+% \end{example}
+
+
+\begin{example}{}{inversex2}
+Let $f(x)=x^2-1$ and $g(x)=\sqrt{x+1}$; intuitively these are inverse functions; indeed\par
+\begin{minipage}[t]{0.7\linewidth}\vspace{-12pt}
+\[f\bigl(g(3)\bigr)=f(2)=3\quad\text{and}\quad g\bigl(f(3)\bigr)=g(8)=3\]
+In both cases, the second function returns the input of the first. However, replacing positives with negatives causes both calculations to fail:
+\begin{enumeratea}
+  \item When working with real numbers, $f\bigl(g(-3)\bigr)=f(\sqrt{-2})$ is meaningless and doesn't recover $-3$. This is a very silly thing to write, since $-2$ is not in the implied domain $\dom(g)=[-1,\infty)$.
+  \item $g\bigl(f(-3)\bigr)=g(8)=3\neq -3$. The problem here is more subtle, arising from our unthinking use of the implied domain $\dom(f)=\R$:\vspace{-12pt}
+\end{enumeratea}
+  \[\textcolor{Green}{-3}\in\dom(f)=\R\ \text{ but }\ \textcolor{orange}{-3}\not\in\operatorname{range}(g)=[0,\infty)\]
+Both cases illustrate the problem in using a formula to define a function: imprecision regarding \emph{domains} and \emph{ranges.}
+\end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{-5pt}
+\flushright\includegraphics[scale=0.9]{inverses-poly3}\\
+\includegraphics[scale=0.95]{inverses-poly2}
+\end{minipage}\medbreak
+The simple fix, disallow negative inputs to $f$, is implemented by \emph{restricting its domain} to $[0,\infty)$. The graph of $g$ is unchanged, but we've deleted the \textcolor{Brown}{left side} of the graph of $f$. We now have the inverse relationships we desire:
+\begin{itemize}\itemsep0pt
+  \item If $x\in\dom(f)=[0,\infty)$, then $g\bigl(f(x)\bigr)=\sqrt{(x^2-1)+1}=x$
+  \item If $x\in\dom(g)=[-1,\infty)$, then $f\bigl(g(x)\bigr)=\bigl(\sqrt{x+1}\bigr)^2-1=x$
+\end{itemize}
+\end{example}
+
+
+
+
+There is a lot going on here, though hopefully the simple fix of restricting the domain feels intuitive and low-tech. Our goal is to formalize and generalize this discussion. In particular, given a function $f:A\to B$, we have two questions: is $f$ invertible and, if so, how do we compute its inverse?
+
+\goodbreak
+
+
+\boldinline{What makes a function invertible?}
+
+To motivate, we return to the example and consider how the \emph{vertical line test} (Definition \ref{defn:function}) provides an alternative viewpoint. A function may be envisioned as first transporting an input \emph{vertically} from the $x$-axis until it hits the graph, then projecting it \emph{horizontally} to the $y$-axis. An inverse function should reverse this process:\par
+
+\begin{minipage}[t]{0.72\linewidth}\vspace{-3pt}
+\begin{quote}
+Transport an element on the $y$-axis \emph{horizontally} until it hits the graph, then project vertically onto the $x$-axis.
+\end{quote}
+The reason this process fails in our example is that we have \emph{two choices} for how to transport 9 horizontally to the graph:
+\begin{itemize}\itemsep2pt
+  \item The \textcolor{Green}{left-hand choice} produces $-3$ but does not correspond to $g$.
+  \item The \textcolor{orange}{right-hand choice} recovers the correct original value $\textcolor{orange}{3}=g(8)$.
+\end{itemize}
+\end{minipage}\hfill\begin{minipage}[t]{0.27\linewidth}\vspace{-8pt}
+\flushright\includegraphics[scale=0.9]{inverses-poly1}
+\end{minipage}\medbreak
+The fix is to insist that $f$ passes a \emph{horizontal line test}: every such line should intersect the graph at most \emph{once}; this is exactly what we accomplish by restricting $\dom(f)=[0,\infty)$.\smallbreak
+We get another useful observation for free. The inverse process (horizontal transport/vertical projection) is precisely what $g$ is doing once we switch the $x$ and $y$ axes: the \textcolor{blue}{graphs} of inverse functions are therefore related by \emph{reflection symmetry in the line $y=x$.}\smallbreak
+
+Definition \ref{defn:inversefn} told us how to recognize an inverse function by its \emph{properties}. Our observation about reflections allows us to \emph{define} an inverse concretely for any function: when viewed as a set of ordered pairs $\bigl(a,f(a)\bigr)$, `reflection in the line $y=x$' simply means `reverse the order of each pair.'
+
+\begin{defn}{}{}
+Suppose $f:A\to B$ is a function. Its \emph{inverse} is the \emph{subset}
+\[f^{-1}=\bigl\{(f(a),a):a\in A\bigr\}\subseteq B\times A\]
+\end{defn}
+
+The question of what makes a function invertible now becomes, `when is the \emph{set} $f^{-1}$ a function?' The answer to this is the vertical line test. Let's revisit our example.\par
+
+\begin{example*}{\ref{ex:inversex2}, cont}{}
+If $f(x)=x^2-1$ has domain $\R$, then its inverse is the set\par
+\begin{minipage}[t]{0.65\linewidth}\vspace{-10pt}
+\[f^{-1}=\bigl\{(y^2-1,y):y\in\R\bigr\}\]
+obtained by reflecting the graph of $f$ in the line $y=x$. This is not a function because it fails the vertical line test in two ways:
+\begin{enumerate}\itemsep2pt
+  \item If \textcolor{magenta}{$x>-1$}, then the vertical line intersects the graph \emph{twice.}
+  \item If \textcolor{cyan}{$x<-1$}, then the vertical line does not intersect the graph.
+\end{enumerate}
+Both issues have a simple fix:
+\begin{enumerate}\itemsep2pt
+  \item Restrict the \emph{domain} of $f$ to $A=[0,\infty)$.
+  \item Restrict the \emph{codomain} of $f$ to $B=[-1,\infty)$.
+\end{enumerate}
+\end{minipage}\hfill\begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
+\flushright\begin{tabular}{@{}c@{}}
+\includegraphics{inverses-poly4}\\
+Graph of $f^{-1}$
+\end{tabular}
+\end{minipage}\medbreak
+The inverse of the \textcolor{blue}{restricted} function $f:A\to B$ is now a \emph{function} $f^{-1}:B\to A$, $f(x)=\sqrt{x+1}$:
+\[f^{-1}=\bigl\{(y^2-1,y):y\in[0,\infty)\bigr\} =\bigl\{(x,\sqrt{x+1}),x\in[-1,\infty)\bigr\}\]
+\end{example*}
+
+
+\goodbreak
+
+It's time to put this all together and justify what should be a familiar algorithm. The vertical line test for the reflected graph of $f^{-1}$ becomes a \emph{horizontal line test} for the original function $f$.
+
+\begin{thm}{Horizontal Line Test}{}
+Let $f:A\to B$ be a function. Then $f$ is invertible if and only if it satisfies two conditions:
+\begin{enumerate}
+  \item (1--1/one-to-one)\lstsp Distinct inputs have distinct outputs:\footnotemark
+  \[f(x_1)=f(x_2)\implies x_1=x_2\]
+  This is equivalent to every \textcolor{magenta}{horizontal line} intersecting the graph \textcolor{magenta}{at most once}.
+  \item (Onto)\lstsp Every potential output is realized; otherwise said $B=\operatorname{range}(f)$:
+  \[\text{Given $y\in B$, there is some $x\in A$ for which $y=f(x)$}\]
+  This is equivalent to a \textcolor{cyan}{horizontal line} through $y\in B$ intersecting the graph \textcolor{cyan}{at least once}.
+\end{enumerate}
+\end{thm}
+
+\footnotetext{This means the same as $x_1\neq x_2\implies f(x_1)\neq f(x_2)$ but is easier to calculate with!}
+
+Our original version of $f(x)=x^2-1$ failed both conditions when $f:\R\to\R$, but passes both when $f:[0,\infty)\to[-1,\infty)$.\smallbreak
+
+The horizontal line test becomes three-step algorithm for finding inverse functions, of which the first two steps are the horizontal line test:
+\begin{enumerate}
+  \item Check that $f$ is 1--1. If not, \emph{restrict its domain} $A=\dom(f)$.
+	\item \emph{Define} $B=\operatorname{range}(f)$.
+	\item Switch $x,y$ and solve $x=f(y)\rightsquigarrow y=f^{-1}(x)$ in terms of $x$.
+\end{enumerate}
+
+When $f:A\to B$ is invertible, the construction makes clear why we must have
+\[\dom(f^{-1})=B=\operatorname{range}(f),\quad \operatorname{range}(f^{-1})=\dom(f)\]
+
+\begin{example*}{\ref{ex:inversex2}, cont}{}
+The first step in our algorithm involves some \emph{choice.} If we instead restrict the domain so that $\dom(f)=(-\infty,0]$, then the function is still 1--1:
+\begin{align*}
+f(x_1)=f(x_2)&\implies x_1^2-1=x_2^2-1 \implies (x_1-x_2)(x_1+x_2)=0 \implies x_1=\pm x_2\\
+&\implies x_1=x_2
+\end{align*}
+since both $x_1,x_2\le 0$ they cannot have opposite signs!\par
+\begin{minipage}[t]{0.7\linewidth}\vspace{-5pt}
+In the second step we still have $B=\operatorname{range}(f)=[-1,\infty)$. The result is \emph{another inverse,} as we may compute via step 3:
+\begin{align*}
+x=f(y)=y^2-1&\implies y^2=x+1\\
+&\implies f^{-1}(x)=y=-\sqrt{x+1}
+\end{align*}
+\end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{-30pt}
+\flushright\begin{tabular}{@{}c@{}}
+\includegraphics{inverses-poly5}\\
+\textcolor{Brown}{$f^{-1}(x)=-\sqrt{x+1}$}
+\end{tabular}
+\end{minipage}\medbreak
+where we chose the \emph{negative} square root since $\operatorname{range}(f^{-1})=\dom(f)=(-\infty,0]$. This, of course, is the result of reflecting the  \textcolor{Brown}{brown} half of the graph of $f$ across the line $y=x$.
+\end{example*}
+
+\goodbreak
+
+\fi
+
+To finish we consider an algebraically tougher example and quickly list all the details.
+
+\begin{example}{}{function-easy}
+Let $y=f(x)=\frac 1{(2-x)^2}$. Its implied \textcolor{red}{\emph{domain}} consists of all real numbers except 2.
+\begin{description}
+	\begin{minipage}[t]{0.68\linewidth}\vspace{-7pt}
+		\item The \textcolor{Green}{\emph{vertical line test}} is clearly visible on the graph: every vertical line $x=a$ (except $x=2$) intersects the graph exactly once.
+		\item The \textcolor{Brown}{\emph{range}} is the interval $\R^+=(0,\infty)$ as can be seen by solving
+		\[f(x)=y\iff \frac 1{2-x}=\pm \sqrt y\iff x=2\mp \frac 1{\sqrt y}\]
+		Any positive output may be obtained via $y=f\bigl(2-\frac 1{\sqrt y}\bigr)$.\par
+		The $\mp$ term shows that $f$ fails the \textcolor{orange}{\emph{horizontal line test}}: it isn't 1--1.
+		\item There are two natural choices for an inverse:
+		\begin{enumeratea}
+		  \item Choose \textcolor{blue}{$\dom(f)=(2,\infty)$}, then $\pm\sqrt y=\frac 1{2-x}$ is \emph{negative} and we obtain the inverse function
+		  \[g:(0,\infty)\to(2,\infty),\quad g(x)=2-\frac 1{\sqrt y}\] 
+		  \item Choose \textcolor{Purple}{$\dom(f)=(-\infty,2)$}, then $\pm\sqrt y=\frac 1{2-x}$ is \emph{positive} and we obtain a second inverse function
+		  \[h:(0,\infty)\to(\infty,2),\quad h(x)=2+\frac 1{\sqrt y}\] 
+		\end{enumeratea}
+	\end{minipage}\hfill\begin{minipage}[t]{0.31\linewidth}\vspace{-12pt}
+	\flushright\includegraphics{functions-easyex1}\par
+	\includegraphics{functions-easyex2}
+	\end{minipage}
+\end{description}
+\end{example}
+
+
+
+
+% \begin{example}{}{}
+% Let $f(x)=x^3+8$.
+% \begin{enumerate}
+%   \item $f$ passes the horizontal line test for all $x$:
+%   \[x_1^3+8=x_2^3+8\implies x_1=x_2\]
+%   \item $x=y^3+8\implies y=f^{-1}(x)=\sqrt[3]{x-8}$.
+% \end{enumerate}
+% In this case the domain and range are both the whole real line.
+% \end{example}
+
+\begin{exercises}{}{}
+\exstart If $\dom(f)=\R$, verify that $f(x)=x^3+8$ passes the horizontal line test and find its inverse.
+\begin{enumerate}\setcounter{enumi}{1}
+  \item Consider the function $f(x)=x^2+2x-3$. What do you have to do to the domain to make this invertible? Now find \emph{two inverses} of $f$.
+  
+  \item Sketch the graph of the following function with $\dom(f)=[0,3)$ and find \emph{three} distinct inverses:
+  \[f(x)=\begin{cases}
+  x&\text{if }0\le x<1\\
+  x-1&\text{if }1\le x<2\\
+  x-2&\text{if }2\le x<3
+  \end{cases}\]
+	
+
+  \item Show that the following function $f:\R\to(\frac 32,\infty)$ is 1--1 and onto, sketch its graph and find $f^{-1}$. 
+  \[f(x)=\begin{cases}
+  3-\frac 12x&\text{if }x\le 2\\
+  2-\frac 1x&\text{if }x>2
+  \end{cases}\]
+  
+  \item (Hard)\lstsp Find the implied domain and range of $f(x)=\smash[b]{\frac{x+1}{1+\frac 1{x+1}}}$. Now find an interval on which $f$ is 1--1 and compute its inverse.
+  
+  \item An astute student observes that Definition \ref{defn:inversefn} only describes the \emph{properties} satisfied by \emph{an} inverse and asks why we keep referring to \emph{the} inverse. How would you respond?
+  
+\end{enumerate}
+\end{exercises}
+
+\iffalse
+\clearpage
+
+
+
+\subsection{Increasing \& Decreasing Functions and Convexity}
+
+
+
+Quadratic polynomials are a good excuse to introduce several related concepts.
+
+\begin{defn}{}{}
+Let $f:I\to\R$ be a function defined on an interval $I$. We say that $f$ is:
+\begin{enumerate}
+  \item \emph{Increasing} if $x_0<x_1\implies f(x_0)\le f(x_1)$.
+% 	\item \emph{Strictly increasing} if the second inequality is strict; $f(x_1)<f(x_2)$.
+	\item \emph{Convex (concave up)} if $x_0\neq x_1\implies (1-t)f(x_0)+tf(x_1)\ge f\bigl((1-t)x_0+tx_1\bigr)$ for all $0<t<1$. Otherwise said, the line segment joining any two points on the graph lies \emph{above} the graph.
+\end{enumerate}
+Reverse the inequalities to obtain the notions of \emph{decreasing} and \emph{concave down.} The inequalities can also be made strict to obtain \emph{strictly increasing} and \emph{strictly convex,} etc.
+\end{defn}
+
+\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
+The function in the picture is convex where its graph is blue. If $0<t<1$, the  value
+\[x_t=(1-t)x_1+tx_2\]
+lies strictly between $x_1$ and $x_2$. At this point the function lies below the corresponding point on the line joining $(x_1,f(x_1))$ and $(x_2,f(x_2))$:
+\[f(x_t)<(1-t)f(x_1)+tf(x_2)\]
+\end{minipage}\begin{minipage}[t]{0.55\linewidth}\vspace{0pt}
+\flushright\includegraphics{poly-convex}
+\end{minipage}\par
+
+\begin{thm}{}{}
+If $a>0$, then $f(x)=ax^2+bx+c$ is
+\begin{enumerate}
+  \item Increasing on the interval $[-\frac b{2a},\infty)$;
+  \item Decreasing on the interval $(-\infty,-\frac b{2a}]$;
+  \item Concave up on $\R$.
+\end{enumerate}
+The outcome is reversed if $a<0$.
+\end{thm}
+
+Instead of a formal argument, 
+we consider the simplest example.
+
+\begin{example}{}{}
+$f(x)=x^2$ has apex $(0,0)$. Simply compare\par
+\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
+\[f(x_1)-f(x_0)=x_1^2-x_0^2 =(x_1-x_0)(x_1+x_0)\]
+and consider two cases:
+\begin{itemize}
+  \item $0\le x_0<x_1\implies x_0+x_1>0\implies f(x_1)-f(x_0)>0$ so $f$ is \textcolor{blue}{strictly increasing}.
+  \item $x_0<x_1\le 0\implies x_0+x_1<0\implies f(x_1)-f(x_0)<0$ so $f$ is \textcolor{Green}{strictly decreasing}.
+\end{itemize}
+Finally, for any $x_0,x_1\in\R$ and any $0<t<1$, a little algebra shows that
+\end{minipage}\begin{minipage}[t]{0.35\linewidth}\vspace{-10pt}
+\flushright\includegraphics{poly-quad3}
+\end{minipage}
+
+\begin{align*}
+f\bigl((1-t)x_0+tx_1\bigr)-(1-t)f(x_0)+tf(x_1)&=\bigl(x_0+t(x_1-x_0)\bigr)^2-(1-t)x_0^2+tx_1^2\\
+&=t(t-1)\bigl(x_0+x_1\bigr)^2<0
+\end{align*}
+whence $f$ is convex (concave up). An alternative argument is in the exercises.
+\end{example}
+
+
+
+\begin{exercises}{}{}
+\end{exercises}
+\fi
