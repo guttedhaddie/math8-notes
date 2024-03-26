@@ -8,219 +8,279 @@
 
 \section*{Introduction}
 
-The purpose of this course is provide some conceptual foundation to several mathematical topics commonly encountered at grade-school level. The job of a teacher is often one of \emph{selection}; choosing examples and explanations suited to the level and experience of your students. To do this effectively, you need to understand concepts at a higher level than you'll likely ever teach. Not all of our topics are central to the grade-school curriculum, and it is not our goal to teach you \emph{how} to teach, though the ideas and approaches we'll explore are in the most part suitable for a grade-school audience. As such, the \emph{mathematics} in this course shouldn't be difficult, requiring at most elementary calculus and a tiny bit of linear algebra; you should instead spend your time considering how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\par
+This course aims to refresh and provide some conceptual foundation to several mathematical topics commonly encountered at grade-school level. The job of a teacher is often one of \emph{selection}; choosing examples and explanations suited to the level and experience of your students. To do this effectively, you need to understand concepts at a higher level than you'll likely ever teach. Not all of our topics are central to the grade-school curriculum, and it is not our goal to teach you \emph{how} to teach, though the ideas and approaches we'll explore are often suitable for a grade-school audience. The \emph{mathematics} in this course shouldn't present much difficulty, requiring at most elementary calculus and a tiny bit of linear algebra; you should instead be considering how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\par
 
 \begin{minipage}[t]{0.72\linewidth}\vspace{0pt}
-We start with two motivational problems.\footnotemark
-\begin{enumerate}
-  \item You wish to travel across the surface of a cube between two opposite vertices so that your path is as short as possible.\par
-  Should you follow the path indicated?\par
-  If yes, explain why.\par
-  If not, how should you find the shortest path?
-\end{enumerate}
-\end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
-\flushright\includegraphics{intro-cube_0}
-\end{minipage}\smallbreak
+	We start with two motivational problems.\footnotemark
+	\begin{enumerate}
+	  \item You wish to travel across the surface of a cube between two opposite vertices so that your path is as short as possible.\par
+	  Should you follow the path indicated?\par
+	  If yes, explain why.\par
+	  If not, how should you find the shortest path?
+	\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
+	\flushright
+	\includegraphics{intro-cube_0}
+\end{minipage}
+\smallbreak
 
 \begin{minipage}[t]{0.51\linewidth}\vspace{0pt}
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Two houses are to be connected to the electricity supply using a single connection.\par
-  How should we determine where to place the connection so as to minimize the required length of wire?\par
-  What information do you need in order to find the connection point?
-\end{enumerate}
-\end{minipage}\hfill\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
-\flushright\includegraphics[scale=0.9]{intro-elec}
-\end{minipage}\medbreak
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Two houses are to be connected to the electricity supply using a single connection.\par
+	  How should we determine where to place the connection so as to minimize the required length of wire?\par
+	  What information do you need in order to find the connection point?
+	\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
+	\flushright
+	\includegraphics[scale=0.9]{intro-elec}
+\end{minipage}
+\medbreak
 
 \footnotetext{We are grateful to materials from UT Austin's UTeach program for suggesting several of the examples in this course including these motivational problems.}
 
-The point of these exercises isn't merely to find the right answer! Consider how you might discuss these problems with grade-school students of different levels. Why might calculus \emph{not} be a sensible approach? Are there commonalities between the two problems? Brainstorm some strategies and see if you can find different approaches.
+The goal isn't merely to find the right answer! Consider how you might discuss these problems with grade-school students of different ability levels. Why might calculus \emph{not} be a sensible approach? Are there any similarities between the two problems? Brainstorm some strategies\ldots
 
 %Unfold for the first then straight line. Reflection helps for the second: make equal angle, so split the distance between the houses in same ratio as the distances from the houses to the wire (similar triangles).
 
 \goodbreak
 
-\section{Sets \&\ Functions}
 
-\subsection{Basic Definitions}
 
-In this section we refresh the notion of a function. Consider how central this is to mathematics. Do you remember when you first encountered functions? How would you define \emph{function} to someone with limited mathematical knowledge? Would you use words like \emph{rule, assign, element, domain, vertical line test,} etc.? How helpful are these to your audience?
+\section{Sets \&\ Functions}\label{chap:func}
+
+\subsection{Basic Definitions}\label{sec:funcdef}
+
+Consider how central functions are to mathematics, and how long you've been using them. How would you \emph{define} ``function'' to someone with limited mathematical knowledge? Would you use words like \emph{rule, assign, element, domain, vertical line test,} etc.? How helpful are these to your audience?
 
 \begin{examples}{}{funcbasic}
-How would you explain the idea that the following do or do not represent functions?\vspace{-5pt}
-\begin{enumerate}\itemsep0pt
-  \item $y=x^2$
-  \item Mon: fish,\quad Tue: pork,\quad Wed: fajitas,\quad Thur: carbonara,\quad Fri: pizza
-  \item $(3,5)$, $(2,6)$, $(4,2)$, $(3,1)$.
-  \item $x^2=y^2$
-\end{enumerate}
+	How would you explain the idea that the following do or do not represent functions?\vspace{-5pt}
+	\begin{enumerate}\itemsep0pt
+	  \item $y=x^2$
+	  \item\label{ex:funcbasic2} Mon: fish,\quad Tue: pork,\quad Wed: fajitas,\quad Thur: carbonara,\quad Fri: pizza,\quad Sat: fish,\quad Sun: pizza
+	  \item $(3,5)$, $(2,6)$, $(4,2)$, $(3,1)$.
+	  \item $x^2=y^2$
+	\end{enumerate}
 \end{examples}
 
-After trying to explain these, perhaps you settle on a semi-formal definition such as the following:
-\begin{quote}
-A function $f$ is rule which assigns to each input $x$ exactly one output $f(x)$.
-\end{quote}
-Is this a useful definition? In what ways is it imprecise? How much does this matter?\medbreak
+After considering the example, perhaps you settle on a semi-formal definition:
+\[
+	\tcbhighmath{\text{A function $f$ is rule which assigns to each input $x$ exactly one output $f(x)$}}
+\]
+Is this a useful definition? In what ways is it imprecise? How much does this matter?
+\medbreak
 
-The answers to these questions plainly depend on your audience; from a formal palate a teacher should \emph{select} enough to convey what they think is important without overburdening and intimidating your students. As a teacher you need a more complete picture, which begins by thinking about what exactly are allowed to be \emph{inputs} and \emph{outputs.}
+The answers to these questions depend on your audience! From a formal palate a teacher selects enough to convey something important without overburdening and intimidating their students. For a more complete picture, we begin by thinking about what we allow to be \emph{inputs} and \emph{outputs.}
 
 \begin{defn}{}{}
-A \emph{set} $A$ is a collection of objects, known as \emph{elements.}\footnotemark{} The notation $a\in A$ means that $a$ is an element of $A$, sometime reads `$a$ lies in $A$.' Sets are usually written upper case and elements lower.\par
-\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
-A set $B$ is a \emph{subset} of a set $A$, written $B\subseteq A$, if every element of $B$ is also an element of $A$. That is:
-\[b\in B\implies b\in A\]
-In the picture, we have $B\subseteq A$, $a\in A$, $b\in B$ and $a\not\in B$.
-\end{minipage}\hfill\begin{minipage}[t]{0.24\linewidth}\vspace{-12pt}
-\flushright\includegraphics[scale=0.95]{functions-subset}
-\end{minipage}
+	A \emph{set} $A$ is a collection of objects, known as \emph{elements.}\footnotemark{} The notation $a\in A$ means that $a$ is an element of $A$, sometimes read as `$a$ lies in $A$.' Sets are usually written with upper case letters and elements with lower.\par
+	\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
+		A set $B$ is a \emph{subset} of a set $A$, written $B\subseteq A$, if every element of $B$ is also an element of $A$: that is,
+		\[
+			b\in B\implies b\in A
+		\]
+		The picture indicates sets $A,B$ and elements $a,b$ for which $B\subseteq A$, $a\in A$, $b\in B$ and $a\notin B$.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.24\linewidth}\vspace{-12pt}
+		\flushright
+		\includegraphics[scale=0.95]{functions-subset}
+	\end{minipage}
 \end{defn}
 
-\footnotetext{This is good enough for our purposes. It typically takes a term of set theory to convince you that this really isn't a good definition; selection again!}
+\footnotetext{This is enough for our purposes, though a course in set theory will convince you that this definition has its own problems. Selection is always at work, at all levels of education\ldots}
 
 
 \begin{examples}{}{}
-\exstart Suppose the elements of a set $A$ are the numbers 1, 3, 5, 7 and 9. The simplest way to write this is in \emph{roster notation}: list the elements (in any order!) between curly brackets
-\[A=\{1,3,5,7,9\}\]
-\begin{enumerate}\setcounter{enumi}{1}
-  \item[]$B=\{3,5,7\}$ is a subset of $A$. Subsets are commonly denoted using \emph{set-builder notation}:
-	\[\{a\in A:\text{condition on $a$}\}\]
-	For example, $B=\{a\in A:2<a<8\}$, ``The set $a$ in $A$ such that $a$ is strictly between 2 and 8." Can you express $B$ in other ways using set-builder notation? 
-  \goodbreak
+	\exstart Suppose the elements of a set $A$ are the numbers 1, 3, 5, 7 and 9. The simplest way to write this is using \emph{roster notation}: list the elements (in any order!) between braces
+	\[
+		A=\{1,3,5,7,9\}
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]Subsets are commonly expressed in \emph{set-builder notation}: $\{a\in A:\text{condition on $a$}\}$. For example,
+	 	\[
+	 		B=\{a\in A:2<a<8\} \tag{the set of $a$ in $A$ such that $a$ lies strictly between 2 and 8}
+	 	\]
+	 	In roster notation, $B=\{3,5,7\}$: plainly $B$ is a subset of $A$. Can you express $B$ in other ways using set-builder notation?
+	  \goodbreak
   
-  \item You should be familiar with common sets of numbers: we use various combinations of roster and set-builder notation to informally define these.
-  \begin{description}
-		\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance $5\in\N$ but $-3\not\in\N$.
-		\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance $-4\in\Z$ but $\frac 45\not\in\Z$.
-		\item[Rational numbers] or fractions: $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$; in this case $p=-6$ is an integer, and $q=7$ a natural number.
-		\item[Real numbers] $\R$: for instance $\sqrt 2\in\R$. A formal definition is difficult, but you should be used to visualizing the real line. \emph{Intervals} are particularly important subsets, e.g.
-		\[[-4,\pi)=\{x\in\R:-4\le x<\pi\}\]
-		is a half-open interval.
-		\item[Complex numbers] $\C=\bigl\{x+iy:x,y\in\R\bigr\}$.
-	\end{description}
-	You should be comfortable with the subset relationships between these sets
-	\[\N\subseteq\Z\subseteq\Q\subseteq\R\subseteq\C\]
-	You should have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational.
-\end{enumerate}
+	  \item You should be familiar with common sets of numbers: we summarize these using informal combinations of roster and set-builder notation.
+	  \begin{description}
+			\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance $5\in\N$ but $-3\not\in\N$.
+			\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance $-4\in\Z$ but $\frac 45\not\in\Z$.
+			\item[Rational numbers] or fractions: $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$; in this case $p=-6$ is an integer, and $q=7$ a natural number.
+			\item[Real numbers] $\R$: for instance $\sqrt 2\in\R$. A formal definition is difficult, but you should be used to identifying the real line with a \emph{ruler}. \emph{Intervals} are particularly important subsets, e.g.
+			\[
+				[-4,\pi)=\{x\in\R:-4\le x<\pi\}
+			\]
+			is a half-open interval.\smallbreak
+			You should also be familiar with the \emph{Cartesian plane}: $\R^2=\{(x,y):x,y\in\R\}$. The notation $(3,4)\in\R^2$ describes a \emph{point} in the plane with \emph{co-ordinates} $x=3$, $y=4$: don't confuse this with the \emph{interval} $(3,4)=\{x\in\R:3<x<4\}$ which is a subset of $\R$!
+			%\item[Complex numbers] $\C=\bigl\{x+iy:x,y\in\R\bigr\}$. We'll have almost no need for these.
+		\end{description}
+		The subset relationships between these sets should be familiar:
+		\[
+			\N\subseteq\Z\subseteq\Q\subseteq\R%\subseteq\C
+		\]
+		You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.
+	\end{enumerate}
 \end{examples}
 
-\smallskip
+\bigskip
 
-The reason we need this language is that the inputs and outputs of a function are \emph{elements} of sets.
+
+The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements} of sets. Here is a \emph{very} formal definition of ``function.''
 
 \begin{defn}{}{function}
-The \emph{Cartesian product} of sets $A,B$ is the set of \emph{ordered pairs}
-\[A\times B=\bigl\{(a,b):a\in A,b\in B\bigr\}\]
-A \emph{function} from $A$ to $B$ is a non-empty subset $f\subseteq A\times B$ which satisfies the \emph{vertical line test}
-\[\text{For each $a\in A$, there is a \emph{unique} $b\in B$ such that $(a,b)\in f$} \tag{$\ast$}\]
-Rather than write $(a,b)\in f$, we use the more familiar notation
-\[f:A\to B\quad\text{and}\quad f(a)=b\]
-To a function $f:A\to B$ are associated three sets:\footnotemark
-\begin{itemize}\itemsep0pt
-  \item Domain: $\dom f=A$ is the set of \emph{inputs.}
-  \item Codomain: $\operatorname{codom} f=B$ is the set of \emph{possible outputs.}
-  \item Range: $\operatorname{range} f=\{b\in B:b=f(a)\text{ for some }a\in A\}$ is the set of \emph{realized outputs.}
-\end{itemize}
-We call $A$ the \emph{domain} and $B$ the \emph{codomain} of the function (the set of \emph{possible} outputs).
+	The \emph{Cartesian product} of sets $A,B$ is the set of \emph{ordered pairs}
+	\[
+		A\times B=\bigl\{(a,b):a\in A,b\in B\bigr\}
+	\]
+	A \emph{function} from $A$ to $B$ is a non-empty subset $f\subseteq A\times B$ which satisfies the \emph{vertical line test}
+	\[
+		\text{For each $a\in A$, there is a \emph{unique} $b\in B$ such that $(a,b)\in f$} \tag{$\ast$}
+	\]
+	Instead of writing $f\subseteq A\times B$ and $(a,b)\in f$, we use the more familiar notation
+	\[
+		f:A\to B\quad\text{and}\quad f(a)=b
+	\]
+	To a function $f:A\to B$ are associated three sets:%\footnotemark
+	\begin{itemize}\itemsep0pt
+	  \item Domain: $\dom f=A$ is the set of \emph{inputs.}
+	  \item Codomain: $\operatorname{codom} f=B$ is the set of \emph{possible outputs.}
+	  \item Range: $\operatorname{range} f=\{b\in B:b=f(a)\text{ for some }a\in A\}$ is the set of \emph{realized outputs.}
+	\end{itemize}
 \end{defn}
 
 
-\footnotetext{Even more formally, these sets make sense for any subset $f\subseteq A\times B$ (such is called a \emph{relation} from $A$ to $B$). For instance $\dom f=\{a\in A:(a,b)\in f\text{ for some }b\in B\}$. For a relation to be a function, we \emph{require} $\dom f=A$; this is the \emph{for each} part of $(\ast)$ in Definition \ref{defn:function}.}
+% \footnotetext{Even more formally, these sets make sense for any subset $f\subseteq A\times B$ (such is called a \emph{relation} from $A$ to $B$). For instance $\dom f=\{a\in A:(a,b)\in f\text{ for some }b\in B\}$. For a relation to be a function, we \emph{require} $\dom f=A$; this is the \emph{for each} part of $(\ast)$ in Definition \ref{defn:function}.}
 
 
-Wow! Is the definition you should give to 10\th{} graders, or even to freshman calculus students?
-\smallbreak
+This probably isn't the definition you should give to 10\th{} graders, or even to freshman calculus students! But what should you do? How much of this is helpful in a a given context?
 
-Think through each of Examples \ref{ex:funcbasic} in this formal context. To do this properly, we have to carefully label the constituent sets. For instance:
- 
-\begin{examples*}{\ref{ex:funcbasic} cont}{}
-Revisit our earlier examples in this language. For number 2 we could choose
-\begin{gather*}
-A=\bigl\{\text{Mon, Tue, Wed, Thu, Fri}\bigr\},\qquad B=\bigl\{\text{carbonara, fajitas, fish, pizza, pork}\bigr\},\\[5pt]
-f=\bigl\{(\text{Mon,\ fish}),\ (\text{Tue,\ pork}),\ (\text{Wed,\ fajitas}),\ (\text{Thu,\ carbonara}),\ (\text{Fri,\ pizza})\bigr\}
-\end{gather*}
-Is it clear where we made a \emph{choice}? What would be another choice? Try the other examples yourself.
-\end{examples*}
+\goodbreak
+
+
+\begin{example*}{\ref{ex:funcbasic}.\ref{ex:funcbasic2} cont.}{}
+	We consider our earlier food-based example in this formal setting. To do this properly, we have to carefully label the constituent sets. For instance:
+	\begin{gather*}
+		A=\bigl\{\text{Mon, Tue, Wed, Thu, Fri}\bigr\},\qquad B=\bigl\{\text{carbonara, fajitas, fish, pizza, pork}\bigr\},\\[5pt]
+		f=\bigl\{(\text{Mon,\ fish}),\ (\text{Tue,\ pork}),\ (\text{Wed,\ fajitas}),\\
+		\qquad\qquad (\text{Thu,\ carbonara}),\ (\text{Fri,\ pizza}),\ (\text{Sat,\ fish}),\ (\text{Sun,\ pizza})\bigr\}
+	\end{gather*}
+	We made a choice with the codomain $B$: can you see how? What would be a different choice?\smallbreak
+	Try the other examples yourself.
+\end{example*}
 
 
 \boldsubsubsection{Representing Functions}
 
-You should be familiar with several ways in which we could represent a function.
+You should be familiar with several methods for representing a function.
 
 \begin{example}{}{introfunction}
-Consider the familiar \emph{formula} $f(x)=x^2$ in several contexts.
-\begin{description}\itemsep8pt
-  \begin{minipage}[t]{0.7\linewidth}\vspace{-5pt}
-  	\item \emph{Table}\lstsp This presentation might be beneficial if the domain is a small set. For instance, the table on the right shows the situation with $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$
-  
-  	\item \emph{Arrows}\lstsp A pictorial arrow diagram might also be helpful for illustrating situations with small domains.
-  
-  
-  	\item \emph{Graph}\lstsp This is simply the set of ordered pairs $\bigl(x,f(x)\bigr)$: in the context of Definition \ref{defn:function}, \emph{the graph is the function!}\smallbreak
-	 	Formulæ whose inputs and outputs are real numbers are common enough that two conventions are followed:
-	 	\begin{itemize}
-	 	  \item The \textcolor{red}{domain} is \emph{implied} to be all real numbers for which the formula makes sense: in this case all real numbers!
-			\item The codomain is taken to be the set of real numbers.
-		\end{itemize}
-		In the absence of additional information, our formula implies that $f:\R\to\R$.\smallbreak
-		
-	The \textcolor{Brown}{range} of the function is the set of all possible outputs, in this case
-	\[\operatorname{range}f=\{x^2:x\in\R\}=[0,\infty)\]
-	is the half-open interval of non-negative real numbers.\smallbreak
-		
-	For `calculus-type' functions like these, the vertical line test really involves \textcolor{Green}{vertical lines}; every vertical line intersects the graph in exactly one point.\smallbreak
-	In the picture, the \textcolor{orange}{dots} are the graph when the domain is the finite set $\{-1,0,1,2,3\}$.
-  \end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
-  	\flushright$\begin{array}{c|ccccc@{}}
-	x&-1&0&1&2&3\\\hline
-	f(x)&1&0&1&4&9
-	\end{array}$\bigbreak
-	\includegraphics[scale=0.95]{functions-quad2}\bigbreak
-	\includegraphics[scale=0.95]{functions-quad}
-  \end{minipage}
-\end{description}
+	We consider the familiar \emph{formula/rule} $f(x)=x^2$ in several contexts.
+	\begin{description}\itemsep8pt
+	  \begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
+	  	\item \emph{Table}\lstsp This presentation is most helpful when the domain is very small. The table shows the situation when $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$
+	  
+	  	\item \emph{Arrows}\lstsp A pictorial arrow diagram might also be useful for illustrating functions with small domains.
+	  
+	  
+	  	\item \emph{Graph}\lstsp This is simply the set of ordered pairs $\bigl\{\bigl(x,f(x)\bigr):x\in\dom f\bigr\}$: in the context of Definition \ref{defn:function}, \emph{the graph is the function!}\smallbreak
+		 	For formulæ whose inputs and outputs are real numbers, two conventions are typically followed unless stated otherwise:
+		 	\begin{itemize}
+		 	  \item The \textcolor{red}{domain} is \emph{implied} to be all real numbers for which the formula makes sense.
+				\item The codomain is taken to be the set of real numbers.
+			\end{itemize}
+			If no other information is provided, we'd assume the function defined by the formula $f(x)=x^2$ has both domain and codomain the entire set of real numbers: $f:\R\to\R$.
+			\smallbreak
+			
+			The \textcolor{Brown}{range} of the function is the set of possible outputs, in this case
+			\[
+				\operatorname{range}f=\{x^2\in\R:x\in\R\}=[0,\infty)
+			\]
+			is the half-open interval of non-negative real numbers.
+			\smallbreak
+			
+			For `calculus' functions like these, the vertical line test really involves \textcolor{Green}{vertical lines}; every vertical line intersects the graph in precisely one point.
+			\smallbreak
+			In the picture, the \textcolor{orange}{dots} are the graph when the domain is the finite set $\{-1,0,1,2,3\}$ (as described in the table/arrow-diagram).
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+	  	\flushright
+	  	$\begin{array}{@{}c|ccccc@{}}
+				x&-1&0&1&2&3\\\hline
+				f(x)&1&0&1&4&9
+			\end{array}$
+			\bigbreak
+			\includegraphics[scale=0.95]{functions-quad2}\bigbreak
+			\includegraphics[scale=0.95]{functions-quad}
+	  \end{minipage}
+	\end{description}
 \end{example}
 
-Other ways to represent functions are possible
+Can you think of other ways to represent a function? How might you decide which to use?
 
 
-\clearpage
+\goodbreak
 
 
 \begin{exercises}{}{}
-\exstart Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$. 
+	\exstart Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$. 
 
-\begin{enumerate}\setcounter{enumi}{1}
-	\item Temperature readings $T$ were recorded every two hours from midnight to noon. Time $t$ was measured in hours from midnight.
-  \[\begin{array}{l|ccccccc}
-  t&0&2&4&6&8&10&12\\\hline
-  T\ (^\circ\mathrm{F})&82&75&74&75&84&90&93
-  \end{array}\]
-  \begin{enumerate}
-    \item Use the readings to sketch a rough graph of $T$ as a function of $t$.
-    \item Use your graph to estimate the temperature at 10:30\,a.m.
-  \end{enumerate}
-  
-  
-  \item State parts 1, 3 and 4 of Examples \ref{ex:funcbasic} using the formal language of Definition \ref{defn:function}. If you have a function, state the domain and range and explain how you know you have a function. If you don't have a function, explain why not.\par
-  (\emph{There is no single correct answer to these, since insufficient information is provided})
-  
-  \item\begin{enumerate}
-    \item Let $A=\{1,3,5,7,9\}$. Explain in words what is meant by the set $B=\{x\in A:x^2>10\}$, and state $B$ in roster notation.
-    \item Find the set $C=\{x\in\N:(x-1)^2<16\}$ in roster notation.
-    \item Find the Cartesian product $B\times C$ in roster notation. Is it the same as $C\times B$?
-  \end{enumerate}
-  
-  \item Suppose that $f:\{-2,-1,0,1,2\}\to\R$ is defined by the formula $f(x)=x^3-4x+1$.\par
-  Describe $f$ using a table, an arrow diagram and a graph.
-  
-  \item The unit circle is often represented by the implicit equation $x^2+y^2=1$.
-  \begin{enumerate}
-    \item Draw the circle and explain why the full circle isn't the graph of a function.
-    \item Describe \emph{two} functions whose domains are the closed interval $[-1,1]$ and whose graphs together comprise the circle. What are the ranges of the two functions?
-  \end{enumerate}
-  
-  
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{1}
+		\item\label{exs:templinear} Temperature readings $T$ were recorded every two hours from midnight to noon. Time $t$ was measured in hours from midnight.
+	  \[
+	  	\begin{array}{l|ccccccc}
+	  		t&0&2&4&6&8&10&12\\\hline
+	  		T\ (^\circ\mathrm{F})&82&75&74&75&84&90&93
+	  	\end{array}
+	  \]
+	  \begin{enumerate}
+	    \item Plot the readings and use them to sketch a rough graph of $T$ as a function of $t$.
+	    \item Use your graph to estimate the temperature at 10:30\AM
+	  \end{enumerate}
+	  
+	  
+	  \item State parts 1, 3 and 4 of Example \ref{ex:funcbasic} using the formal language of Definition \ref{defn:function}. If you have a function, state the domain and range and explain how you know you have a function. If you don't have a function, explain why not.
+	  \par
+	  (\emph{Since insufficient information is provided, there is no single correct answer!})
+	  
+	  
+	  \item\begin{enumerate}
+	    \item Let $A=\{1,3,5,7,9\}$. Explain in words what is meant by the set
+	    \[
+	    	B=\{x\in A:x^2>10\}
+	    \]
+	    and state $B$ in roster notation.
+	    \item Find the set $C=\{x\in\N:(x-1)^2<16\}$ in roster notation.
+	    \item Find the Cartesian product $B\times C$ in roster notation. Is it the same as $C\times B$?
+	  \end{enumerate}
+	  
+	  
+	  \item Suppose that $f:\{-2,-1,0,1,2\}\to\R$ is defined by the formula $f(x)=x^3-4x+1$.\par
+	  Describe $f$ using a table, an arrow diagram and a graph.
+	  
+	  
+	  \item Find the implied domain and range for the functions defined by the following rules:
+	  \begin{enumerate}
+	    \item $f(x)=\frac{x^2-4}{x-2}$
+	    \item $g(x)=\sqrt{x^2-16x}$
+	    \item $h(x)=\frac 1x\sqrt{4x-x^2}$
+	  \end{enumerate}
+	  (\emph{What is the largest set of real numbers for which the formula makes sense}?)
+	  
+	  
+	  \item The unit circle is often represented by the implicit equation $x^2+y^2=1$.
+	  \begin{enumerate}
+	    \item Draw the circle and explain why the full circle isn't the graph of a function.
+	    \item Describe \emph{two} functions $f:[-1,1]\to\R$ and $g:[-1,1]\to\R$ whose graphs together comprise the circle. What are the ranges of the two functions?
+	  \end{enumerate}
+	  
+	\end{enumerate}
 \end{exercises}
 
 
@@ -230,101 +290,142 @@ Other ways to represent functions are possible
 
 \subsection{Linear Polynomials}
 
-Perhaps the simplest functions are the \emph{linear polynomials}, so named because their graph is a straight line;\footnote{Don't confuse this with the meaning of a \emph{linear function} from linear algebra; in general $f(\lambda x)\neq \lambda f(x)$ for a linear polynomial.} $y=f(x)=mx+c$ where $m,c$ are constants. These functions make for very easy models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. 
+Perhaps the simplest functions are the \emph{linear polynomials}, whose graphs are straight lines;
+\[
+	y=f(x)=mx+c\quad\text{where $m,c$ are constants} \tag{$\ast$}
+\]
+These functions make for very simple models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. Given some experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$) relating these variables. In practice, models are usually only \emph{approximate.} Later in the course we'll consider how to find good linear models for approximately linear data.
 
-\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{}{}
-Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.\smallbreak
-Substitute both points into the equation and solve
-\begin{align*}
-\begin{cases}
-3=m+c\\
-1=4m+c
-\end{cases}
-&\implies -2=3m\\
-&\implies m=-\frac 23,\quad c=3-m=\frac{11}3
-\end{align*}
-The \emph{\textcolor{Brown}{gradient}} or \textcolor{Brown}{\emph{slope} $m$} represents how far one climbs/falls on travelling one unit to the right.\smallbreak
-The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the line with the $y$-axis.
-\tcblower
-\flushright\includegraphics{line-line}
-\end{example}
-
-There is some bookkeeping to do here: how do we know that every straight line corresponds to such a linear function? This follows fairly easily from a useful fact regarding parametrizations.
-
-\begin{thm}{}{lineparametrize}
-The set of points on the line through distinct points $A$ and $B$ is
-\[\ell_{A,B}=\bigl\{(1-t)A+tB:t\in\R\bigr\}\]
-\end{thm}
-
-\begin{proof}
-There are several ways to think about this; we use what is essentially \emph{vector addition}.\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{-5pt}
-Certainly the set of points
-\[\ell_{O,B-A}=\{t(B-A):t\in\R\}\]
-describes the straight line through the origin and the point $B-A$. We simply \textcolor{Brown}{shift} this line by $A$.\smallbreak
-The locations of the points corresponding to various values of $t$ are \textcolor{Green}{marked}.
-\end{minipage}\hfill\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
-\flushright\includegraphics{line-line2}
-\end{minipage}
-\end{proof}
 
 \begin{example}{}{}
-The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
-\[(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)\]
-By solving for $t$ in terms of $x$, we see that this has equation
-\[y=6-2t=6-2\cdot\frac{3-x}{4} =\frac 12x-\frac 92\]
+	Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.
+	\par
+	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
+		Substitute both points into the equation and solve
+		\begin{align*}
+			\begin{cases}
+			3=m+c\\
+			1=4m+c
+			\end{cases}
+			&\overset{(\ast)}{\implies} -2=3m\\
+			&\implies m=-\frac 23,\quad c=3-m=\frac{11}3
+		\end{align*}
+		There is some technique required in $(\ast)$: how would you explain this to a grade-school student?
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
+		\flushright\includegraphics{line-line}
+	\end{minipage}
+	\medbreak
+	
+	The \emph{\textcolor{Brown}{gradient/slope} $m$} represents how far one climbs/falls on travelling one unit to the right.
+	\smallbreak
+	The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the graph with the $y$-axis.
+	\tcblower
 \end{example}
+
+
+Some bookkeeping is required here: how do we know that every (non-vertical) line corresponds to such a linear function? This follows easily from a useful fact regarding parametrizations.
+
+\begin{thm}{}{lineparametrize}
+	Given distinct points $A,B$, the set of points on the line through $A$ and $B$ is
+	\[
+		\ell_{A,B}=\bigl\{(1-t)A+tB:t\in\R\bigr\}
+	\]
+\end{thm}
+
+
+In this description of a line, $t=0$ corresponds to $A$ and $t=1$ to $B$. In essence, we are laying a ruler onto the line whose units correspond to the distance $\nm{AB}$.
+
+\begin{proof}
+	There are several ways to think about this; we use what is essentially \emph{vector addition}.\par
+	\begin{minipage}[t]{0.65\linewidth}\vspace{-5pt}
+	The line through the origin and the point $B-A$ is described by the set of points
+	\[
+		\ell_{O,B-A}=\{t(B-A):t\in\R\}
+	\]
+	We simply \textcolor{Brown}{shift} this line by $A$.
+	\smallbreak
+	The points corresponding to various values of $t$ are \textcolor{Green}{marked}.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
+		\flushright
+		\includegraphics{line-line2}
+	\end{minipage}\smallbreak
+\end{proof}
+
+Would you consider presenting an argument like this in a grade-school class? Is the argument helpful for understanding \emph{how} to visualize/describe a line? Discuss\ldots
 
 \goodbreak
 
+Exercise \ref{exs:lineparam} uses this result to show how any non-vertical line may be described by a linear polynomial. This is nothing more than a generalization of a simple example.
+
+\goodbreak
+
+
+\begin{example}{}{}
+	The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
+	\[
+		(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)
+	\]
+	By solving for $t$ in terms of $x$, we see that this has equation
+	\[
+		y=6-2t=6-2\cdot\frac{3-x}{4} =\frac 12x-\frac 92
+	\]
+\end{example}
+
+
+\bigbreak
+
+
 \begin{exercises}{}{}
-	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function for the cost of gasoline as a function of time.
-%\par
-%   (\emph{There are multiple correct answers, depending on your decision how to measure time}!)
-\begin{enumerate}\setcounter{enumi}{1}
-  \item You have a choice of three different cell-phone plans.
-  \begin{enumerate}
-    \item No monthly charge and 10\textcent{} per minute for all calls.
-    \item \$10 per month and 5\textcent{} per minute for all calls.
-    \item \$30 per month, regardless of how many calls you make.
-  \end{enumerate}
-  How should you determine which of the plans to purchase?
+	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for how the cost of gasoline depends on time.
+
+
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item You have a choice of three different cell-phone plans.
+	  \begin{enumerate}
+	    \item No monthly charge and 10\textcent{} per minute for all calls.
+	    \item \$10 per month and 5\textcent{} per minute for all calls.
+	    \item \$30 per month, regardless of how many calls you make.
+	  \end{enumerate}
+	  How should you determine which of the plans to purchase?
+	  
+	  
+	  \item Revisit Exercise \ref*{sec:funcdef}.\ref{exs:templinear}. Find an approximate linear model $T(t)=mt+c$ for this data.\par
+	  (\emph{There is no perfect answer}!)
     
     
-    \item Suppose $y=mx+c$ is the equation of a linear function. By choosing any two points $A,B$ on this line, find an explicit parametrization in the style of Theorem \ref{thm:lineparametrize}.
+    \item Suppose $y=mx+c$ is the equation of a linear function. Choose any two points $A,B$ on this line, and thus find an explicit parametrization in the style of Theorem \ref{thm:lineparametrize}.
     
-    \item Suppose $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. If $x_1\neq x_0$, find the equation $y=mx+c$ of the line through these points.\par
+    \item\label{exs:lineparam} Suppose $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. If $x_1\neq x_0$, find the equation $y=mx+c$ of the line through these points.
+    \par
     (\emph{You should recognize $m$ as the familiar `rise over run'})
     
     
+    \item A straight line is sometimes described as the set of points $(x,y)\in\R^2$ satisfying an equation of the form
+    \[
+    	ax+by=c
+    \]
+    for some constants $a,b,c$ where $a,b$ are not both zero. How does this approach differ from our use of linear polynomials?
+    
+    
     \item Suppose that a linear polynomial $f(x)=mx+c$ is also a \emph{linear function}:
-    \[\text{For all }\lambda,x\in\R,\quad f(\lambda x)=\lambda f(x)\]
-    What can you say about $f$?
+    \[
+    	\text{For all }\lambda,x\in\R,\quad f(\lambda x)=\lambda f(x)
+    \]
+    What can you say about $f$?\par
+    (\emph{This is the meaning of \emph{linear} you'll encounter in a linear algebra class})
+   
   \end{enumerate}
 \end{exercises}
 
-% We can repeat such an analysis in general.
-% \begin{itemize}
-%   \item Given $y=mx+c$, let $A=(0,c)$ and $B=(1,m+c)$, the line through these consists of the points
-% 	\[(x,y)=(1-t)A+tB=\bigl(t,(1-t)c+t(m+c)\bigr) =(t,mt+c)\]
-% 	all of which satisfy $y=mx+c$.
-% 	\item Conversely, the line through $A=(x_0,y_0)$ and $B=(x_1,y_1)$ is parametrized by
-% 	\begin{gather*}
-% 	(x,y)=(1-t)A+tB =\bigl(x_0+(x_1-x_0)t,y_0+(y_1-y_0)t \bigr)\\
-% 	\implies y=y_0+(y_1-y_0)t=y_0+(y_1-y_0)\frac{x-x_0}{x_1-x_0} =\frac{y_1-y_0}{x_1-x_0}x +\frac{y_0x_1-x_0y_1}{x_1-x_0}
-% 	\end{gather*}
-% 	which has the form $y=mx+c$ with gradient $m=\frac{y_1-y_0}{x_1-x_0}$ given by the familiar `rise over run.'
-% \end{itemize} 
 
-% Homework get symmetric form. and see works for vertical lines
-% In view of this discussion, a more symmetric formula for a straight line is available.
-% 
-% \begin{cor}{}{}
-% The equation through $A=(x_0,x_1)$ and $B=(x_1,y_1)$ has equation
-% \[((y_1\]
-% \end{cor}
 
 \clearpage
+
+
 
 \subsection{Quadratic Polynomials}
 

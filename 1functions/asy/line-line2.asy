@@ -9,7 +9,7 @@ texpreamble("\usepackage{amsmath}
 import graph;
 
 
-size(160,0);
+size(150,0);
 
 pair A=(1,2);
 pair B=(4,3);

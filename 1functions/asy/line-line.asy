@@ -18,12 +18,14 @@ real c=(B.x/(B.x-A.x))*(A.y-B.y)+B.y;
 
 pair pt(real t){return t*A+(1-t)*B;}
 
-draw(pt(-1/3)--pt(1.4),blue);
+draw(pt(-0.6)--pt(1.4),blue);
 
-xaxis("$x$",0,5,red,RightTicks);
+xaxis(0,5.7,red,RightTicks);
 yaxis("$y$",0,4,red,LeftTicks());
 
 ytick(Label("$c$",align=NE),c,heavygreen);
+
+labelx("$x$",5.5,S,red);
 
 
 draw("$m$",A--(A.x,A.y+m),brown,Arrow(Relative(0.65),arrowhead=TeXHead));
