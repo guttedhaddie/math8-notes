@@ -429,142 +429,165 @@ Exercise \ref{exs:lineparam} uses this result to show how any non-vertical line 
 
 \subsection{Quadratic Polynomials}
 
-Quadratic polynomials are functions of the form $y=f(x)=ax^2+bx+c$ where $a\neq 0$. The simplest is $y=x^2$, the standard parabola opening upwards. Here are commonly encountered activities:
+Quadratic polynomials are functions of the form $y=f(x)=ax^2+bx+c$ where $a\neq 0$. The simplest is $y=x^2$, the standard parabola opening upwards. Here are some commonly encountered activities:
 \begin{enumerate}\itemsep0pt
-  \item Find the \emph{roots/zeros} of $f$, the solutions to the equation $f(x)=0$.
+  \item Find the \emph{roots/zeros} of $f$, the solutions $x$ to the equation $f(x)=0$.
   \item Sketch the \emph{graph} of the function $f$.
   \item Use quadratic functions to model a real-world problem.
 \end{enumerate}
 
-You likely know two methods for finding zeros: factorizing and the quadratic formula, each of which has its difficulties. With experience it is easy to spot that 
-\[x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5\]
-though this requires some creativity and can therefore be difficult for grade-school students, particularly when the coefficients are large. Students often prefer the quadratic formula since it always works, though at the cost of some intimidating algebra.
-We'll think about factorization shortly. First, we see how the method of \emph{completing the square} lies behind both the quadratic formula and the standard approach to graphing quadratic functions.
+You likely know two methods for finding zeros: factorizing and the quadratic formula, each of which has its problems. With experience it is easy to spot that 
+\[
+	x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5
+\]
+though the required creativity can make this difficult, particularly when coefficients are large. Students often prefer the quadratic formula since it always works, though at the cost of some intimidating algebra. We'll think about factorization shortly. First, we see how \emph{completing the square} lies behind both the quadratic formula and the standard approach to graphing quadratic functions.
 
 \begin{example}{}{quadraticeasy}
-Describe/graph the parabola $y=-3x^2+12x+4$.\par
-\begin{minipage}[t]{0.62\linewidth}\vspace{-5pt}
-Pay attention to the $x$ terms; $-3x^2+12x=-3(x^2-\textcolor{red}{4}x)$. Now
-\[-3(x-\textcolor{red}{2})^2=-3(x^2-\textcolor{red}{4}x+4)=-3x^2+12x-12\]
-gives most of what we want. Note how we \emph{divided the \textcolor{red}{$x$-coefficient} by two.} Now tidy up,
-\[y=(-3x^2+12x-12)+16=-3(x-2)^2+16\]
-\end{minipage}\hfill\begin{minipage}[t]{0.27\linewidth}\vspace{-15pt}
-\flushright\includegraphics[scale=0.9]{poly-quad2}
-\end{minipage}\medbreak
-The parabola therefore opens downwards with its \textcolor{Green}{apex} at $(x,y)=(2,16)$.
+	Describe/graph the parabola $y=-3x^2+12x+4$.\par
+	\begin{minipage}[t]{0.62\linewidth}\vspace{-5pt}
+		Pay attention to the $x$ terms; $-3x^2+12x=-3(x^2-\textcolor{red}{4}x)$. Now
+		\[
+			-3(x-\textcolor{red}{2})^2=-3(x^2-\textcolor{red}{4}x+4)=-3x^2+12x-12
+		\]
+		gives most of what we want: note how we \emph{divided the \textcolor{red}{$x$-coefficient} by two.} To finish, just tidy everything up,
+		\[
+			y=(-3x^2+12x-12)+16=-3(x-2)^2+16
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.27\linewidth}\vspace{-15pt}
+		\flushright
+		\includegraphics[scale=0.9]{poly-quad2}
+	\end{minipage}\medbreak
+	The parabola therefore opens downwards ($-3<0$) with its \textcolor{Green}{apex} (maximum) at $(x,y)=(2,16)$.
 \end{example}
 
-This is easy to repeat in general:
+This is easy, if intimidating, to repeat in general:
 \begin{align*}
-ax^2+bx+c&=a\left(x^2+\frac bax\right)+c =a\left[\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}\right]+c\\
-&=a\left(x+\frac b{2a}\right)^2-\frac{b^2-4ac}{4a}
+	ax^2+bx+c&=a\left(x^2+\frac ba x\right)+c =a\left[\left(x+\frac b{2a}\right)^2-\frac{b^2}{4a^2}\right]+c\\
+	&=a\left(x+\frac b{2a}\right)^2-\frac{b^2-4ac}{4a} \qquad\qquad\qquad\qquad(\ast)
 \end{align*}
 \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-The graph is that of the standard parabola which has been:
-\begin{enumerate}\itemsep0pt
-  \item Vertically scaled by $a$;
-  \item Shifted horizontally so that the apex is at $x=-\frac b{2a}$;
-  \item Shifted vertically by $\frac{4ac-b^2}{4a}$
-\end{enumerate}
-Completing the square therefore yields the \emph{quadratic formula.}
-\end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{-60pt}
-\flushright\includegraphics[scale=0.9]{poly-quad}
+	The graph is that of the standard parabola which has been:
+	\begin{enumerate}\itemsep0pt
+	  \item Vertically scaled by $a$;
+	  \item Shifted horizontally by $-\frac b{2a}$;
+	  \item Shifted vertically by $\frac{4ac-b^2}{4a}$
+	\end{enumerate}
+	By solving ($\ast$) for $x$, we see that completing the square yields the \emph{quadratic formula.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\linewidth}\vspace{-60pt}
+	\flushright
+	\includegraphics[scale=0.9]{poly-quad}
 \end{minipage}
 
 \begin{thm}{}{}
-If $a\neq 0$, then $ax^2+bx+c=0\iff x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
+	If $a\neq 0$, then $ax^2+bx+c=0\iff x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$
 \end{thm}
+
 
 \goodbreak
 
+
 \begin{example*}{\ref{ex:quadraticeasy} cont}{}
-Our analysis suggests two methods for finding the \textcolor{purple}{roots}.
-\begin{enumerate}
-  \item Quadratic formula: with $a=-3$, $b=12$, $c=4$, we have
-  \[x=\dfrac{-12\pm\sqrt{12^2-4(-3)\cdot 4}}{2(-3)} =\dfrac{-12\pm 4\sqrt{3^2+3}}{-6} =2\pm\dfrac{\sqrt{12}}{3} =2\pm\dfrac{2\sqrt{3}}{3}\]
-  While it is always tempting to jump for a formula, it often leads to difficult surd expressions. We simplified by noticing the common factor of $4^2$ inside the square root. Without this, we'd be faced with $\sqrt{144+48}=\sqrt{192}$.
-  \item Use the fact that we've already completed the square:
-  \[-3(x-2)^2+16=0\iff (x-2)^2=\frac{16}3\iff x=2\pm\frac 4{\sqrt 3}\]
-  In many cases it is simpler to complete the square than to use the quadratic formula---remember that they are equivalent!
-\end{enumerate}
+	Our analysis suggests two methods for finding the \textcolor{purple}{roots}.
+	\begin{enumerate}
+	  \item Quadratic formula: with $a=-3$, $b=12$, $c=4$, we have
+	  \[
+	  	x=\dfrac{-12\pm\sqrt{12^2-4(-3)\cdot 4}}{2(-3)} =\dfrac{-12\pm 4\sqrt{3^2+3}}{-6} =2\pm\dfrac{\sqrt{12}}{3} =2\pm\dfrac{2\sqrt{3}}{3}
+	  \]
+	  While it is always tempting to jump for a formula, it often leads to difficult surd expressions. We simplified by noticing the common factor of $4^2$ inside the square root. Without this, we'd be faced with $\sqrt{144+48}=\sqrt{192}$.
+	  \item Use the fact that we've already completed the square:
+	  \[
+	  	-3(x-2)^2+16=0\iff (x-2)^2=\frac{16}3\iff x=2\pm\frac 4{\sqrt 3}
+	  \]
+	  In many cases it is simpler to complete the square than to use the quadratic formula---remember that they are equivalent!
+	\end{enumerate}
 \end{example*}
 
 
 Polynomials are often employed in modelling due to their simplicity and ease of evaluation. As you saw in calculus, the motion of a falling body, or of any projectile can be modelled using quadratic polynomials, an observation going back to at least to Galileo in the early 1600s: the distance travelled by a falling body is proportional to the \emph{square} of the time taken $y(t)-y(0)\propto t^2$.
 
 \begin{example}{}{quadseqgraph}
-A body is dropped from a height of 125 meters, taking exactly 5 seconds to reach the ground. Its height at time $t$ seconds is given by $y(t)=125-5t^2$\,m.\smallbreak
-\begin{minipage}[t]{0.68\linewidth}\vspace{-8pt}
-This certainly fits Galileo's observation: $y(t)-y(0)=-5t^2$ is indeed proportional to $t^2$.\smallbreak
-Over each interval of 1\,s, we may ask how far the body falls; we summarize in a table.
-\[
-\begin{array}{c|ccccccccccc}
-t&0&&1&&2&&3&&4&&5\\\hline
-y(t)&125&&120&&105&&80&&45&&0\\\hline
-y(t)-y(0)&0&&-5&&-20&&-45&&-80&&-125\\\hline
-\Delta y&&\makebox[0pt][c]{$-5$}&&\makebox[0pt][c]{$-15$}&&\makebox[0pt][c]{$-25$}&&\makebox[0pt][c]{$-35$}&&\makebox[0pt][c]{$-45$}
-\end{array}
-\]
-\end{minipage}\hfill\begin{minipage}[t]{0.29\linewidth}\vspace{-25pt}
-\flushright\includegraphics{poly-quad5}
-\end{minipage}\medbreak
-Since each interval has duration 1\,s, each $\Delta y$ is the \emph{average speed} of the falling body over that interval.
+	A body is dropped from a height of 125 meters, taking exactly 5 seconds to reach the ground. Its height at time $t$ seconds is given by $y(t)=125-5t^2$\,m.\smallbreak
+	\begin{minipage}[t]{0.68\linewidth}\vspace{-8pt}
+	This certainly fits Galileo's observation: $y(t)-y(0)=-5t^2$ is indeed proportional to $t^2$.\smallbreak
+	Over each interval of 1\,s, we may ask how far the body falls; we summarize in a table.
+	\[
+		\begin{array}{c|ccccccccccc}
+			t&0&&1&&2&&3&&4&&5\\\hline
+			y(t)&125&&120&&105&&80&&45&&0\\\hline
+			y(t)-y(0)&0&&-5&&-20&&-45&&-80&&-125\\\hline
+			\Delta y&&\makebox[0pt][c]{$-5$}&&\makebox[0pt][c]{$-15$}&&\makebox[0pt][c]{$-25$}&&\makebox[0pt][c]{$-35$}&&\makebox[0pt][c]{$-45$}
+		\end{array}
+	\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.29\linewidth}\vspace{-25pt}
+		\flushright
+		\includegraphics{poly-quad5}
+	\end{minipage}\medbreak
+	Since each interval has duration 1\,s, each $\Delta y$ is the \emph{average speed} of the falling body over that interval.
 \end{example}
 
-You'll have seen problems like this in calculus; likely you want to \emph{differentiate} to find the \emph{velocity} $y(t)=-10t$\,m/s and \emph{acceleration} $y''(t)=-10$\,m/s$^2$. However, historically and in introductory calculus, it is problems like these that \emph{motivate the definition} of the derivative: the last line of the table really does suggest that speed is a linear function!\par
-Armed with calculus, Galileo's observation is indeed that the height $y(t)$ solves the differential equation
-\[\diff[^2y]{t^2}=-g\]
-where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2$ or 10\,m/s$^2$. Though unless you are explicitly teaching calculus, or Newtonian Physics, this is probably a bad place to start! 
+You'll have seen problems like this in calculus; likely you want to \emph{differentiate} to find the \emph{velocity} $y(t)=-10t$\,m/s and \emph{acceleration} $y''(t)=-10$\,m/s$^2$. However, historically and in introductory calculus, it is problems like these that \emph{motivate the definition} of the derivative.\footnote{The last line of the table really does suggest that speed is a linear function!}\par
+Armed with calculus, Galileo's observation is that the height $y(t)$ solves the differential equation
+\[
+	\diff[^2y]{t^2}=-g
+\]
+where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2$ or 10\,m/s$^2$. Unless you are explicitly teaching calculus or Newtonian physics, this is probably a bad place to start! 
 
 
 
 \begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{frisbee}
-Your frisbee is stuck 15\,m up a tree. Standing 10\,m away from the base, you throw a ball with the intent of knocking the frisbee out of the tree.\smallbreak
-The standard approach to modelling such problems involves considering the horizontal and vertical motions separately.
-\begin{quote}
-\emph{Horizontal}\lstsp $x(t)=pt+q$ is a \emph{linear function} of time.\smallbreak
-\emph{Vertical}\lstsp $y(t)=-10t^2+rt+s$ is a \emph{quadratic function} of time.
-\end{quote}
-Substituting for $t$ yields a quadratic function for the \textcolor{blue}{trajectory}
-\[y(x)=ax^2+bx+c\]
-We'll leave the details of the solution of this problem to Exercise \ref{exs:frisbee}. For the present, consider why there are \emph{multiple answers}; can you explain why \emph{without} explicitly solving the problem?
-\tcblower
-\flushright\includegraphics[scale=0.88]{tree1}
+	Your frisbee is stuck 15\,m up a tree. Standing 10\,m from the base, you throw a ball with the intent of knocking the frisbee out of the tree.\smallbreak
+	The standard approach to modelling such problems involves considering the horizontal and vertical motions separately.
+	\begin{quote}
+		\emph{Horizontal}\lstsp $x(t)=pt+q$ is a \emph{linear function} of time.\smallbreak
+		\emph{Vertical}\lstsp $y(t)=-10t^2+rt+s$ is a \emph{quadratic function} of time.
+	\end{quote}
+	Substituting for $t$ yields a quadratic function for the \textcolor{blue}{trajectory}
+	\[
+		y(x)=ax^2+bx+c
+	\]
+	We'll leave the details of the solution to Exercise \ref{exs:frisbee}. For the present, consider why there are \emph{multiple answers}; can you explain why \emph{without} explicitly solving the problem?
+	\tcblower
+	\flushright\includegraphics[scale=0.88]{tree1}
 \end{example}
 
 
 \begin{exercises}{}{}
-\exstart Complete the square for each quadratic function, use it to find the range and to graph the function.
-\begin{enumerate}\setcounter{enumi}{1}  
-  \item[]\begin{enumerate}
-    \item $f(x)=x^2-6x+5$ %$(x-3)^2-4$
-    \item $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
-    \item $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
-  \end{enumerate}
-  %For part (a), also find two intervals $(-\infty,k]$ and $[k,\infty)$ (same $k$!) on which $f$ is invertible. For each interval, compute the inverse function $f^{-1}$.
-  
-  
-  \item For the quadratic function $y=2x^2-5x+7$, produce a table for $x\in\{0,1,2,3,4,5,6\}$ similarly to that in Example \ref{ex:quadseqgraph}. What do you observe about $\Delta y$?
-  
-  
-	\item\begin{enumerate}
-	  \item Find the equations of all quadratic polynomial functions which pass through the points $(1,3)$ and $(2,4)$.
-		\item More generally, if $P=(a,b)$ and $Q=(c,d)$ are given, where $c\neq a$, find all quadratic functions whose graphs contain $P$ and $Q$.
-	\end{enumerate}
-  
-  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}).
-  \begin{enumerate}
-    \item Assume that you're standing at the origin and the frisbee is at the point $(10,15)$. Find all trajectories.
-    \item (Hard)\lstsp Find a formula linking the initial speed and gradient of the parabola (the initial speed and direction in which you throw the ball).
-    \begin{enumerate}
-			\item If you throw the ball in such a way that the initial \emph{vertical} speed of the ball is twice its \emph{horizontal} speed, find how fast you have to throw the ball in order to hit the frisbee.
-      \item What is the \emph{minimum} speed at which you could throw the ball if you want to dislodge the frisbee?
-    \end{enumerate}
-    (\emph{Hint: You'll need some calculus! In the language of the original problem, the initial slope is $m=\frac rp$ and speed $v=\sqrt{p^2+r^2}$; why?})
-	\end{enumerate}
+	\exstart Complete the square for each quadratic function, use it to find the range and to graph the function.
+	\begin{enumerate}\setcounter{enumi}{1}  
+	  \item[]\begin{enumerate}
+	    \item $f(x)=x^2-6x+5$ %$(x-3)^2-4$
+	    \item $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
+	    \item $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
+	  \end{enumerate}
+	  %For part (a), also find two intervals $(-\infty,k]$ and $[k,\infty)$ (same $k$!) on which $f$ is invertible. For each interval, compute the inverse function $f^{-1}$.
+	  
+	  
+	  \item For the quadratic function $y=2x^2-5x+7$, produce a table for $x\in\{0,1,2,3,4,5,6\}$ similarly to that in Example \ref{ex:quadseqgraph}. What do you observe about $\Delta y$?
+	  
+	  
+		\item\begin{enumerate}
+		  \item Find the equations of all quadratic polynomial functions which pass through the points $(1,3)$ and $(2,4)$.
+			\item More generally, if $P=(a,b)$ and $Q=(c,d)$ are given, where $c\neq a$, find all quadratic functions whose graphs contain $P$ and $Q$.
+		\end{enumerate}
+	  
+	  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}).
+	  \begin{enumerate}
+	    \item Assume that you're standing at the origin and the frisbee is at the point $(10,15)$. Find all trajectories.
+	    \item (Hard)\lstsp Find a formula linking the initial speed and gradient of the parabola (the initial speed and direction in which you throw the ball).
+	    \begin{enumerate}
+				\item If you throw the ball in such a way that the initial \emph{vertical} speed of the ball is twice its \emph{horizontal} speed, find how fast you have to throw the ball in order to hit the frisbee.
+	      \item What is the \emph{minimum} speed at which you could throw the ball if you want to dislodge the frisbee?
+	    \end{enumerate}
+	    (\emph{Hint: You'll need some calculus! In the language of the original problem, the initial slope is $m=\frac rp$ and speed $v=\sqrt{p^2+r^2}$; why?})
+		\end{enumerate}
 
-
-\end{enumerate}
+	\end{enumerate}
 \end{exercises}
 
 \clearpage
