@@ -597,40 +597,44 @@ where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2
 \subsection{Polynomials, Factorization \& the Rational Roots Theorem}
 
 Recall our simple example of factorization in the previous section
-\[x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5\]
+\[
+	x^2+2x-15=(x-3)(x+5)=0\iff x=3\text{ or }x=-5
+\]
 That this approach provides \emph{all} roots depends on several familiar algebraic facts:
 \begin{enumerate}
   \item Factor Theorem: $f(c)=0\iff x-c$ is a \emph{factor} of $f(x)$.
   \item No zero-divisors: $pq=0\iff p=0$ or $q=0$. 
   \item A quadratic has \emph{at most two} distinct roots.
 \end{enumerate}
-We'll examine this more closely at the end of this section. However, for students first learning about factorization, it isn't the \emph{why} that's the challenge, it's the \emph{how.} Multiplying out $(x-3)(x+5)$ is mechanical, but factorizing requires some creativity; we can't really factor without somehow knowing that 3 and $-5$ are roots! Beyond making a lucky guess, how do we go about this? 
+We'll examine this more closely at the end of this section. For students first learning factorization, it isn't the \emph{why} that's the challenge, it's the \emph{how.} Multiplying out $(x-3)(x+5)$ is mechanical, but factorizing requires some creativity; we can't really factor without somehow knowing that 3 and $-5$ are roots! Beyond making a lucky guess, how do we go about this? 
 
 \begin{example}{}{ratroots1}
-Let's re-examine $f(x)=x^2+2x-15=0$ in a couple of stages.
-\begin{description}
-\item[\normalfont\emph{Integer solutions}] The simplest type of root would be an \emph{integer} $n$. If $f(n)=0$, observe that
-\begin{align*}
-n^2+2n-15=0&\implies n(n+2)=15\implies \text{15 is divisible by $n$}\\
-&\implies n=\pm 1,\pm 3,\pm 5,\pm 15
-\end{align*}
-There are only \emph{eight possible candidates.} It doesn't take long to test all of them:
-\[
-\begin{array}{c|cccccccc}
-n&1&-1&\textcolor{red}{3}&-3&5&\textcolor{red}{-5}&15&-15\\\hline
-f(n)&-12&-17&\textcolor{red}{0}&-12&20&\textcolor{red}{0}&240&180
-\end{array}
-\]
-The two integer solutions are therefore $x=3$ and $x=-5$.
-\item[\normalfont\emph{Rational Solutions}] If you believe that a quadratic polynomial has \emph{at most} two solutions, then you're done. The next simplest possibility, however, is that a solution be a \emph{rational number} $x=\frac pq$ where we may assume this is in \emph{lowest terms}.\footnotemark{} Substituting into the polynomial, we see that
-\[\frac{p^2}{q^2}+2\frac pq-15=0\iff p^2+2pq-15q^2=0\]
-Remembering that $p,q$ are \emph{integers,} we rearrange this equation in two ways:
-\begin{description}
-  \item[$\textcolor{blue}{p}(p+2q)=15q^2$]\lstsp Since the \textcolor{blue}{left side} is a multiple of $p$, so also is the \emph{right.} Since $p,q$ have no common factors, it follows that $p$ divides into 15 (15 is a multiple of $p$).
-  \item[$p^2=\textcolor{red}{q}(15q-2p)$]\lstsp Since the \textcolor{red}{right side} is a multiple of $q$, so also is the \emph{left.} Since $p,q$ have no common factors, we conclude that $q=1$.
-\end{description}
-The upshot is that the only rational solutions to $f(x)=0$ are the two \emph{integers} we've already found!
-\end{description}
+	Let's re-examine $f(x)=x^2+2x-15=0$ in a couple of stages.
+	\begin{description}
+		\item[\normalfont\emph{Integer solutions}] The simplest type of root would be an \emph{integer} $n$. If $f(n)=0$, observe that
+		\begin{align*}
+			n^2+2n-15=0&\implies n(n+2)=15\implies \text{15 is divisible by $n$}\\
+			&\implies n=\pm 1,\pm 3,\pm 5,\pm 15
+		\end{align*}
+		There are only \emph{eight possible candidates.} It doesn't take long to test all of them:
+		\[
+			\begin{array}{c|cccccccc}
+				n&1&-1&\textcolor{red}{3}&-3&5&\textcolor{red}{-5}&15&-15\\\hline
+				f(n)&-12&-17&\textcolor{red}{0}&-12&20&\textcolor{red}{0}&240&180
+			\end{array}
+		\]
+		The two integer solutions are therefore $x=3$ and $x=-5$.
+		\item[\normalfont\emph{Rational Solutions}] If you believe that a quadratic polynomial has \emph{at most} two solutions, then you're done. The next simplest possibility, however, is that a solution be a \emph{rational number} $x=\frac pq$ where we may assume this is in \emph{lowest terms}.\footnotemark{} Substituting into the polynomial, we see that
+		\[
+			\frac{p^2}{q^2}+2\frac pq-15=0\iff p^2+2pq-15q^2=0
+		\]
+		Remembering that $p,q$ are \emph{integers,} we rearrange this equation in two ways:
+		\begin{description}
+		  \item[$\textcolor{blue}{p}(p+2q)=15q^2$]\lstsp Since the \textcolor{blue}{left side} is a multiple of $p$, so also is the \emph{right.} Since $p,q$ have no common factors, it follows that $p$ divides into 15 (15 is a multiple of $p$).
+		  \item[$p^2=\textcolor{red}{q}(15q-2p)$]\lstsp Since the \textcolor{red}{right side} is a multiple of $q$, so also is the \emph{left.} Since $p,q$ have no common factors, we conclude that $q=1$.
+		\end{description}
+		The upshot is that the only rational solutions to $f(x)=0$ are the two \emph{integers} we've already found!
+	\end{description}
 \end{example}
 
 \footnotetext{I.e.{} $p\in\Z$ and $q\in\N$ have no common factors: $\gcd(p,q)=1$.}
@@ -638,9 +642,11 @@ The upshot is that the only rational solutions to $f(x)=0$ are the two \emph{int
 \goodbreak
 
 \begin{defn}{}{}
-A \emph{degree $n$ polynomial} is any function of the form
-\[f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\]
-where the \emph{coefficients} $a_k$ are constants with $a_n\neq 0$.
+	A \emph{degree $n$ polynomial} is any function of the form
+	\[
+		f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0
+	\]
+	where the \emph{coefficients} $a_k$ are constants with $a_n\neq 0$.
 \end{defn}
 
 A quadratic polynomial has degree 2 and a linear polynomial $mx+c$ degree one\footnote{A non-zero constant polynomial has degree zero. Convention is for the \emph{zero polynomial} $y\equiv 0$ to have degree $-\infty$, so that the theorem $\operatorname{deg} fg=\operatorname{deg} f+\operatorname{deg} g$ holds for all polynomials.} (if $m\neq 0$).\smallbreak
@@ -648,56 +654,76 @@ A quadratic polynomial has degree 2 and a linear polynomial $mx+c$ degree one\fo
 Our analysis in Example \ref{ex:ratroots1} is easily generalized in a famous result.
 
 \begin{thm}{Rational Roots}{}
-Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in lowest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
+	Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in lowest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
 \end{thm}
 
 \begin{proof}
-Substitute into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-10pt}
-\[\underbrace{a_np^n+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{red}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+a_0q^n}^{\text{divisible by $\textcolor{blue}{q}$}}=0\]
-By considering the braced terms and recalling that $p,q$ have no common factors, we conclude that $a_n$ is divisible by $q$ and $a_0$ by $p$.
+	Substitute into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-10pt}
+	\[
+		\underbrace{a_np^n+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{red}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+a_0q^n}^{\text{divisible by $\textcolor{blue}{q}$}}=0
+	\]
+	By considering the braced terms and recalling that $p,q$ have no common factors, we conclude that $a_n$ is divisible by $q$ and $a_0$ by $p$.
 \end{proof}
 
 
 \begin{examples}{}{}
-\exstart If $x=\frac pq$ is a rational root in lowest terms of $f(x)=2x^2-x-3$, then $q\in\{1,2\}$ and $p\in{\pm 1,\pm 3}$. The possibilities are therefore
-\[x\in\bigl\{\pm 1,\pm 3,\pm\tfrac 12,\pm\tfrac 32\bigr\}\]
-all of which are easily checked:
-\[
-\begin{array}{c|cccccccc}
-x&1&\textcolor{red}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{red}{\frac 32}&-\frac 32\\\hline
-f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3
-\end{array}
-\]
-The two roots are indicated and the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only  possibilities would be $\pm 1, \pm 5$. However none of these work,
-  \[f(1)=4,\quad f(-1)=2,\quad f(5)=80,\quad f(-5)=-170\]
-  whence $f(x)=0$ has no rational roots.
-\end{enumerate}
+	\exstart If $x=\frac pq$ is a rational root in lowest terms of $f(x)=2x^2-x-3$, then $q\in\{1,2\}$ and $p\in{\pm 1,\pm 3}$. The possibilities are therefore
+	\[
+		x\in\bigl\{\pm 1,\pm 3,\pm\tfrac 12,\pm\tfrac 32\bigr\}
+	\]
+	all of which are easily checked:
+	\[
+		\begin{array}{c|cccccccc}
+			x&1&\textcolor{red}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{red}{\frac 32}&-\frac 32\\\hline
+			f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3
+		\end{array}
+	\]
+	The two roots are indicated and the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only  possibilities would be $\pm 1, \pm 5$. However none of these work,
+	  \[
+	  	f(1)=4,\quad f(-1)=2,\quad f(5)=80,\quad f(-5)=-170
+	  \]
+	  whence $f(x)=0$ has no rational roots.
+	\end{enumerate}
 \end{examples}
 
 Unless there are very few candidates, it can be time-consuming to check them all by hand. Moreover, unless you find $n$ distinct rational solutions, you still don't know that you've found everything. The rational roots theorem is therefore typically used together with factorization; it really just gives you some options for where to start. This still isn't easy, as the next example shows.
 \goodbreak
 
 \begin{example}{}{factoreasy}
-Consider the cubic function $f(x)=x^3-x^2-7x+10$. The rational roots theorem gives us eight candidates: $x=\pm 1,\pm 2,\pm 5,\pm 10$. It is not difficult to try the first few of these in your head: by inspection, we see that
-\[f(2)=8-4-14+10=0\]
-and the factor theorem says that $x-2$ must be a factor. The factorization can be performed in various ways. Here are three options, though all are essentially versions of the same process.
-\begin{description}
+	Consider the cubic function $f(x)=x^3-x^2-7x+10$. The rational roots theorem gives us eight candidates: $x=\pm 1,\pm 2,\pm 5,\pm 10$. It is not difficult to try the first few of these in your head: by inspection, we see that
+	\[
+		f(2)=8-4-14+10=0
+	\]
+	and the factor theorem says that $x-2$ must be a factor. The factorization can be performed in various ways. Here are three options, though all are essentially versions of the same process.
+	\begin{description}
 	\item[\normalfont\emph{Long division}]\lstsp You should have practiced this in high-school!
-  \[\polylongdiv{x^3-x^2-7x+10}{x-2} \implies x^3-x^2-7x+10=(x-2)(x^2+x-5)\]
+  \[
+  	\polylongdiv{x^3-x^2-7x+10}{x-2} \implies x^3-x^2-7x+10=(x-2)(x^2+x-5)
+  \]
   \item[\normalfont\emph{Multiply out and solve}]\lstsp We know that $f(x)=(x-2)q(x)$ where $q(x)$ is some quadratic polynomial. Thus let $q(x)=ax^2+bx+c$ and multiply out:
-  \[x^3-x^2-7x+10=(x-2)(ax^2+bx+c) =ax^3+(b-2a)x^2+(c-2b)x-2c\]
+  \[
+  	x^3-x^2-7x+10=(x-2)(ax^2+bx+c) =ax^3+(b-2a)x^2+(c-2b)x-2c
+  \]
   Equating coefficients, we obtain the same factorization as before,
-  \[a=1,\quad b=-1+2a=1,\quad c=\frac{10}{-2}=-5\]
+  \[
+  	a=1,\quad b=-1+2a=1,\quad c=\frac{10}{-2}=-5
+  \]
   \item[\normalfont\emph{Term-by-term factorization}]\lstsp With practice you can factorize in one line with no working!
   \begin{enumeratea}
     \item The first term must be $\textcolor{red}{x^2}$ to create $\textcolor{red}{x^3}$
-    \[\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\textcolor{Green}{\,-\,7x}\textcolor{purple}{\,+\,10}=(x-2)(\textcolor{red}{x^2}\,+\cdots)=\textcolor{red}{x^3}\,-2x^2+\cdots\]
+    \[
+    	\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\textcolor{Green}{\,-\,7x}\textcolor{purple}{\,+\,10}=(x-2)(\textcolor{red}{x^2}\,+\cdots)=\textcolor{red}{x^3}\,-2x^2+\cdots
+    \]
     \item To correct the \textcolor{blue}{$x^2$} term, add $\textcolor{Green}{x}$:
-    \[(x-2)(x^2+\,\textcolor{Green}{x}\,+\cdots)=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,2x}+\cdots\]
+    \[
+    	(x-2)(x^2+\,\textcolor{Green}{x}\,+\cdots)=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,2x}+\cdots
+    \]
     \item To correct the \textcolor{Green}{$x$} term, subtract $\textcolor{purple}{5}$:
-    \[(x-2)(x^2+x-\textcolor{purple}{\,5})=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,7x}\textcolor{purple}{\,+\,10}\]
+    \[
+    	(x-2)(x^2+x-\textcolor{purple}{\,5})=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,7x}\textcolor{purple}{\,+\,10}
+    \]
     \item Since the last term $\textcolor{purple}{10}$ is correct, the factorization worked!
 	\end{enumeratea}
 \end{description}
@@ -707,64 +733,84 @@ and the factor theorem says that $x-2$ must be a factor. The factorization can b
 
 \goodbreak
 
+
+
 \boldsubsubsection{Why Does Factorization Work?}
 
-
-The theory behind factorization relies on some algebra. Here is a \emph{brief} treatment.
+The theory of factorization relies on some algebra. Here is a \emph{brief} treatment.
 
 \begin{thm}{Factor Theorem}{}
-Suppose $f(x)$ is a degree $n$ polynomial. Then:
-\begin{enumerate}
-  \item A value $c$ is a root if and only if $f(x)=(x-c)q(x)$ for some (degree $n-1$) polynomial $q(x)$.
-  \item The polynomial has \emph{at most} $n$ distinct roots.
-\end{enumerate} 
+	Suppose $f(x)$ is a degree $n$ polynomial. Then:
+	\begin{enumerate}
+	  \item A value $c$ is a root if and only if $f(x)=(x-c)q(x)$ for some (degree $n-1$) polynomial $q(x)$.
+	  \item The polynomial has \emph{at most} $n$ distinct roots.
+	\end{enumerate} 
 \end{thm}
 
 \begin{proof}
-\begin{enumerate}
-  \item ($\Leftarrow$)\lstsp This is essentially trivial: $f(x)=(x-c)q(x)\implies f(c)=(c-c)q(c)=0$.\smallbreak
-($\Rightarrow$)\lstsp This relies on the \emph{division algorithm for polynomials}: if $f,g$ are polynomials, then there exist unique polynomials $q,r$ with\footnotemark{}
-% \footnote{Let $S=\{f(x)-g(x)q(x):q(x)\in\R[x]\}$. If $0\in S$  stop; $g$ divides $f$. Otherwise, let $k=\min S$ (exists by well-ordering) and let $r(x)=f(x)-g(x)q(x)=a_kx^k+\cdots$ have degree $k$. If $g(x)=b_jx^j+\cdots$ has degree $j\le k$, observe that
-% \[f(x)-g(x)\bigl(q(x)+\tfrac{a_k}{b_j}x^{k-j}\bigr)=r(x)-a_kx^k-\cdots\]
-% has degree $<k=\deg r$: contradiction. Thus $\deg r<\deg g$.\smallbreak
-% For uniqueness, suppose had two candidates $r_1,r_2$, then
-% \[r_1-r_2=g(q_2-q_1)\]
-% But $\deg(r_1-r_2)<\deg g$ and $\deg(g(q_2-q_1))\ge \deg g$ is a contradiction unless $q_1=q_2$ and both sides are zero.}
-\[f(x)=g(x)q(x)+r(x)\quad \text{and}\quad \deg r<\deg g\]
-In the special case where $g(x)=x-c$ is linear, then $r(x)$ must be a constant and so
-\[f(x)=(x-c)q(x)+f(c)\]
-\item Suppose $c_1,\ldots,c_n$ are distinct real roots. By part 1, $f(x)=(x-c_1)q_1(x)$. Since
-\[0=f(c_2)=(c_2-c_1)q_1(c_2)\implies q_1(c_2)=0\]
-we may then factor $x-c_2$ out of $q_1(x)$ to obtain
-\[f(x)=(x-c_1)(x-c_2)q_2(x)\]
-Repeat this process to factor out all $n$ linear polynomials $x-c_k$:
-\[f(x)=(x-c_1)\cdots(x-c_n)q_n\]
-where $q_n\neq 0$ is \emph{constant.} Plainly $f(c)=(c-c_1)\cdots(c-c_n)q_n=0\iff c=c_j$  for some $j$, so there are no other roots.\qedhere
-\end{enumerate}
+	\begin{enumerate}
+	  \item ($\Leftarrow$)\lstsp This is essentially trivial: $f(x)=(x-c)q(x)\implies f(c)=(c-c)q(c)=0$.\smallbreak
+		($\Rightarrow$)\lstsp This relies on the \emph{division algorithm for polynomials}: if $f,g$ are polynomials, then there exist unique polynomials $q,r$ with\footnotemark{}
+	% \footnote{Let $S=\{f(x)-g(x)q(x):q(x)\in\R[x]\}$. If $0\in S$  stop; $g$ divides $f$. Otherwise, let $k=\min S$ (exists by well-ordering) and let $r(x)=f(x)-g(x)q(x)=a_kx^k+\cdots$ have degree $k$. If $g(x)=b_jx^j+\cdots$ has degree $j\le k$, observe that
+	% \[f(x)-g(x)\bigl(q(x)+\tfrac{a_k}{b_j}x^{k-j}\bigr)=r(x)-a_kx^k-\cdots\]
+	% has degree $<k=\deg r$: contradiction. Thus $\deg r<\deg g$.\smallbreak
+	% For uniqueness, suppose had two candidates $r_1,r_2$, then
+	% \[r_1-r_2=g(q_2-q_1)\]
+	% But $\deg(r_1-r_2)<\deg g$ and $\deg(g(q_2-q_1))\ge \deg g$ is a contradiction unless $q_1=q_2$ and both sides are zero.}
+		\[
+			f(x)=g(x)q(x)+r(x)\quad \text{and}\quad \deg r<\deg g
+		\]
+		In the special case where $g(x)=x-c$ is linear, then $r(x)$ must be a constant and so
+		\[
+			f(x)=(x-c)q(x)+f(c)
+		\]
+		\item Suppose $c_1,\ldots,c_n$ are distinct real roots. By part 1, $f(x)=(x-c_1)q_1(x)$. Since
+		\[
+			0=f(c_2)=(c_2-c_1)q_1(c_2)\implies q_1(c_2)=0
+		\]
+		we may then factor $x-c_2$ out of $q_1(x)$ to obtain
+		\[
+			f(x)=(x-c_1)(x-c_2)q_2(x)
+		\]
+		Repeat this process to factor out all $n$ linear polynomials $x-c_k$:
+		\[
+			f(x)=(x-c_1)\cdots(x-c_n)q_n
+		\]
+		where $q_n\neq 0$ is \emph{constant.} Plainly $f(c)=(c-c_1)\cdots(c-c_n)q_n=0\iff c=c_j$ for some $j$, so there are no other roots.\qedhere
+	\end{enumerate}
 \end{proof}
 
 \footnotetext{For a given example, $q,r$ may be found by long-division. This is similar (and may be proved similarly) to the more familiar division algorithm for integers: if $m,n$ are integers, then there exist unique integers $q,r$ for which
 \[m=qn+r\ \text{ and }\ 0\le r<\nm n\]
 In grade-school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ remainder $r$); e.g.{} $23\div 4=5\,\textsf{r}\,3$ corresponds to $23=5\times 4+3$.}
 
+
 \begin{example*}{\ref{ex:factoreasy} cont}{}
-We know that $f(x)=x^3-x^2-7x+10=(x-2)(x^2+x-5)$. But then
-\[f(x)=0\iff x-2=0\ \text{ or }\ x^2+x-5=0\]
-The former gives the root $x=2$, and the latter can be attacked via the quadratic formula or completing the square; the polynomial therefore has exactly three roots
-\[x=2,\frac{-1\pm\sqrt{21}}2\] 
+	We know that $f(x)=x^3-x^2-7x+10=(x-2)(x^2+x-5)$. But then
+	\[
+		f(x)=0\iff x-2=0\ \text{ or }\ x^2+x-5=0
+	\]
+	The former gives the root $x=2$, and the latter can be attacked via the quadratic formula or completing the square; the polynomial therefore has exactly three roots
+	\[
+		x=2,\frac{-1\pm\sqrt{21}}2
+	\] 
 \end{example*}
 
 
 \begin{example}{}{}
-We finish with a quick example of how long division (or any other factorization method as in Example \ref{ex:factoreasy}) computes the ingredients in the division algorithm.\smallbreak
-If $f(x)=x^3+7x^2-2$ and $g(x)=x^2-2$, then\par
-\begin{minipage}[t]{0.35\linewidth}\vspace{-13pt}
-\[\polylongdiv{x^3+7x^2-2}{x^2-2}\]
-\end{minipage}\hfill\begin{minipage}[t]{0.6\linewidth}\vspace{10pt}
-$\negthickspace\implies x^3+7x^2-2=(x^2-2)(x+7)+(2x+12)$\medbreak
-Otherwise said, $f(x)=g(x)q(x)+r(x)$, where\medbreak
-$q(x)=x+7$, \ $r(x)=2x+12$ \ and \ $\deg r=1<2=\deg g$.
-\end{minipage}
+	We finish with a quick example of how long division (or any other factorization method as in Example \ref{ex:factoreasy}) computes the ingredients in the division algorithm.\smallbreak
+	If $f(x)=x^3+7x^2-2$ and $g(x)=x^2-2$, then\par
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-13pt}
+		\[
+			\polylongdiv{x^3+7x^2-2}{x^2-2}
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.6\linewidth}\vspace{10pt}
+		$\negthickspace\implies x^3+7x^2-2=(x^2-2)(x+7)+(2x+12)$\medbreak
+		Otherwise said, $f(x)=g(x)q(x)+r(x)$, where\medbreak
+		$q(x)=x+7$, \ $r(x)=2x+12$ \ and \ $\deg r=1<2=\deg g$.
+	\end{minipage}
 \end{example}
 
 \goodbreak
@@ -772,46 +818,50 @@ $q(x)=x+7$, \ $r(x)=2x+12$ \ and \ $\deg r=1<2=\deg g$.
 
 
 \begin{exercises}{}{}
-\exstart Apply the rational root theorem to the polynomial $x^3+2x^2-x-2$ and use it to factorize the polynomial.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Repeat the previous question for the polynomial $6x^2+x-2$.
-
-	\item Use the rational roots theorem to prove that the polynomial $2x^5-3x+7$ has no rational roots.
-  
-  \item Factorize the following polynomials and thereby find their (real) roots. Explain your steps carefully.
-  \begin{enumerate}
-    \item $f(x)=x^3+2x^2-3x$ %$(x-1)(x+3)x$
-    \item $f(x)=x^4-13x^2+36$ %$(x^2-9)(x^2-4)$
-    \item $f(x)=x^3-7x-6$ %(x+2)(x^2-2x-3)
-  \end{enumerate}
-  
-  
-  \item Show that the polynomial $f(x)=x^6-2x^5-x^4-4x^3-4x^2-4x-6$ %$=(x+1)(x^5-3x^4+2x^3-6x^2+2x-6)=(x-3)(x+1)(x^4+2x^2+2)$
-  has exactly two real roots by factorizing it.
+	\exstart Apply the rational root theorem to the polynomial $x^3+2x^2-x-2$ and use it to factorize the polynomial.
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Repeat the previous question for the polynomial $6x^2+x-2$.
 	
-	\item The polynomial $f(x)=2x^4-3x^3+2x^2+3x-9$ has only one rational root. Find it and factorize the polynomial as $f(x)=g(x)q(x)$ where $\deg g=1$.
+		\item Use the rational roots theorem to prove that the polynomial $2x^5-3x+7$ has no rational roots.
+	  
+	  \item Factorize the following polynomials and thereby find their (real) roots. Explain your steps carefully.
+	  \begin{enumerate}
+	    \item $f(x)=x^3+2x^2-3x$ %$(x-1)(x+3)x$
+	    \item $f(x)=x^4-13x^2+36$ %$(x^2-9)(x^2-4)$
+	    \item $f(x)=x^3-7x-6$ %(x+2)(x^2-2x-3)
+	  \end{enumerate}
+	  
+	  
+	  \item Show that the polynomial $f(x)=x^6-2x^5-x^4-4x^3-4x^2-4x-6$ %$=(x+1)(x^5-3x^4+2x^3-6x^2+2x-6)=(x-3)(x+1)(x^4+2x^2+2)$
+	  has exactly two real roots by factorizing it.
+		
+		\item The polynomial $f(x)=2x^4-3x^3+2x^2+3x-9$ has only one rational root. Find it and factorize the polynomial as $f(x)=g(x)q(x)$ where $\deg g=1$.
+		
+		
+		\item Find unique polynomials $q(x)$ and $r(x)$ for which $f(x)=g(x)q(x)+r(x)$ and $\deg r<\deg g$.
+		\begin{enumerate}
+		  \item $f(x)=x^3+1$ and $g(x)=x+2$.
+		  \item	$f(x)=x^4+x^3-2$ and $g(x)=x^2+1$.
+		\end{enumerate}  
 	
-	
-	\item Find unique polynomials $q(x)$ and $r(x)$ for which $f(x)=g(x)q(x)+r(x)$ and $\deg r<\deg g$.
-	\begin{enumerate}
-	  \item $f(x)=x^3+1$ and $g(x)=x+2$.
-	  \item	$f(x)=x^4+x^3-2$ and $g(x)=x^2+1$.
-	\end{enumerate}  
-
-  \item Let $f(x)=ax^3+bx^2+cx+d$ be a cubic polynomial. `Complete the cube' by finding a constant $k$ such that
-  \[f(x)=a(x-k)^3+p(x-k)+q\]
-  has no $(x-k)^2$ term (here $p,q$ are constants).\par
-  (\emph{Hint: evaluate $f(x+k)$})
-  
-  \item Suppose that $\deg f=k$ and $\deg g=l$.
-  \begin{enumerate}
-    \item Show that $\deg(fg)=kl$.
-    \item Is it always the case that $\deg(f+g)=\max(k,l)$? Why/why not?
-  \end{enumerate}
-\end{enumerate}
+	  \item Let $f(x)=ax^3+bx^2+cx+d$ be a cubic polynomial. `Complete the cube' by finding a constant $k$ such that
+	  \[
+	  	f(x)=a(x-k)^3+p(x-k)+q
+	  \]
+	  has no $(x-k)^2$ term (here $p,q$ are constants).\par
+	  (\emph{Hint: evaluate $f(x+k)$})
+	  
+	  \item Suppose that $\deg f=k$ and $\deg g=l$.
+	  \begin{enumerate}
+	    \item Show that $\deg(fg)=kl$.
+	    \item Is it always the case that $\deg(f+g)=\max(k,l)$? Why/why not?
+	  \end{enumerate}
+	\end{enumerate}
 \end{exercises}
 
 \clearpage
+
+
 
 
 \subsection{Inverse Functions \& the Horizontal Line Test}
