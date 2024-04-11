@@ -624,7 +624,7 @@ We'll examine this more closely at the end of this section. For students first l
 			\end{array}
 		\]
 		The two integer solutions are therefore $x=3$ and $x=-5$.
-		\item[\normalfont\emph{Rational Solutions}] If you believe that a quadratic polynomial has \emph{at most} two solutions, then you're done. The next simplest possibility, however, is that a solution be a \emph{rational number} $x=\frac pq$ where we may assume this is in \emph{lowest terms}.\footnotemark{} Substituting into the polynomial, we see that
+		\item[\normalfont\emph{Rational Solutions}] If you believe that a quadratic polynomial has \emph{at most} two solutions, then you're done. The next simplest possibility, however, is that a solution be a \emph{rational number} $x=\frac pq$ where we may assume this is in \emph{simplest terms}.\footnotemark{} Substituting into the polynomial, we see that
 		\[
 			\frac{p^2}{q^2}+2\frac pq-15=0\iff p^2+2pq-15q^2=0
 		\]
@@ -637,7 +637,7 @@ We'll examine this more closely at the end of this section. For students first l
 	\end{description}
 \end{example}
 
-\footnotetext{I.e.{} $p\in\Z$ and $q\in\N$ have no common factors: $\gcd(p,q)=1$.}
+\footnotetext{I.e., $p\in\Z$ and $q\in\N$ have no common factors: $\gcd(p,q)=1$.}
 
 \goodbreak
 
@@ -654,11 +654,11 @@ A quadratic polynomial has degree 2 and a linear polynomial $mx+c$ degree one\fo
 Our analysis in Example \ref{ex:ratroots1} is easily generalized in a famous result.
 
 \begin{thm}{Rational Roots}{}
-	Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in lowest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
+	Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in simplest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
 \end{thm}
 
 \begin{proof}
-	Substitute into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-10pt}
+	Substitute into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-13pt}
 	\[
 		\underbrace{a_np^n+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{red}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+a_0q^n}^{\text{divisible by $\textcolor{blue}{q}$}}=0
 	\]
@@ -667,12 +667,13 @@ Our analysis in Example \ref{ex:ratroots1} is easily generalized in a famous res
 
 
 \begin{examples}{}{}
-	\exstart If $x=\frac pq$ is a rational root in lowest terms of $f(x)=2x^2-x-3$, then $q\in\{1,2\}$ and $p\in{\pm 1,\pm 3}$. The possibilities are therefore
+	\exstart If $x=\frac pq$ is a rational root in lowest terms of $f(x)=2x^2-x-3$, then $q=1$ or 2 and $p=\pm 1$ or $\pm 3$. The possibilities are therefore
 	\[
 		x\in\bigl\{\pm 1,\pm 3,\pm\tfrac 12,\pm\tfrac 32\bigr\}
 	\]
 	all of which are easily checked:
 	\[
+		\def\arraystretch{1.1}
 		\begin{array}{c|cccccccc}
 			x&1&\textcolor{red}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{red}{\frac 32}&-\frac 32\\\hline
 			f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3
@@ -680,7 +681,7 @@ Our analysis in Example \ref{ex:ratroots1} is easily generalized in a famous res
 	\]
 	The two roots are indicated and the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
 	\begin{enumerate}\setcounter{enumi}{1}
-	  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only  possibilities would be $\pm 1, \pm 5$. However none of these work,
+	  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only possibilities would be $\pm 1, \pm 5$. However, none of these work,
 	  \[
 	  	f(1)=4,\quad f(-1)=2,\quad f(5)=80,\quad f(-5)=-170
 	  \]
@@ -692,13 +693,13 @@ Unless there are very few candidates, it can be time-consuming to check them all
 \goodbreak
 
 \begin{example}{}{factoreasy}
-	Consider the cubic function $f(x)=x^3-x^2-7x+10$. The rational roots theorem gives us eight candidates: $x=\pm 1,\pm 2,\pm 5,\pm 10$. It is not difficult to try the first few of these in your head: by inspection, we see that
+	Consider the cubic function $f(x)=x^3-x^2-7x+10$. The rational roots theorem gives us eight candidates for rational roots: $x=\pm 1,\pm 2,\pm 5,\pm 10$. It is not difficult to check the first few of these in your head, for instance,
 	\[
 		f(2)=8-4-14+10=0
 	\]
-	and the factor theorem says that $x-2$ must be a factor. The factorization can be performed in various ways. Here are three options, though all are essentially versions of the same process.
+	By the factor theorem, $x-2$ must be a factor of $f(x)$. The factorization can be performed in various ways. Here are three options, though all are essentially versions of the same process.
 	\begin{description}
-	\item[\normalfont\emph{Long division}]\lstsp You should have practiced this in high-school!
+	\item[\normalfont\emph{Long/synthetic division}]\lstsp You should have practiced this in high-school.
   \[
   	\polylongdiv{x^3-x^2-7x+10}{x-2} \implies x^3-x^2-7x+10=(x-2)(x^2+x-5)
   \]
@@ -712,11 +713,11 @@ Unless there are very few candidates, it can be time-consuming to check them all
   \]
   \item[\normalfont\emph{Term-by-term factorization}]\lstsp With practice you can factorize in one line with no working!
   \begin{enumeratea}
-    \item The first term must be $\textcolor{red}{x^2}$ to create $\textcolor{red}{x^3}$
+    \item To create $\textcolor{red}{x^3}$, the first term of the quadratic factor must be $\textcolor{red}{x^2}$ 
     \[
     	\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\textcolor{Green}{\,-\,7x}\textcolor{purple}{\,+\,10}=(x-2)(\textcolor{red}{x^2}\,+\cdots)=\textcolor{red}{x^3}\,-2x^2+\cdots
     \]
-    \item To correct the \textcolor{blue}{$x^2$} term, add $\textcolor{Green}{x}$:
+    \item To correct the \textcolor{blue}{$x^2$} term, add $\textcolor{Green}{x}$ (i.e., $\textcolor{Green}{x^2}-2x^2=\textcolor{blue}{-x^2}$):
     \[
     	(x-2)(x^2+\,\textcolor{Green}{x}\,+\cdots)=\textcolor{red}{x^3}\textcolor{blue}{\,-\,x^2}\,\textcolor{Green}{-\,2x}+\cdots
     \]
@@ -728,7 +729,7 @@ Unless there are very few candidates, it can be time-consuming to check them all
 	\end{enumeratea}
 \end{description}
 	
-	You might have seen other approaches involving arranging the coefficients in a table; the calculations required to complete the table are \emph{exactly} those seen above; all these methods are the same!
+	You might have seen other approaches involving arranging the coefficients in a table. Regardless, the calculations required to complete these methods are exactly those seen above; all these methods are versions of the same thing.
 \end{example}
 
 \goodbreak
@@ -750,7 +751,7 @@ The theory of factorization relies on some algebra. Here is a \emph{brief} treat
 \begin{proof}
 	\begin{enumerate}
 	  \item ($\Leftarrow$)\lstsp This is essentially trivial: $f(x)=(x-c)q(x)\implies f(c)=(c-c)q(c)=0$.\smallbreak
-		($\Rightarrow$)\lstsp This relies on the \emph{division algorithm for polynomials}: if $f,g$ are polynomials, then there exist unique polynomials $q,r$ with\footnotemark{}
+		($\Rightarrow$)\lstsp This relies on the \emph{division algorithm for polynomials}: if $f,g$ are polynomials, then there are unique polynomials $q,r$ with\footnotemark{}
 	% \footnote{Let $S=\{f(x)-g(x)q(x):q(x)\in\R[x]\}$. If $0\in S$  stop; $g$ divides $f$. Otherwise, let $k=\min S$ (exists by well-ordering) and let $r(x)=f(x)-g(x)q(x)=a_kx^k+\cdots$ have degree $k$. If $g(x)=b_jx^j+\cdots$ has degree $j\le k$, observe that
 	% \[f(x)-g(x)\bigl(q(x)+\tfrac{a_k}{b_j}x^{k-j}\bigr)=r(x)-a_kx^k-\cdots\]
 	% has degree $<k=\deg r$: contradiction. Thus $\deg r<\deg g$.\smallbreak
@@ -768,21 +769,23 @@ The theory of factorization relies on some algebra. Here is a \emph{brief} treat
 		\[
 			0=f(c_2)=(c_2-c_1)q_1(c_2)\implies q_1(c_2)=0
 		\]
-		we may then factor $x-c_2$ out of $q_1(x)$ to obtain
+		we may factor $x-c_2$ from $q_1(x)$ to obtain
 		\[
-			f(x)=(x-c_1)(x-c_2)q_2(x)
+			f(x)=(x-c_1)(x-c_2)q_2(x),\qquad \deg q_2=n-2
 		\]
 		Repeat this process to factor out all $n$ linear polynomials $x-c_k$:
 		\[
-			f(x)=(x-c_1)\cdots(x-c_n)q_n
+			f(x)=(x-c_1)\cdots(x-c_n)q_n,\qquad \deg q_n=n-n=0
 		\]
-		where $q_n\neq 0$ is \emph{constant.} Plainly $f(c)=(c-c_1)\cdots(c-c_n)q_n=0\iff c=c_j$ for some $j$, so there are no other roots.\qedhere
+		It follows that $q_n\neq 0$ is \emph{constant.} Plainly $f(c)=(c-c_1)\cdots(c-c_n)q_n=0\Longrightarrow c=c_j$ for some $j$, so there are no other roots.\qedhere
 	\end{enumerate}
 \end{proof}
 
-\footnotetext{For a given example, $q,r$ may be found by long-division. This is similar (and may be proved similarly) to the more familiar division algorithm for integers: if $m,n$ are integers, then there exist unique integers $q,r$ for which
-\[m=qn+r\ \text{ and }\ 0\le r<\nm n\]
-In grade-school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ remainder $r$); e.g.{} $23\div 4=5\,\textsf{r}\,3$ corresponds to $23=5\times 4+3$.}
+\footnotetext{For a given example, $q,r$ may be found by synthetic division. This is similar (and may be demonstrated similarly) to the more familiar division algorithm for integers: if $m,n$ are integers, then there are unique integers $q,r$ for which
+\[
+	m=qn+r\ \text{ and }\ 0\le r<\nm n
+\]
+In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ remainder $r$); e.g., $23\div 4=5\,\textsf{r}\,3$ corresponds to $23=5\times 4+3$.}
 
 
 \begin{example*}{\ref{ex:factoreasy} cont}{}
@@ -790,7 +793,7 @@ In grade-school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ rem
 	\[
 		f(x)=0\iff x-2=0\ \text{ or }\ x^2+x-5=0
 	\]
-	The former gives the root $x=2$, and the latter can be attacked via the quadratic formula or completing the square; the polynomial therefore has exactly three roots
+	The former gives the root $x=2$, and the latter can be attacked via the quadratic formula or completing the square; the polynomial therefore has exactly three real roots
 	\[
 		x=2,\frac{-1\pm\sqrt{21}}2
 	\] 
@@ -868,97 +871,114 @@ In grade-school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q$ rem
 
 The informal idea of an inverse function is that $f^{-1}$ takes the \emph{output} of $f$ and returns its \emph{input} (and vice versa).
 
-\begin{example}{}{}
-Define a simple function using a table or an arrow diagram\par
-\begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
-\[\def\arraystretch{1.1}\begin{array}{c|cccc}
-x&1&2&3&4\\\hline
-f(x)&4&2&5&7
-\end{array}\qquad\begin{array}{c|cccc}
-y&4&2&5&7\\\hline
-f^{-1}(y)&1&2&3&4
-\end{array}
-\]
-Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down.
-\end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
-\flushright\includegraphics{inverse-easy}
-\end{minipage}
-% \par
-% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
-% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
+\begin{example}{}{easyinvfunc}
+	Define a simple function using a table or an arrow diagram\par
+	\begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
+		\[
+			\def\arraystretch{1.1}
+			\begin{array}{c|cccc}
+				x&1&2&3&4\\\hline
+				f(x)&4&2&5&7
+			\end{array}
+			\qquad
+			\begin{array}{c|cccc}
+				y&4&2&5&7\\\hline
+				f^{-1}(y)&1&2&3&4
+			\end{array}
+		\]
+		The inverse $f^{-1}$ is the function obtained by \emph{reversing the arrows} or flipping the table upside-down.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
+		\flushright
+		\includegraphics{inverse-easy}
+	\end{minipage}
 \end{example}
 
+
 \begin{defn}{}{inversefn}
-A function $f:A\to B$ is \emph{invertible} if it has an \emph{inverse function}: a function $f^{-1}:B\to A$ for which
-\[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
-for all possible inputs $x\in A$ and $y\in B$.
+	A function $f:A\to B$ is \emph{invertible} if it has an \emph{inverse}: a function $f^{-1}:B\to A$ for which
+	\[
+		f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y \tag{$\ast$}
+	\]
+	for all possible inputs $x\in A$ and $y\in B$.
 \end{defn}
 
-Certainly the above example satisfies the input--output properties ($\ast$). Our main concern is identifying when a function is invertible, how to make it so if not, and how to find an inverse. To motivate this, we consider two simple examples.
+Certainly Example \ref{ex:easyinvfunc} satisfies the input--output properties ($\ast$). Our concerns are identifying when a function is invertible, how to make it so if not, and how to compute an inverse. %To motivate this, we consider two simple examples.
 
 
 
 \begin{examples}{}{invexs}
-%\exstart Define a simple function using a table or an arrow diagram
-% \begin{enumerate}\setcounter{enumi}{1}
-% \begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
-% \item[]\[\def\arraystretch{1.1}\begin{array}{c|cccc}
-% x&1&2&3&4\\\hline
-% f(x)&4&2&5&7
-% \end{array}\qquad\begin{array}{c|cccc}
-% y&4&2&5&7\\\hline
-% f^{-1}(y)&1&2&3&4
-% \end{array}
-% \]
-% Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down. Certainly\vspace{-5pt}
-% \end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
-% \flushright\includegraphics{inverse-easy}
-% \end{minipage}\par
-% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
-% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
-\exstart The function $f(x)=2x$ has inverse $f^{-1}(y)=\frac y2$.
-\begin{enumerate}\setcounter{enumi}{1}
-\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
-	\item[]Again our input--output conditions $(\ast)$ are satisfied.\smallbreak
-	%These functions are so straightforward that it isn't worth mentioning domains and ranges: in both cases they may be assumed to be the entire real line $\R$.\smallbreak
-	The \textcolor{blue}{graph} admits an interpretation of $f^{-1}$ similar to the arrow diagram.
-	\begin{itemize}\itemsep2pt
-	  \item The function $f$ takes an input $x$, moves it \textcolor{Green}{vertically} to the graph and then \textcolor{Green}{projects} to the $y$-axis. This interpretation is precisely the vertical line test (Definition \ref{defn:function})!
-	  \item The inverse function \emph{reverses the arrows}: transport an input $y$ \textcolor{orange}{horizontally} to the graph and then \textcolor{orange}{project} to the $x$-axis.
-	\end{itemize}
-\end{minipage}\hfill\begin{minipage}[t]{0.2\linewidth}\vspace{-25pt}
-\flushright\includegraphics{inverses-line}
-\end{minipage}\smallbreak
-
+	%\exstart Define a simple function using a table or an arrow diagram
+	% \begin{enumerate}\setcounter{enumi}{1}
+	% \begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
+	% \item[]\[\def\arraystretch{1.1}\begin{array}{c|cccc}
+	% x&1&2&3&4\\\hline
+	% f(x)&4&2&5&7
+	% \end{array}\qquad\begin{array}{c|cccc}
+	% y&4&2&5&7\\\hline
+	% f^{-1}(y)&1&2&3&4
+	% \end{array}
+	% \]
+	% Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down. Certainly\vspace{-5pt}
+	% \end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
+	% \flushright\includegraphics{inverse-easy}
+	% \end{minipage}\par
+	% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
+	% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
+	\exstart The function $f(x)=2x$ has inverse $f^{-1}(y)=\frac y2$.
 	
-\begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
-	\item\label{ex:invexs1} The graph of the function $f(x)=x^2-1$ is drawn. This time, when attempting to move a real number $y$ horizontally to the graph, we usually encounter one of two problems:
-	\begin{enumerate}\itemsep2pt
-	  \item If $y>-1$, we have \textcolor{orange}{two choices}.
-	  \item If $y<-1$, there is \textcolor{Purple}{no intersection}.
+	\begin{enumerate}\setcounter{enumi}{1}
+		\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
+			\item[]The input--output conditions $(\ast)$ are certainly satisfied.
+			\smallbreak
+			The \textcolor{blue}{graph} admits an interpretation of $f^{-1}$ similar to the arrow diagram.
+			\begin{itemize}\itemsep2pt
+			  \item The function $f$ takes an input $x$, moves it \textcolor{Green}{vertically} to the graph, then \textcolor{Green}{projects} to the $y$-axis. This interpretation is precisely the vertical line test (Definition \ref{defn:function})!
+			  \item The inverse function \emph{reverses the arrows}: transport an input $y$ \textcolor{orange}{horizontally} to the graph, then \textcolor{orange}{project} to the $x$-axis.
+			\end{itemize}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.2\linewidth}\vspace{-25pt}
+			\flushright
+			\includegraphics{inverses-line}
+		\end{minipage}
+		\smallbreak
+
+		\begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
+			\item\label{ex:invexs1} Consider $f(x)=x^2-1$. This time, when attempting to move a real number $y$ \textcolor{orange}{horizontally} to the graph, we usually encounter one of two problems:
+			\begin{enumerate}\itemsep2pt
+			  \item If $y>-1$, there are \textcolor{orange}{two choices} of $x$ (two intersections).
+			  \item If $y<-1$, there is \textcolor{Purple}{no intersection} with the graph.
+			\end{enumerate}
+			The naïve approach of \emph{reversing the arrows} is insufficient to define an inverse. However, a simple remedy arises by staring at the graph:
+			\begin{itemize}\itemsep2pt
+			  \item Problem (a) goes away if we delete the \textcolor{Brown}{left half} of the graph. Equivalently, we \emph{restrict the domain} of $f$ to $[0,\infty)$. 
+			  \item Problem (b) disappears if we insist that $y\ge-1$. Equivalently, we \emph{restrict the codomain} of $f$ to its \emph{range} $[-1,\infty)$. 
+			\end{itemize}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+			\flushright
+			\includegraphics{inverses-quad}
+		\end{minipage}
+		\medbreak	
+		After making these restrictions so that $f:[0,\infty)\to [-1,\infty)$, it is easily checked that
+		\[
+			f^{-1}(y)=\sqrt{y+1},\quad f^{-1}:[-1,\infty)\to[0,\infty)
+		\]
+		satisfies the input--output conditions $(\ast)$ and is therefore the inverse of $f$:
+		\begin{gather*}
+			x\in [0,\infty)\implies f^{-1}\bigl(f(x)\bigr) =\sqrt{(x^2-1)+1}=x\\
+			y\in[-1,\infty)\implies f\bigl(f^{-1}(y)\bigr)=\bigl(\sqrt{y+1}\bigr)^2-1=y
+		\end{gather*}
 	\end{enumerate}
-	The naïve approach of \emph{reversing the arrows} is insufficient to define an inverse. However, a simple remedy arises by staring at the graph:
-	\begin{itemize}\itemsep2pt
-	  \item Problem (a) goes away if we delete the \textcolor{blue}{left half} of the graph. Equivalently, we \emph{restrict the domain} of $f$ to $[0,\infty)$. 
-	  \item Problem (b) disappears if we insist that $y\ge-1$. Equivalently, we \emph{restrict the codomain} of $f$ to its \emph{range} $[-1,\infty)$. 
-	\end{itemize}
-\end{minipage}\hfill\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
-\flushright\includegraphics{inverses-quad}
-\end{minipage}\medbreak	
-	After making these restrictions so that $f:[0,\infty)\to [-1,\infty)$, it is now easily checked that
-	\[f^{-1}(y)=\sqrt{y+1},\quad f^{-1}:[-1,\infty)\to[0,\infty)\]
-	satisfies our input--output conditions $(\ast)$ and is therefore the inverse of $f$:
-	\begin{gather*}
-	x\in [0,\infty)\implies f^{-1}\bigl(f(x)\bigr) =\sqrt{(x^2-1)+1}=x\\
-	y\in[-1,\infty)\implies f\bigl(f^{-1}(y)\bigr)=\bigl(\sqrt{y+1}\bigr)^2-1=y
-	\end{gather*}
-\end{enumerate}
 \end{examples}
 
 
 \boldinline{What makes a function invertible?}
 
-The fixes in our last example can be rephrased succinctly:
+The fixes in the last example can be rephrased succinctly:
 % \begin{quote}
 \begin{center}
 $\tcbhighmath{\text{
@@ -971,32 +991,38 @@ This unpacks to two conditions, each of which addresses one of the problems seen
 Let $f:A\to B$ be a function. We say that $f$ is:
 \begin{enumeratea}
 \item \emph{1--1/one-to-one} if distinct inputs $x_1\neq x_2\in A$ have distinct outputs $f(x_1)\neq f(x_2)$. Equivalently,
-  \[\text{If $x_1,x_2\in A$, then }\ f(x_1)=f(x_2)\implies x_1=x_2\]
+  \[
+  	\text{Given $x_1,x_2\in A$, we have }\ f(x_1)=f(x_2)\Longrightarrow x_1=x_2
+  \]
   If $A,B$ are sets of real numbers, each horizontal line intersects the graph \textcolor{orange}{at most once}.
-  \item \emph{Onto} if $\operatorname{range}(f)=B$. Equivalently,
-  \[\text{Given $y\in B$, there is some $x\in A$ for which $y=f(x)$}\]
+  \item \emph{Onto} if $\operatorname{range}f=B$. Equivalently,
+  \[
+  	\text{Given $y\in B$, there is some $x\in A$ for which $y=f(x)$}
+  \]
   If $A,B\subseteq\R$, the horizontal line through $y\in B$ intersects the graph \textcolor{Purple}{at least once}.
 \end{enumeratea}
 \end{defn}
 
-Putting these ideas together, we see that a function is 1--1 and onto if and only if every $y\in B$ corresponds to a \emph{unique} $x\in A$ for which $y=f(x)$. In summary:
+Putting these ideas together, a function is both 1--1 and onto precisely when every $y\in B$ corresponds to a \emph{unique} $x\in A$ for which $y=f(x)$. In summary:
 
 \begin{thm}{}{}
-$f:A\to B$ is invertible if and only if it is 1--1 and onto. Its inverse is the function $f^{-1}:B\to A$ such that $f^{-1}(y)=x$ whenever $y=f(x)$.
+	$f:A\to B$ is invertible if and only if it is both 1--1 and onto. Its inverse is the function $f^{-1}:B\to A$ such that $f^{-1}(y)=x$ whenever $y=f(x)$.
 \end{thm}
 
 %Let us revisit our previous example in this context.
 
 \begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,II}{}
-Consider the properties:
-\begin{enumeratea}
-	\item $f(x_1)=f(x_2)\implies x_1^2-1=x_2^2-1\implies x_1^2=x_2^2\implies x_1=\pm x_2$.\par
-	To force $f$ to be 1--1, it is enough to \emph{restrict the domain} so that all $x$ have the same sign: the obvious choice is $\dom(f)=[0,\infty)$.
-	\item $\operatorname{range}(f)=\{x^2-1:x\in[0,\infty)\}=[-1,\infty)$. We force $f$ to be onto by \emph{restricting its codomain} to $[-1,\infty)$.
-\end{enumeratea}
-The inverse function is obtained by solving $y=x^2-1$ for $x$:
-\[x^2=y+1\implies x=f^{-1}(y)=\sqrt{y+1}\]
-where we use the \emph{positive square root} since $x\in[0,\infty)=\dom(f)$.
+	Consider the two properties in the context of the example $f(x)=x^2-1$:
+	\begin{enumeratea}
+		\item $f(x_1)=f(x_2)\Longrightarrow x_1^2-1=x_2^2-1\Longrightarrow x_1^2=x_2^2\Longrightarrow x_1=\pm x_2$.\par
+		To force $f$ to be 1--1, it is enough to \emph{restrict the domain} so that all $x$ have the same sign: the obvious choice is $\dom f=[0,\infty)$.
+		\item $\operatorname{range} f=\bigl\{x^2-1:x\in[0,\infty)\bigr\}=[-1,\infty)$. We force $f$ to be onto by \emph{restricting its codomain} to $[-1,\infty)$.
+	\end{enumeratea}
+	The inverse function is obtained by solving $y=x^2-1$ for $x$:
+	\[
+		x^2=y+1\implies x=f^{-1}(y)=\sqrt{y+1}
+	\]
+	The \emph{non-negative square root} is used since $x\in\dom f=[0,\infty)$.
 \end{example*}
 \goodbreak
 
@@ -1006,34 +1032,42 @@ where we use the \emph{positive square root} since $x\in[0,\infty)=\dom(f)$.
 Our discussion provides an algorithmic process for making a function $f:A\to B$ invertible and finding an inverse.
 \begin{enumeratea}\itemsep2pt
 	\item Check that $f$ is 1--1. If not, \emph{restrict the domain} until it is.
-	\item Check that $f$ is onto. If not, \emph{redefine} $B=\operatorname{range}(f)$.
+	\item Check that $f$ is onto. If not, \emph{redefine} $B=\operatorname{range} f$.
 	\item Solve $y=f(x)$ for $x=f^{-1}(y)$.
 \end{enumeratea}
 
-Since we typically prefer $x$ as an input, it is common also to \emph{switch} $x,y$ at the end so that $y=f^{-1}(x)$. If $A,B\subseteq\R$, this switch is equivalent to \emph{reflecting the graph} in the line $y=x$.\smallbreak
+Since $x$ is typically preferred as an input, it is common to \emph{switch} $x,y$ at the end of step 3 and write $y=f^{-1}(x)$. If $A,B\subseteq\R$, switching $x\leftrightarrow y$ is equivalent to \emph{reflecting the graph} in the line $y=x$.\smallbreak
 
-Note also that step (a) might involve some \emph{choice}; depending on how you restrict the domain, you can obtain multiple inverse functions! To see this in action, we return once more to our favorite example.
+Note also that step (a) likely involves a \emph{choice}; depending on how you restrict the domain, you can find multiple inverse functions! To see this in action, we return once more to our example.
 
 \begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,III}{}
-Recall that if $f(x)=x^2-1$, then
-\[f(x_1)=f(x_2)\implies x_1=\pm x_2\]
-Instead of restricting the domain to $[0,\infty)$, we can force $f$ to be 1--1 by \emph{choosing} $\dom(f)=(-\infty,0]$. The range/codomain remains $[-1,\infty)$, but the inverse function is now different:
-\[x^2=y+1\implies x=-\sqrt{y+1}\in (-\infty,0]=\dom(f) \implies f^{-1}(x)=-\sqrt{x+1}\]
-This time the new domain for $f$ forced us to use the \emph{negative square root.}
-\begin{center}
-\begin{minipage}[t]{0.52\linewidth}\vspace{30pt}
-	\centering\includegraphics{inverses-combi}
-\end{minipage}\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-	\centering\begin{tabular}{@{}c@{}}
-		\includegraphics{inverses-combi2}\\[25pt]
-		\includegraphics{inverses-combi3}
-	\end{tabular}
-\end{minipage}
-\end{center}
-There is nothing stopping us from choosing other domains on which $f$ is 1--1, but these are certainly the most natural choices.
+	Recall that if $f(x)=x^2-1$, then
+	\[
+		f(x_1)=f(x_2)\implies x_1=\pm x_2
+	\]
+	Instead of restricting the domain to $[0,\infty)$, we can instead force $f$ to be 1--1 by taking the \textcolor{Brown}{other half} of the graph; by \emph{choosing} $\dom f=(-\infty,0]$. The range/codomain remains $[-1,\infty)$, but the inverse function is now different:
+	\[
+		x^2=y+1\implies x=-\sqrt{y+1}\in (-\infty,0]=\dom f \implies f^{-1}(x)=-\sqrt{x+1}
+	\]
+	This time the new domain for $f$ forced us to use the \emph{negative square root.}
+	\begin{center}
+		\begin{minipage}[t]{0.52\linewidth}\vspace{30pt}
+			\centering\includegraphics{inverses-combi}
+		\end{minipage}
+		\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+			\centering
+			\begin{tabular}{@{}c@{}}
+				\includegraphics{inverses-combi2}\\[20pt]
+				\includegraphics{inverses-combi3}
+			\end{tabular}
+		\end{minipage}
+	\end{center}
+	We could choose other domains on which $f$ is 1--1, but these are the most natural choices.
 \end{example*}
 
-\clearpage
+The moral is that you cannot invert a function unless you are precise about its domain and range!
+
+\goodbreak
 
 
 \iffalse
@@ -1217,68 +1251,70 @@ where we chose the \emph{negative} square root since $\operatorname{range}(f^{-1
 
 \fi
 
-To finish we consider an algebraically tougher example and quickly list all the details.
+We finish with an algebraically tougher example: you may feel that more detail is justified!
 
 \begin{example}{}{function-easy}
-Let $y=f(x)=\frac 1{(2-x)^2}$. Its implied \textcolor{red}{\emph{domain}} consists of all real numbers except 2.
-\begin{description}
-	\begin{minipage}[t]{0.68\linewidth}\vspace{-7pt}
-		\item The \textcolor{Green}{\emph{vertical line test}} is clearly visible on the graph: every vertical line $x=a$ (except $x=2$) intersects the graph exactly once.
-		\item The \textcolor{Brown}{\emph{range}} is the interval $\R^+=(0,\infty)$ as can be seen by solving
-		\[f(x)=y\iff \frac 1{2-x}=\pm \sqrt y\iff x=2\mp \frac 1{\sqrt y}\]
-		Any positive output may be obtained via $y=f\bigl(2-\frac 1{\sqrt y}\bigr)$.\par
-		The $\mp$ term shows that $f$ fails the \textcolor{orange}{\emph{horizontal line test}}: it isn't 1--1.
-		\item There are two natural choices for an inverse:
-		\begin{enumeratea}
-		  \item Choose \textcolor{blue}{$\dom(f)=(2,\infty)$}, then $\pm\sqrt y=\frac 1{2-x}$ is \emph{negative} and we obtain the inverse function
-		  \[g:(0,\infty)\to(2,\infty),\quad g(x)=2-\frac 1{\sqrt y}\] 
-		  \item Choose \textcolor{Purple}{$\dom(f)=(-\infty,2)$}, then $\pm\sqrt y=\frac 1{2-x}$ is \emph{positive} and we obtain a second inverse function
-		  \[h:(0,\infty)\to(\infty,2),\quad h(x)=2+\frac 1{\sqrt y}\] 
-		\end{enumeratea}
-	\end{minipage}\hfill\begin{minipage}[t]{0.31\linewidth}\vspace{-12pt}
-	\flushright\includegraphics{functions-easyex1}\par
-	\includegraphics{functions-easyex2}
-	\end{minipage}
-\end{description}
+	Let $y=f(x)=\frac 1{(x-2)^2}$. Its implied \textcolor{red}{\emph{domain}} consists of all real numbers except 2.
+	\begin{description}
+		\begin{minipage}[t]{0.68\linewidth}\vspace{-7pt}
+			\item The \textcolor{Green}{\emph{vertical line test}} is clearly visible on the graph: every vertical line $x=a$, except $x=2$, intersects the graph exactly once.
+			\item The \textcolor{Brown}{\emph{range}} is the interval $\R^+=(0,\infty)$ as can be seen by solving
+			\[
+				f(x)=y\iff \frac 1{x-2}=\pm \sqrt y\iff x=2\pm \frac 1{\sqrt y}
+			\]
+			Any positive output $y$ may be obtained via $y=f\bigl(2+\frac 1{\sqrt y}\bigr)$.\par
+			The $\pm$-term shows that $f$ fails the \textcolor{orange}{\emph{horizontal line test}}: it isn't 1--1.
+			\item There are two natural choices for an inverse:
+			\begin{enumeratea}
+			  \item Choose \textcolor{blue}{$\dom f=(2,\infty)$}, then $\pm\sqrt y=\frac 1{x-2}$ is \emph{positive}. We take the \emph{positive} square root and obtain the inverse function
+			  \[
+			  	g:(0,\infty)\to(2,\infty),\quad g(x)=2+\frac 1{\sqrt y}
+			  \] 
+			  \item Choose \textcolor{Purple}{$\dom f=(-\infty,2)$}, then $\pm\sqrt y=\frac 1{x-2}$ is \emph{negative} and we obtain a second inverse function
+			  \[
+			  	h:(0,\infty)\to(-\infty,2),\quad h(x)=2-\frac 1{\sqrt y}
+			  \] 
+			\end{enumeratea}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.31\linewidth}\vspace{-12pt}
+			\flushright
+			\includegraphics{functions-easyex1}\par
+			\includegraphics{functions-easyex2}
+		\end{minipage}
+	\end{description}
 \end{example}
 
 
 
-
-% \begin{example}{}{}
-% Let $f(x)=x^3+8$.
-% \begin{enumerate}
-%   \item $f$ passes the horizontal line test for all $x$:
-%   \[x_1^3+8=x_2^3+8\implies x_1=x_2\]
-%   \item $x=y^3+8\implies y=f^{-1}(x)=\sqrt[3]{x-8}$.
-% \end{enumerate}
-% In this case the domain and range are both the whole real line.
-% \end{example}
-
 \begin{exercises}{}{}
-\exstart If $\dom(f)=\R$, verify that $f(x)=x^3+8$ passes the horizontal line test and find its inverse.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Consider the function $f(x)=x^2+2x-3$. What do you have to do to the domain to make this invertible? Now find \emph{two inverses} of $f$.
-  
-  \item Sketch the graph of the following function with $\dom(f)=[0,3)$ and find \emph{three} distinct inverses:
-  \[f(x)=\begin{cases}
-  x&\text{if }0\le x<1\\
-  x-1&\text{if }1\le x<2\\
-  x-2&\text{if }2\le x<3
-  \end{cases}\]
+	\exstart If $\dom f=\R$, check that $f(x)=x^3+8$ passes the horizontal line test. Find $f^{-1}$.
 	
-
-  \item Show that the following function $f:\R\to(\frac 32,\infty)$ is 1--1 and onto, sketch its graph and find $f^{-1}$. 
-  \[f(x)=\begin{cases}
-  3-\frac 12x&\text{if }x\le 2\\
-  2-\frac 1x&\text{if }x>2
-  \end{cases}\]
-  
-  \item (Hard)\lstsp Find the implied domain and range of $f(x)=\smash[b]{\frac{x+1}{1+\frac 1{x+1}}}$. Now find an interval on which $f$ is 1--1 and compute its inverse.
-  
-  \item An astute student observes that Definition \ref{defn:inversefn} only describes the \emph{properties} satisfied by \emph{an} inverse and asks why we keep referring to \emph{the} inverse. How would you respond?
-  
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Consider $f(x)=x^2+2x-3$. Similarly to Example \ref{ex:invexs}, find \emph{two inverses} of $f$.
+	  
+	  \item Sketch the graph of the following function
+	  \[
+	  	f(x)=
+	  	\begin{cases}
+	  		x&\text{if }0\le x<1\\
+	  		x-1&\text{if }1\le x<2\\
+	  		x-2&\text{if }2\le x<3
+	  	\end{cases}
+	  \]
+		Find \emph{three} domains on which $f$ is 1--1 and thus compute three distinct inverses.
+	
+	  \item Show that the following function $f:\R\to(\frac 32,\infty)$ is 1--1 and onto, sketch its graph and find $f^{-1}$. 
+	  \[f(x)=\begin{cases}
+	  3-\frac 12x&\text{if }x\le 2\\
+	  2-\frac 1x&\text{if }x>2
+	  \end{cases}\]
+	  
+	  \item (Hard)\lstsp Find the implied domain and range of $f(x)=\smash[b]{\frac{x+1}{1+\frac 1{x+1}}}$. Now find an interval on which $f$ is 1--1 and compute its inverse.
+	  
+	  \item An astute student observes that Definition \ref{defn:inversefn} only describes the properties satisfied by \emph{an} inverse and asks why we keep referring to \emph{the} inverse. How would you respond?
+	  
+	\end{enumerate}
 \end{exercises}
 
 \iffalse
