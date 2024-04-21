@@ -2,14 +2,17 @@
 
 \section{Trigonometric Functions and Polar Co-ordinates}\label{sec:trig}
 
-In this section we review trigonometry and periodic functions and discuss their relation to polar co-ordinates. Some of this will be non standard.
+In this chapter we review trigonometry and periodic functions and discuss their relation to polar co-ordinates. Some of this will be non-standard.
 
 \subsection{Definitions \& Measuring Angles}\label{ssec:trigdef}
 
-\begin{minipage}[t]{0.75\linewidth}\vspace{-5pt}
-Trigonometric functions date back at least 2000 years. Ancient mathematicians were interested in the relationship between the \emph{chord} of a circle and the central angle, often for the purpose of astronomical measurement. It wasn't until 1595 that the term \emph{trigonometry} (literally \emph{triangle measure}) was coined, and the functions were considered primarily related to triangles.
-\end{minipage}\begin{minipage}[t]{0.25\linewidth}\vspace{-15pt}
-\flushright\includegraphics{defn-chord}
+\begin{minipage}[t]{0.74\linewidth}\vspace{-5pt}
+	Trigonometric functions date back at least 2000 years. Ancient mathematicians were interested in the relationship between the \emph{chord} of a circle and the central angle, often for the purpose of astronomical measurement. It wasn't until 1595 that the term \emph{trigonometry} (literally \emph{triangle measure}) was coined, and the functions were considered as coming from triangles.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.25\linewidth}\vspace{-15pt}
+	\flushright
+	\includegraphics{defn-chord}
 \end{minipage}
 \smallbreak
 
@@ -17,24 +20,27 @@ Here are several related definitions of sine, cosine and tangent based either on
 
 
 \begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.28\linewidth]{}{polarcoord}
-\hangindent\doubleind
-1.\lstsp(a)\lstsp Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\textcolor{blue}{\sin\theta}$ and $\textcolor{Green}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\vspace{-5pt}
-\begin{enumerate}\setcounter{enumi}{1} 
-  \item[]\begin{enumerate}\setcounter{enumii}{1}
-    \item[] Also define $\tan\theta=\frac{\sin\theta}{\cos\theta}$ to be the slope of the hypotenuse.
-    \item Given a right triangle with angle $\theta$, \emph{hypotenuse} $r$, \emph{adjacent} $x$ and \emph{opposite} $y$, define
-	\[\sin\theta=\frac yr\qquad \cos\theta=\frac xr\qquad \tan\theta=\frac yx\]
-  \end{enumerate}\vspace{-8pt}
-  \item\begin{enumerate}
-    \item $(\cos\theta,\sin\theta)$ are the co-ordinates of a point on the unit circle, where $\theta$ is its \emph{polar angle} measured counter-clockwise from the positive $x$-axis. Provided $\cos\theta\neq 0$, also define $\tan\theta=\frac{\sin\theta}{\cos\theta}$.
-    \item Repeat the definition for a circle of radius $r$ with co-ordinates $(r\cos\theta,r\sin\theta)$.
-  \end{enumerate}
-\end{enumerate}
-\tcblower
-\flushright
-\includegraphics{defn-trig1}\par
-\includegraphics{defn-trig2}\par
-\includegraphics{defn-trig3}\phantom{bobo}
+	\hangindent\doubleind
+	1.\lstsp(a)\lstsp Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\textcolor{blue}{\sin\theta}$ and $\textcolor{Green}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\vspace{-5pt}
+	\begin{enumerate}\setcounter{enumi}{1} 
+	  \item[]
+	  \begin{enumerate}\setcounter{enumii}{1}
+	    \item[] Define $\tan\theta=\frac{\sin\theta}{\cos\theta}$ to be the slope of the hypotenuse.
+	    \item Given a right triangle with angle $\theta$, \emph{hypotenuse} $r$, \emph{adjacent} $x$ and \emph{opposite} $y$, define
+			\[
+				\sin\theta=\frac yr\qquad \cos\theta=\frac xr\qquad \tan\theta=\frac yx
+			\]
+	  \end{enumerate}\vspace{-8pt}
+	  \item\begin{enumerate}
+	    \item $(\cos\theta,\sin\theta)$ are the co-ordinates of a point on the unit circle, where $\theta$ is its \emph{polar angle} measured counter-clockwise from the positive $x$-axis. Provided $\cos\theta\neq 0$, also define $\tan\theta=\frac{\sin\theta}{\cos\theta}$.
+	    \item Repeat the definition for a circle of radius $r$ with co-ordinates $(r\cos\theta,r\sin\theta)$.
+	  \end{enumerate}
+	\end{enumerate}
+	\tcblower
+	\flushright
+	\includegraphics{defn-trig1}\par
+	\includegraphics{defn-trig2}\par
+	\includegraphics{defn-trig3}\phantom{bobo}
 \end{defn}
 
 Discuss some of the advantages and weaknesses of these definitions:
@@ -45,47 +51,54 @@ Discuss some of the advantages and weaknesses of these definitions:
   \item Convince yourself that that the triangle definitions follow from the circle definitions. What is missing if you try to use the triangle definition to justify the circle version?
   \item If you were introducing trigonometry for the first time, what would you use?
 \end{itemize}
-If you've done sufficient calculus, there are other possible definitions, for instance using power (Maclaurin) series. Plainly these are not suitable for grade-school, but have the great benefit of making the calculus relationship $\diff\theta\sin\theta=\cos\theta$ very simple. Establishing this using the triangle definition is a little tricky!
+If you've done sufficient calculus you might know of other definitions, for instance using power (Maclaurin) series. Plainly these are not suitable for grade-school, but have the great benefit of making the calculus relationship $\diff\theta\sin\theta=\cos\theta$ very simple. Establishing this using the triangle definition is a somewhat tricky!
 
 
 \boldsubsubsection{Measuring Angles}
 
-There are two standard ways to measure angles.
+There are two standard ways to measure angles (to sensibly associate a \emph{number} to each angle).
 
 \begin{description}
-\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree measure dates back to ancient Babylon 2--4000 years ago.\footnote{It is not known why they chose 360, but it fits nicely with their \emph{base-60} system of counting (decimals are base-10). The traditional subdivisions of a degree are also base-60. For instance, $\ang{34}12'45"$ is 34 degrees, 12 (arc)minutes and 45 (arc)seconds; converted to decimal notation, this becomes
-\[\ang{34}12'45" =34+\frac{12}{60}+\frac{45}{60^2}=\ang{34.2125}\]
-The standard hour-minute-second measurement of time has the same origin.}
+	\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree measure dates back to ancient Babylon 2--4000 years ago.\footnote{It is not known why they chose 360, but it fits nicely with their \emph{base-60} system of counting (decimals are base-10). The traditional subdivisions of a degree are also base-60. For instance, $\ang{34}12'45"$ is 34 degrees, 12 (arc)minutes and 45 (arc)seconds; converted to decimal notation, this becomes
+	\[
+		\ang{34}12'45" =34+\frac{12}{60}+\frac{45}{60^2}=\ang{34.2125}
+	\]
+	The standard hour-minute-second measurement of time has the same origin.}
 
 
-\item[\normalfont\emph{Radians}] The radian measure of an angle is the \textcolor{blue}{length of the arc} subtending the angle in a circle of radius 1. Since the circumference of a unit circle is $2\pi$, we have the following identifications.\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{-18pt}
-\[\def\arraystretch{1.1}
-\begin{array}{c|c|c|c|c}
-\text{Degrees}&\text{Radians}&\sin\theta&\cos\theta&\tan\theta\\\hline
-\ang{0}&0&0&1&0\\
-\ang{30}&\frac\pi 6&\frac 12&\frac{\sqrt 3}2&\frac 1{\sqrt 3}\\
-\ang{45}&\frac\pi 4&\frac 1{\sqrt 2}&\frac 1{\sqrt 2}&1\\
-\ang{60}&\frac\pi 3&\frac{\sqrt 3}2&\frac 12&\sqrt 3\\
-\ang{90}&\frac\pi 2&1&0&\text{n/a}\\
-\ang{180}&\pi&0&-1&0
-\end{array}\]
-\end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{-10pt}
-\flushright\includegraphics[scale=0.95]{defn-radians}
-\end{minipage}
-
+	\item[\normalfont\emph{Radians}] The radian measure of an angle is the \textcolor{blue}{length of the arc} subtending the angle in a circle of radius 1. Since the circumference of a unit circle is $2\pi$, we have the following identifications.\par
+	\begin{minipage}[t]{0.59\linewidth}\vspace{-18pt}
+		\[
+			\def\arraystretch{1.1}
+			\begin{array}{c|c|c|c|c}
+				\text{Degrees}&\text{Radians}&\sin\theta&\cos\theta&\tan\theta\\\hline
+				\ang{0}&0&0&1&0\\
+				\ang{30}&\frac\pi 6&\frac 12&\frac{\sqrt 3}2&\frac 1{\sqrt 3}\\
+				\ang{45}&\frac\pi 4&\frac 1{\sqrt 2}&\frac 1{\sqrt 2}&1\\
+				\ang{60}&\frac\pi 3&\frac{\sqrt 3}2&\frac 12&\sqrt 3\\
+				\ang{90}&\frac\pi 2&1&0&\text{n/a}\\
+				\ang{180}&\pi&0&-1&0
+			\end{array}
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.4\linewidth}\vspace{-10pt}
+		\flushright
+		\includegraphics[scale=0.95]{defn-radians}
+	\end{minipage}
 \end{description}
 
-In elementary mathematics, degrees are the most common was to measure angles. Do you know any other ways to measure angles?
+In elementary mathematics, degrees are the most common way to measure angles. Do you know any other methods?
 
 \begin{exercises}
 \exstart The identity $\cos^2\!\theta+\sin^2\!\theta=1$ is the Pythagorean Theorem in disguise. Why?
 \begin{enumerate}\setcounter{enumi}{1}
-  \item The word \emph{sine} is the result of a long line of translations and transliterations from an ancient Sanskrit term meaning \emph{half-chord.} For the chord picture on page \pageref{sec:trig}, how does the length of the chord $\operatorname{crd}\theta$ relate to modern trigonometric functions?
+  \item The word \emph{sine} is the result of a long list of translations and transliterations from an ancient Sanskrit term meaning \emph{half-chord.} For the chord picture on page \pageref{sec:trig}, how does the length of the chord $\operatorname{crd}\theta$ relate to modern trigonometric functions?
 
 	\item It is conventional not to state units when using radians since they are effectively a ratio and therefore \emph{unitless.} Think this through: if the central angle in a circle of radius $r$ is subtended by an arc with arc-length $\ell$, what is the radian measure of the angle? What facts from Euclidean geometry justify this observation?
 	
-  \item Explain how to get the values of sine and cosine in the above table.
+  \item Explain how to get the values of sine and cosine in the above table.\par
+  (\emph{Hint: Draw some triangles and use Pythagoras}!)
   
   \item Using the pictures, explain why we have the relations
 	\[\sin(\tfrac \pi 2-\theta)=\cos\theta=\sin(\theta+\tfrac\pi 2),\qquad \sin(-\theta)=-\sin\theta,\qquad \sin(\pi-\theta)=\sin\theta\]
@@ -94,6 +107,7 @@ In elementary mathematics, degrees are the most common was to measure angles. Do
 \end{exercises}
 
 \clearpage
+
 
 \subsection{Periodicity, Graphs \& Inverses}\label{ssec:trigperiod}
 
