@@ -91,19 +91,24 @@ There are two standard ways to measure angles (to sensibly associate a \emph{num
 In elementary mathematics, degrees are the most common way to measure angles. Do you know any other methods?
 
 \begin{exercises}
-\exstart The identity $\cos^2\!\theta+\sin^2\!\theta=1$ is the Pythagorean Theorem in disguise. Why?
-\begin{enumerate}\setcounter{enumi}{1}
-  \item The word \emph{sine} is the result of a long list of translations and transliterations from an ancient Sanskrit term meaning \emph{half-chord.} For the chord picture on page \pageref{sec:trig}, how does the length of the chord $\operatorname{crd}\theta$ relate to modern trigonometric functions?
-
-	\item It is conventional not to state units when using radians since they are effectively a ratio and therefore \emph{unitless.} Think this through: if the central angle in a circle of radius $r$ is subtended by an arc with arc-length $\ell$, what is the radian measure of the angle? What facts from Euclidean geometry justify this observation?
+	\exstart The identity $\cos^2\!\theta+\sin^2\!\theta=1$ is the Pythagorean Theorem in disguise. Why?
 	
-  \item Explain how to get the values of sine and cosine in the above table.\par
-  (\emph{Hint: Draw some triangles and use Pythagoras}!)
-  
-  \item Using the pictures, explain why we have the relations
-	\[\sin(\tfrac \pi 2-\theta)=\cos\theta=\sin(\theta+\tfrac\pi 2),\qquad \sin(-\theta)=-\sin\theta,\qquad \sin(\pi-\theta)=\sin\theta\]
-	(\emph{You cannot use multiple-angle formulæ for this!})
-\end{enumerate}
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item The word \emph{sine} is the result of a long list of translations and transliterations from an ancient Sanskrit term meaning \emph{half-chord.} For the chord picture on page \pageref{sec:trig}, how does the length of the chord $\operatorname{crd}\theta$ relate to modern trigonometric functions?
+	
+		\item It is conventional not to state units when using radians since they are effectively a ratio and therefore \emph{unitless.} Think this through: if the central angle in a circle of radius $r$ is subtended by an arc with arc-length $\ell$, what is the radian measure of the angle? What facts from Euclidean geometry justify this observation?
+		
+	  \item Explain how to get the values of sine and cosine in the above table.\par
+	  (\emph{Hint: Draw some triangles and use Pythagoras}!)
+	  
+	  \item Using the pictures, explain why we have the relations
+		\[
+			\sin(\tfrac \pi 2-\theta)=\cos\theta=\sin(\theta+\tfrac\pi 2),
+			\qquad 
+			\sin(-\theta)=-\sin\theta,\qquad \sin(\pi-\theta)=\sin\theta
+			\]
+		(\emph{You cannot use multiple-angle formulæ for this!})
+	\end{enumerate}
 \end{exercises}
 
 \clearpage
@@ -111,27 +116,33 @@ In elementary mathematics, degrees are the most common way to measure angles. Do
 
 \subsection{Periodicity, Graphs \& Inverses}\label{ssec:trigperiod}
 
-For our purposes, the circle definition is superior because it allows us to easily consider non-acute angles and \emph{periodicity.} We can measure the polar angle counter-clockwise as many times round the origin as we like; for any integer $n$,
-\[\sin(\theta+2n\pi)=\sin\theta,\quad \cos(\theta+2n\pi)=\cos\theta\]
-Otherwise said, sine and cosine have period $2\pi$. It is now easy to draw the graphs; just think about the circle when $0\le \theta<2\pi$ and continue periodically! Plainly sine and cosine are \emph{not invertible} unless we choose a domain on which they are 1--1.\par
+One advantage of the circle definition is that it allows us to easily extend trigonometric functions \emph{periodically.} We can measure the polar angle counter-clockwise as many times round the origin as we like; for any integer $n$,
+\[
+	\sin(\theta+2n\pi)=\sin\theta,\quad \cos(\theta+2n\pi)=\cos\theta
+\]
+Otherwise said, sine and cosine have period $2\pi$. It is now easy to draw the graphs: just think about the circle when $0\le \theta<2\pi$ and continue periodically! Plainly sine and cosine are \emph{non-invertible} unless we choose a domain on which they are 1--1.\par
 \begin{minipage}[t]{0.6\textwidth}\vspace{-3pt}
-\includegraphics[scale=0.95]{invsine2}\par
-$f(x)=\sin x$ is 1--1 on the domain $[-\frac\pi 2,\frac\pi 2]$\smallbreak
-Inverse function $f^{-1}(x)=\arcsin x=\sin^{-1}x$\smallbreak
-Domain $\dom(\arcsin)=[-1,1] =\operatorname{range}(\sin)$\smallbreak
-Range $\operatorname{range}(\arcsin)=[-\frac\pi 2,\frac\pi 2]=\dom(\sin)$\medbreak
-This is why your calculator always returns a value in the interval $[-\frac\pi 2,\frac\pi 2]$ when you hit the $\sin^{-1}$ button!
-\end{minipage}\begin{minipage}[t]{0.4\textwidth}\vspace{-5pt}
-\flushright\includegraphics[scale=0.93]{invsine}
+	\includegraphics[scale=0.95]{invsine2}\par
+	$f(x)=\sin x$ is 1--1 on the domain $[-\frac\pi 2,\frac\pi 2]$\smallbreak
+	Inverse function $f^{-1}(x)=\arcsin x=\sin^{-1}x$\smallbreak
+	Domain $\dom(\arcsin)=[-1,1] =\operatorname{range}(\sin)$\smallbreak
+	Range $\operatorname{range}(\arcsin)=[-\frac\pi 2,\frac\pi 2]=\dom(\sin)$\medbreak
+	This is why your calculator always returns a value in the interval $[-\frac\pi 2,\frac\pi 2]=[-\ang{90},\ang{90}]$ when you hit the $\sin^{-1}$ button!
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\textwidth}\vspace{-5pt}
+	\flushright\includegraphics[scale=0.93]{invsine}
 \end{minipage}
 
 \begin{example}{}{}
-If you know the graphs, then symmetry helps you solve equations. For example, if $\sin x=\frac 9{10}$ then all solutions are given by
-\[x=\sin^{-1}\frac 9{10}+2\pi n\quad\text{and}\quad \pi-\sin^{-1}\frac 9{10}+2\pi n\]
-where $n$ is any integer.
-\begin{center}
-\includegraphics{invsine3}
-\end{center}
+	If you know the graphs, then symmetry helps you solve equations. For example, if $\sin x=\frac 9{10}$ then all solutions are given by
+	\[
+		x=\sin^{-1}\frac 9{10}+2\pi n\quad\text{and}\quad \pi-\sin^{-1}\frac 9{10}+2\pi n
+	\]
+	where $n$ is any integer.
+	\begin{center}
+		\includegraphics{invsine3}
+	\end{center}
 \end{example}
 
 
@@ -140,46 +151,64 @@ where $n$ is any integer.
 The major application of trigonometric functions to modelling is the fact that they are \emph{periodic.}
 
 \begin{example}{}{}
-The tide is a periodic function of time. At a particular location, suppose high tide occurs at 6:00 with a water depth of 10\,ft and that low tide occurs 12:12 with a depth of 4\,ft. The tide might be modelled by the periodic function
-\[h(t)=7+3\cos\left(\frac{5\pi}{31}(t-6)\right)\] 
-where $t$ is measured in hours from midnight. 
+	The tide is a periodic function of time. At a particular location, suppose high tide occurs at 6:00 with a water depth of 10\,ft and that low tide occurs 12:12 with a depth of 4\,ft. The tide might be modelled by the periodic function
+	\[
+		h(t)=7+3\cos\left(\frac{5\pi}{31}(t-6)\right)
+	\] 
+	where $t$ is measured in hours from midnight. 
 \end{example}
 
 In reality, the tide is very close to being periodic, but the size of the high and low tides are somewhat variable.\bigbreak
 
 In fact \emph{any} periodic function may be suitably approximated using trigonometric functions: if $f(x)$ has period $T$, then there are constants $a_n,b_n$ for which
-\[f(x)\approx \frac{a_0}2+a_1\cos\frac{2\pi x}T +b_1\sin\frac{2\pi x}T +a_2\cos\frac{4\pi x}T +b_2\sin\frac{4\pi x}T +\cdots \tag{$\ast$}\]
+\[
+	f(x)\approx \frac{a_0}2+a_1\cos\frac{2\pi x}T +b_1\sin\frac{2\pi x}T +a_2\cos\frac{4\pi x}T +b_2\sin\frac{4\pi x}T +\cdots \tag{$\ast$}
+\]
 This is the \emph{Fourier series} of $f(x)$. Often taking only 10 terms results in a very good approximation. It is not important for this course, but if you know integration, these constants may be computed as follows
-\[a_n=\int_{-\frac T2}^{\frac T2} f(x)\cos\frac{2\pi nx}T\,\dx,\quad b_n=\int_{-\frac T2}^{\frac T2} f(x)\sin\frac{2\pi nx}T\,\dx\]
+\[
+	a_n=\int_{-\frac T2}^{\frac T2} f(x)\cos\frac{2\pi nx}T\,\dx,\quad b_n=\int_{-\frac T2}^{\frac T2} f(x)\sin\frac{2\pi nx}T\,\dx
+\]
 Modern data-compression algorithms often employ Fourier series. Given a period function $f(x)$, one uses a computer to estimate (say) the first 100 Fourier coefficients and transmits only these values. The receiver then recovers an approximation to the original function using $(\ast)$.
 
 \begin{example}{}{}
-A square-wave function with period $T=2\pi$ is given by
-\[f(x)=\begin{cases}
-1&\text{if }0<x\le \pi\\
--1&\text{if }\pi<x\le 0
-\end{cases}\]
-and then extended periodically to the real line. It can be checked that the Fourier coefficients are
-\[a_n=\int_{-\pi}^{\pi} f(x)\cos nx\,\dx=0,\quad b_n=\int_{-\pi}^{\pi} f(x)\sin nx\,\dx=\begin{cases}
-\frac 4{\pi n}&\text{if $n$ is odd}\\
-0&\text{if $n$ is even}
-\end{cases}\]
-Use a graphics tool to see how the first few terms of the series \href{https://www.math.uci.edu/~ndonalds/math121b/orth-fourier.html}{approximate the function!}
+	A square-wave function with period $T=2\pi$ is given by
+	\[
+		f(x)=
+		\begin{cases}
+			1&\text{if }0<x\le \pi\\
+			-1&\text{if }\pi<x\le 0
+		\end{cases}
+	\]
+	and then extended periodically to the real line. It can be checked that the Fourier coefficients are
+	\[
+		a_n=\int_{-\pi}^{\pi} f(x)\cos nx\,\dx=0,\quad b_n=\int_{-\pi}^{\pi} f(x)\sin nx\,\dx=
+		\begin{cases}
+			\frac 4{\pi n}&\text{if $n$ is odd}\\
+			0&\text{if $n$ is even}
+		\end{cases}
+	\]
+	Use a graphics tool to see how the first few terms of the series \href{https://www.math.uci.edu/~ndonalds/math121b/orth-fourier.html}{approximate the function.}
 \end{example}
 
 
 \begin{exercises}
-\exstart $f(x)=\sin x$ is also 1--1 on the interval $[\frac\pi 2,\frac{3\pi}2]$. Sketch the graph of its corresponding inverse function.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Draw the graph for cosine and observe that it is invertible if we restrict the domain to the interval $[0,\pi]$. Draw the graph of $\cos^{-1}$.
-  \item Describe all solutions to the equation $\cos x=-0.2$.
-  \item Explain why the tangent function has period $\pi$; that is $\tan(\theta+n\pi)=\tan \theta$. What facts are we using about sine and cosine and why are they obvious from the definition?
-  \item Describe all solutions to the equation $\tan x=5$.
-  
-  \item Use a computer to sketch the curve
-  \[y=2\left(\sin x-\frac 12\sin 2x+\frac 13\sin 3x-\frac 14\sin 4x+\frac 15\sin 5x\right)\]
-  What simple periodic function do you think this is approximating?
-\end{enumerate}
+	\exstart $f(x)=\sin x$ is also 1--1 on the interval $[\frac\pi 2,\frac{3\pi}2]$. Sketch the graph of its corresponding inverse function.
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Draw the graph for cosine and observe that it is invertible if we restrict the domain to the interval $[0,\pi]$. Draw the graph of $\cos^{-1}$.
+	  
+	  \item Describe all solutions to the equation $\cos x=-0.2$.
+	  
+	  \item Explain why the tangent function has period $\pi$; that is $\tan(\theta+n\pi)=\tan \theta$. What facts are we using about sine and cosine and why are they obvious from the definition?
+	  
+	  \item Describe all solutions to the equation $\tan x=5$.
+	  
+	  \item Use a computer to sketch the curve
+	  \[
+	  	y=2\left(\sin x-\frac 12\sin 2x+\frac 13\sin 3x-\frac 14\sin 4x+\frac 15\sin 5x\right)
+	  \]
+	  What simple periodic function do you think this is approximating?
+	\end{enumerate}
 \end{exercises}
 
 \clearpage
@@ -210,51 +239,61 @@ Use a graphics tool to see how the first few terms of the series \href{https://w
 Basic trigonometry often involves finding the edges and angles of a triangle given partial data.
 
 \begin{example}{}{easytree}
-To find the height $h$ of a tall tree, two angles of elevation \ang{45} and \ang{30} are measured a distance 20 ft apart along a straight line from the base of the trunk.\smallbreak
-This is easily attacked by drawing a picture and observing that we have two tight-triangles. If the (unknown) distance from the base of the tree to the nearer measurement is $x$, then\par
-\begin{minipage}[t]{0.54\linewidth}\vspace{-7pt}
-\[\frac 1{\sqrt 3}=\tan\ang{30}=\frac h{x+20}\qquad 1=\tan\ang{45}=\frac hx\]
-Substituting the second equation into the first returns
-\[h=\frac{20}{\sqrt 3-1}\approx 27.32\,\text{ft}\]
-\end{minipage}\hfill\begin{minipage}[t]{0.45\linewidth}\vspace{-12pt}
-\flushright\includegraphics{tree2}
-\end{minipage}\smallbreak
-In fact there is enough data in the problem to recover everything about the \textcolor{blue}{original triangle.}
-\begin{itemize}\itemsep2pt
-  \item The second base angle is ($\ang{180}-\ang{45}=\ang{135}$).
-  \item The third (summit) angle is $\ang{180}-\ang{30}-\ang{135}=\ang{15}$.
-  \item Two applications of Pythagoras compute the remaining sides of the triangle
-  \begin{gather*}
-  \sqrt{x^2+h^2}=\sqrt 2h=\frac{20\sqrt 2}{\sqrt 3-1}\approx 38.64\\
-  \sqrt{h^2+(x+20)^2}=\sqrt{h^2+3h^2}=2h=\frac{40}{\sqrt 3-1}\approx 54.64
-  \end{gather*}
-\end{itemize}
+	To find the height $h$ of a tall tree, two angles of elevation \ang{45} and \ang{30} are measured a distance 20 ft apart along a straight line from the base of the trunk.\smallbreak
+	This is easily attacked by drawing a picture and observing that we have two tight-triangles. If the (unknown) distance from the base of the tree to the nearer measurement is $x$, then\par
+	\begin{minipage}[t]{0.54\linewidth}\vspace{-7pt}
+		\[
+			\frac 1{\sqrt 3}=\tan\ang{30}=\frac h{x+20}\qquad 1=\tan\ang{45}=\frac hx
+		\]
+		Substituting the second equation into the first returns
+		\[
+			h=\frac{20}{\sqrt 3-1}\approx 27.32\,\text{ft}
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.45\linewidth}\vspace{-12pt}
+		\flushright\includegraphics{tree2}
+	\end{minipage}\smallbreak
+		In fact there is enough data in the problem to recover everything about the \textcolor{blue}{original triangle.}
+	\begin{itemize}\itemsep2pt
+	  \item The second base angle is ($\ang{180}-\ang{45}=\ang{135}$).
+	  \item The third (summit) angle is $\ang{180}-\ang{30}-\ang{135}=\ang{15}$.
+	  \item Two applications of Pythagoras compute the remaining sides of the triangle
+	  \begin{gather*}
+	  	\sqrt{x^2+h^2}=\sqrt 2h=\frac{20\sqrt 2}{\sqrt 3-1}\approx 38.64\\
+	  	\sqrt{h^2+(x+20)^2}=\sqrt{h^2+3h^2}=2h=\frac{40}{\sqrt 3-1}\approx 54.64
+	  \end{gather*}
+	\end{itemize}
 \end{example}
 
 \begin{minipage}[t]{0.7\textwidth}\vspace{-5pt}
-The example is just a disguised version of \emph{solving a triangle}: computing all six sides and angles of a triangle given three of them. The Euclidean triangle congruence theorems tell us which combinations are sufficient to determine all the others. The example is the ASA congruence: angle-side-angle data (\ang{30}--20--\ang{135}) is enough to compute everything else about the triangle.
-\end{minipage}\begin{minipage}[t]{0.3\textwidth}\vspace{-10pt}
-\flushright\includegraphics{euler}
+	The example is just a disguised version of \emph{solving a triangle}: computing all six sides and angles of a triangle given three of them. The Euclidean triangle congruence theorems tell us which combinations are sufficient to determine all the others. The example is the ASA congruence: angle-side-angle data (\ang{30}--20--\ang{135}) is enough to compute everything else about the triangle.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.29\textwidth}\vspace{-10pt}
+	\flushright\includegraphics{euler}
 \end{minipage}\medbreak
 
-When in doubt, you can always attack basic trigonometry problems as we did in the example: create a right-triangle, use the definitions of sin/cos/tan, and/or Pythagoras.
+When in doubt, you can always attack basic trigonometry problems as we did in the example: create a right-triangle, then use the definitions of sin/cos/tan and/or Pythagoras.
 
 \begin{example}{}{saseasy}
-Given the SAS (side-angle-side) combination 5--\ang{60}--9, find the third side of the triangle.\par
-\begin{minipage}[t]{0.7\textwidth}\vspace{-5pt}
-The altitude $h$ creates two right-triangles, from which
-\begin{gather*}
-h=5\sin\ang{60},\quad x=5\cos\ang{60}\\[5pt]
-\begin{aligned}
-\implies c^2&=(9-x)^2+h^2=9^2+(x^2+h^2)-18x\\
-&=9^2+5^2-18\cdot 5\cos\ang{60}=61
-\end{aligned}\\
-\implies c=\sqrt{61} \approx 7.81
-\end{gather*}
-\end{minipage}\begin{minipage}[t]{0.3\textwidth}\vspace{0pt}
-\flushright\includegraphics{exsas2}
-\end{minipage}\medbreak
-Since we now know $c$ and $9-x=\frac{13}2$ the remaining angles could also be easily found.
+	Given the SAS (side-angle-side) combination 5--\ang{60}--9, find the third side of the triangle.\par
+	\begin{minipage}[t]{0.7\textwidth}\vspace{-5pt}
+		The altitude $h$ creates two right-triangles, from which
+		\begin{gather*}
+			h=5\sin\ang{60},\quad x=5\cos\ang{60}\\[5pt]
+			\begin{aligned}
+				\implies c^2&=(9-x)^2+h^2=9^2+(x^2+h^2)-18x\\
+				&=9^2+5^2-18\cdot 5\cos\ang{60}=61
+			\end{aligned}\\
+			\implies c=\sqrt{61} \approx 7.81
+		\end{gather*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.29\textwidth}\vspace{0pt}
+		\flushright\includegraphics{exsas2}
+	\end{minipage}\medbreak
+	Since we now know $c$ and $9-x=\frac{13}2$ the remaining angles could also be easily found.
 \end{example}
 \goodbreak
 
@@ -263,99 +302,127 @@ In elementary situations it is typically easier to have students drop the perpen
 
 
 \begin{thm}{Sine and Cosine Rules}{}
-For any triangle,
-\[\frac{\sin A}a=\frac{\sin B}b=\frac{\sin C}c\ \ \text{ and }\ \ c^2=a^2+b^2-2ab\cos C\]
+	For any triangle,
+	\[
+		\frac{\sin A}a=\frac{\sin B}b=\frac{\sin C}c\ \ \text{ and }\ \ c^2=a^2+b^2-2ab\cos C
+	\]
 \end{thm}
 
-The cosine rule may be thought of as Pythagoras Theorem with a correction for non-right triangles. Both rules follow straightforwardly by drawing an altitude as before!
+The cosine rule is just the Pythagorean Theorem with a correction for non-right triangles. Both rules follow straightforwardly by drawing an altitude as before!
 
 \begin{proof}
-Consider the picture. We have\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{-11pt}
-\[h=a\sin C=c\sin A,\quad x=a\cos C,\quad b-x=c\cos A\]
-The first equation rearranges to
-\[\frac{\sin A}a=\frac{\sin C}c\]
-Two applications of Pythagoras give the cosine rule
-\end{minipage}\hfill\begin{minipage}[t]{0.39\linewidth}\vspace{-5pt}
-\flushright\includegraphics{sinerule}
-\end{minipage}\smallbreak
-\[c^2=h^2+(b-x)^2=h^2+x^2+b^2-2bx =a^2+b^2-2ab\cos C\]
-The remaining part of the sine rule and the other versions of the cosine rule are obtained by choosing other altitudes.
+	Consider the picture. We have\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-11pt}
+		\[
+			h=a\sin C=c\sin A,\quad x=a\cos C,\quad b-x=c\cos A
+		\]
+		The first equation rearranges to
+		\[
+			\frac{\sin A}a=\frac{\sin C}c
+		\]
+		Two applications of Pythagoras give the cosine rule
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-5pt}
+		\flushright\includegraphics{sinerule}
+	\end{minipage}\smallbreak
+	\[
+		c^2=h^2+(b-x)^2=h^2+x^2+b^2-2bx =a^2+b^2-2ab\cos C
+	\]
+	The remaining part of the sine rule and the other versions of the cosine rule are obtained by choosing other altitudes.
 \end{proof}
 
 
 Here are two examples where we use the rules instead of explicitly drawing an altitude.
 
 \begin{examples}{}{}
-\exstart A triangle has side lengths 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.\par
-\begin{enumerate}\setcounter{enumi}{1}
-\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
-\item[]This is SAS so we start by applying the cosine rule with $\textcolor{red}{a=2}$, $\textcolor{Green}{b=\sqrt 3-1}$ and $\textcolor{blue}{C=\ang{120}}$,
-    \begin{align*}
-    c^2&=a^2+b^2-2ab\cos C\\
-    &=2^2+(\sqrt 3-1)^2-2\cdot 2(\sqrt 3-1)\cos\ang{120} \\
-    &=4+3+1-2\sqrt 3+2(\sqrt 3-1) =6
-    \end{align*}
-  We now have an opposite pair $(\textcolor{blue}{c},\textcolor{blue}{C})=(\textcolor{blue}{\sqrt 6},\textcolor{blue}{\ang{120}})$, so the sine rule may be used
-    \[\sin A=\frac 2{\sqrt 6}\sin\ang{120}=\frac{2\sqrt 3}{2\sqrt 6}=\frac 1{\sqrt 2}\implies \textcolor{red}{A=\ang{45}}\]
-  We chose the acute angle since $A=\ang{180}-B-C=\ang{60}-B<\ang{90}$.\smallbreak
-  The final angle is then $\textcolor{Green}{B}=\ang{180}-\textcolor{red}{\ang{45}}-\textcolor{blue}{\ang{120}}=\textcolor{Green}{\ang{15}}$.
-\end{minipage}\hfill
-\begin{minipage}[t]{0.2\linewidth}\vspace{-8pt}
-\flushright\includegraphics{exsas}
-\end{minipage}
+	\exstart A triangle has side lengths 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.\par
+	\begin{enumerate}\setcounter{enumi}{1}
+		\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
+			\item[]This is SAS so we start by applying the cosine rule with $\textcolor{red}{a=2}$, $\textcolor{Green}{b=\sqrt 3-1}$ and $\textcolor{blue}{C=\ang{120}}$,
+		  \begin{align*}
+		    c^2&=a^2+b^2-2ab\cos C\\
+		    &=2^2+(\sqrt 3-1)^2-2\cdot 2(\sqrt 3-1)\cos\ang{120} \\
+		    &=4+3+1-2\sqrt 3+2(\sqrt 3-1) =6
+		  \end{align*}
+		  We now have an opposite pair $(\textcolor{blue}{c},\textcolor{blue}{C})=(\textcolor{blue}{\sqrt 6},\textcolor{blue}{\ang{120}})$, so the sine rule may be used
+		  \[
+		  	\sin A=\frac 2{\sqrt 6}\sin\ang{120}=\frac{2\sqrt 3}{2\sqrt 6}=\frac 1{\sqrt 2}\implies \textcolor{red}{A=\ang{45}}
+		  \]
+		  We chose the acute angle since $A=\ang{180}-B-C=\ang{60}-B<\ang{90}$.\smallbreak
+		  The final angle is then $\textcolor{Green}{B}=\ang{180}-\textcolor{red}{\ang{45}}-\textcolor{blue}{\ang{120}}=\textcolor{Green}{\ang{15}}$.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.2\linewidth}\vspace{-8pt}
+			\flushright\includegraphics{exsas}
+		\end{minipage}
 
-\goodbreak
-
-\item A triangle has one side with length 5 and its two adjacent angles are \ang{40} and \ang{65}. Find the remaining data.\par
-\begin{minipage}[t]{0.69\linewidth}\vspace{-5pt}
-This time the initial data is ASA. Writing $\textcolor{blue}{c=5}$, $\textcolor{red}{A=\ang{40}}$ and $\textcolor{Green}{B=\ang{65}}$, the remaining angle is plainly \[\textcolor{blue}{C}=\ang{180}-\textcolor{red}{\ang{40}}-\textcolor{Green}{\ang{65}}=\textcolor{blue}{\ang{75}}\]
-This gives us an opposite pair $(\textcolor{blue}{c,C})$, so we can apply the sine rule
-\[\textcolor{red}{a}=c\,\frac{\sin A}{\sin C}=\textcolor{blue}{5}\,\frac{\sin\textcolor{red}{\ang{40}}}{\sin\textcolor{blue}{\ang{75}}}\approx 3.327\]
-A second application yields
-\[b=c\,\frac{\sin B}{\sin c}=\textcolor{blue}{5}\,\frac{\sin\textcolor{Green}{\ang{65}}}{\sin\textcolor{blue}{\ang{75}}}\approx 4.691\]
-\end{minipage}\hfill\begin{minipage}[t]{0.3\linewidth}\vspace{-5pt}
-	\flushright\includegraphics{exasa}
-\end{minipage}
-\end{enumerate}
+		\goodbreak
+		
+		\item A triangle has one side with length 5 and its two adjacent angles are \ang{40} and \ang{65}. Find the remaining data.\par
+		\begin{minipage}[t]{0.69\linewidth}\vspace{-5pt}
+			This time the initial data is ASA. Writing $\textcolor{blue}{c=5}$, $\textcolor{red}{A=\ang{40}}$ and $\textcolor{Green}{B=\ang{65}}$, the remaining angle is plainly 
+			\[
+				\textcolor{blue}{C}=\ang{180}-\textcolor{red}{\ang{40}}-\textcolor{Green}{\ang{65}}=\textcolor{blue}{\ang{75}}
+			\]
+			This gives us an opposite pair $(\textcolor{blue}{c,C})$, so we can apply the sine rule
+			\[
+				\textcolor{red}{a}=c\,\frac{\sin A}{\sin C}=\textcolor{blue}{5}\,\frac{\sin\textcolor{red}{\ang{40}}}{\sin\textcolor{blue}{\ang{75}}}\approx 3.327
+			\]
+			A second application yields
+			\[
+				b=c\,\frac{\sin B}{\sin c}=\textcolor{blue}{5}\,\frac{\sin\textcolor{Green}{\ang{65}}}{\sin\textcolor{blue}{\ang{75}}}\approx 4.691
+			\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.3\linewidth}\vspace{-5pt}
+			\flushright\includegraphics{exasa}
+		\end{minipage}
+	\end{enumerate}
 \end{examples}
 
 
 
 \begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
-\boldsubsubsection{Multiple-angle Formulae}
-Also useful in the context of basic trigonometry is the ability to sum angles. The picture provides a simple justification of
-\[\sin(\alpha+\beta)=\textcolor{Green}{\sin\alpha\cos\beta} + \textcolor{blue}{\cos\alpha\sin\beta}\]
-at least when $0<\alpha+\beta<\frac\pi 2$. If you look carefully, you should be able to see how the same picture establishes
-\[\cos(\alpha+\beta)=\cos\alpha\cos\beta - \sin\alpha\sin\beta\]
-\end{minipage}\begin{minipage}[t]{0.4\textwidth}\vspace{0pt}
-\flushright\includegraphics[scale=0.85]{multipleangle}
+	\boldsubsubsection{Multiple-angle Formulae}
+	Also useful in the context of basic trigonometry is the ability to sum angles. The picture provides a simple justification of
+	\[
+		\sin(\alpha+\beta)=\textcolor{Green}{\sin\alpha\cos\beta} + \textcolor{blue}{\cos\alpha\sin\beta}
+	\]
+	at least when $0<\alpha+\beta<\frac\pi 2$. If you look carefully, you should be able to see how the same picture establishes
+	\[
+		\cos(\alpha+\beta)=\cos\alpha\cos\beta - \sin\alpha\sin\beta
+	\]
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\textwidth}\vspace{0pt}
+	\flushright\includegraphics[scale=0.85]{multipleangle}
 \end{minipage}
 
 \vfil
 
   
 \begin{exercises}{}{}
-\exstart Find the remaining angles in the triangle in Example \ref{ex:saseasy}; you'll need a calculator to convert to degrees.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item The other Euclidean congruence theorems are SSS and SAA. Explain how to solve triangles using these minimal data in two ways:
-  \begin{enumerate}
-    \item By drawing an altitude.
-    \item Using the sine/cosine rules.
-  \end{enumerate}
-
-  \item SSA isn't a triangle congruence theorem. For instance, there are \emph{two} non-congruent triangles with data $a=1$, $b=\sqrt 3$ and $A=\ang{30}$. Find them.
-
-
-  \item Use the multiple-angle formulae to derive the familiar expressions for $\sin 2\theta$ and $\cos 2\theta$.
-  
-  \item Find the exact value of $\sin\ang{105}$.
-  
-  \item\begin{enumerate}
-    \item Find an expression for $\tan(\alpha+\beta)$ purely in terms of $\tan\alpha$ and $\tan\beta$.
-  	 \item Two wooden wedges with slope $\frac 14$ are placed on top of each other to make a steeper slope. What is the gradient of the new slope?
-  \end{enumerate} 
-\end{enumerate}
+	\exstart Find the remaining angles in the triangle in Example \ref{ex:saseasy}; you'll need a calculator to convert to degrees.
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item The other Euclidean congruence theorems are SSS and SAA. Explain how to solve triangles using these minimal data in two ways:
+	  \begin{enumerate}
+	    \item By drawing an altitude.
+	    \item Using the sine/cosine rules.
+	  \end{enumerate}
+	
+	  \item SSA isn't a triangle congruence theorem. For instance, there are \emph{two} non-congruent triangles with data $a=1$, $b=\sqrt 3$ and $A=\ang{30}$. Find them.
+	
+	
+	  \item Use the multiple-angle formulae to derive the familiar expressions for $\sin 2\theta$ and $\cos 2\theta$.
+	  
+	  \item Find the exact value of $\sin\ang{105}$.
+	  
+	  \item\begin{enumerate}
+	    \item Find an expression for $\tan(\alpha+\beta)$ purely in terms of $\tan\alpha$ and $\tan\beta$.
+	  	 \item Two wooden wedges with slope $\frac 14$ are placed on top of each other to make a steeper slope. What is the gradient of the new slope?
+	  \end{enumerate} 
+	\end{enumerate}
 \end{exercises}
 
 
@@ -364,86 +431,108 @@ at least when $0<\alpha+\beta<\frac\pi 2$. If you look carefully, you should be 
 
 \subsection{Polar Co-ordinates}
 
-Definition \ref{defn:polarcoord} provides an alternative way to describe points in the plane. If $\theta$ is the polar angle of a point $(x,y)$, then its polar-coordinates are $(r,\theta)$ where $r=\sqrt{x^2+y^2}\ge 0$.\smallbreak
+Definition \ref{defn:polarcoord} provides an alternative way to describe points in the plane. If $\theta$ is the polar angle of a point with Cartesian (rectangular) co-ordinates $(x,y)$, then its polar-coordinates are precisely the values $(r,\theta)$ seen in the definition!\smallbreak
 
 Computing $x=r\cos\theta$ and $y=r\sin\theta$ is easy given $r$ and $\theta$.
 
 \begin{example}{}{polar}
-If a point has polar co-ordinates $\textcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$, then its Cartesian (rectangular) co-ordinates are
-\[\textcolor{blue}{(x,y)=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr) =\bigl(-\sqrt 3,1\bigr)}\]
+	A point with polar co-ordinates $\textcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
+	\[
+		\textcolor{blue}{(x,y)=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr) =\bigl(-\sqrt 3,1\bigr)}
+	\]
 \end{example}
 
-The problem with reversing such calculations is that your calculator can lead you astray if you don't \emph{think} and \emph{visualize.}  
+Computing polar co-ordinates from Cartesian is harder, requiring some \emph{visualization.}  
 \begin{enumerate}
-  \item Every point has a unique radius $r$, but the polar angle is non-unique! If $\theta$ is a polar angle, so is $\theta+2\pi n$ for any integer $n\in\Z$. The origin $(x,y)=(0,0)$ is even stranger; certainly $r=0$, but \emph{any} $\theta$ is a legitimate polar angle!
+  \item Every point $(x,y)$ has a unique radius $r=\sqrt{x^2+y^2}$, but not polar angle. If $\theta$ is a polar angle, so is $\theta+2\pi n$ for any integer $n\in\Z$. The origin $(x,y)=(0,0)$ is even stranger; certainly $r=0$, but \emph{any} $\theta$ is a legitimate polar angle!
   \item Whenever $x\neq 0$ (away from the $y$-axis),
-  \[\begin{cases}
-  x=r\cos\theta\\
-  y=r\sin\theta
-  \end{cases}\implies \tan\theta=\frac yx\]
+  \[
+  	\begin{cases}
+  		x=r\cos\theta\\
+  		y=r\sin\theta
+  	\end{cases}
+  	\implies \tan\theta=\frac yx
+  \]
 	however, this \emph{doesn't} guarantee that $\theta=\tan^{-1}\frac yx$. Continuing the example shows us why\ldots
 \end{enumerate}
 
 \begin{example*}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{\ref{ex:polar}, cont}{}
-If $\textcolor{blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy
-\[r=\sqrt{(\sqrt 3)^2+1^2}=2\]
-For the polar angle,
-\[\tan\theta=\frac yx=-\frac 1{\sqrt 3}=\tan\left(-\frac\pi 6\right)\notimplies \theta=\textcolor{orange}{-\frac\pi 6}\]
-Remember that arctan has range $(-\frac\pi 2,\frac\pi 2)$, so always returns an angle in quadrants 1 or 4. Our point is in the \emph{second} quadrant ($x<0<y$) so we need to adjust, using the fact that $\tan$ is $\pi$-periodic:
-\[\textcolor{blue}{\theta=\pi-\frac\pi 6=\frac{5\pi}6}\]
-Of course we could also add any integer multiple of $2\pi$.
-\tcblower
-\flushright\includegraphics{expolar}
+	If $\textcolor{blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy
+	\[
+		r=\sqrt{(\sqrt 3)^2+1^2}=2
+	\]
+	For the polar angle,
+	\[
+		\tan\theta=\frac yx=-\frac 1{\sqrt 3}=\tan\left(-\frac\pi 6\right)\notimplies \theta=\textcolor{orange}{-\frac\pi 6}
+	\]
+	Arctan has range $(-\frac\pi 2,\frac\pi 2)$, so always returns an angle in quadrants 1 or 4. Our point is in the \emph{second} quadrant ($x<0<y$) so we need to adjust, using the fact that $\tan$ is $\pi$-periodic:
+	\[
+		\textcolor{blue}{\theta=\pi-\frac\pi 6=\frac{5\pi}6} =\ang{150}
+	\]
+	We could alternatively add any integer multiple of $2\pi$.
+	\tcblower
+	\flushright\includegraphics{expolar}
 \end{example*}
 
 
 The example wasn't too tricky since the polar angle was exactly computable. When you have to rely on a calculator, it is much easier to make a mistake.
 
 \begin{example}{}{}
-The point $(x,y)=(-8,-15)$ has polar co-ordinates
-\[(r,\theta)=\bigl(17,\pi+\tan^{-1}\tfrac{15}8\bigr)\approx \bigl(17,\ang{241.93}\bigr)\]
+	The point $(x,y)=(-8,-15)$ has polar co-ordinates (quadrant 3!)
+	\[
+		r=\sqrt{8^2+15^2}=17,\qquad \theta=\pi+\tan^{-1}\tfrac{15}8\approx \ang{241.93}
+	\]
 \end{example}
 
 
 We could summarize with formulæ describing precisely how to compute $\theta$ dependent on quadrant (the signs of $x,y$), though it is better to get in to the habit of drawing a picture!
 
+\goodbreak
+
 
 \boldsubsubsection{Curves in Polar Co-ordinates}
 
-Polar co-ordinates are well-suited to describing curves that encircle the origin such as circles. Indeed the circles centered at the origin with radius $a>0$ has the very simple polar form $r=a$. Converting to rectangular co-ordinates recovers the the natural parametrization of a circle:
-\[x(\theta)=a\cos\theta,\quad y(\theta)=a\sin\theta\]
-This partly explains why sine and cosine are sometimes called \emph{circular functions.}\smallbreak
+Polar co-ordinates are well-suited to describing curves that encircle the origin. Indeed circles centered at the origin with radius $a>0$ have the very simple polar form $r=a$. Converting to rectangular co-ordinates recovers the the natural parametrization of a circle:
+\[
+	x(\theta)=a\cos\theta,\quad y(\theta)=a\sin\theta
+\]
+This partly explains why mathematicians call sine and cosine \emph{circular functions.}\smallbreak
 
-General polar graphs are harder to visualize, though the major reason is lack of familiarity. Have a little empathy: to graph \emph{polar} functions, you'll likely have to follow the same approach as students unfamiliar with \emph{Cartesian} graphs use to sketch $y=x^2$ for the first time! Here are a couple of examples.
+General polar graphs are harder to visualize, though the major reason is lack of familiarity. Have a little empathy: to graph \emph{polar} functions, you'll likely have to follow the same approach as new students use to sketch \emph{Cartesian} curves like $y=x^2$! Here are a couple of examples.
 
 \begin{examples}{}{}
-\exstart The curve $r=\theta$ is relatively easy to plot since $r$ increases at exactly the same rate as the angle; we therefore have a \emph{spiral.}\vspace{-5pt}
-\begin{enumerate}\setcounter{enumi}{1}
-  \item[]To confirm this, plot several points $(\theta,\theta)$; we've done for $\theta$ in multiples of $\frac\pi 6$ \ ($\ang{30}$) from 0 to $2\pi$. It is sensible to use `polar graph paper' with concentric circles separated by (say) $\frac\pi 2\approx 1.57$.
-  \begin{center}
-  \begin{tabular}{c@{\qquad\qquad}c}
-  	\begin{tabular}{c}
-  		\includegraphics{expolar2}\\
-  		$r=\theta$, \ $0\le \theta\le 2\pi$
-  	\end{tabular}
-  &
-  	\begin{tabular}{c}
-  		\includegraphics{expolar3}\\
-  		$r=2\sin\theta$, \ $0\le \theta\le\pi$\\[8pt]
-  		$\def\arraystretch{1.2}\begin{array}{|c|cccccc|}\hline
-\theta&\frac\pi 6&\frac{2\pi}3&\frac\pi 2&\frac{4\pi}3&\frac{5\pi}6&\pi\\\hline
-2\sin\theta&1&1.73&1&1.73&1&0\\\hline
-\end{array}$
-  	\end{tabular}
-  \end{tabular}
-  \end{center}
-  \item The curve $r=\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
-This looks like a circle! To see this, multiply both sides by $r$ and complete the square:
-\[
-r^2=2r\sin\theta\implies x^2+y^2=2y \implies x^2+(y-1)^2=1
-\]
-describes the set of points with distance 1 from the point $(0,1)$: a circle!
-\end{enumerate}
+	\exstart The curve $r=\theta$ is relatively easy to plot since $r$ increases at exactly the same rate as the angle; we therefore have a \emph{spiral.}\vspace{-5pt}
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]To confirm this, plot several points $(\theta,\theta)$; we've done for $\theta$ in multiples of $\frac\pi 6$ \ ($\ang{30}$) from 0 to $2\pi$. It is sensible to use `polar graph paper' with concentric circles separated by (say) $\frac\pi 2\approx 1.57$.
+	  \begin{center}
+	  	\begin{tabular}{c@{\qquad\qquad}c}
+	  		\begin{tabular}{c}
+	  			\includegraphics{expolar2}
+	  			\\
+	  			$r=\theta$, \ $0\le \theta\le 2\pi$
+	  		\end{tabular}
+	  		&
+	  		\begin{tabular}{c}
+	  			\includegraphics{expolar3}
+	  			\\
+	  			$r=2\sin\theta$, \ $0\le \theta\le\pi$
+	  			\\[8pt]
+	  			$\def\arraystretch{1.2}
+	  			\begin{array}{|c|cccccc|}\hline
+						\theta&\frac\pi 6&\frac{2\pi}3&\frac\pi 2&\frac{4\pi}3&\frac{5\pi}6&\pi\\\hline
+						2\sin\theta&1&1.73&1&1.73&1&0\\\hline
+					\end{array}$
+	  		\end{tabular}
+	  	\end{tabular}
+	  \end{center}
+	  
+	  \item The curve $r=\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
+		This looks like a circle! To see this, multiply both sides by $r$ and complete the square:
+		\[
+			r^2=2r\sin\theta\implies x^2+y^2=2y \implies x^2+(y-1)^2=1
+		\]
+		describes the set of points with distance 1 from the point $(0,1)$: a circle!
+	\end{enumerate}
 \end{examples}
 
 You should think about what happens in both examples if we extend the domain:
@@ -451,33 +540,35 @@ You should think about what happens in both examples if we extend the domain:
   \item What would $r=\theta$ look like if $\theta$ were allowed to be \emph{negative}?
   \item What happens to $r=2\sin\theta$ when $\theta>\pi$? 
 \end{itemize}
-\goodbreak
 
 
+\clearpage
 
 
 \begin{exercises}{}{}
-\exstart Convert the following points to polar co-ordinates.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item[]\begin{enumerate}
-    \item $(-5,5)$\qquad (b)\lstsp $(3,-4)$\qquad (c)\lstsp $(-5\sqrt 3,-15)$
-    \item[(d)] $(-1,\tan 3)$\quad (tricky---this is 3 radians!)
-  \end{enumerate}
-  
-  \item If $a>0$, describe the curve with polar equation $r=2a\cos\theta$.\par
-  (\emph{Be careful with $\theta>\frac\pi 2$ since cosine goes negative\ldots})
-  
-  \item The algebraic trickery in the last example sometimes bears fruit, though you have to be lucky! By multiplying both sides by $1-\sin\theta$ and converting to rectangular co-ordinates, show that the polar function
-	\[r(\theta)=\frac{2a}{1-\sin\theta}\]
-	is a parabola in disguise and sketch it when $a=1$. How does the graph depend on $a$?
-	 
-  \item Try to sketch the following curves.
-	\begin{enumerate}
-  \item $r=\theta(\theta-4)$\qquad (b)\lstsp $r=(\theta-1)^2+1$\qquad (c)\lstsp $r=(\theta-1)^2-1$
+	\exstart Convert the following points to polar co-ordinates.
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item[]\begin{enumerate}
+	    \item $(-5,5)$\qquad (b)\lstsp $(3,-4)$\qquad (c)\lstsp $(-5\sqrt 3,-15)$
+	    \item[(d)] $(-1,\tan 3)$\quad (tricky---this is 3 radians!)
+	  \end{enumerate}
+	  
+	  \item If $a>0$, describe the curve with polar equation $r=2a\cos\theta$.\par
+	  (\emph{Be careful with $\theta>\frac\pi 2$ since cosine goes negative\ldots})
+	  
+	  \item The algebraic trickery in the last example sometimes bears fruit, though you have to be lucky! By multiplying both sides by $1-\sin\theta$ and converting to rectangular co-ordinates, show that the polar function
+		\[
+			r(\theta)=\frac{2a}{1-\sin\theta}
+		\]
+		is a parabola in disguise and sketch it when $a=1$. How does the graph depend on $a$?
+		 
+	  \item Try to sketch the following curves.
+		\begin{enumerate}
+	  	\item $r=\theta(\theta-4)$\qquad (b)\lstsp $r=(\theta-1)^2+1$\qquad (c)\lstsp $r=(\theta-1)^2-1$
+		\end{enumerate}
+		As well as plotting points directly, you should sketch the curve first on rectangular axes (e.g.,{} (a) is $y=x(x-4)$). What happens to (c) when $\theta=1$?\par
+		Once you've tried these, use a \href{https://www.desmos.com/calculator}{grapher} to see if you're right, though see how close you can get without it! 
 	\end{enumerate}
-	As well as plotting points directly, you should sketch the curve first on rectangular axes (e.g.{} (a) is $y=x(x-4)$). What happens to (c) when $\theta=1$?\par
-	Once you've tried these, use a \href{https://www.desmos.com/calculator}{grapher} to see if you're right, though see how close you can get without it! 
-\end{enumerate}
 \end{exercises}
 
 
