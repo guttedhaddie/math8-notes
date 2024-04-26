@@ -5,63 +5,80 @@
 \section{Exponential and Logarithmic Functions \& Models}
 
 Introducing exponential functions without calculus presents a significant challenge. The simplest approach is as a short-hand notation for \emph{repeated multiplication}: for instance
-\[a^5=a\cdot a\cdot a\cdot a\cdot a\]
+\[
+	a^5=a\cdot a\cdot a\cdot a\cdot a
+\]
 analogous to how multiplication represents repeated addition
-\[5a=a+a+a+a+a\]
+\[
+	5a=a+a+a+a+a
+\]
 The problem with this approach is that it doesn't help you understand what should be meant by, say, $a^{3/4}$ or $a^{\sqrt 2}$: multiplying something by itself `$\sqrt 2$ times' sounds\footnote{The same issue arises for multiplication: $3\sqrt 2=\sqrt 2+\sqrt 2+\sqrt 2$ is relatively easy for grade-school students to understand, but how would you convince someone what $\pi\sqrt 2$ means?} insane!\smallbreak
 To rigorously address this problem requires \emph{continuity} and other ideas surrounding the foundations of calculus which you'll encounter in upper-division analysis; topics unsuitable for this course. Instead, we assume some familiarity with exponential functions via introductory calculus, where they are unavoidable and offer two ways to introduce exponential functions and $e$ via modelling.
+
 
 \subsection{The Natural Growth Model}
 
 A basic model for any variable quantity is that its \emph{rate of change be proportional to the quantity itself.} This idea necessarily needs some calculus; as a differential equation,
-\[\diff[y]{x}=ky\]
+\[
+	\diff[y]{x}=ky
+\]
 where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if $k<0$ the \emph{natural decay equation.} This is commonly encountered when modelling \emph{population growth}; an otherwise unconstrained population seems like its growth rate should be proportional to its size (twice the people, twice the babies\ldots). This model is hugely applicable, since \emph{population} can refer to essentially any quantifiable value: people, bacteria, money, reagents in a chemical/nuclear reaction, etc.\medbreak
 % 
 % We know what solutions to the natural growth model look like because we can sketch them: if the value $y(x)$ is known, the equation tells us the value of its \emph{derivative} $y'(x)=ky(x)$ and thus the \emph{direction} in which the solution curve is travelling.
 
 \begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.28\linewidth]{}{naturalgrowth}
-The simplest natural growth equation has $k=1$:
-\[\diff[y]{x}=y\]
-If a point $(x,y)$ lies on a \textcolor{Green}{solution curve,} then the differential equation tells us the \emph{direction of travel} of the solution. We may visualize this by drawing an arrow with \text{slope} $\diff[y]{x}=y$; the arrows are \emph{tangent} to any solution.\footnotemark{} You should easily be able to sketch some other solution curves.\smallbreak
-You should, of course, recognize the graph\ldots
-\tcblower
-\flushright\includegraphics[scale=1]{slopefields-01}
+	The simplest natural growth equation has $k=1$:
+	\[
+		\diff[y]{x}=y
+	\]
+	If a point $(x,y)$ lies on a \textcolor{Green}{solution curve,} then the differential equation tells us the \emph{direction of travel} of the solution. We may visualize this by drawing an arrow with \text{slope} $\diff[y]{x}=y$; the arrows are \emph{tangent} to any solution.\footnotemark{} You should easily be able to sketch some other solution curves.\smallbreak
+	You should, of course, recognize the graph\ldots
+	\tcblower
+	\flushright\includegraphics[scale=1]{slopefields-01}
 \end{example}
 
 \footnotetext{A similar approach is available for any first-order differential equation $\diff[y]{x}=F(x,y)$: the equation defines its \emph{slope field} (arrows), to which  solution curves must be tangent.}
 
 
 \begin{defn}{}{}
-Let $a>0$ be constant. The \emph{exponential function with base $a$} is $f(x)=a^x$.
+	Let $a>0$ be constant. The \emph{exponential function with base $a$} is $f(x)=a^x$.
 \end{defn}
 
 Recall the \emph{exponential laws}:\phantomsection\label{pg:explaws}
-\[\tcbhighmath{a^{x+y}=a^xa^y\qquad a^{x-y}=\frac{a^x}{a^y}\qquad (a^x)^r=a^{rx}}\]
+\[
+	\tcbhighmath{a^{x+y}=a^xa^y\qquad a^{x-y}=\frac{a^x}{a^y}\qquad (a^x)^r=a^{rx}}
+\]
 For modelling, the crucial property of exponential functions is that they have proportional derivative.
 
 \begin{thm}{}{}
-The rate of change of $f(x)=a^x$ is proportional to $f(x)$. Specifically,
-\[f'(x)=\lim_{h\to 0}\frac{a^{x+h}-a^x}h=a^x\lim_{h\to 0}\frac{a^{h}-1}h\]
-so that $f(x)=a^x$ satisfies the natural growth/decay equation $\diff[y]{x}=ky$ with proportionality constant
-\[k=f'(0)=\lim_{h\to 0}\frac{a^{h}-1}h\]
+	The rate of change of $f(x)=a^x$ is proportional to $f(x)$. Specifically,
+	\[
+		f'(x)=\lim_{h\to 0}\frac{a^{x+h}-a^x}h=a^x\lim_{h\to 0}\frac{a^{h}-1}h
+	\]
+	so that $f(x)=a^x$ satisfies the natural growth/decay equation $\diff[y]{x}=ky$ with proportionality constant
+	\[
+		k=f'(0)=\lim_{h\to 0}\frac{a^{h}-1}h
+	\]
 \end{thm}
 
 \goodbreak
 
 
 \begin{example}{}{}
-We estimate the proportionality constant $\displaystyle k=\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}$ to 3\,d.p.\ using a calculator for four values of $h$:
-\[\def\arraystretch{1.5}\begin{array}{c|cccccc}
-a&2&2.5&2.7&2.75&3&5\\\hline\hline
-\frac{a^{0.1}-1}{0.1}&0.718&0.960&1.044&1.065&1.161&1.746\\\hline
-\frac{a^{0.01}-1}{0.01}&0.696&0.921&0.998&1.017&1.105&1.622\\\hline
-\frac{a^{0.001}-1}{0.001}&0.693&0.917&0.994&1.012&1.099&1.611\\\hline
-\frac{a^{0.0001}-1}{0.0001}&0.693&0.916&0.993&1.012&1.099&1.610
-%\frac{a^{0.01}-1}{0.01}&0.696&&&&&\\\hline
-%\frac{a^{0.001}-1}{0.001}&0.693&&&&&
-\end{array}\]
-What is happening to the proportionality constant as $a$ increases? As $h$ decreases?\par
-
+	We estimate the proportionality constant $\displaystyle k=\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}$ to 3\,d.p.\ using a calculator for four values of $h$:
+	\[
+		\def\arraystretch{1.5}
+		\begin{array}{c|cccccc}
+			a&2&2.5&2.7&2.75&3&5\\\hline\hline
+			\frac{a^{0.1}-1}{0.1}&0.718&0.960&1.044&1.065&1.161&1.746\\\hline
+			\frac{a^{0.01}-1}{0.01}&0.696&0.921&0.998&1.017&1.105&1.622\\\hline
+			\frac{a^{0.001}-1}{0.001}&0.693&0.917&0.994&1.012&1.099&1.611\\\hline
+			\frac{a^{0.0001}-1}{0.0001}&0.693&0.916&0.993&1.012&1.099&1.610
+			%\frac{a^{0.01}-1}{0.01}&0.696&&&&&\\\hline
+			%\frac{a^{0.001}-1}{0.001}&0.693&&&&&
+		\end{array}
+	\]
+	What is happening to the proportionality constant as $a$ increases? As $h$ decreases?
 \end{example}
 
 It appears as if there is a special number somewhere between 2.7 and 2.75 for which the proportionality constant is precisely $k=1$.
@@ -71,88 +88,104 @@ It appears as if there is a special number somewhere between 2.7 and 2.75 for wh
 
 
 \begin{defn}{}{}
-The value $e=2.71828\ldots$ is the unique real number such that $\smash[b]{\lim\limits_{h\to 0}\frac{e^h-1}h =1}$.\smallbreak
-The \emph{natural\footnotemark{} exponential function} $\exp(x)=e^x$ has derivative $\diff xe^x=e^x$.
+	The value $e=2.71828\ldots$ is the unique real number such that $\smash[b]{\lim\limits_{h\to 0}\frac{e^h-1}h =1}$.\smallbreak
+	The \emph{natural\footnotemark{} exponential function} $\exp(x)=e^x$ has derivative $\diff xe^x=e^x$.
 \end{defn}
 
 \footnotetext{\emph{Natural} here means \emph{unavoidable}: an old cliche suggests that if aliens were to land on Earth, they'd have to understand $e$ given the technology they'd require to get here. Of course they'd likely use a different symbol; ours comes from Leonhard Euler around 1728. Like $\pi$ and $\sqrt 2$, the constant $e$ is an \emph{irrational number}: its decimal representation contains no repeating pattern. There isn't the same geeky fascination with memorizing the digits of $e$ as there is with $\pi$, neither is there an `$e$-day' (Feb 7\th{} at 6:28\,p.m.\ anyone?).}
 
 The function $f(x)=\frac 12e^x$ is plotted in Example \ref{ex:naturalgrowth}. Of course there are many other solutions to the natural growth equation $\smash{\diff[y]{x}=y}$: for any constants $c,k$,
-\[y=ce^{kx}\implies\diff[y]{x}=\diff x ce^{kx}=cke^{kx} = ky\]
+\[
+	y=ce^{kx}\implies\diff[y]{x}=\diff x ce^{kx}=cke^{kx} = ky
+\]
 In fact the converse also holds; for the details, take a differential equations course!
 
 \begin{thm}{}{natgrowth}
-The solutions to the natural growth equation $\diff[y]{x}=ky$ are precisely the functions
-\[y(x)=y_0e^{kx} =y_0\exp(kx)\]
-where $y_0=y(0)$ is the initial value.
+	The solutions to the natural growth equation $\diff[y]{x}=ky$ are precisely the functions
+	\[
+		y(x)=y_0e^{kx} =y_0\exp(kx)
+	\]
+	where $y_0=y(0)$ is the initial value.
 \end{thm}
 
 
 \begin{example}{}{}
-A Petri dish contains a population $P(t)$ of bacteria satisfying the natural growth equation $\diff[P]{t}=0.5P$ where time is measured in weeks from the start of the year.\par
-\begin{minipage}[t]{0.63\linewidth}\vspace{-2pt}
-If $P(0)=100$ bacteria, then $P(t)=100e^{0.5t}$. Specifically, at the end of January ($4\frac 37$ weeks) one expects there to be
-\[P(\tfrac{31}7)=100\exp\tfrac{31}{14}=915\text{ bacteria}\]
-Note that the exponential doesn't return 915 exactly; this is only an approximation. Models like this work best for large populations where integer rounding errors are of minimal concern.
-\end{minipage}\hfill\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
-	\flushright\includegraphics{bacteria}
-\end{minipage}
+	A Petri dish contains a population $P(t)$ of bacteria satisfying the natural growth equation $\diff[P]{t}=0.5P$ where time is measured in weeks from the start of the year.\par
+	\begin{minipage}[t]{0.63\linewidth}\vspace{-2pt}
+		If $P(0)=100$ bacteria, then $P(t)=100e^{0.5t}$. Specifically, at the end of January ($4\frac 37$ weeks) one expects there to be
+		\[
+			P(\tfrac{31}7)=100\exp\tfrac{31}{14}=915\text{ bacteria}
+		\]
+		Note that the exponential doesn't return 915 exactly; this is only an approximation. Models like this work best for large populations where integer rounding errors are of minimal concern.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
+		\flushright\includegraphics{bacteria}
+	\end{minipage}
 \end{example}
 
 
 \boldsubsubsection{Compound Interest and the Discovery of $e$}
 
-The first description of $e$ came in 1683 when Jacob Bernoulli tried ot model the growth of money in a hypothetical account. We give a modernized version of his approach.
+The first description of $e$ came in 1683 when Jacob Bernoulli tried to model the growth of money in a hypothetical bank account. We give a modernized version of his approach.
 
 \begin{example}{}{}
-You deposit \$1 in an account paying 100\% interest per year (nice!). Bernoulli observed that the money in the account at the end of the year will depend on \emph{when} the interest is paid.
-\begin{itemize}
-  \item If the interest is paid once at the end of the year (`simple' interest), you'll have \$2.
-  \item If half the interest 50\textcent\ is paid at six months, then the balance (\$1.50) earns $\frac 12\cdot 1.50=75$\textcent\ interest for the rest of the year; you'll finish the year with \$2.25.
-  \item If the interest is paid in four installments, we have the following table of transactions (data is rounded to the nearest cent)
-  \begin{quote}
-  \begin{tabular}{c|c|c}
-  Date&Interest Paid&Balance\\\hline\hline
-  1\st\ Jan&---&\$1\\\hline
-  31\st\ Mar&25\textcent&\$1.25\\\hline
-  30\th\ June&$\frac 14\cdot 1.25=31$\textcent&\$1.56\\\hline
-  30\th\ Sept&$\frac 14\cdot 1.56=39$\textcent&\$1.95\\\hline
-  Year's end&$\frac 14\cdot 1.95=49$\textcent&\$2.44
-  \end{tabular}
-  \end{quote}
-  More succinctly, the year-end balance is $\left(1+\frac 14\right)^4=$ \textdollar 2.44.
-  \goodbreak
-  
-  \item More generally, if the interest is paid over $n$ equally spaced intervals, the account balance at the end of the year would be \textdollar$\left(1+\frac 1n\right)^n$. Here are a few examples rounded things to 5\,d.p.
-  \begin{quote}\def\arraystretch{1.5}
-  \begin{tabular}{l|l}
-  Frequency&End of year balance (\textdollar)\\\hline\hline
-  Every month&$\left(1+\frac 1{12}\right)^{12}=2.61304$\\\hline
-  Every day&$\left(1+\frac 1{365}\right)^{365}=2.71457$\\\hline
-  Every hour&$\left(1+\frac 1{8760}\right)^{8760}=2.71813$\\\hline
-  Every second&$\left(1+\frac 1{31536000}\right)^{31536000}=2.71828$
-  \end{tabular}
-  \end{quote}
- 	As the frequency of payment increases, it appears as if the balance is increasing to \textdollar$e$.
-\end{itemize}
+	\$1 is deposited in an account paying 100\% interest per year (nice!). Bernoulli observed that the money in the account at the end of the year depends on \emph{when} the interest is paid.
+	\begin{itemize}
+	  \item If the interest is paid once at the end of the year (this is called \emph{simple} interest), you'll have \$2.
+	  \item If half the interest (50\textcent) is paid at six months, then the balance (\$1.50) earns $\frac 12\cdot 1.50=75$\textcent\ interest for the rest of the year; you'll finish the year with \$2.25 in the account.
+	  \item If the interest is paid in four installments, we have the following table of transactions (data is rounded to the nearest cent)
+	  \begin{quote}
+		  \begin{tabular}{c|c|c}
+			  Date&Interest Paid&Balance\\\hline\hline
+			  1\st\ Jan&---&\$1\\\hline
+			  1\st\ Apr&25\textcent&\$1.25\\\hline
+			  1\st\ July&$\frac 14\cdot 1.25=31$\textcent&\$1.56\\\hline
+			  1\st\ Oct&$\frac 14\cdot 1.56=39$\textcent&\$1.95\\\hline
+			  New Year&$\frac 14\cdot 1.95=49$\textcent&\$2.44
+		  \end{tabular}
+	  \end{quote}
+	  More succinctly, the year-end balance is $\left(1+\frac 14\right)^4=$ \textdollar 2.44.
+	  \goodbreak
+	  
+	  \item More generally, if the interest is paid over $n$ equally spaced intervals, the account balance at the end of the year would be \textdollar$\left(1+\frac 1n\right)^n$. Here are a few examples rounded things to 5\,d.p.
+	  \begin{quote}
+	  	\def\arraystretch{1.5}
+		  \begin{tabular}{l|l}
+			  Frequency&Balance after 1 year (\textdollar)\\\hline\hline
+			  Every month&$\left(1+\frac 1{12}\right)^{12}=2.61304$\\\hline
+			  Every day&$\left(1+\frac 1{365}\right)^{365}=2.71457$\\\hline
+			  Every hour&$\left(1+\frac 1{8760}\right)^{8760}=2.71813$\\\hline
+			  Every second&$\left(1+\frac 1{31536000}\right)^{31536000}=2.71828$
+		  \end{tabular}
+	  \end{quote}
+	 	As the frequency of payment increases, it appears as if the balance is increasing to \textdollar$e$\ldots
+	\end{itemize}
 \end{example}
 
+
 In fact this is a theorem, though it requires significant work (beyond this class) to prove it:
-\[\tcbhighmath{e=\lim_{n\to\infty}\left(1+\frac 1n\right)^n\quad\text{and more generally}\quad e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n}\]
-More importantly, this again shows that $e$ arises very naturally. It is moreover common in finance to compute compound interest \emph{continuously;} a continuous interest rate of $r$\%\ per year results in an initial balance of $y_0$ becoming
-\[y(t)=y_0\exp\frac{rt}{100} =y_0\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n\]
+\[
+	\tcbhighmath{e=\lim_{n\to\infty}\left(1+\frac 1n\right)^n\quad\text{and more generally}\quad e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n}
+\]
+This again shows that $e$ arises very naturally. It is common in finance to compute compound interest \emph{continuously;} a continuous interest rate of $r$\%\ per year means that an initial balance of $y_0$ becomes
+\[
+	y(t)=y_0\exp\frac{rt}{100} =y_0\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n
+\]
 after $t$ years. There are several reasons for this approach, not all of them consumer-friendly:
 \begin{enumerate}\itemsep0pt
-  \item The balance of an account can be found easily at any time.
+  \item The balance of an account can be found easily at any time, without worrying how to compute balances part-way between interest payment dates. 
   \item The power of calculus can straightforwardly be brought to bear.
   \item A company can make an interest rate appear \emph{higher} (if a savings account) or \emph{lower} (if a loan) by choosing how to quote the interest rate.
 \end{enumerate}
 
 
 \begin{example}{}{}
-A loan continuously compounded at 7\%\ has an \emph{effective interest rate}\footnotemark{} of
-\[e^{0.07}-1=7.25\%\]
-If you borrow \textdollar 100,000, then at the end of the year you will owe \textdollar 107,250, not the \textdollar 107,000 you might have expected!
+	A bank quotes you a loan with a continuously compounded interest rate of 7\%. If you borrow \textdollar 100,000, then at the end of the year you'll owe
+	\[
+		100000e^{0.07} =\$107,250.82
+	\]
+	not the \$107,000 you might have expected! This corresponds to a \emph{simple interest rate} (one payment at the end of the year) of 7.25\%.\footnotemark{}
 \end{example}
 
 \footnotetext{In the US, mortgage companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,

@@ -135,20 +135,22 @@ Otherwise said, sine and cosine have period $2\pi$. It is now easy to draw the g
 \end{minipage}
 
 \begin{example}{}{}
-	If you know the graphs, then symmetry helps you solve equations. For example, if $\sin x=\frac 9{10}$ then all solutions are given by
+	If you know the graphs, then symmetry and periodicity helps you solve equations. For example, if $\sin \theta=\frac 9{10}$ then all solutions are given by
 	\[
-		x=\sin^{-1}\frac 9{10}+2\pi n\quad\text{and}\quad \pi-\sin^{-1}\frac 9{10}+2\pi n
+		\theta=\sin^{-1}\frac 9{10}+2\pi n
+		\quad\text{or}\quad 
+		\pi-\sin^{-1}\frac 9{10}+2\pi n \tag{$n$ is any integer}
 	\]
-	where $n$ is any integer.
 	\begin{center}
-		\includegraphics{invsine3}
+		\includegraphics[scale=1]{invsine3}
 	\end{center}
+	Alternatively, we could use the circle definition: $\sin\theta=\frac 9{10}$ means we want angles $\theta$ corresponding to the intersections of the unit circle with the \emph{horizontal line} $y=\frac 9{10}$ (why?).
 \end{example}
 
 
 \boldinline{Periodic Models}
 
-The major application of trigonometric functions to modelling is the fact that they are \emph{periodic.}
+Trig functions find applications in modelling because they are \emph{periodic.}
 
 \begin{example}{}{}
 	The tide is a periodic function of time. At a particular location, suppose high tide occurs at 6:00 with a water depth of 10\,ft and that low tide occurs 12:12 with a depth of 4\,ft. The tide might be modelled by the periodic function
@@ -336,16 +338,16 @@ The cosine rule is just the Pythagorean Theorem with a correction for non-right 
 Here are two examples where we use the rules instead of explicitly drawing an altitude.
 
 \begin{examples}{}{}
-	\exstart A triangle has side lengths 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.\par
+	\exstart A triangle has sides 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.%\par
 	\begin{enumerate}\setcounter{enumi}{1}
-		\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
-			\item[]This is SAS so we start by applying the cosine rule with $\textcolor{red}{a=2}$, $\textcolor{Green}{b=\sqrt 3-1}$ and $\textcolor{blue}{C=\ang{120}}$,
+		\item[] We apply the cosine rule with $\textcolor{red}{a=2}$, $\textcolor{Green}{b=\sqrt 3-1}$ and $\textcolor{blue}{C=\ang{120}}$\par
+		\begin{minipage}[t]{0.79\linewidth}\vspace{-20pt}
 		  \begin{align*}
 		    c^2&=a^2+b^2-2ab\cos C\\
 		    &=2^2+(\sqrt 3-1)^2-2\cdot 2(\sqrt 3-1)\cos\ang{120} \\
 		    &=4+3+1-2\sqrt 3+2(\sqrt 3-1) =6
 		  \end{align*}
-		  We now have an opposite pair $(\textcolor{blue}{c},\textcolor{blue}{C})=(\textcolor{blue}{\sqrt 6},\textcolor{blue}{\ang{120}})$, so the sine rule may be used
+		  We have an opposite pair $(\textcolor{blue}{c},\textcolor{blue}{C})=(\textcolor{blue}{\sqrt 6},\textcolor{blue}{\ang{120}})$, so the sine rule may be used
 		  \[
 		  	\sin A=\frac 2{\sqrt 6}\sin\ang{120}=\frac{2\sqrt 3}{2\sqrt 6}=\frac 1{\sqrt 2}\implies \textcolor{red}{A=\ang{45}}
 		  \]
@@ -353,9 +355,11 @@ Here are two examples where we use the rules instead of explicitly drawing an al
 		  The final angle is then $\textcolor{Green}{B}=\ang{180}-\textcolor{red}{\ang{45}}-\textcolor{blue}{\ang{120}}=\textcolor{Green}{\ang{15}}$.
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.2\linewidth}\vspace{-8pt}
+		\begin{minipage}[t]{0.2\linewidth}\vspace{-28pt}
 			\flushright\includegraphics{exsas}
-		\end{minipage}
+		\end{minipage}\smallbreak
+		
+		You could instead drop a perpendicular, say from the vertex $A$ to the \emph{extension} of the side of length 2. Think about why the perpendicular has to be \emph{outside} the triangle\ldots
 
 		\goodbreak
 		
@@ -526,7 +530,7 @@ General polar graphs are harder to visualize, though the major reason is lack of
 	  	\end{tabular}
 	  \end{center}
 	  
-	  \item The curve $r=\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
+	  \item The curve $r=2\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
 		This looks like a circle! To see this, multiply both sides by $r$ and complete the square:
 		\[
 			r^2=2r\sin\theta\implies x^2+y^2=2y \implies x^2+(y-1)^2=1
@@ -624,36 +628,5 @@ This is \emph{independent} of the type of conic, and even works when $e=0$; $r=2
 % 
 % Angle of cone/plane gives eccentricity.
 
-
-%Trig functions after and use them to parametrise conics
-
-% Do polar co-ords and complex numbers to normalize?
-
-% \begin{example}{}{}
-% Real world data is unlikely to be so compliant. If we have the 
-% \end{example}
-
 % AFTER MIDTERM: conic sections. Parabola, ellipse and hyperbola old-school style. reflections, etc. Mirror. Planet orbits? Gauss and regression/normal distribution.
 
-% Exponentials are an invaluable 
-% 
-% If we think that we have data which appears to be growing 
-
-% \boldsubsubsection{Periodic Functions and Trigonometry}
-% 
-% \begin{defn}{}{}
-% A function $f$ is \emph{periodic} with period $T$ if, for all $x\in\dom f$,
-% \[f(x+T)=f(x)\]
-% \end{defn}
-% 
-% \begin{example}{}{}
-% The \emph{floor} $\lfloor x\rfloor$ of a real number $x$ is the largest integer less than or equal to $x$. For example
-% \[\lfloor 2.5\rfloor =2,\qquad \lfloor \pi\rfloor=3,\qquad\lfloor -\sqrt 2\rfloor=-2,\qquad \lfloor -11\rfloor=-11\]
-% Since $\lfloor x+1\rfloor=1+\lfloor x\rfloor$ for any $x$, the \emph{fractional part} function $f(x)=x-\lfloor x\rfloor$ is periodic with period 1, since
-% \[f(x+1)=f(x)\]
-% \end{example}
-% 
-% \begin{defn}{Trig functions}{}
-% The basic trig functions are periodic: measure the angle counter-clockwise from the positive real axis.
-% \end{defn}
-% 
