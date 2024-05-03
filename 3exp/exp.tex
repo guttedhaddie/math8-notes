@@ -109,6 +109,7 @@ In fact the converse also holds; for the details, take a differential equations 
 \end{thm}
 
 
+
 \begin{example}{}{}
 	A Petri dish contains a population $P(t)$ of bacteria satisfying the natural growth equation $\diff[P]{t}=0.5P$ where time is measured in weeks from the start of the year.\par
 	\begin{minipage}[t]{0.63\linewidth}\vspace{-2pt}
@@ -168,31 +169,58 @@ In fact this is a theorem, though it requires significant work (beyond this clas
 \[
 	\tcbhighmath{e=\lim_{n\to\infty}\left(1+\frac 1n\right)^n\quad\text{and more generally}\quad e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n}
 \]
-This again shows that $e$ arises very naturally. It is common in finance to compute compound interest \emph{continuously;} a continuous interest rate of $r$\%\ per year means that an initial balance of $y_0$ becomes
-\[
-	y(t)=y_0\exp\frac{rt}{100} =y_0\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n
-\]
-after $t$ years. There are several reasons for this approach, not all of them consumer-friendly:
+This again shows that $e$ arises very naturally.
+
+\boldinline{Simple, Monthly \& Continuous Interest}
+
+In finance, interest is typically computed in one of three ways. In each case we describe the result of investing \$1 at an interest rate of $r\%=\frac r{100}$ per year.
+\begin{description}
+	\item[\normalfont\emph{Simple interest}] You are paid $\frac r{100}$ dollars at the end of the year. Your invested dollar becomes $1+\frac r{100}$ dollars.
+	\item[\normalfont\emph{Monthly interest}] Each month you are paid $\frac r{12}$\% of your current balance. This amounts to a balance of $(1+\frac r{1200})^{12}$ dollars at year's end. The period need not be monthly: if interest is paid in $n$ installments, the balance would be $(1+\frac r{100n})^{n}$.
+	\item[\normalfont\emph{Continuous interest}] After $t$ years (can be any fraction of a year!) your dollar-balance is
+	\[
+		e^{\frac{rt}{100}}=\exp\frac{rt}{100} =\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n
+	\]
+\end{description}
+
+\begin{example}{}{}
+	A bank account earns 6\% annual interest paid monthly. To what simple interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
+	At the end of the year, \$1 becomes
+	\[
+	 	\left(1+{0.06}{12}\right)^{12}=1.005^{12}\approx 1.06168\ldots
+	\]
+	corresponding to a simple interest rate of 6.17\%. By cobntrast, 6\% continuous interest would result in your dollar becoming $e^{6/100}\approx 1.06184$, corresponding to a (marginally) higher simple interest rate of 6.18\%. You should prefer this, particularly if you have a lot of money to invest! The difference is more noticable with an investment of \$1000 over ten years:
+	\[
+		1000\times 1.005^{120}=\$1819.40
+		\quad\text{versus}\quad
+		1000e^{0.6}=\$1822.12
+	\]
+\end{example}
+
+\goodbreak
+
+There are several reasons for these varying approaches, not all of them consumer-friendly:
 \begin{enumerate}\itemsep0pt
-  \item The balance of an account can be found easily at any time, without worrying how to compute balances part-way between interest payment dates. 
-  \item The power of calculus can straightforwardly be brought to bear.
-  \item A company can make an interest rate appear \emph{higher} (if a savings account) or \emph{lower} (if a loan) by choosing how to quote the interest rate.
+  \item Simple interest is simple! It is easy to understand and compute, but hard to decide how or even whether to compute interest for parts of a year.
+  \item Monthly interest fits with most paychecks, so is sensible for loans, particularly mortgages.
+  \item Continuous interest allows the balance of an account to be found easily at any time, even between interest payment dates. It is also much easier to apply mathematical analysis (calculus).
+  \item A company can make an interest rate appear \emph{higher} (if a savings account) or \emph{lower} (if a loan) by choosing which way to quote an interest rate.
 \end{enumerate}
 
 
 \begin{example}{}{}
 	A bank quotes you a loan with a continuously compounded interest rate of 7\%. If you borrow \textdollar 100,000, then at the end of the year you'll owe
-	\[
-		100000e^{0.07} =\$107,250.82
-	\]
-	not the \$107,000 you might have expected! This corresponds to a \emph{simple interest rate} (one payment at the end of the year) of 7.25\%.\footnotemark{}
+		\[
+			100000e^{0.07} =\$107,250.82
+		\]
+		not the \$107,000 you might have expected! This corresponds to a simple interest rate (one payment at the end of the year) of 7.25\%.\footnotemark{}
 \end{example}
 
 \footnotetext{In the US, mortgage companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,
   then the effective annual (simple) interest rate is $\left(1+\frac{0.07}{12}\right)^{12}-1=7.229\%$.
   By law, this higher \emph{effective APR} must be quoted somewhere, though it is unlikely to be as prominently posted\ldots}
 
-\clearpage
+
 
 \begin{exercises}{}{}
 \exstart Draw a slope field for the natural decay equation $\diff[y]{x}=-\frac 13y$ and use it to sketch the solution curve with initial condition $y(0)=6$. What is the \emph{function} $y(x)$ in this case?
@@ -233,6 +261,7 @@ after $t$ years. There are several reasons for this approach, not all of them co
 
 
 \clearpage
+
 
 
 \subsection{Logarithmic Functions}
