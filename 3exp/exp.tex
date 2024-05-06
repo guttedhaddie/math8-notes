@@ -12,7 +12,7 @@ analogous to how multiplication represents repeated addition
 \[
 	5a=a+a+a+a+a
 \]
-The problem with this approach is that it doesn't help you understand what should be meant by, say, $a^{3/4}$ or $a^{\sqrt 2}$: multiplying something by itself `$\sqrt 2$ times' sounds\footnote{The same issue arises for multiplication: $3\sqrt 2=\sqrt 2+\sqrt 2+\sqrt 2$ is relatively easy for grade-school students to understand, but how would you convince someone what $\pi\sqrt 2$ means?} insane!\smallbreak
+The problem with this approach is that it doesn't help you understand what should be meant by, say, $a^{3/4}$ or $a^{\sqrt 2}$: multiplying something by itself `$\sqrt 2$ times' sounds\footnote{The same issue arises for multiplication: $3\sqrt 2=\sqrt 2+\sqrt 2+\sqrt 2$ is relatively easy to understand, but how would you convince someone what $\pi\sqrt 2$ means?} insane!\smallbreak
 To rigorously address this problem requires \emph{continuity} and other ideas surrounding the foundations of calculus which you'll encounter in upper-division analysis; topics unsuitable for this course. Instead, we assume some familiarity with exponential functions via introductory calculus, where they are unavoidable and offer two ways to introduce exponential functions and $e$ via modelling.
 
 
@@ -44,10 +44,11 @@ where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if
 	Let $a>0$ be constant. The \emph{exponential function with base $a$} is $f(x)=a^x$.
 \end{defn}
 
-Recall the \emph{exponential laws}:\phantomsection\label{pg:explaws}
+Recall the \emph{exponential laws,}\phantomsection\label{pg:explaws} which are very natural when $x,y,r$ are positive integers:
 \[
 	\tcbhighmath{a^{x+y}=a^xa^y\qquad a^{x-y}=\frac{a^x}{a^y}\qquad (a^x)^r=a^{rx}}
 \]
+These hold for all exponents, with the same continuity caveats we saw previously. 
 For modelling, the crucial property of exponential functions is that they have proportional derivative.
 
 \begin{thm}{}{}
@@ -173,7 +174,7 @@ This again shows that $e$ arises very naturally.
 
 \boldinline{Simple, Monthly \& Continuous Interest}
 
-In finance, interest is typically computed in one of three ways. In each case we describe the result of investing \$1 at an interest rate of $r\%=\frac r{100}$ per year.
+In finance, interest is typically computed in one of three ways. In each case we describe the result of investing \$1 at an annual interest rate of $r\%=\frac r{100}$.
 \begin{description}
 	\item[\normalfont\emph{Simple interest}] You are paid $\frac r{100}$ dollars at the end of the year. Your invested dollar becomes $1+\frac r{100}$ dollars.
 	\item[\normalfont\emph{Monthly interest}] Each month you are paid $\frac r{12}$\% of your current balance. This amounts to a balance of $(1+\frac r{1200})^{12}$ dollars at year's end. The period need not be monthly: if interest is paid in $n$ installments, the balance would be $(1+\frac r{100n})^{n}$.
@@ -184,7 +185,7 @@ In finance, interest is typically computed in one of three ways. In each case we
 \end{description}
 
 \begin{example}{}{}
-	A bank account earns 6\% annual interest paid monthly. To what simple interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
+	A bank account earns 6\% annual interest paid monthly. To what simple annual interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
 	At the end of the year, \$1 becomes
 	\[
 	 	\left(1+{0.06}{12}\right)^{12}=1.005^{12}\approx 1.06168\ldots
@@ -226,7 +227,7 @@ There are several reasons for these varying approaches, not all of them consumer
 \exstart Draw a slope field for the natural decay equation $\diff[y]{x}=-\frac 13y$ and use it to sketch the solution curve with initial condition $y(0)=6$. What is the \emph{function} $y(x)$ in this case?
 
 \begin{enumerate}\setcounter{enumi}{1}
-  \item Which of the following would you prefer for a savings account, and why?
+  \item Which of the following would you prefer for a savings account? Why?
 	\begin{itemize}
   	\item 5\% interest paid continuously. %5.127
   	\item 5.05\% compounded monthly. %5.168
@@ -240,7 +241,7 @@ There are several reasons for these varying approaches, not all of them consumer
     %\item To what \emph{continuous} rate of interest is 4\% equivalent?
     \item If you close the account after 2 years and 3 months, the bank needs to decide how much interest to credit you with. Do this is two ways (the answers will be different!):
     \begin{enumerate}
-      \item Compute using the simple interest rate for 2.25 years.
+      \item Compute using the simple interest rate for 2.25 years ($(1+\frac r{100})^{2.25}$).
       \item Suppose that interest is paid at 4\% for all completed years and then at 4\% paid monthly for any completed months of an incomplete year. Find the balance of the account at closing.
     \end{enumerate}
 	\end{enumerate}
