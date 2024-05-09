@@ -1,5 +1,3 @@
-%PUT IN MUCH MORE COMPOUND INTEREST STUFF FOR NEXT YEAR - ALSO MISSING SOME MORE QUESTIONS OF EXP MODELS FROM HW
-
 \graphicspath{{3exp/asy/}}
 
 \section{Exponential and Logarithmic Functions \& Models}
@@ -22,9 +20,8 @@ A basic model for any variable quantity is that its \emph{rate of change be prop
 \[
 	\diff[y]{x}=ky
 \]
-where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if $k<0$ the \emph{natural decay equation.} This is commonly encountered when modelling \emph{population growth}; an otherwise unconstrained population seems like its growth rate should be proportional to its size (twice the people, twice the babies\ldots). This model is hugely applicable, since \emph{population} can refer to essentially any quantifiable value: people, bacteria, money, reagents in a chemical/nuclear reaction, etc.\medbreak
-% 
-% We know what solutions to the natural growth model look like because we can sketch them: if the value $y(x)$ is known, the equation tells us the value of its \emph{derivative} $y'(x)=ky(x)$ and thus the \emph{direction} in which the solution curve is travelling.
+where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if $k<0$ the \emph{natural decay equation.} This is commonly encountered when modelling \emph{population growth}; an otherwise unconstrained population seems like its growth rate should be proportional to its size (twice the people, twice the babies\ldots). This model is hugely applicable, since \emph{population} can refer to essentially any quantifiable value: people, bacteria, money, reagents in a chemical/nuclear reaction, etc.
+
 
 \begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.28\linewidth]{}{naturalgrowth}
 	The simplest natural growth equation has $k=1$:
@@ -245,18 +242,15 @@ There are several reasons for these varying approaches, not all of them consumer
       \item Suppose that interest is paid at 4\% for all completed years and then at 4\% paid monthly for any completed months of an incomplete year. Find the balance of the account at closing.
     \end{enumerate}
 	\end{enumerate}
-	
-	
-% 	\item Suppose that $\lim\limits_{h\to 0}\frac{a^h-1}h=k$. What is the limit if $a$ is replaced by $a^2$?
+
 
   \item See if you can explain why the proportionality constant for $\left(\frac 1a\right)^x$ is \emph{negative} that for $a^x$: that is,
-  \[\lim_{h\to 0}\frac{(\frac 1a)^h-1}h=-\lim_{h\to 0}\frac{a^h-1}h\]
+  \[
+  	\lim_{h\to 0}\frac{(\frac 1a)^h-1}h=-\lim_{h\to 0}\frac{a^h-1}h
+  \]
   Try to find both an \emph{algebraic} reason and a \emph{pictorial} one.
   
   \item Sketch the function $f(x)=e^{-x^2}$. Where have you seen this before, and what uses does this function have?
-  
-%   In a sample of 100,000 American women, the number whose height is $x$ (rounded to the nearest 0.1\,in) is approximated by the function
-%   \[f(x)=\exp\left(\frac{-(x-63.6)^2}{15.68}\right)\] 
 \end{enumerate}
 \end{exercises}
 
@@ -268,7 +262,7 @@ There are several reasons for these varying approaches, not all of them consumer
 \subsection{Logarithmic Functions}
 
 Since $e>1>0$, the exponential satisfies the following properties:
-\[\lim_{x\to\infty}e^x=0,\qquad \lim_{x\to\infty}e^x=\infty,\qquad \diff xe^x=e^x>0\]
+\[\lim_{x\to-\infty}e^x=0,\qquad \lim_{x\to\infty}e^x=\infty,\qquad \diff xe^x=e^x>0\]
 The $\exp:\R\to(0,\infty)$ is a \emph{continuous, increasing} function with domain $\R$ and range $(0,\infty)$. It is therefore \emph{invertible.}
 
 
@@ -567,13 +561,16 @@ It is much easier to analyze this problem using a \href{http://math.uci.edu/~ndo
 	
 	\item For both models in Example \ref{ex:wort}, what is the maximum growth rate of the yeast population, and at what time does it occur?
 	
-	% 	\item For the natural growth model, the growth rate is always increasing. It is maximal at the moment the population hits 200 billion and equals
-% 	\[P'(t)=(\ln 1.1)P(t)=200\ln 1.1\approx 19.06\,\text{billion cells per hour}\]
-% 	For the logistic model, the maximum growth rate happens when the population is half way to carrying capacity: i.e. at 125 billion cells. We therefore have a maximum growth rate of
-% 	\[P'(t)=125^2k=\frac{125^2}{250}\ln\frac{33}{28}=\frac{125}2\ln\frac{33}{28}\approx 10.27\,\text{billion cells per hour}\]
-% 	at time $t=\frac{\ln\frac 32}{\ln\frac{33}{28}}\approx 2.47$ hours.
 
 	\item In Example \ref{ex:fish}, if the initial population is 3000 fish and 1000 fish are harvested per month, how long does it take for the population to recover to 6000 fish?
+	
+	
+  \item Plutonium-238 has a \emph{half-life} of 88 years, meaning that after 88 years half of the isotope has decayed to another element (in this case uranium-234).
+  \begin{enumerate}
+  	\item If you start with 100 grams of plutonium, find a model for how much remains after $t$ years.
+  	\item How long will take for the mass to decay to 10 grams, and at what rate will it be decaying? 
+  \end{enumerate}
+  
 	
 	\item\begin{enumerate}
 	  \item If public health officials wanted to eradicate the virus on page \pageref{pg:virus} completely by using all vaccine doses on one day, on which day should they act?
