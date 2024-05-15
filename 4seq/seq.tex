@@ -88,29 +88,52 @@ The relationship between these results and the \emph{derivative(s)} of the origi
 \end{minipage}
 \bigbreak
 
-We therefore suspect a quadratic model $y=f(n)=an^2+bn+c$. Since the $x$-values are separated by 2 rather than 1, we should compute explicitly.\footnotemark
-\begin{itemize}
-  \item[]First-differences:\lstsp $f(n+2)-f(n)=a\bigl((n+2)^2-n^2\bigr)+b\bigl((n+2)-n\bigr) =4an+4a+2b$
-  \item[]Second-differences:\lstsp $8a$
-\end{itemize}
-We conclude that $a=-1$, whence the first-differences have the form
+We therefore suspect a quadratic model $y=f(n)=an^2+bn+c$. Rather than using the above formulae, particularly since the $x$-differences are not 1, it is easier just to substitute:
 \[
-	f(n+2)-f(n)=-4n-4+2b
+	2=y(0)=c,\quad
+	\begin{cases}
+		16=f(2)=4a+2b+2\\
+		22=f(4)=16a+4b+2
+	\end{cases}
+	\implies
+	\begin{cases}
+		2a+b=7\\
+		8a+2b=10
+	\end{cases}
+	\implies 4a=-4
 \]
-Taking $n=0$ quickly shows that
+whence $a=-1$, $b=9$ and $c=2$. A quadratic model is therefore
 \[
-	14=-4+2b\implies b=9\implies f(n)=-n^2+9n+c= -n^2+9n+2
+	y=f(n)=-n^2+9n+c= -n^2+9n+2
 \]
-where $c=2$ was also found by considering $n=0$.
+It is easily verified that the remaining data values satisfy this relationship.
+% we should compute explicitly.\footnotemark
+% \begin{itemize}
+%   \item[]First-differences:\lstsp $f(n+2)-f(n)=a\bigl((n+2)^2-n^2\bigr)+b\bigl((n+2)-n\bigr) =4an+4a+2b$
+%   \item[]Second-differences:\lstsp $8a$
+% \end{itemize}
+% We conclude that $a=-1$, whence the first-differences have the form
+% \[
+% 	f(n+2)-f(n)=-4n-4+2b
+% \]
+% Taking $n=0$ quickly shows that
+% \[
+% 	14=-4+2b\implies b=9\implies f(n)=-n^2+9n+c= -n^2+9n+2
+% \]
+% where $c=2$ was also found by considering $n=0$.
 \end{example}
 
-\footnotetext{We could alternatively substitute $2x=z$ and use the above formulæ.}
+% \footnotetext{We could alternatively substitute $2x=z$ and use the above formulæ.}
 
 There are at least two issues with our method:
 \begin{enumerate}
-  \item The question we're answering is, ``Find a quadratic model satisfying given data.'' Think about why constant first-/second-differences cannot \emph{guarantee} that a model must be linear/quadratic. 
+  \item The question we're answering is, ``Find a quadratic model satisfying given data.'' Constant second-differences don't guarantee that only a quadratic model is suitable. For example,
+  \[
+  	y=-n^2+9n+2 +297n(n-2)(n-4)(n-6)(n-8)(n-10)
+  \]
+  is a very complicated model satisfying the same data set!
 
-  \item It is very unlikely that experimental data will fit such precise patterns: why not? However, if the differences are \emph{close} to satisfying such patterns, then you should feel confident that a linear/quadratic model is a good choice.
+  \item It is very unlikely that experimental data will fit such precise patterns (why not?). However, if the differences are \emph{close} to satisfying such patterns, then you should feel confident that a linear/quadratic model is a good choice.
 \end{enumerate}
 \goodbreak
 
@@ -339,6 +362,42 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 \goodbreak
 
 
+\begin{example}{}{}
+	Suppose $g(2)=3$ and $g(4)=9$. What do you think should be the value of $g(8)$?\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+		It depends on the type of model you try.
+		\begin{enumerate}
+		  \item For a linear (addition-addition) model we know that $\Delta x=2$ corresponds to $\Delta y=6$, so
+		  \[
+		  	\textcolor{blue}{g(8)} =g(4+2\Delta x)=g(4)+2\Delta y =9+12= \textcolor{blue}{21}
+		  \]
+		  \item For an exponential (addition-product) model, $\Delta x=2$ corresponds to a $y$-\emph{ratio} $r_y=\frac 93=3$, so
+		  \[
+		  	\textcolor{Magenta}{g(8)} =r_yg(6)=r_y^2g(4) =9\cdot 9= \textcolor{Magenta}{81}
+		  \]
+		  \item For a power (product-product) model, $r_x=2$ corresponds to a $r_y=3$, so
+		  \[
+		  	\textcolor{Green}{g(8)} =g(2\cdot 4)=g(4r_x)=r_yg(4) =3\cdot 9 =\textcolor{Green}{27}
+		  \]
+		\end{enumerate}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+		\hfill\def\arraystretch{1.4}
+		\begin{tabular}{@{}l@{}}
+			\includegraphics[scale=0.95]{seqquadex5}\\
+			\qquad\qquad 1.\lstsp $\textcolor{blue}{g(x)=3x-3}$\\
+			\qquad\qquad 2.\lstsp $\textcolor{Magenta}{g(x)=3^{x/2}}$\\
+			\qquad\qquad 3.\lstsp $\textcolor{Green}{g(x)=x^{\log_23}}$
+		\end{tabular}
+	\end{minipage}
+	\smallbreak
+	
+	We do not need to calculate the models explicitly(!), though they are stated below the graph for convenience.
+	
+\end{example}
+
+
 
 \begin{exercises}{}{}
 	\exstart Find the patterns in the following data sets and use them to find a model $y=f(x)$.
@@ -404,31 +463,89 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 \clearpage
 
 
-\subsection{Newton--Raphson Iteration}
+\subsection{Newton's Method}
 
-Sequences idea: related to linear approximations, and ancient method of the mean\ldots Not so useful for solving equns with transcendental functions or roots beyond square since won't produce rationals\ldots.
+To finish our discussion of sequences we revisit a (hopefully) familiar technique for approximating solutions to equations. Newton's method is particularly useful for polynomials since the computations produce sequences of \emph{rational numbers}. Variations of this approach have been in use for thousands of years.
+%Sequences idea: related to linear approximations, and ancient method of the mean\ldots Not so useful for solving equns with transcendental functions or roots beyond square since won't produce rationals\ldots.
 
-We need enormous luck if we are to find an exact root of a high-degree polynomial. Instead, we can often quickly approximate a root. The following method is particularly useful for polynomials since the computations produce sequences of rational numbers.
 
-\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{}{}
-Given a function $f(x)$, the \emph{Newton--Raphson iterates} of an initial value $x_0$ are defined by
-\[x_{n+1}:=x_n-\frac{f(x_n)}{f'(x_n)}\]
-If $L=\lim\limits_{n\to\infty}x_n$ exists, then this is a root of the function; $f(L)=0$.\smallbreak
-The picture explains why we might expect this to work; $x_{n+1}$ is the $x$-intercept of the \textcolor{Green}{tangent line} $y=f(x_n)+f'(x_n)(x-x_n)$ to the curve at $(x_n,f(x_n))$.
-\tcblower
-\flushright\includegraphics{newton-raphson3}
-\end{defn}
-
-\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
-To approximate $\sqrt 2$, consider $f(x)=x^2-2$ and a starting value of $x_0=1$ since this is reasonably close to $\sqrt 2$. Now iterate
-\[x_{n+1}=x_n-\frac{x_n^2-2}{2x_n}=\frac{x_n^2+2}{2x_n} =\frac 12\left(x_n+\frac 2{x_n}\right)\]
-which yields the sequence (to 4 d.p.)
-\[\left(1,\frac 32,\frac{17}{12},\frac{577}{408},\ldots\right)=(1,1.5,1.4166\ldots,1.4142\ldots)\]
-\tcblower
-\flushright\includegraphics{newton-raphson}
+\begin{example}{}{}
+	We motivate the method by considering an ancient method for approximating $\sqrt 2$, known to the Babylonians 2500 years ago!\smallbreak
+	Suppose $x_n>\sqrt 2$. Then $\frac 2{x_n}<\frac 2{\sqrt 2}=\sqrt 2$. It seems reasonable to guess that their average
+	\[
+		x_{n+1}=\frac 12\left(x_n+\frac 2{x_n}\right)
+	\]
+	should be a more accurate approximation to $\sqrt 2$. If start with an initial guess $x_0=2$, then we obtain the sequence
+	\[
+		x_1=\frac 12\left(2+\frac 12\right)=\frac 32,\quad x_2=\frac{17}{12} =1.4166\ldots,\quad x_3=\frac{577}{408}=1.4142\ldots,\quad \ldots
+	\]
+	This sequence certainly \emph{appears} to be converging to $\sqrt 2$\ldots
 \end{example}
 
-This approach to approximating square roots was known to the ancient Babylonians 2500 years ago!
+This approach is sometimes called the \emph{method of the mean}. It may be applied to any square-root $\sqrt a$ where $a>0$: let $x_0>0$ and define,
+\[
+	x_{n+1}:=\frac 12\left(x_n+\frac a{x_n}\right) \tag{$\ast$}
+\]
+A rigorous proof that the sequence converges requires more detail than is appropriate for us, but two observations should make it seem more believable:
+\begin{enumerate}
+  \item \emph{If} the sequence $(\ast)$ has a limit $L$, then it must satisfy
+  \[
+  	L=\frac 12\left(L+\frac aL\right) \implies 2L^2=L^2+a\implies L^2=a\implies L=\sqrt a
+  \]
+  where we take the positive root since all terms $x_n$ are plainly positive.
+  
+  \begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
+  	\item The iterations have a convincing \emph{geometric} interpretation: the sequence of iterates can be found by repeatedly taking the \textcolor{Green}{tangent line} to the \textcolor{blue}{curve} $y=f(x)=x^2-a$ and intersecting it with the $x$-axis. To see why, note that the tangent line at $x_n$ has equation
+  	\begin{align*}
+  		y&=f(x_n)+f'(x_n)(x-x_n)=x_n^2-a+2x_n(x-x_n)
+  	\end{align*}
+  	which intersects the $x$-axis ($y=0$) when
+  	\[
+  		x=x_n+\frac{a-x_n^2}{2x_n}=\frac 12\left(x_n+\frac a{x_n}\right) =x_{n+1}
+  	\] 
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+  	\flushright\includegraphics[scale=0.95]{newton-raphson}
+  \end{minipage}
+\end{enumerate}
+
+The geometric idea generalizes\ldots
+
+\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{}{}
+	Given a differentiable function $f(x)$ with non-zero derivative, the \emph{Newton--Raphson iterates} of an initial value $x_0$ are defined by
+	\[
+		x_{n+1}:=x_n-\frac{f(x_n)}{f'(x_n)}
+	\]
+	If $L=\lim\limits_{n\to\infty}x_n$ exists, then it is a root of the function: $f(L)=0$.
+	\tcblower
+	\flushright\includegraphics{newton-raphson3}
+\end{defn}
+
+The picture explains why we might expect this to work. The \textcolor{Green}{tangent line} to the graph at the point $\bigl(x_n,f(x_n)\bigr)$ has equation
+\[
+	y=f(x_n)+f'(x_n)(x-x_n)
+\]
+and thus $x$-intercept ($y=0$) at $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$.
+
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
+	To approximate $\sqrt 2$, consider $f(x)=x^2-2$ and a starting value of $x_0=1$ since this is reasonably close to $\sqrt 2$. Now iterate
+	\[
+		x_{n+1}=x_n-\frac{x_n^2-2}{2x_n}=\frac{x_n^2+2}{2x_n} 
+	\]
+	which yields the sequence (to 4 d.p.)
+	\[
+		\left(1,\frac 32,\frac{17}{12},\frac{577}{408},\ldots\right)=(1,1.5,1.4166\ldots,1.4142\ldots)
+	\]
+	\tcblower
+	\flushright\includegraphics{newton-raphson}
+\end{example}
+
+This approach to approximating square roots was known to the ancient Babylonians 2500 years ago! For approximating the square root $\sqrt a$ it is sometimes known as the \emph{method of the mean,} since 
+\[
+	x_{n+1}=\frac 12\left(x_n+\frac a{x_n}\right)
+\]
+is the average of $x_n$ and the $\frac a{x_n}$. The rough (pre-calculus) idea is that if $x_n>\sqrt a$, then $\frac a{x_n}<\sqrt a$ so their average should be in between.  
 
 \begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
 To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate

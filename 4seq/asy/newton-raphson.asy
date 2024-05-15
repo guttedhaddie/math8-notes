@@ -1,5 +1,4 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="pdflatex";
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
@@ -18,11 +17,16 @@ real ff(real x){return 2x;}
 //real ff(real x){return 3x^2*sin(x)+x^3*cos(x)-2;}
 
 
-draw(graph(f,0,2),blue);
-real[] x={1};
+draw(Label("$y=x^2-a$",Relative(0.8),align=NW),graph(f,0,2.3),blue);
+real[] x={2};
 
-xaxis("$x$",red,RightTicks(new real[]{-3,-2,-1,1,2,3}));
-yaxis("$y$",red,LeftTicks(new real[]{-1,1,2}));
+//xaxis(0,red,RightTicks(new real[]{1,2,3}));
+//yaxis(-2,red,LeftTicks(new real[]{-2,0,2},new real[]{-1,1,3}));
+xaxis(0,red);
+yaxis(-2,red,LeftTicks(new real[]{0}));
+
+ytick(Label("$-a$",align=W),-2,W,red);
+
 
 
 int n=3;
@@ -35,8 +39,8 @@ for(int k=0; k<=n; ++k){
 }
 
 
-xtick(Label("$x_0$",align=N),x[0],N);
-xtick(Label("$x_1$",align=S),x[1],S);
+xtick(Label("$x_n$",align=S),x[0],S);
+xtick(Label("$x_{n+1}$",align=S),x[1],S);
 
 write(x[n]);
 write(f(x[n]));
