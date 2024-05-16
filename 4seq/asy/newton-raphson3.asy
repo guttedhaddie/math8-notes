@@ -1,5 +1,4 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="pdflatex";
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
@@ -16,7 +15,7 @@ real ff(real x){return 4x^3+4;}
 
 
 
-draw(graph(f,0.75,2.1),blue);
+draw(Label("$y=f(x)$",Relative(0.7),align=NW),graph(f,0.75,2.1),blue);
 real[] x={2};
 
 xaxis("$x$",red);
@@ -29,7 +28,7 @@ for(int k=0; k<=n; ++k){
 }
 
 for(int k=0; k<=n; ++k){
-	draw((x[k],0)--(x[k],f(x[k])),heavygreen+linewidth(0.5),Arrow(Relative(0.5)));
+	draw((x[k],0)--(x[k],f(x[k])),heavygreen+linewidth(0.5)+dashed);
 	draw((x[k],f(x[k]))--(x[k+1],0),heavygreen+linewidth(0.5),Arrow(Relative(0.6)));
 }
 
@@ -38,4 +37,4 @@ xtick(Label("$x_n$",align=S),x[0],S,red);
 xtick(Label("$x_{n+1}$",align=S),x[1],S,red);
 xtick(Label("$L$",align=S),1.1144,S,red);
 
-dot("$(x_n,f(x_n))$",(x[0],f(x[0])));
+dot("$\bigl(x_n,f(x_n)\bigr)$",(x[0],f(x[0])));

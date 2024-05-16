@@ -465,8 +465,7 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 
 \subsection{Newton's Method}
 
-To finish our discussion of sequences we revisit a (hopefully) familiar technique for approximating solutions to equations. Newton's method is particularly useful for polynomials since the computations produce sequences of \emph{rational numbers}. Variations of this approach have been in use for thousands of years.
-%Sequences idea: related to linear approximations, and ancient method of the mean\ldots Not so useful for solving equns with transcendental functions or roots beyond square since won't produce rationals\ldots.
+To finish our discussion of sequences we revisit a (hopefully) familiar technique for approximating solutions to equations. Variations of this approach have been in use for thousands of years.
 
 
 \begin{example}{}{}
@@ -482,82 +481,138 @@ To finish our discussion of sequences we revisit a (hopefully) familiar techniqu
 	This sequence certainly \emph{appears} to be converging to $\sqrt 2$\ldots
 \end{example}
 
-This approach is sometimes called the \emph{method of the mean}. It may be applied to any square-root $\sqrt a$ where $a>0$: let $x_0>0$ and define,
+Since it makes use of the average, this approach is sometimes called the \emph{method of the mean}. It may be applied to any square-root $\sqrt a$ where $a>0$: let $x_0>0$ and define,
 \[
 	x_{n+1}:=\frac 12\left(x_n+\frac a{x_n}\right) \tag{$\ast$}
 \]
-A rigorous proof that the sequence converges requires more detail than is appropriate for us, but two observations should make it seem more believable:
+A rigorous proof that the sequence converges requires more detail than is appropriate for us (though see Exercise \ref{exs:newtonconverge}), but two observations should make it seem more believable:
 \begin{enumerate}
-  \item \emph{If} the sequence $(\ast)$ has a limit $L$, then it must satisfy
+  \item \emph{If} the sequence $(\ast)$ has a limit $L$, then the limit must satisfy
   \[
   	L=\frac 12\left(L+\frac aL\right) \implies 2L^2=L^2+a\implies L^2=a\implies L=\sqrt a
   \]
   where we take the positive root since all terms $x_n$ are plainly positive.
   
-  \begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
-  	\item The iterations have a convincing \emph{geometric} interpretation: the sequence of iterates can be found by repeatedly taking the \textcolor{Green}{tangent line} to the \textcolor{blue}{curve} $y=f(x)=x^2-a$ and intersecting it with the $x$-axis. To see why, note that the tangent line at $x_n$ has equation
+  \begin{minipage}[t]{0.61\linewidth}\vspace{0pt}
+  	\item The iterations have a convincing \emph{geometric} interpretation. The sequence of iterates can be found by repeatedly taking the \textcolor{Green}{tangent line} to the \textcolor{blue}{curve} $y=f(x)=x^2-a$ and intersecting it with the $x$-axis. To see why, observe that the tangent line at $x_n$ has equation
   	\begin{align*}
-  		y&=f(x_n)+f'(x_n)(x-x_n)=x_n^2-a+2x_n(x-x_n)
+  		y&=f(x_n)+f'(x_n)(x-x_n)\\
+  		&=x_n^2-a+2x_n(x-x_n)\\
+  		&=2x_nx-x_n^2-a
   	\end{align*}
   	which intersects the $x$-axis ($y=0$) when
   	\[
-  		x=x_n+\frac{a-x_n^2}{2x_n}=\frac 12\left(x_n+\frac a{x_n}\right) =x_{n+1}
+  		x=\frac{x_n^2+a}{2x_n}=\frac 12\left(x_n+\frac a{x_n}\right) =x_{n+1}
   	\] 
   \end{minipage}
   \hfill
-  \begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+  \begin{minipage}[t]{0.38\linewidth}\vspace{0pt}
   	\flushright\includegraphics[scale=0.95]{newton-raphson}
   \end{minipage}
 \end{enumerate}
 
-The geometric idea generalizes\ldots
+\goodbreak
 
-\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{}{}
-	Given a differentiable function $f(x)$ with non-zero derivative, the \emph{Newton--Raphson iterates} of an initial value $x_0$ are defined by
+
+This geometric idea generalizes\ldots
+
+\begin{defn}{}{}
+	Given a differentiable function $f(x)$ with non-zero derivative, the \emph{Newton--Raphson iterates} of an initial value $x_0$ are defined by the recurrence formula
 	\[
 		x_{n+1}:=x_n-\frac{f(x_n)}{f'(x_n)}
 	\]
-	If $L=\lim\limits_{n\to\infty}x_n$ exists, then it is a root of the function: $f(L)=0$.
-	\tcblower
-	\flushright\includegraphics{newton-raphson3}
 \end{defn}
 
-The picture explains why we might expect this to work. The \textcolor{Green}{tangent line} to the graph at the point $\bigl(x_n,f(x_n)\bigr)$ has equation
-\[
-	y=f(x_n)+f'(x_n)(x-x_n)
-\]
-and thus $x$-intercept ($y=0$) at $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$.
+\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+	Our two previous observations still hold:
+	\begin{enumerate}
+	  \item If $L=\lim\limits_{n\to\infty}x_n$ exists and $f'(L)\neq 0$, then
+	  \[
+	  	L=L-\frac{f(L)}{f'(L)}\implies f(L)=0
+	  \]
+		That is, the limit $L$ is a root of the \textcolor{blue}{function $f(x)$}.
+		\item The \textcolor{Green}{tangent line} at the point $\bigl(x_n,f(x_n)\bigr)$ has equation
+		\[
+			y=f(x_n)+f'(x_n)(x-x_n)
+		\]
+		and thus $x$-intercept ($y=0$) at $x_n-\frac{f(x_n)}{f'(x_n)} =x_{n+1}$.
+	\end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+	\flushright\includegraphics{newton-raphson3}
+\end{minipage}\bigbreak
 
-\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
-	To approximate $\sqrt 2$, consider $f(x)=x^2-2$ and a starting value of $x_0=1$ since this is reasonably close to $\sqrt 2$. Now iterate
-	\[
-		x_{n+1}=x_n-\frac{x_n^2-2}{2x_n}=\frac{x_n^2+2}{2x_n} 
-	\]
-	which yields the sequence (to 4 d.p.)
-	\[
-		\left(1,\frac 32,\frac{17}{12},\frac{577}{408},\ldots\right)=(1,1.5,1.4166\ldots,1.4142\ldots)
-	\]
-	\tcblower
-	\flushright\includegraphics{newton-raphson}
-\end{example}
+Newton's method is particularly nice for polynomials with integer coefficients, since the iterates form a sequence of \emph{rational numbers}. This approach was often used obtain rational approximations to irrational numbers before the advent of calculators.
 
-This approach to approximating square roots was known to the ancient Babylonians 2500 years ago! For approximating the square root $\sqrt a$ it is sometimes known as the \emph{method of the mean,} since 
-\[
-	x_{n+1}=\frac 12\left(x_n+\frac a{x_n}\right)
-\]
-is the average of $x_n$ and the $\frac a{x_n}$. The rough (pre-calculus) idea is that if $x_n>\sqrt a$, then $\frac a{x_n}<\sqrt a$ so their average should be in between.  
 
-\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
-To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate
-\[x_{n+1}=x_n-\frac{x_n^4+4x_n-6}{4x_n^3+4} =\frac{3(x_n^4+2)}{4(x_n^3+1)}\]
-which yields the sequence (to 4 d.p.)
-\[\left(2,\frac 32,\frac{339}{280},\ldots\right)=(2,1.5,1.2107,1.1214,1.1144,1.1144,\ldots)\]
-Since the sequence seems to be converging, we conclude that $1.1144$ is approximately a root.
-\tcblower
-\flushright\includegraphics{newton-raphson2}
-\end{example}
+	
 
-This method can be attempted for any differentiable function, though the sequence isn't guaranteed to converge: play with some examples such as $f(x)=x^2-2$, and $f(x)=x^3-5x$. You can find graphical interfaces online for this (for instance with Geogebra).
+\begin{examples}{}{}
+	\exstart To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate
+	\begin{enumerate}\setcounter{enumi}{1}
+		\begin{minipage}[t]{0.62\linewidth}\vspace{-10pt}
+			\item[]
+			\[
+				x_{n+1}=x_n-\frac{x_n^4+4x_n-6}{4x_n^3+4} =\frac{3(x_n^4+2)}{4(x_n^3+1)}
+			\]
+			which yields the sequence (to 3 d.p.)
+			\[
+				\left(2,\frac 32,\frac{339}{280},\ldots\right)=(2,1.5,1.211,1.121,1.114,1.114,\ldots)
+			\]
+			You can check with a calculator that $1.114$ is approximately a root.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.37\linewidth}\vspace{-8pt}
+			\flushright\includegraphics[scale=0.95]{newton-raphson2}
+		\end{minipage}
+	
+		\item The irrational number $x=\sqrt 2+\sqrt 3$ is a root of the polynomial
+		\[
+			f(x)=x^4-10x^2+1
+		\]
+		By applying Newton's method with $x_0=3$, we obtain the sequence (to 3\,d.p.)
+		\[
+			x_{n+1}=x_n-\frac{x_n^4-10x_n^2+1}{4x_n^3-20x_n} =\frac{3x_n^4-10x_n^2-1}{4x_n(x_n^2-5)} \implies (x_n)=\left(3,\ \frac{19}6=3.167,\ %\frac{86569}{27512}=
+			3.147,\ \ldots \right)
+		\]
+	\end{enumerate}
+\end{examples}
 
-% In particular, if the root is near a point where $f'(x)=0$ or , then odd behavior can occur. EXERCISE $f(x)=x^3-5x$ starting at $x=1$:
-% \[x_{n+1}=x_n-\frac{x_n^3-5x_n}{3x_n^2-5}: (1,-1,1,-1,1,-1,\ldots)\]
+\goodbreak
+
+Newton's method can be attempted for any differentiable function, though the sequence isn't guaranteed to converge: see for instance Exercise \ref{exs:newtonbad}. You can find graphical interfaces online for this (for instance with Geogebra).
+
+
+
+\begin{exercises}{}{}
+	\exstart Use Newton's method to find a root of the given function to 4 decimal places.\vspace{-5pt}
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+  	\item[](\emph{Use a calculator, but explain what you are doing!})
+  	\begin{enumerate}
+    	\item $f(x)=x^3-4$\qquad (b) \ $f(x)=2x^3+x-1$\qquad (c) \ $f(x)=e^x-\sqrt x-2$
+  	\end{enumerate}
+  
+  
+  	\item Use Newton's method to find a rational number approximation to $\sqrt[3]{2}$ in lowest terms $\frac pq$ where $10<q<100$.
+  
+  %\item Factorize the polynomial $2x^3-3\sqrt 5x^2+5\sqrt 5$ by first observing that $\sqrt 5$ is a root.
+   
+ 
+  	\item\label{exs:newtonconverge} Suppose you perform Newton's method for the function $f(x)=x^2-2$ starting with some positive $x_0>0$.
+  	\begin{enumerate}
+    	\item If $x_n>0$, show that $x_{n+1}-\sqrt 2=\frac 1{2x_n}(x_n-\sqrt 2)^2 =\left(\frac 12-\frac 1{2\sqrt 2x_n}\right)(x_n-\sqrt 2)$.
+    	\item Explain why $\nm{x_n-\sqrt 2}<\frac 1{2^n}\nm{x_0-\sqrt 2}$. Hence conclude that the sequence of iterates $(x_n)$ converges to $\sqrt 2$.
+  	\end{enumerate}
+	
+	
+  	\item\label{exs:newtonbad} Let $f(x)=x^3-5x$.
+  	\begin{enumerate}
+   		\item What happens if you apply Newton's method to this function with initial condition $x_0=1$? Draw a picture to illustrate.
+
+    	\item (Just for fun!)\lstsp Investigate what happens for other values of $x_0$. Can you make any conjectures? Is is possible for $x_0$ to be \emph{positive} and yet for $x_n\to-\sqrt 5$? Can you make any sense of what happens if $1<x_0<\sqrt{\frac 53}$?
+  	\end{enumerate}
+	\end{enumerate}
+
+\end{exercises}

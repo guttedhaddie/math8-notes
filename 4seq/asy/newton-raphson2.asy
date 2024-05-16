@@ -9,7 +9,7 @@ texpreamble("\usepackage{amsmath}
 ");
 import graph;
 
-size(180,140,IgnoreAspect);
+size(160,130,IgnoreAspect);
 
 real f(real x){return x^4+4x-6;}
 real ff(real x){return 4x^3+4;}
@@ -33,7 +33,7 @@ for(int k=0; k<=n; ++k){
 }
 
 
-xtick(Label("$x_0$",align=N),x[0],N);
+
 xtick(Label("$x_1$",align=S),x[1],S);
 xtick(Label("$x_2$",align=S),x[2],S);
 
