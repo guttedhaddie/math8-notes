@@ -313,7 +313,7 @@ Such a simple pattern is often disguised:
 			P&5&7.057&9.960&14.057&19.839&28
 		\end{array}
 	\]
-	Only $P(19)$ doesn't match when we take rounding to the nearest integer into account.
+	Only $P(8)$ doesn't match when we take rounding to the nearest integer into account.
 	% 
 	% Since this is population growth, we expect an exponential model $P(t)=e^{mt+c}$. After taking logarithms of the population values, the data is very close to linear. Now perform a linear regression (this is much easier using a \href{http://math.uci.edu/~ndonalds/math8/rabbits.xlsx}{spreadsheet}---play with it!).\par
 	% 
@@ -605,6 +605,17 @@ Newton's method can be attempted for any differentiable function, though the seq
     	\item If $x_n>0$, show that $x_{n+1}-\sqrt 2=\frac 1{2x_n}(x_n-\sqrt 2)^2 =\left(\frac 12-\frac 1{2\sqrt 2x_n}\right)(x_n-\sqrt 2)$.
     	\item Explain why $\nm{x_n-\sqrt 2}<\frac 1{2^n}\nm{x_0-\sqrt 2}$. Hence conclude that the sequence of iterates $(x_n)$ converges to $\sqrt 2$.
   	\end{enumerate}
+	
+		
+		\item We might consider a \emph{method of the mean} for approximating $\sqrt[3]{2}$: given $x_0$, define
+		\[
+			x_{n+1}=\frac 12\left(x_n+\frac 2{x_n^2}\right)
+		\]
+		\begin{enumerate}
+		  \item If the sequence $(x_n)$ converges, show that its limit is $\sqrt[3]{2}$.
+		  \item If $x_n>\sqrt[3]{2}$, show that $\frac 2{x_n^2}<\sqrt[3]{2}$.
+		  \item Let $x_0=1$. Compute $x_1$ and $x_2$. Compare these with the values obtained using Newton's method for the function $f(x)=x^3-2$ with the same initial condition $x_0=1$.
+		\end{enumerate}
 	
 	
   	\item\label{exs:newtonbad} Let $f(x)=x^3-5x$.
