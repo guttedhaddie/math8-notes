@@ -9,46 +9,52 @@ We've studied several types of function and seen how to spot whether a given dat
 We start with an example of some data which appears reasonably linear.
 
 \begin{example}{}{reg1}
-At $t$ p.m., a trail-runner's GPS locator says that they've travelled $y$ miles along a trail;\par
-\begin{minipage}[t]{0.64\linewidth}\vspace{-11pt}
-\[\begin{array}{c|ccccc}
-t_i&1&2&3&5\\\hline
-y_i&4&8&10&21
-%y&3&7&11&15&19
-\end{array}\]
-We'd like a simple model for how far the runner has travelled as a function of $t$. We might use this to predict where they would be at a given time; say at 6\,p.m., or at 2\,p.m.{} if they were to attempt the trail on another day.
-\end{minipage}\hfill\begin{minipage}[t]{0.35\linewidth}\vspace{-3pt}
-\flushright\includegraphics{reg-line}
-\end{minipage}
-\smallbreak
-By plotting the points, the relationship looks to be approximately\footnotemark{} \textcolor{blue}{linear}: $y\approx mt+c$. What is the \emph{best} choice of line, and how should we find the coefficients $m,c$?\medbreak
+	At $t$ p.m., a trail-runner's GPS locator says that they've travelled $y$ miles along a trail;\par
+	\begin{minipage}[t]{0.64\linewidth}\vspace{-11pt}
+		\[
+			\begin{array}{c|ccccc}
+			t_i&1&2&3&5\\\hline
+			y_i&4&8&10&21
+			%y&3&7&11&15&19
+			\end{array}
+		\]
+		We'd like a simple model for how far the runner has travelled as a function of $t$. We might use this to predict where they would be at a given time; say at 6\,p.m., or at 2\,p.m.{} if they were to attempt the trail on another day.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-3pt}
+		\flushright\includegraphics{reg-line}
+	\end{minipage}
+	\smallbreak
+	By plotting the points, the relationship looks to be approximately\footnotemark{} \textcolor{blue}{linear}: $y\approx mt+c$. What is the \emph{best} choice of line, and how should we find the coefficients $m,c$?\medbreak
 
-Discuss what might be good criteria for choosing our line. What should we mean by \emph{best}? Plainly, we want the points to be close to the line, but measured how? Think about how we'd like to use the approximating line.\smallbreak
+	What might be good criteria for choosing our line? What should we mean by \emph{best}? Plainly, we want the points to be close to the line, but measured how? What use do we want to make of the approximating line?\smallbreak
 
-Here are three candidate lines plotted with the data set: of the choices, which seems best and why?
-\begin{center}
-\hfill
-\includegraphics{reg-line2-1}
-\hfill
-\includegraphics{reg-line2-2}
-\hfill
-\includegraphics{reg-line2-3}
-\hspace*{\fill}
-\end{center}
+	Here are three candidate lines plotted with the data set: of the choices, which seems best and why?
+	\begin{center}
+		\hfill
+		\includegraphics{reg-line2-1}
+		\hfill
+		\includegraphics{reg-line2-2}
+		\hfill
+		\includegraphics{reg-line2-3}
+		\hspace*{\fill}
+	\end{center}
 
-\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
-Since we want our model to \emph{predict} the hiker's location $y\approx \hat y=mt+c$ at a given time $t$, we'd like our model to minimize \emph{vertical} errors $\hat y_i-y_i$. We've computed these in the table; since a positive error is as bad as a negative, we make all the errors positive. It therefore seems reasonable to claim that the first line is the best choice of the three.\smallbreak
-But can we do better?
-\end{minipage}\hfill\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-\flushright $\def\arraystretch{1.2}
-\begin{array}[t]{c|c|ccccc}
-&t_i&1&2&3&5\\\hline
-&y_i&4&8&10&21\\\hline\hline
-y=4t&\nm{\hat y_i-y_i}&0&0&2&1\\\hline
-y=2t+4&\nm{\hat y_i-y_i}&2&0&0&7\\\hline
-y=5t-4&\nm{\hat y_i-y_i}&3&2&1&0
-\end{array}$
-\end{minipage}
+	\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
+		Since we want our model to \emph{predict} the hiker's location $y\approx \hat y=mt+c$ at a given time $t$, we'd like our model to minimize \emph{vertical} errors $\hat y_i-y_i$. We've computed these in the table; since a positive error is as bad as a negative, we make all the errors positive. It therefore seems reasonable to claim that the first line is the best choice of the three.\smallbreak
+		But can we do better?
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
+		\flushright $\def\arraystretch{1.2}
+		\begin{array}[t]{c|c|ccccc}
+			&t_i&1&2&3&5\\\hline
+			&y_i&4&8&10&21\\\hline\hline
+			y=4t&\nm{\hat y_i-y_i}&0&0&2&1\\\hline
+			y=2t+4&\nm{\hat y_i-y_i}&2&0&0&7\\\hline
+			y=5t-4&\nm{\hat y_i-y_i}&3&2&1&0
+		\end{array}$
+	\end{minipage}
 \end{example}
 
 \footnotetext{Why should we not expect the distance traveled by the hiker to be perfectly linear?}
@@ -56,52 +62,62 @@ y=5t-4&\nm{\hat y_i-y_i}&3&2&1&0
 \goodbreak
 
 We need a sensible definition of \emph{best-fitting line} for a given data set. One possibility is to minimize the sum of the vertical errors:
-\[\sum_{i=1}^n\nm{\hat y_i-y_i}\]
+\[
+	\sum_{i=1}^n\nm{\hat y_i-y_i}
+\]
 For reasons of computational simplicity, uniqueness, statistical interpretation, and to discourage large individual errors, we \emph{don't} do this! The standard approach is instead to minimize the \emph{sum of the squared errors.}
 
 
 \begin{defn}{}{}
-Let $(t_i,y_i)$ be data points, where $i=1,\ldots,n$. Let $\hat y=mt+c$ be a linear predictor (model) for $y$ given $t$.
-\begin{itemize}\itemsep0pt
-  \item The \emph{i\th{} error} in the model is the difference $e_i:=\hat y_i-y_i=mt_i+c-y_i$.
-  \item The \emph{regression line} or \emph{best-fitting least-squares line} is the function $\hat y=mt+c$ which minimizes the sum $S:=\sum e_i^2$ of the \emph{squares} of the errors.
-\end{itemize}
+	Let $(t_i,y_i)$ be data points, where $i=1,\ldots,n$. Let $\hat y=mt+c$ be a linear predictor (model) for $y$ given $t$.
+	\begin{itemize}\itemsep0pt
+	  \item The \emph{i\th{} error} in the model is the difference $e_i:=\hat y_i-y_i=mt_i+c-y_i$.
+	  \item The \emph{regression line} or \emph{best-fitting least-squares line} is the function $\hat y=mt+c$ which minimizes the sum $S:=\sum e_i^2$ of the \emph{squares} of the errors.
+	\end{itemize}
 \end{defn}
 
 \begin{example*}{\ref{ex:reg1}, cont}{}
-Suppose the predictor was $\hat y=mt+c$. We expand the table
-\[\begin{array}{c|ccccc}
-t_i&1&2&3&5\\\hline
-y_i&4&8&10&21\\\hline
-\hat y_i&m+c&2m+c&3m+c&5m+c\\\hline
-e_i&m+c-4&2m+c-8&3m+c-10&5m+c-21
-%y&3&7&11&15&19
-\end{array}\]
-Our goal is to minimize the function
-\[S(m,c) =\sum e_i^2= (m+c-4)^2 +(2m+c-8)^2 +(3m+c-10)^2 +(5m+c-21)^2\]
-This is easy to deal with if we invoke some calculus. If $(m,c)$ minimizes $S(m,c)$, then the first derivative tests says that the (partial) derivatives of $S$ must be zero.%\footnotemark
-\begin{itemize}\itemsep0pt
-  \item Keep $c$ constant and differentiate with respect to $m$:
-  \begin{align*}
-	\partials[S]{m} &=2(m+c-4) +4(2m+c-8) +6(3m+c-10) +10(5m+c-21)\\
-	&=2\Bigl[39m+11c-155\Bigr]
-% 	&=2\Bigl[(1+2^2+3^2+5^2)m+(1+2+3+5)c-4-2\cdot 8-3\cdot 10-5\cdot 21\Bigr]\\
-% 	&=2\Bigl[39m+11c-155\Bigr] =2\bigl[\left(\sum t_i^2\right)m+\left(\sum t_i\right)c-\sum t_iy_i\bigr]
-	\end{align*}
-	\item Keep $m$ constant and differentiate with respect to $c$:
-  \begin{align*}
-	\partials[S]{c} &=(m+c-4) +(2m+c-8) +(3m+c-10) +(5m+c-21)\\
-	&=11m+4c-43
-% 	&=(1+2+3+5)m+(1+1+1+1)c-4-8-10-21\\
-% 	&=11m+4c-43 =\left(\sum t_i\right)m+nc-\sum y_i
-	\end{align*}
-\end{itemize}
-The regression line is found by solving a pair of simultaneous equations
-\[\begin{cases}
-39m+11c=155\\
-11m+4c=43
-\end{cases} \negthickspace\implies m=\frac{21}{5},\ c=-\frac{4}{5} \implies \hat y=\frac 1{5}(21t-4)\]
-By 6\,p.m., we'd predict that the runner would have covered 24.4 miles. The sum of the squared errors for our regression line is $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=4.4$, compared to 5, 53 and 14 for our three earlier options.
+	Suppose the predictor was $\hat y=mt+c$. We expand the table
+	\[
+		\begin{array}{c|ccccc}
+			t_i&1&2&3&5\\\hline
+			y_i&4&8&10&21\\\hline
+		\hat y_i&m+c&2m+c&3m+c&5m+c\\\hline
+		e_i&m+c-4&2m+c-8&3m+c-10&5m+c-21
+		%y&3&7&11&15&19
+		\end{array}
+	\]
+	Our goal is to minimize the function
+	\[
+		S(m,c) =\sum e_i^2= (m+c-4)^2 +(2m+c-8)^2 +(3m+c-10)^2 +(5m+c-21)^2
+	\]
+	This is easy to deal with if we invoke some calculus. If $(m,c)$ minimizes $S(m,c)$, then the first derivative tests says that the (partial) derivatives of $S$ must be zero.%\footnotemark
+	\begin{itemize}\itemsep0pt
+	  \item Keep $c$ constant and differentiate with respect to $m$:
+	  \begin{align*}
+			\partials[S]{m} &=2(m+c-4) +4(2m+c-8) +6(3m+c-10) +10(5m+c-21)\\
+			&=2\Bigl[39m+11c-155\Bigr]
+		% 	&=2\Bigl[(1+2^2+3^2+5^2)m+(1+2+3+5)c-4-2\cdot 8-3\cdot 10-5\cdot 21\Bigr]\\
+		% 	&=2\Bigl[39m+11c-155\Bigr] =2\bigl[\left(\sum t_i^2\right)m+\left(\sum t_i\right)c-\sum t_iy_i\bigr]
+		\end{align*}
+		\item Keep $m$ constant and differentiate with respect to $c$:
+	  \begin{align*}
+			\partials[S]{c} &=(m+c-4) +(2m+c-8) +(3m+c-10) +(5m+c-21)\\
+			&=11m+4c-43
+		% 	&=(1+2+3+5)m+(1+1+1+1)c-4-8-10-21\\
+		% 	&=11m+4c-43 =\left(\sum t_i\right)m+nc-\sum y_i
+		\end{align*}
+	\end{itemize}
+	The regression line is found by solving a pair of simultaneous equations
+	\[
+		\begin{cases}
+			39m+11c=155\\
+			11m+4c=43
+		\end{cases}
+		\negthickspace\implies 
+	m=\frac{21}{5},\ c=-\frac{4}{5} \implies \hat y=\frac 1{5}(21t-4)
+	\]
+	By 6\,p.m., we'd predict that the runner would have covered 24.4 miles. The sum of the squared errors for our regression line is $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=4.4$, compared to 5, 53 and 14 for our three earlier options.
 \end{example*}
 
 
@@ -109,25 +125,32 @@ By 6\,p.m., we'd predict that the runner would have covered 24.4 miles. The sum 
 
 To obtain the general result for $n$ data points, we return to our computations of the partial derivatives:
 \begin{gather*}
-\partials[S]{m}=\sum\partials{m}(mt_i+c-y_i)^2 =2\sum t_i(mt_i+c-y_i) =2\Bigl[\left(\sum t_i^2\right)m+\left(\sum t_i\right)c-\sum t_iy_i\Bigr]\\[3pt]
-\partials[S]{c}=\sum\partials{c}(mt_i+c-y_i)^2 =2\sum (mt_i+c-y_i) =2\Bigl[\left(\sum t_i\right)m+nc-\sum y_i\Bigr]
+	\partials[S]{m}=\sum\partials{m}(mt_i+c-y_i)^2 =2\sum t_i(mt_i+c-y_i) =2\Bigl[\left(\sum t_i^2\right)m+\left(\sum t_i\right)c-\sum t_iy_i\Bigr]\\[3pt]
+	\partials[S]{c}=\sum\partials{c}(mt_i+c-y_i)^2 =2\sum (mt_i+c-y_i) =2\Bigl[\left(\sum t_i\right)m+nc-\sum y_i\Bigr]
 \end{gather*}
 These sums are often written differently, using a short-hand notation for \emph{average}:
-\[\cl t=\frac 1n\sum_{i=1}^nt_i,\qquad \cl{t^2}=\frac 1n\sum_{i=1}^nt_i^2,\qquad \cl{y}=\frac 1n\sum_{i=1}^ny_i^2,\qquad \cl{ty}=\frac 1n\sum_{i=1}^nt_iy_i\]
+\[
+	\cl t=\frac 1n\sum_{i=1}^nt_i,\qquad \cl{t^2}=\frac 1n\sum_{i=1}^nt_i^2,\qquad \cl{y}=\frac 1n\sum_{i=1}^ny_i^2,\qquad \cl{ty}=\frac 1n\sum_{i=1}^nt_iy_i
+\]
 Now we put it all together.
 
 \begin{thm}{Linear Regression}{linreg}
-Given $n$ data points $(t_i,y_i)$, the best-fitting least-squares line has equation $\hat y=mt+c$ where $m,c$ satisfy
-\[\begin{cases}
-\left(\sum t_i^2\right)m+\left(\sum t_i\right)c=\sum t_iy_i\\
-\left(\sum t_i\right)m+nc=\sum y_i
-\end{cases} \leftrightsquigarrow \quad\begin{cases}
-\cl{t^2}m+\cl tc=\cl{ty}\\
-\cl tm+c=\cl y\\
-\end{cases}\]
-This is a pair of simultaneous equations for the coefficients $m,c$, which can be solved either as a matrix problem or by substitution:
-\[m=\frac{\cl{ty}-\cl t \cl y}{\cl{t^2}-\cl t^2},\qquad c=\cl y-m\cl t %= \frac{n\sum t_iy_i-\sum t_i\sum y_i}{n\sum t_i^2-\left(\sum t_i\right)^2} =\frac{\sum(t_i-\cl t)(y_i-\cl y)}{\sum (t_i-\cl t)^2}  %=\frac{\Cov(t,y)}{\Var t}
-\]
+	Given $n$ data points $(t_i,y_i)$, the best-fitting least-squares line has equation $\hat y=mt+c$ where $m,c$ satisfy
+	\[
+		\begin{cases}
+			\left(\sum t_i^2\right)m+\left(\sum t_i\right)c=\sum t_iy_i\\
+			\left(\sum t_i\right)m+nc=\sum y_i
+		\end{cases}
+		\leftrightsquigarrow \quad
+		\begin{cases}
+			\cl{t^2}m+\cl tc=\cl{ty}\\
+			\cl tm+c=\cl y\\
+		\end{cases}
+	\]
+	This is a pair of simultaneous equations for the coefficients $m,c$, which can be solved either as a matrix problem or by substitution:
+	\[
+		m=\frac{\cl{ty}-\cl t \cl y}{\cl{t^2}-\cl t^2},\qquad c=\cl y-m\cl t %= \frac{n\sum t_iy_i-\sum t_i\sum y_i}{n\sum t_i^2-\left(\sum t_i\right)^2} =\frac{\sum(t_i-\cl t)(y_i-\cl y)}{\sum (t_i-\cl t)^2}  %=\frac{\Cov(t,y)}{\Var t}
+	\]
 \end{thm}
 
 The expression for $c$ shows that the regression line passes through the data's \emph{center of mass} $(\cl t,\cl y)$.
@@ -135,130 +158,142 @@ The expression for $c$ shows that the regression line passes through the data's 
 
 
 \begin{example}{}{reg2}
-Five students' scores on two quizzes are given.\par
-\begin{minipage}[t]{0.69\linewidth}\vspace{-8pt}
-If a student scores 9/10 on the first quiz, what might we expect them to score on the second?
-\end{minipage}\hfill\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
-\flushright$\begin{array}[t]{c|ccccc}
-\text{Quiz 1}&8&10&6&7&4\\\hline
-\text{Quiz 2}&10&7&5&8&6
-\end{array}$
-\end{minipage}\medbreak
+	Five students' scores on two quizzes are given.\par
+	\begin{minipage}[t]{0.69\linewidth}\vspace{-8pt}
+		If a student scores 9/10 on the first quiz, what might we expect them to score on the second?
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.3\linewidth}\vspace{-20pt}
+		\flushright
+		$\begin{array}[t]{c|ccccc}
+			\text{Quiz 1}&8&10&6&7&4\\\hline
+			\text{Quiz 2}&10&7&5&8&6
+		\end{array}$
+	\end{minipage}\medbreak
 
-To put the question in standard form, suppose Quiz 1 is the $t$-data and Quiz 2 the $y$-data. It is helpful to rewrite the data and add lines to the table so that we may more easily compute everything.\par
+	To put the question in standard form, suppose Quiz 1 is the $t$-data and Quiz 2 the $y$-data. It is helpful to rewrite the data and add lines to the table so that we may more easily compute everything.\par
+	
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-23pt}
+		\[
+			\def\arraystretch{1.2}
+			\begin{array}[t]{|c|ccccc||c|c|}\hline
+				\multicolumn{6}{|c||}{\text{Data}}&\sum&\text{Average}\\\hline\hline
+				t_i&8&10&6&7&4&35&7\\\hline
+				y_i&10&7&5&8&6&36&7.2\\\hline
+				t_i^2&64&100&36&49&16&265&53\\\hline
+				t_iy_i&80&70&30&56&24&260&52\\\hline
+			\end{array}
+		\]
+		% 	\begin{align*}
+		% 	&\sum_{i=1}^5t_i=8+10+6+7+4=35,\quad &&\cl t=7\\
+		% 	&\sum_{i=1}^5y_i=10+7+5+8+6=36,\quad &&\cl y=\frac{36}5\\
+		% 	&\sum_{i=1}^5t_i^2=64+100+36+49+16=265,\quad &&\cl{t^2}=53\\
+		% 	&\sum_{i=1}^5t_iy_i=80+70+30+56+24=260,\quad &&\cl{ty}=52\\
+		% 	% \begin{cases}
+		% 	% 265m+35c=260\\
+		% 	% 35m+5c=36
+		% 	% \end{cases} \implies
+		% 	% (m,c)=\left(\frac 25,\frac {22}5\right)
+		% 	\end{align*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-2pt}
+		\flushright\includegraphics{reg-line3}
+	\end{minipage}\par\vspace{-45pt}
 
+	\begin{gather*}
+		m=\frac{52-7\times 7.2}{53-7^2}= \frac{1.6}{4} =0.4,\quad c=7.2-0.4\times 7=4.4\\[3pt]
+		\implies \textcolor{blue}{\hat y(t)=\frac 25(t+11)}
+	\end{gather*}
 
-
-
-\begin{minipage}[t]{0.6\linewidth}\vspace{-23pt}
-\[\def\arraystretch{1.2}
-\begin{array}[t]{|c|ccccc||c|c|}\hline
-\multicolumn{6}{|c||}{\text{Data}}&\sum&\text{Average}\\\hline\hline
-t_i&8&10&6&7&4&35&7\\\hline
-y_i&10&7&5&8&6&36&7.2\\\hline
-t_i^2&64&100&36&49&16&265&53\\\hline
-t_iy_i&80&70&30&56&24&260&52\\\hline
-\end{array}\]
-% 	\begin{align*}
-% 	&\sum_{i=1}^5t_i=8+10+6+7+4=35,\quad &&\cl t=7\\
-% 	&\sum_{i=1}^5y_i=10+7+5+8+6=36,\quad &&\cl y=\frac{36}5\\
-% 	&\sum_{i=1}^5t_i^2=64+100+36+49+16=265,\quad &&\cl{t^2}=53\\
-% 	&\sum_{i=1}^5t_iy_i=80+70+30+56+24=260,\quad &&\cl{ty}=52\\
-% 	% \begin{cases}
-% 	% 265m+35c=260\\
-% 	% 35m+5c=36
-% 	% \end{cases} \implies
-% 	% (m,c)=\left(\frac 25,\frac {22}5\right)
-% 	\end{align*}
-\end{minipage}\hfill\begin{minipage}[t]{0.39\linewidth}\vspace{-2pt}
-	\flushright\includegraphics{reg-line3}
-\end{minipage}\par\vspace{-45pt}
-
-\begin{gather*}
-m=\frac{52-7\times 7.2}{53-7^2}= \frac{1.6}{4} =0.4,\quad c=7.2-0.4\times 7=4.4\\[3pt]
-\implies \textcolor{blue}{\hat y(t)=\frac 25(t+11)}
-\end{gather*}
-
-% \[\begin{cases}
-% 265m+35c=260\\
-% 35m+5c=36
-% \end{cases} \implies
-% % \begin{cases}
-% % 20m=8\\
-% % c=\frac{36}5-7m
-% % \end{cases}\iff
-% (m,c)=\left(\frac 25,\frac {22}5\right) \implies \textcolor{blue}{\hat y(t)=\frac 25(t+11)}\]
-This line which minimizes the sum of the squares of the \textcolor{Green}{vertical deviations.} The prediction is that the hypothetical student scores $\hat y(9)=\frac 25\cdot 20=8$ on Quiz 2. %Notice that the average score $\cl y=7.2$ on Quiz 2 is \emph{higher} than that ($\cl t=7$) on Quiz 1, and yet the student's score is expected to go down!
-Note that the predictor isn't symmetric: if we reverse the roles of $t,y$ we don't get the same line!
-% 
-% 
-% To solve the second problem, we need to swap the roles of our variables. This time we use the explicit formulæ (note that $y\leftrightarrow t$!):\par
-% \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-% \begin{gather*}
-% \cl t=\frac{35}5=7,\qquad \cl y=\frac{36}5=7.2,\\
-% \begin{array}{l|ccccc}
-% t_i-\cl t&1&3&-1&0&-3\\\hline
-% y_i-\cl y&2.8&-0.2&-2.2&0.8&-1.2\\\hline
-% (y_i-\cl y)^2&7.84&0.04&4.84&0.64&1.44\\\hline
-% (y_i-\cl y)(t_i-\cl t)&2.8&-0.6&2.2&0&3.6
-% \end{array}\\
-% m=\frac{\sum(y_i-\cl y)(t_i-\cl t)}{\sum (y_i-\cl y)^2} =\frac 8{14.8}=\frac{20}{37}\approx 0.541\\
-% c=\cl t-m\cl y=7-\frac{20\cdot 36}{5\cdot 37} =\frac{115}{37} \approx 3.108
-% \end{gather*}
-% \end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-% \flushright\includegraphics{reg-line4}
-% \end{minipage}\par
-% The line for predicting Quiz 1 given Quiz 2 is $\textcolor{blue}{\hat t=\frac 1{37}(20y+115)}$, whence $\hat t(8)=\frac{275}{37}\approx 7.432$. Notice how this minimizes the sum of the squares of the \textcolor{Green}{horizontal deviations} and is therefore \emph{different} to the line in the previous question (dotted in the picture).
+	% \[\begin{cases}
+	% 265m+35c=260\\
+	% 35m+5c=36
+	% \end{cases} \implies
+	% % \begin{cases}
+	% % 20m=8\\
+	% % c=\frac{36}5-7m
+	% % \end{cases}\iff
+	% (m,c)=\left(\frac 25,\frac {22}5\right) \implies \textcolor{blue}{\hat y(t)=\frac 25(t+11)}\]
+	This line which minimizes the sum of the squares of the \textcolor{Green}{vertical deviations.} The prediction is that the hypothetical student scores $\hat y(9)=\frac 25\cdot 20=8$ on Quiz 2. %Notice that the average score $\cl y=7.2$ on Quiz 2 is \emph{higher} than that ($\cl t=7$) on Quiz 1, and yet the student's score is expected to go down!
+	Note that the predictor isn't symmetric: if we reverse the roles of $t,y$ we don't get the same line!
+	% 
+	% 
+	% To solve the second problem, we need to swap the roles of our variables. This time we use the explicit formulæ (note that $y\leftrightarrow t$!):\par
+	% \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+	% \begin{gather*}
+	% \cl t=\frac{35}5=7,\qquad \cl y=\frac{36}5=7.2,\\
+	% \begin{array}{l|ccccc}
+	% t_i-\cl t&1&3&-1&0&-3\\\hline
+	% y_i-\cl y&2.8&-0.2&-2.2&0.8&-1.2\\\hline
+	% (y_i-\cl y)^2&7.84&0.04&4.84&0.64&1.44\\\hline
+	% (y_i-\cl y)(t_i-\cl t)&2.8&-0.6&2.2&0&3.6
+	% \end{array}\\
+	% m=\frac{\sum(y_i-\cl y)(t_i-\cl t)}{\sum (y_i-\cl y)^2} =\frac 8{14.8}=\frac{20}{37}\approx 0.541\\
+	% c=\cl t-m\cl y=7-\frac{20\cdot 36}{5\cdot 37} =\frac{115}{37} \approx 3.108
+	% \end{gather*}
+	% \end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
+	% \flushright\includegraphics{reg-line4}
+	% \end{minipage}\par
+	% The line for predicting Quiz 1 given Quiz 2 is $\textcolor{blue}{\hat t=\frac 1{37}(20y+115)}$, whence $\hat t(8)=\frac{275}{37}\approx 7.432$. Notice how this minimizes the sum of the squares of the \textcolor{Green}{horizontal deviations} and is therefore \emph{different} to the line in the previous question (dotted in the picture).
 \end{example}
 \goodbreak
 
 
 \begin{exercises}{}{}
-\exstart Compute the sum of the absolute errors $\sum\nm{\hat y_i-y_i}$ for the regression line  and compare it to the sum of the absolute errors for $\hat y=4t$: what do you notice?
-\begin{enumerate}\setcounter{enumi}{1}
-\begin{minipage}[t]{0.69\linewidth}\vspace{0pt}
-	\item Let $\hat y=mt+c$ be a linear predictor for the given data.
-\end{minipage}\hfill\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
-	\flushright$\begin{array}[t]{c|cccc}
-	t_i&0&1&2&3\\\hline
-	y_i&1&2&2&3
-	\end{array}$
-\end{minipage}\par
-\vspace{-21pt}
+	\exstart Compute the sum of the absolute errors $\sum\nm{\hat y_i-y_i}$ for the regression line  and compare it to the sum of the absolute errors for $\hat y=4t$: what do you notice?
+	\begin{enumerate}\setcounter{enumi}{1}
+		\begin{minipage}[t]{0.69\linewidth}\vspace{0pt}
+			\item Let $\hat y=mt+c$ be a linear predictor for the given data.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
+			\flushright
+			$\begin{array}[t]{c|cccc}
+				t_i&0&1&2&3\\\hline
+				y_i&1&2&2&3
+			\end{array}$
+		\end{minipage}\par
+		\vspace{-21pt}
 
-	\begin{enumerate}
-	  \item Compute the sum of squared-errors $S(m,c)=\sum e_i^2=\sum\nm{\hat y_i-y_i}^2$ as\par a function of $m$ and $c$.
-	  \item Compute the partial derivatives $\partials[S]{m}$ and $\partials[S]{c}$.
-	  \item Find $m$ and $c$ by setting both partial derivatives to zero; hence find the equation of the regression line for these data.
-	  \item Compare the sum of square errors $S$ for the regression line with the errors if we use the simple predictor $y(t)=1+\frac 23t$ which passes through the first an last data points.
-  \end{enumerate}
-  
-  \item Consider Example \ref{ex:reg2}.
-  \begin{enumerate}
-  	\item Compute the sum of square-errors $S=\sum e_i^2=\sum\nm{\hat y_i-y_i}^2$ for the regression line.
-  	\item Suppose a student was expected to score \emph{exactly} the same on both quizzes; the predictor would be $\hat y=t$. What would the sum of squared-errors be in this case?
-  	\item If a student scores 8/10 on \emph{Quiz 2,} use linear regression to predict their score on Quiz 1.\par
-  	(\emph{Warning: the answer is NOT \ $\frac 52\cdot 8-11=9$\ldots})
-  \end{enumerate}
+		\begin{enumerate}
+		  \item Compute the sum of squared-errors $S(m,c)=\sum e_i^2=\sum\nm{\hat y_i-y_i}^2$ as\par a function of $m$ and $c$.
+		  \item Compute the partial derivatives $\partials[S]{m}$ and $\partials[S]{c}$.
+		  \item Find $m$ and $c$ by setting both partial derivatives to zero; hence find the equation of the regression line for these data.
+		  \item Compare the sum of square errors $S$ for the regression line with the errors if we use the simple predictor $y(t)=1+\frac 23t$ which passes through the first an last data points.
+	  \end{enumerate}
   
   
-  \item Ten children had their height (inches) measured on their first and second birthdays. The data was as follows.
-  \[\begin{array}{l|cccccccccc}
-  \text{1\st{} birthday}&28&28&29&29&29&30&30&32&32&33\\\hline
-  \text{2\nd{} birthday}&30&32&31&34&35&33&36&37&35&37
-  \end{array}\]
-  Given this data, find the regression model for predicting the height at 2 years of a child who measures 32 inches at age 1. %What is the coefficient of determination and what does it say about your confidence in your prediction?
-  \par
-  (\emph{It is acceptable---and encouraged!---to use a spreadsheet to find the necessary ingredients. You can do this by hand if you like, but the numbers are large; it is easier with some formulæ from the next section.})
-  
-  \item\begin{enumerate}
-    \item Let $a,b$ be given. Find the value of $y$ which minimizes the sum of squares
-    \[(y-a)^2+(y-b)^2\]
-    \item For the data set $\{(t,y)\}=\{(1,1),(2,1),(2,3)\}$, find the unique least-squares linear model for predicting $y$ given $t$.\par
-    (\emph{Hint: think about part (a) if you don't want to compute})
-    \item	Show that there are \emph{infinitely many} lines $\hat y=mt+c$ which minimize the sum of the absolute errors $\sum_{i=1}^3\nm{\hat y_i-y_i}$.
-  \end{enumerate}
-\end{enumerate}
+	  \item Consider Example \ref{ex:reg2}.
+	  \begin{enumerate}
+	  	\item Compute the sum of square-errors $S=\sum e_i^2=\sum\nm{\hat y_i-y_i}^2$ for the regression line.
+	  	\item Suppose a student was expected to score \emph{exactly} the same on both quizzes; the predictor would be $\hat y=t$. What would the sum of squared-errors be in this case?
+	  	\item If a student scores 8/10 on \emph{Quiz 2,} use linear regression to predict their score on Quiz 1.\par
+	  	(\emph{Warning: the answer is NOT \ $\frac 52\cdot 8-11=9$\ldots})
+	  \end{enumerate}
+	  
+	  
+	  \item Ten children had their height (inches) measured on their first and second birthdays. The data was as follows.
+	  \[
+	  	\begin{array}{l|cccccccccc}
+	  		\text{1\st{} birthday}&28&28&29&29&29&30&30&32&32&33\\\hline
+	  		\text{2\nd{} birthday}&30&32&31&34&35&33&36&37&35&37
+	  	\end{array}
+	  \]
+	  Given this data, find the regression model for predicting the height at 2 years of a child who measures 32 inches at age 1. %What is the coefficient of determination and what does it say about your confidence in your prediction?
+	  \par
+	  (\emph{It is acceptable---and encouraged!---to use a spreadsheet to find the necessary ingredients. You can do this by hand if you like, but the numbers are large; it is easier with some formulæ from the next section.})
+	  
+	  \item\begin{enumerate}
+	    \item Let $a,b$ be given. Find the value of $y$ which minimizes the sum of squares
+	    \[
+	    	(y-a)^2+(y-b)^2
+	    \]
+	    \item For the data set $\bigl\{(t,y)\bigr\} =\bigl\{(1,1),(2,1),(2,3)\bigr\}$, find the unique least-squares linear model for predicting $y$ given $t$.\par
+	    (\emph{Hint: think about part (a) if you don't want to compute})
+	    \item	Show that there are \emph{infinitely many} lines $\hat y=mt+c$ which minimize the sum of the absolute errors $\sum_{i=1}^3\nm{\hat y_i-y_i}$.
+	  \end{enumerate}
+	\end{enumerate}
 \end{exercises}
 
 
