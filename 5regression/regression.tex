@@ -304,195 +304,225 @@ The expression for $c$ shows that the regression line passes through the data's 
 
 \subsection{The Coefficient of Determination}
 
-In the sense that it minimizes the sum of the squared errors $S=\sum e_i^2$, the linear regression model is as good a linear model as it can be; but \emph{how} good? We'd like some quantitative measure for how useful the linear model is as a replacement for the original data set. The standard approach to this problem relies the concept of variance.
+In the sense that it minimizes the sum of the squared errors $S=\sum e_i^2$, the linear regression model is as good as it can be---but \emph{how} good? We could use $S$ as a \emph{quantitative} measure of the model's accuracy, but it doesn't do a good job at comparing the accuracy of models for \emph{different} data sets. The standard approach to this problem relies the concept of variance.
 
 \begin{defn}{}{}
-The \emph{variance} of data sequence $(y_1,\ldots,y_n)$ is the average of the squared deviations from their mean $\cl y=\frac 1n\sum_{i=1}^ny_i$,
-\[\Var y:=\frac 1n\sum_{i=1}^n\bigl(y_i-\cl y\bigr)^2\]
-The \emph{standard deviation} is $\sigma_y:=\sqrt{\Var y}$.
+	The \emph{variance} of data sequence $(y_1,\ldots,y_n)$ is the average of the squared deviations from their mean $\cl y=\frac 1n\sum_{i=1}^ny_i$,
+	\[
+		\Var y:=\frac 1n\sum_{i=1}^n\bigl(y_i-\cl y\bigr)^2
+	\]
+	The \emph{standard deviation} is $\sigma_y:=\sqrt{\Var y}$.
 \end{defn}
 
 Variance and standard-deviation are measures of how data deviates from being constant.
 
 \begin{example}{}{vareasy}
-Suppose $(y_i)=(1,2,5,4)$. Then
-\begin{align*}
-&\cl y=\frac 14(1+2+5+4)=3&&\Var y=\frac 14\Bigl((-2)^2+(-1)^2+ 2^2+1^2\Bigr)=\frac 52&\sigma_y=\frac{\sqrt{10}}2%\\
-%&\cl z=\frac 14(2+6+10+6)=6&&\Var z=\frac 14\Bigl((-4)^2+(-2)^2+ 4^2+2^2\Bigr)=10&\sigma_z=\sqrt{10}
-\end{align*}
-The square-root means that $\sigma_y$ has the same units as $y$: loosely speaking we `expect' a typical data value to be approximately $\sigma_y=\frac 12\sqrt{10}\approx 1.58$ from the mean $\cl y=3$.
+	Suppose $(y_i)=(1,2,5,4)$. Then
+	\begin{align*}
+		&\cl y=\frac 14(1+2+5+4)=3
+		&&\Var y=\frac 14\Bigl((-2)^2+(-1)^2+ 2^2+1^2\Bigr) =\frac 52
+		&\sigma_y=\frac{\sqrt{10}}2%\\
+		%&\cl z=\frac 14(2+6+10+6)=6&&\Var z=\frac 14\Bigl((-4)^2+(-2)^2+ 4^2+2^2\Bigr)=10&\sigma_z=\sqrt{10}
+	\end{align*}
+	The square-root means that $\sigma_y$ has the same units as $y$. Loosely speaking we `expect' a typical data value to be approximately $\sigma_y=\frac 12\sqrt{10}\approx 1.58$ from the mean $\cl y=3$.
 \end{example}
 
 To obtain a measure for how well a regression line fits given data $(t_i,y_i)$, we ask what \emph{fraction} of the variance in $y$ is explained by the model.
 
 \begin{defn}{}{}
-The \emph{coefficient of determination} of a model $\hat y=mt+c$ is the ratio
-\[R^2:=\frac{\Var\hat y}{\Var y}\]
+	The \emph{coefficient of determination} of a model $\hat y=mt+c$ is the ratio
+	\[
+		R^2:=\frac{\Var\hat y}{\Var y}
+	\]
 \end{defn}
 
 \begin{examples}{}{}
-We start by considering two extreme examples.\vspace{-1pt}
-\begin{enumerate}
-  \item If the data were perfectly linear, then $y_i=mt_i+c$ for all $i$. The regression line is therefore $\hat y=mt+c$ and the coefficient of determination is precisely $R^2=\frac{\Var y}{\Var y}=1$. All the variance in the output $y$ is explained by the model's transfer of the variance in the input $t$.\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-  \item By contrast, consider the data in the table where we work out all necessary details to find the regression line:
-  \[
-  m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2}=0,\quad c=\cl y-m\cl t=2
-  \]
-  The regression line is the \emph{constant} $\hat y\equiv 2$, whence $\hat y$ has \emph{no variance} and the coefficient of determination is $R^2=0$.
-\end{minipage}\hfill\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
-	\flushright
-	$\renewcommand{\arraystretch}{1.2}
-\begin{array}{|c|cccc|c|}
-\hline
-\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
-t_i&0&0&2&2&\cl t=1\\\hline
-y_i&1&3&1&3&\cl y=2\\\hline
-t_i^2&0&0&4&4&\cl{t^2}=2\\\hline
-%y_i^2&1&16&4&25&\cl{y^2}=11.5\\\hline
-t_iy_i&0&0&2&6&\cl{ty}=2\\\hline%\hline
-%(\hat y_i-\cl y)^2&1&1&1&1&\Var\hat y=1\\\hline
-\end{array}$
-\end{minipage}\par
-	In this example, the regression model doesn't help explain the $y$-data in any way: the $t$-values have no obvious impact on the $y$-values.
-\end{enumerate}
+	We start by considering two extreme examples.\vspace{-1pt}
+	\begin{enumerate}
+	  \item If the data were perfectly linear, then $y_i=mt_i+c$ for all $i$. The regression line is therefore $\hat y=mt+c$ and the coefficient of determination is precisely $R^2=\frac{\Var y}{\Var y}=1$. All the variance in the output $y$ is explained by the model's transfer of the variance in the input $t$.\par
+		\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+		  \item By contrast, consider the data in the table where we work out all necessary details to find the regression line:
+		  \[
+		  	m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2}=0,\quad c=\cl y-m\cl t=2
+		  \]
+		  The regression line is the \emph{constant} $\hat y\equiv 2$, whence $\hat y$ has \emph{no variance} and the coefficient of determination is $R^2=0$.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+			\flushright
+			$\renewcommand{\arraystretch}{1.2}
+			\begin{array}{|c|cccc|c|}
+				\hline
+				\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
+				t_i&0&0&2&2&\cl t=1\\\hline
+				y_i&1&3&1&3&\cl y=2\\\hline
+				t_i^2&0&0&4&4&\cl{t^2}=2\\\hline
+				%y_i^2&1&16&4&25&\cl{y^2}=11.5\\\hline
+				t_iy_i&0&0&2&6&\cl{ty}=2\\\hline%\hline
+				%(\hat y_i-\cl y)^2&1&1&1&1&\Var\hat y=1\\\hline
+			\end{array}$
+		\end{minipage}\par
+		In this example, the regression model doesn't help explain the $y$-data in any way: the $t$-values have no obvious impact on the $y$-values.
+	\end{enumerate}
 \end{examples}
+
 \goodbreak
 
-In general, the coefficient of determination is somewhere between these extremes\footnote{We won't justify the fact that $R^2\le 1$ though it is a theorem, indeed a version of Pythagoras' theorem in linear algebra!} $0\le R^2\le 1$. Before we revisit our examples from the previous section, observe that the average of the model's outputs $\hat y_i$ is the same as that of the original data:
-\[\frac 1n\sum_{i=1}^n\hat y_i=\frac 1n\sum_{i=1}^n(mt_i+c)=m\cl t+c=\cl y\]
+In general, the coefficient of determination is somewhere between these extremes\footnote{%
+	We won't justify the fact that $R^2\le 1$ though it is a theorem---indeed a version of Pythagoras' theorem in linear algebra!%
+} $0\le R^2\le 1$. Before we revisit our examples from the previous section, observe that the average of the model's outputs $\hat y_i$ is the same as that of the original data:
+\[
+	\frac 1n\sum_{i=1}^n\hat y_i=\frac 1n\sum_{i=1}^n(mt_i+c)=m\cl t+c=\cl y
+\]
 This makes computing the variance of $\hat y$ a breeze!
 
 \begin{tcolorbox}[exstyle]{}\vspace{-5pt}
-\begin{description}
-\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
-  \item[Example \ref{ex:reg1}.]\lstsp Recall that $\hat y=\frac 15(21t-4)$. Everything necessary is in the table
-  \begin{gather*}
-  \Var y=\frac{6.75^2+2.75^2+0.75^2+10.25^2}4 =39.6875\\
-  \Var\hat y=\frac{7.35^2+3.15^2+1.05^2+9.45^2}4=38.5875
-  \end{gather*}
-\end{minipage}\hfill\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
-	\flushright
-	$\renewcommand{\arraystretch}{1.2}
-	\begin{array}{|c|cccc|c|}
-	\hline
-	\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
-	t_i&1&2&3&5&\cl t=2.75\\\hline
-	y_i&4&8&10&21&\cl y=10.75\\\hline
-	\hat y_i&3.4&7.6&11.8&20.2&\cl{\hat y}=10.75\\\hline
-\end{array}$
-\end{minipage}\par
-
-  from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{3087}{3175}\approx 97.23\%$. The interpretation here is that the data is very close to being linear; the output $y_i$ is very closely approximated by the regression model with approximately 97\% of its variance explained by the model.\par
-  
-  \begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
-  \item[Example \ref{ex:reg2}.]\lstsp This time $\hat y=\frac 25(t+11)$.
-  \begin{gather*}
-  \Var y=\frac{2.8^2+0.2^2+2.2^2+0.8^2+1.2^2}5 =2.96\\
-  \Var\hat y=\frac{0.4^2+1.2^2+0.4^2+0^2+1.2^2}5=0.64
-  \end{gather*}
-\end{minipage}\hfill\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
-	\flushright
-	$\renewcommand{\arraystretch}{1.2}
-	\begin{array}{|c|ccccc|c|}
-	\hline
-	\multicolumn{6}{|c|}{\text{data}}&\text{average}\\\hline
-	t_i&8&10&6&7&4&\cl t=7\\\hline
-	y_i&10&7&5&8&6&\cl y=7.2\\\hline
-	\hat y_i&7.6&8.4&6.8&7.2&6&\cl{\hat y}=7.2\\\hline
-\end{array}$
-\end{minipage}\par
- from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{8}{37}\approx 21.62\%$. In this case the coefficient of determination is small, which indicates that the model does not explain much of the variation in the output.
-\end{description}
+	\begin{description}
+		\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
+		  \item[Example \ref{ex:reg1}.]\lstsp Recall that $\hat y=\frac 15(21t-4)$. Everything necessary is in the table
+		  \begin{gather*}
+		  	\Var y=\frac{6.75^2+2.75^2+0.75^2+10.25^2}4 =39.6875\\
+		  	\Var\hat y=\frac{7.35^2+3.15^2+1.05^2+9.45^2}4=38.5875
+		  \end{gather*}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
+			\flushright
+			$\renewcommand{\arraystretch}{1.2}
+			\begin{array}{|c|cccc|c|}
+				\hline
+				\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
+				t_i&1&2&3&5&\cl t=2.75\\\hline
+				y_i&4&8&10&21&\cl y=10.75\\\hline
+				\hat y_i&3.4&7.6&11.8&20.2&\cl{\hat y}=10.75\\\hline
+			\end{array}$
+		\end{minipage}\par
+	
+	  from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{3087}{3175}\approx 97.23\%$. The interpretation here is that the data is very close to being linear; the output $y_i$ is very closely approximated by the regression model with approximately 97\% of its variance explained by the model.\par
+	  
+	  \begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
+		  \item[Example \ref{ex:reg2}.]\lstsp This time $\hat y=\frac 25(t+11)$.
+		  \begin{gather*}
+			  \Var y=\frac{2.8^2+0.2^2+2.2^2+0.8^2+1.2^2}5 =2.96\\
+			  \Var\hat y=\frac{0.4^2+1.2^2+0.4^2+0^2+1.2^2}5=0.64
+		  \end{gather*}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
+			\flushright
+			$\renewcommand{\arraystretch}{1.2}
+			\begin{array}{|c|ccccc|c|}
+				\hline
+				\multicolumn{6}{|c|}{\text{data}}&\text{average}\\\hline
+				t_i&8&10&6&7&4&\cl t=7\\\hline
+				y_i&10&7&5&8&6&\cl y=7.2\\\hline
+				\hat y_i&7.6&8.4&6.8&7.2&6&\cl{\hat y}=7.2\\\hline
+			\end{array}$
+		\end{minipage}\par
+	 	from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{8}{37}\approx 21.62\%$. In this case the coefficient of determination is small, which indicates that the model does not explain much of the variation in the output.
+	\end{description}
 \end{tcolorbox}
 
 The four examples are plotted below for easy visual comparison between the $R^2$-values.
 
 \begin{center}
-\begin{tabular}{@{}c@{\quad\ }c@{\quad\ }c@{\quad\ }c@{}}
-\includegraphics{reg-rsq1}
-&
-\includegraphics{reg-rsq2}
-&
-\includegraphics{reg-rsq3}
-&
-\includegraphics{reg-rsq4}
-\\
-Perfect model $R^2=1$
-&
-Useless model $R^2=0$
-&
-Good model $R^2=0.97$
-&
-Poor model $R^2=0.22$
-\end{tabular}
+	\begin{tabular}{@{}c@{\quad\ }c@{\quad\ }c@{\quad\ }c@{}}
+		\includegraphics{reg-rsq1}
+		&
+		\includegraphics{reg-rsq2}
+		&
+		\includegraphics{reg-rsq3}
+		&
+		\includegraphics{reg-rsq4}
+		\\
+		Perfect model $R^2=1$
+		&
+		Useless model $R^2=0$
+		&
+		Good model $R^2=0.97$
+		&
+		Poor model $R^2=0.22$
+	\end{tabular}
 \end{center}
+
 
 \boldinline{Efficient computation of $R^2$}
 
 If you want to compute by hand, our current process is lengthy and awkward. To obtain a more efficient alternative we first consider an alternative expression for the variance of any collection of data:
 \[
-\Var x=\frac 1n\sum(x_i-\cl x)^2=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i =\cl x^2-\cl x^2
+	\Var x=\frac 1n\sum(x_i-\cl x)^2=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i =\cl x^2-\cl x^2
 \]
 Now expand the variance of the predicted outputs:
 \[
-\Var\hat y=\frac 1n\sum(\hat y_i-\cl y)^2=\frac 1n\sum\bigl(mt_i+c-(m\cl t+c)\bigr)^2 =\frac{m^2}n\sum(t_i-\cl t)^2=m^2\Var t
+	\Var\hat y=\frac 1n\sum(\hat y_i-\cl y)^2=\frac 1n\sum\bigl(mt_i+c-(m\cl t+c)\bigr)^2 =\frac{m^2}n\sum(t_i-\cl t)^2=m^2\Var t
 \]
 Putting these together, with a little extra algebra, we obtain several equivalent expressions for the coefficient of determination:\phantomsection\label{pg:rsqalt}
 \begin{align*}
-R^2&=\frac{\Var\hat y}{\Var y} =m^2\frac{\Var t}{\Var y} = m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} = \frac{(\cl{ty}-\cl t\cl y)^2}{(\cl{y^2}-\cl y^2)(\cl{t^2}-\cl t^2)}
+	R^2&=\frac{\Var\hat y}{\Var y} =m^2\frac{\Var t}{\Var y} = m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} = \frac{(\cl{ty}-\cl t\cl y)^2}{(\cl{y^2}-\cl y^2)(\cl{t^2}-\cl t^2)}
 %=1-\frac{\sum e_i^2}{n\Var y} %=\frac{\Cov(y,t)}{\sqrt{\Var y\Var t}}
 \tag{$\ast$}
 \end{align*}
 
 \begin{example}{}{finalreg}
-We do one more easy example with simple data $(t_i,y_i):(1,4),(2,1),(3,2),(4,0)$.\par
-\begin{minipage}[t]{0.55\linewidth}\vspace{-10pt}
-\begin{gather*}\renewcommand{\arraystretch}{1.3}
-\begin{array}{|c|cccc|c|}
-\hline
-\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
-t_i&1&2&3&4&\cl t=\frac{10}4\\\hline
-y_i&4&1&2&0&\cl y=\frac 74\\\hline
-t_i^2&1&4&9&16&\cl{t^2}=\frac{15}2\\\hline
-y_i^2&16&1&4&0&\cl{y^2}=\frac{21}4\\\hline
-t_iy_i&4&2&6&0&\cl{ty}=3\\\hline
-\end{array}\\[5pt]
-m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2} =\frac{3-\frac{70}{4^2}}{\frac{15}2-\frac{100}{4^2}} =-\frac{11}{10}=-1.1\\
-c=\cl y-m\cl t=\frac{7}4+\frac{11\cdot 10}{10\cdot 4}=\frac 92 =4.5
-\end{gather*}
-\end{minipage}\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
-\flushright\includegraphics{reg-line5}
+	We do one more easy example with simple data $(t_i,y_i):(1,4),(2,1),(3,2),(4,0)$.\par
+	\begin{minipage}[t]{0.55\linewidth}\vspace{-10pt}
+		\begin{gather*}\renewcommand{\arraystretch}{1.3}
+			\begin{array}{|c|cccc|c|}
+				\hline
+				\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
+				t_i&1&2&3&4&\cl t=\frac{10}4\\\hline
+				y_i&4&1&2&0&\cl y=\frac 74\\\hline
+				t_i^2&1&4&9&16&\cl{t^2}=\frac{15}2\\\hline
+				y_i^2&16&1&4&0&\cl{y^2}=\frac{21}4\\\hline
+				t_iy_i&4&2&6&0&\cl{ty}=3\\\hline
+			\end{array}\\[5pt]
+			m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2} =\frac{3-\frac{70}{4^2}}{\frac{15}2-\frac{100}{4^2}} =-\frac{11}{10}=-1.1\\
+			c=\cl y-m\cl t=\frac{7}4+\frac{11\cdot 10}{10\cdot 4}=\frac 92 =4.5
+		\end{gather*}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
+	\flushright\includegraphics{reg-line5}
 \end{minipage}\medbreak
 The regression line is $\hat y=-\frac{11}{10}t+\frac 92=-1.1t+4.5$, and the coefficient of determination is
-\[R^2=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} =\frac{121}{100}\cdot \frac{\frac{15}2-\frac{100}{4^2}}{\frac{21}4-\frac{49}{4^2}}= \frac{121}{100}\cdot \frac{20}{35} =\frac{121}{175} =69.1\%\]
+\[
+	R^2=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} =\frac{121}{100}\cdot \frac{\frac{15}2-\frac{100}{4^2}}{\frac{21}4-\frac{49}{4^2}}= \frac{121}{100}\cdot \frac{20}{35} =\frac{121}{175} =69.1\%
+\]
 The \textcolor{Green}{minimized square error} is also easily computed:
-\[\sum e_i^2=\sum(\hat y_i-y_i)^2=(3.4-4)^2+(2.3-1)^2+(1.2-2)^2+(0.1-0)^2=2.7\] 
+\[
+	\sum e_i^2=\sum(\hat y_i-y_i)^2=(3.4-4)^2+(2.3-1)^2+(1.2-2)^2+(0.1-0)^2=2.7
+\] 
 \end{example}
+
 
 \boldinline{Reversion to the Mean \& Correlation}
 
 By ($\ast$), the regression model may be re-written in terms of the standard-deviation and $R^2$: 
-\[\hat y(t)=mt+c=\cl y+m(t-\cl t) =\cl y+\textcolor{red}{\sqrt{R^2}}\frac{\sigma_y}{\sigma_t}(t-\cl t) \implies \hat y(\cl t+\lambda\sigma_t)=\cl y+\lambda\textcolor{red}{\sqrt{R^2}}\sigma_y\]
+\[
+	\hat y(t)=mt+c=\cl y+m(t-\cl t) =\cl y+\textcolor{red}{\sqrt{R^2}}\frac{\sigma_y}{\sigma_t}(t-\cl t) \implies \hat y(\cl t+\lambda\sigma_t)=\cl y+\lambda\textcolor{red}{\sqrt{R^2}}\sigma_y
+\]
 The fact that $R^2\le 1$ is called \emph{reversion to the mean.} If $t$ is one standard-deviation from the mean $\cl t$, then we expect $\hat y$ to be \emph{less} than one standard-deviation from $\cl y$. With respect to the `neutral' measure given by the standard-deviation, a prediction $\cl y$ is closer to the average than any input.
 
 \begin{defn}{}{}
-The value $r:=\pm\sqrt{R^2}$, with sign equal to that of $m$ is called the \emph{correlation coefficient.}
+	The value $r:=\pm\sqrt{R^2}$, with sign equal to that of $m$ is called the \emph{correlation coefficient.}
 \end{defn}
 
 An input $\lambda$ standard-deviations above the mean ($t=\cl t+\lambda\sigma_t$) results in a prediction $\lambda r$ standard-deviations above the mean ($\hat y=\cl y+\lambda r\sigma_y$).
 
 \begin{example*}{\ref{ex:finalreg}, cont}{}
-We compute the details. The correlation coefficient is $r=-\sqrt{R^2}\approx -0.832$; we say that the data is \emph{negatively correlated,} since the output $y$ seems to \emph{decrease} as $t$ increases. The standard deviations may be read off from the table:
-\[\sigma_t=\sqrt{\Var t}=\sqrt{\cl{t^2}-\cl t^2}=\frac{\sqrt 5}2\approx 1.118,\qquad \sigma_y=\sqrt{\Var y}=\sqrt{\cl{y^2}-\cl y^2}=\frac{\sqrt{35}}4\approx 1.479\]
-The predictor may therefore be written (approximately)
-\[\hat y(\cl t+\lambda\sigma_t)=\hat y(2.5+1.12\lambda) =\cl y+\lambda r\sigma_y =1.75-1.23\lambda\]
-As a sanity check,
-\[\hat y(2.5+1.12)=\hat y(3.62)=-1.1\times -3.98+4.5=0.52 =1.75-1.23\]
+	We compute the details. The correlation coefficient is $r=-\sqrt{R^2}\approx -0.832$; we say that the data is \emph{negatively correlated,} since the output $y$ seems to \emph{decrease} as $t$ increases. The standard deviations may be read off from the table:
+	\[
+		\sigma_t=\sqrt{\Var t}=\sqrt{\cl{t^2}-\cl t^2}=\frac{\sqrt 5}2\approx 1.118,\qquad \sigma_y=\sqrt{\Var y}=\sqrt{\cl{y^2}-\cl y^2}=\frac{\sqrt{35}}4\approx 1.479
+	\]
+	The predictor may therefore be written (approximately)
+	\[
+		\hat y(\cl t+\lambda\sigma_t)=\hat y(2.5+1.12\lambda) =\cl y+\lambda r\sigma_y =1.75-1.23\lambda
+	\]
+	As a sanity check,
+	\[
+		\hat y(2.5+1.12)=\hat y(3.62)=-1.1\times -3.98+4.5=0.52 =1.75-1.23
+	\]
 \end{example*}
-
-
-
 
 
 \boldinline{Weaknesses in Linear Regression}
@@ -503,24 +533,25 @@ While linear regression is undoubtedly useful it has obvious weaknesses, for ins
   \item If the data is not very linear then the regression model will produce a weak predictor. There are several ways around this. Sometimes data looks more linear after some manipulation, particularly by exponential or logarithmic functions. We'll think about this shortly. In the next section we consider how to find polynomial models for data, though to do this without losing sanity points requires a little detour into matrix multiplication.
 \end{itemize}
 
+
 \begin{exercises}{}{}
-\exstart Suppose $(z_i)=(2,4,10,8)$ is \emph{double} the data set in Example \ref{ex:vareasy}. Find $\cl z,\Var z$ and $\sigma_z$. Why are you not surprised?
-
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Find the standard deviations and correlation coefficients for the data in Examples \ref{ex:reg1} and \ref{ex:reg2}.
-  
-  
-  \item The adult heights of men and women in a given population have the following means and standard deviations.
-  \begin{quote}
-  Men:\lstsp average 69.5 in, \ $\sigma=3.2$ in.\par
-  Women:\lstsp average 63.7 in, \ $\sigma=2.5$ in.
-  \end{quote}
-  The height of a father and his adult daughter have correlation coefficient $0.35$. If a man is 72 in tall, how tall do you expect his daughter to be?
-
-  
-  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. What is the coefficient of determination for the reversed predictor $\hat t(y)$? Why?\par
-  (\emph{Hint: consider one of the alternative expressions for $R^2$ on page \pageref{pg:rsqalt}})
-\end{enumerate}
+	\exstart Suppose $(z_i)=(2,4,10,8)$ is \emph{double} the data set in Example \ref{ex:vareasy}. Find $\cl z,\Var z$ and $\sigma_z$. Why are you not surprised?
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Find the standard deviations and correlation coefficients for the data in Examples \ref{ex:reg1} and \ref{ex:reg2}.
+	  
+	  
+	  \item The adult heights of men and women in a given population have the following means and standard deviations.
+	  \begin{quote}
+	  	Men:\lstsp average 69.5 in, \ $\sigma=3.2$ in.\par
+	  	Women:\lstsp average 63.7 in, \ $\sigma=2.5$ in.
+	  \end{quote}
+	  The height of a father and his adult daughter have correlation coefficient $0.35$. If a man is 72 in tall, how tall do you expect his daughter to be?
+	
+	  
+	  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. What is the coefficient of determination for the reversed predictor $\hat t(y)$? Why?\par
+	  (\emph{Hint: consider one of the alternative expressions for $R^2$ on page \pageref{pg:rsqalt}})
+	\end{enumerate}
 
 \end{exercises}
 
