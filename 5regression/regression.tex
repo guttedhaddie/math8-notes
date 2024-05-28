@@ -559,9 +559,9 @@ While linear regression is undoubtedly useful it has obvious weaknesses, for ins
 
 
 
-\subsection[Matrix Multiplication \& Polynomial Regression]{Matrix Multiplication \& Polynomial Regression\footnote{Matrix computations are non-examinable in this course. The purpose of this section is to be see how the regression process may easily be automated and generalized by computer and to understand a little of how a spreadsheet calculates best-fitting curves.}}
+\subsection{Matrix Multiplication \& Polynomial Regression}
 
-In this section we consider how to find a best-fitting least-squares polynomial for given data. To see how to do this, it helps to rephrase the linear approach using matrices.
+In this section we consider how to find a best-fitting least-squares polynomial for given data. To see how to do this, it helps to rephrase the linear approach using matrices.\footnote{Matrix computations are non-examinable. The purpose of this section is to be see how the regression may easily be automated and generalized by computer and to understand a little of how a spreadsheet calculates best-fitting curves of different types.}
 \bigskip
 
 \iffalse
@@ -616,240 +616,321 @@ This is a very quick primer on how to multiply matrices. It is very easy if you 
 \fi
 
 We start by observing that the system of equations in Theorem \ref{thm:linreg} can be written in as a $2\times 2$ matrix problem. For a data set with $n$ pairs, the coefficients $m,c$ satisfy
-\[\begin{pmatrix}
-\sum t_i^2&\sum t_i\\
-\sum t_i&n
-\end{pmatrix}\twovec mc=\twovec{\sum t_iy_i}{\sum y_i}\]
-This is nice because we can decompose the square matrix on the left as the product of a simple $2\times n$ matrix and its transpose (switch the rows and columns);
-\[\begin{pmatrix}
-\sum t_i^2&\sum t_i\\
-\sum t_i&n
-\end{pmatrix}
-=
-\begin{pmatrix}
-t_1&t_2&\cdots&t_n\\
-1&1&\cdots&1
-\end{pmatrix}\begin{pmatrix}
-t_1&1\\
-t_2&1\\
-\vdots&\vdots\\
-t_n&1
-\end{pmatrix} =:P^TP\]
-We can also view the right side as the product of $P^T$ and the column vector of output values $y_i$:
-\[\twovec{\sum t_iy_i}{\sum y_i}=\begin{pmatrix}
-t_1&t_2&\cdots&t_n\\
-1&1&\cdots&1
-\end{pmatrix}\threevec{y_1}{\vdots}{y_n}=:P^T\vy
+\[
+	\begin{pmatrix}
+		\sum t_i^2&\sum t_i\\
+		\sum t_i&n
+	\end{pmatrix}
+	\twovec mc=\twovec{\sum t_iy_i}{\sum y_i}
 \]
-A little theory tells us that if \emph{at least two} of the $t_i$ are distinct, then the $2\times 2$ matrix $P^TP$ is invertible;\footnote{For those who've studied linear algebra, $P$ and $P^TP$ have the same null space and thus rank, since
-\begin{gather*}
-P\vx=\V0\implies P^TP\vx=\V0\quad\text{and}\quad P^TP\vx=\V0\implies \vx^TP^TP\vx=\V0\implies \nm{P\vx}=\V0\implies P\vx=\V0
-\end{gather*}
-For linear regression, having at least two distinct $t_i$ values means $\Rank P=2$, whence $P^TP$ is invertible.} there is a \emph{unique} regression line whose coefficients may be found by taking the matrix inverse
-\[\twovec mc=(P^TP)^{-1}P^T\vy \implies \hat y=mt+c=(t\ \ 1)\twovec mc=(t\ \ 1)(P^TP)^{-1}P^T\vy\]
+This is nice because we can decompose the square matrix on the left as the product of a simple $2\times n$ matrix and its transpose (switch the rows and columns);
+\[
+	\begin{pmatrix}
+		\sum t_i^2&\sum t_i\\
+		\sum t_i&n
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		t_1&t_2&\cdots&t_n\\
+		1&1&\cdots&1
+	\end{pmatrix}
+	\begin{pmatrix}
+		t_1&1\\
+		t_2&1\\
+		\vdots&\vdots\\
+		t_n&1
+	\end{pmatrix}
+	=:P^TP
+\]
+We can also view the right side as the product of $P^T$ and the column vector of output values $y_i$:
+\[
+	\twovec{\sum t_iy_i}{\sum y_i}=
+	\begin{pmatrix}
+		t_1&t_2&\cdots&t_n\\
+		1&1&\cdots&1
+	\end{pmatrix}
+	\threevec{y_1}{\vdots}{y_n}=:P^T\vy
+\]
+A little theory tells us that if \emph{at least two} of the $t_i$ are distinct, then the $2\times 2$ matrix $P^TP$ is invertible;\footnote{%
+For those who've studied linear algebra, $P$ and $P^TP$ have the same null space and thus rank, since
+	\[
+		P\vx=\V0\implies P^TP\vx=\V0\quad\text{and}\quad P^TP\vx=\V0\implies \vx^TP^TP\vx=\V0\implies \Nm{P\vx}=\V0\implies P\vx=\V0
+	\]
+	For linear regression, having at least two distinct $t_i$ values means $\Rank P=2$, whence $P^TP$ is invertible.
+}
+there is a \emph{unique} regression line whose coefficients may be found by taking the matrix inverse
+\[
+	\twovec mc=(P^TP)^{-1}P^T\vy \implies \hat y=mt+c=(t\ \ 1)\twovec mc=(t\ \ 1)(P^TP)^{-1}P^T\vy
+\]
 We can also easily compute the vector of predicted values $\hat y_i=\hat y(t_i)$:
-\[\hat\vy=\begin{pmatrix}
-t_1&t_2&\cdots&t_n\\
-1&1&\cdots&1
-\end{pmatrix}\twovec mc=P(P^TP)^{-1}P^T\vy\]
+\[
+	\hat\vy=
+	\begin{pmatrix}
+		t_1&t_2&\cdots&t_n\\
+		1&1&\cdots&1
+	\end{pmatrix}
+	\twovec mc=P(P^TP)^{-1}P^T\vy
+\]
 and the squared error $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=\Nm{\hat\vy-\vy}^2$, which leads to an alternative expression for the coefficient of determination
-\[R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm\vy^2-n\cl y^2}\]
+\[
+	R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm\vy^2-n\cl y^2}
+\]
 where $\Nm\vy$ is the \emph{length} of a vector.
 
 \goodbreak
 
 
 \begin{examples}{}{}
-\exstart We revisit the Example \ref{ex:finalreg} in this language.
-\[P=\begin{pmatrix}
-t_1&1\\
-t_2&1\\
-\vdots&\vdots\\
-t_n&1
-\end{pmatrix}=\begin{pmatrix}
-1&1\\
-2&1\\
-3&1\\
-4&1
-\end{pmatrix} \implies P^TP=\begin{pmatrix}
-1&2&3&4\\
-1&1&1&1
-\end{pmatrix}\begin{pmatrix}
-1&1\\
-2&1\\
-3&1\\
-4&1
-\end{pmatrix} =\begin{pmatrix}
-30&10\\
-10&4
-\end{pmatrix}\]
-from which
-\begin{align*}
-\twovec mc&=(P^TP)^{-1}P^T\vy =\begin{pmatrix}
-30&10\\
-10&4
-\end{pmatrix}^{-1}\begin{pmatrix}
-1&2&3&4\\
-1&1&1&1
-\end{pmatrix}\smash[t]{\fourvec 4120}\\
-&=\frac 1{30\cdot 4-10^2}\begin{pmatrix}
-4&-10\\
--10&30
-\end{pmatrix}\twovec{12}{7} =\frac 1{20}\twovec{48-70}{-120+210}=\frac 1{10}\twovec{-11}{45}
-\end{align*}
-The prediction vector given inputs $t_i$ is therefore
-\[
-\hat\vy=P\twovec mc=\frac 1{10}\begin{pmatrix}
-1&2&3&4\\
-1&1&1&1
-\end{pmatrix}\twovec{-11}{45} =\frac 1{10}\fourvec{34}{23}{12}{1}
-\]
-from which the coefficient of determination is, as before
-\[R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2} =\frac{\frac 1{100}(34^2+23^2+12^2+1^2)-4\cdot\frac{7^2}{4^2}}{(4^2+1^1+2^2+0^2)-4\cdot\frac{7^2}{4^2}} =\frac{121}{175}\]
-\begin{enumerate}\setcounter{enumi}{1}
-  \begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-  \item Given the data set $\{(3,1),(3,5),(3,6)\}$, we have $P=\begin{smatrix}
-   3&1\\
-   3&1\\
-   3&1
-   \end{smatrix}$ and $P^TP=\begin{smatrix}
-   27&9\\9&3
-   \end{smatrix}$ which isn't invertible: $27\cdot 3-9\cdot 9=0$. The linear regression method doesn't work!\smallbreak
-   It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{Green}{average} $(3,4)$, though it could have \emph{any} slope!
-  \end{minipage}\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-  \flushright\includegraphics{reg-line6}
-  \end{minipage}
-\end{enumerate}
+	\exstart We revisit the Example \ref{ex:finalreg} in this language.
+	\[
+		P=
+		\begin{pmatrix}
+			t_1&1\\
+			t_2&1\\
+			\vdots&\vdots\\
+			t_n&1
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			1&1\\
+			2&1\\
+			3&1\\
+			4&1
+		\end{pmatrix}
+		\implies P^TP=
+		\begin{pmatrix}
+			1&2&3&4\\
+			1&1&1&1
+		\end{pmatrix}
+		\begin{pmatrix}
+			1&1\\
+			2&1\\
+			3&1\\
+			4&1
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			30&10\\
+			10&4
+		\end{pmatrix}
+	\]
+	from which
+	\begin{align*}
+		\twovec mc&=(P^TP)^{-1}P^T\vy =
+		\begin{pmatrix}
+			30&10\\
+			10&4
+		\end{pmatrix}^{-1}
+		\begin{pmatrix}
+			1&2&3&4\\
+			1&1&1&1
+		\end{pmatrix}
+		\smash[t]{\fourvec 4120}\\
+		&=\frac 1{30\cdot 4-10^2}
+		\begin{pmatrix}
+			4&-10\\
+			-10&30
+		\end{pmatrix}
+		\twovec{12}{7} =\frac 1{20}\twovec{48-70}{-120+210}=\frac 1{10}\twovec{-11}{45}
+	\end{align*}
+	The prediction vector given inputs $t_i$ is therefore
+	\[
+		\hat\vy=P\twovec mc=\frac 1{10}
+		\begin{pmatrix}
+			1&2&3&4\\
+			1&1&1&1
+		\end{pmatrix}
+		\twovec{-11}{45} =\frac 1{10}\fourvec{34}{23}{12}{1}
+	\]
+	from which the coefficient of determination is, as before
+	\[
+		R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2} =\frac{\frac 1{100}(34^2+23^2+12^2+1^2)-4\cdot\frac{7^2}{4^2}}{(4^2+1^1+2^2+0^2)-4\cdot\frac{7^2}{4^2}} =\frac{121}{175}
+	\]
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
+		  \item Given the data set $\{(3,1),(3,5),(3,6)\}$, we have $P=
+		  \begin{smatrix}
+		   3&1\\
+		   3&1\\
+		   3&1
+		  \end{smatrix}$ and $P^TP=
+		  \begin{smatrix}
+		   27&9\\9&3
+		  \end{smatrix}$ 
+		  which isn't invertible: $27\cdot 3-9\cdot 9=0$. The linear regression method doesn't work!\smallbreak
+		  It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{Green}{average} $(3,4)$, though it could have \emph{any} slope!
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
+		  \flushright\includegraphics{reg-line6}
+	  \end{minipage}
+	\end{enumerate}
 \end{examples}
 
 It is unnecessary ever to use the matrix approach for linear regression, though the method does have significant advantages.
-\begin{itemize}%\itemsep0pt
+\begin{itemize}
   \item Computers store and manipulate data in matrix format, so this method is computer-ready.
   \item Suppose you repeat an experiment several times, taking measurements $y_i$ at times $t_i$. Since $P$ depends only on the $t$-data, you need only compute the matrix $(P^TP)^{-1}P^T$ \emph{once}, making computation of the regression line for each experiment very efficient. 
-  \item As we'll see momentarily, the method is easily generalizes to polynomial regression.
+  \item As we'll see momentarily, the method easily generalizes to polynomial regression.
 \end{itemize}
 
 \goodbreak
+
 
 \boldsubsubsection{Polynomial Regression}
 
 The pattern is almost identical when we use matrices; you just need to make the matrix $P$ a little larger\ldots We work through the approach for a quadratic approximation.\smallbreak
 
 Suppose we have a data set $\{(t_i,y_i):1\le i\le n\}$ and that we desire a quadratic polynomial predictor $\hat y=at^2+bt+c$ which minimizes the sum of the squared vertical errors
-\[S(a,b,c)=\sum_{i=1}^n e_i^2=\sum_{i=1}^n(at_i^2+bt_i+c-y_i)^2\]
+\[
+	S(a,b,c)=\sum_{i=1}^n e_i^2=\sum_{i=1}^n(at_i^2+bt_i+c-y_i)^2
+\]
 This might look terrifying, but can be attacked exactly as before using differentiation: to minimize $S$, we need the derivatives of $S$ with respect to the coefficients $a,b,c$ to be zero.
-\begin{gather*}\def\arraystretch{1.9}
-\left\{\begin{array}{@{}lll}
-\displaystyle\partials[S]{a}=2\sum at_i^4+bt_i^3+ct_i^2-t_i^2y_i=0\\
-\displaystyle\partials[S]{b}=2\sum at_i^3+bt_i^2+ct_i-t_iy_i=0\\
-\displaystyle\partials[S]{c}=2\sum at_i^2+bt_i+c-y_i=0
-\end{array}\right.
-\iff
-\left\{\begin{array}{@{}lll}
-\displaystyle a\sum t_i^4+b\sum t_i^3+c\sum t_i^2=\sum t_i^2y_i\\
-\displaystyle a\sum t_i^3+b\sum t_i^2+c\sum t_i=\sum t_iy_i\\
-\displaystyle a\sum t_i^2+b\sum t_i+cn=\sum y_i
-\end{array}\right.
+\begin{gather*}
+	\def\arraystretch{1.9}
+	\left\{
+	\begin{array}{@{}lll}
+		\displaystyle\partials[S]{a}=2\sum at_i^4+bt_i^3+ct_i^2-t_i^2y_i=0\\
+		\displaystyle\partials[S]{b}=2\sum at_i^3+bt_i^2+ct_i-t_iy_i=0\\
+		\displaystyle\partials[S]{c}=2\sum at_i^2+bt_i+c-y_i=0
+	\end{array}
+	\right.
+	\iff
+	\left\{
+	\begin{array}{@{}lll}
+		\displaystyle a\sum t_i^4+b\sum t_i^3+c\sum t_i^2=\sum t_i^2y_i\\
+		\displaystyle a\sum t_i^3+b\sum t_i^2+c\sum t_i=\sum t_iy_i\\
+		\displaystyle a\sum t_i^2+b\sum t_i+cn=\sum y_i
+	\end{array}
+	\right.
 \end{gather*}
 As a system of equations for $a,b,c$ this looks fairly nasty, but by rephrasing in terms of matrices, we see that it is exactly the same problem as before!
 \[
-\begin{pmatrix}
-\sum t_i^4 & \sum t_i^3 & \sum t_i^2\\
-\sum t_i^3 & \sum t_i^2 & \sum t_i\\
-\sum t_i^2 & \sum t_i & cn
-\end{pmatrix}\threevec abc=\threevec{\sum t_i^2y_i}{\sum t_iy_i}{\sum y_i}
+	\begin{pmatrix}
+		\sum t_i^4 & \sum t_i^3 & \sum t_i^2\\
+		\sum t_i^3 & \sum t_i^2 & \sum t_i\\
+		\sum t_i^2 & \sum t_i & cn
+	\end{pmatrix}
+	\threevec abc=\threevec{\sum t_i^2y_i}{\sum t_iy_i}{\sum y_i}
 \]
 corresponds to
 \[
-P^TP\threevec abc=P^T\vy\quad\text{where}\quad P=\begin{pmatrix}
-t_1^2&t_1&1\\
-\vdots&\vdots&\vdots\\
-t_n^2&t_n&1
-\end{pmatrix}\quad \text{and}
-\quad\vy=\threevec{y_1}{\vdots}{y_n}
+	P^TP\threevec abc=P^T\vy
+	\quad\text{where}\quad
+	P=
+	\begin{pmatrix}
+		t_1^2&t_1&1\\
+		\vdots&\vdots&\vdots\\
+		t_n^2&t_n&1
+	\end{pmatrix}
+	\quad \text{and}
+	\quad\vy=\threevec{y_1}{\vdots}{y_n}
 \]
 The only change is that $P$ is now an $n\times 3$ matrix so that $P^TP$ is $3\times 3$. Analogous to the linear situation, provided at least three of the $t_i$ are distinct, the matrix $P^TP$ is invertible and there is a unique least-squares quadratic minimizer
-\[\hat y=at^2+bt+c=\bigl(t^2\ \ t\ \ 1\bigr)\threevec abc =\bigl(t^2\ \ t\ \ 1\bigr)(P^TP)^{-1}P^T\vy\]
-The predictions $\hat y_i=\hat y(t_i)$ therefore form a vector $\hat\vy=P\sthreevec abc=P(P^TP)^{-1}P^T\vy$, and the coefficient of determination may be computed as before.
-%\[R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm\vy^2-n\cl y^2}\]
+\[
+	\hat y=at^2+bt+c=\bigl(t^2\ \ t\ \ 1\bigr)\threevec a bc =\bigl(t^2\ \ t\ \ 1\bigr)(P^TP)^{-1}P^T\vy
+\]
+The predictions $\hat y_i=\hat y(t_i)$ therefore form a vector $\hat\vy=P\sthreevec ab c=P(P^TP)^{-1}P^T\vy$, and the coefficient of determination may be computed as before.
+\[
+	R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm\vy^2-n\cl y^2}
+\]
 \smallbreak
-The method generalizes in the obvious way: if you want a cubic minimizer, give $P$ an extra column of \emph{cubed} $t_i$-terms! This would be hard work by hand, but is standard fodder for computers.\footnote{Remember: this isn't a linear algebra class, so don't try to invert a $3\times 3$ matrix!}
+The method generalizes in the obvious way: if you want a cubic minimizer, give $P$ an extra column of \emph{cubed} $t_i$-terms! This would be hard work by hand, but is standard fodder for computers: this isn't a linear algebra class, so don't try to invert a $3\times 3$ matrix!
 
-\clearpage
+
+\goodbreak
+
 
 \begin{example}{}{}
-We are given \href{http://math.uci.edu/~ndonalds/math8/poly-ex.xlsx}{data} $\{(t_i,y_i)\}=\{(1,2),(2,5),(3,7),(4,4)\}$.
-\begin{enumerate}
-  \item For the best-fitting linear model, we use the same $P$ (and thus $P^TP$) from the previous example:
-  \begin{align*}
-  \twovec mc&=(P^TP)^{-1}P^T\vy= \begin{pmatrix}
-	30&10\\10&4
-	\end{pmatrix}^{-1}
-	\!\!
-	\begin{pmatrix}
-	1&2&3&4\\
-	1&1&1&1
-	\end{pmatrix}\!\!\fourvec{2}{5}{7}{4} =\frac 1{10}\begin{pmatrix}
-	2&-5\\-5&15
-	\end{pmatrix}\!\!\twovec{49}{18} =\twovec{0.8}{2.5}
-\end{align*}
-which yields $\hat y(t)=0.8t+2.5$. The predicted values and coefficient of determination are then
-\[\hat\vy=\begin{pmatrix}
-	1&2&3&4\\
-	1&1&1&1
-\end{pmatrix}\twovec{0.8}{2.5}=\fourvec{3.3}{4.1}{4.9}{5.7}\qquad R^2=\frac{84.2-81}{94-81}\approx 0.2462
-\]
-	The \textcolor{blue}{linear model} predicts only 24.6\% of the variance in the output; not very accurate.
-	
-	\item For a quadratic model; all that changes is the matrix $P$%, though the numbers are significantly less pleasant!
-	\begin{gather*}
-		P=\begin{pmatrix}
-		1&1&1\\
-		4&2&1\\
-		9&3&1\\
-		16&4&1
-		\end{pmatrix} \implies P^TP=\begin{pmatrix}
-		1&4&9&16\\
-		1&2&3&4\\
-		1&1&1&1
-		\end{pmatrix}\begin{pmatrix}
-		1&1&1\\
-		4&2&1\\
-		9&3&1\\
-		16&4&1
-		\end{pmatrix}
-		=\begin{pmatrix}
-		354&100&30\\
-		100&30&10\\
-		30&10&4
-		\end{pmatrix}\\
-		\implies \threevec abc=(P^TP)^{-1}P^T\smash[t]{\fourvec 2574}=\begin{pmatrix}
-		354&100&30\\
-		100&30&10\\
-		30&10&4
-		\end{pmatrix}^{-1}\threevec{149}{49}{18}=\threevec{-1.5}{8.3}{-5}
-	\end{gather*}
-	from which $\hat y=-1.5t^2+8.3t-5$. To quantify its accuracy, compute the vector of predicted values $\hat y_i=\hat y(t_i)$ and the coefficient of determination:
-		\begin{gather*}
-		\hat\vy=P\threevec{-1.5}{8.3}{-5}=\fourvec{1.8}{5.6}{6.4}{4.2}\qquad\qquad
-		R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2}=\frac{93.2-81}{94-81} \approx 0.9385
-		\end{gather*}\par
-	
-	\begin{minipage}[t]{0.58\linewidth}\vspace{-5pt}
-		The \textcolor{orange}{quadratic} model is far superior to the \textcolor{blue}{linear}, explaining 94\% of the observed variance.
+	We are given \href{http://math.uci.edu/~ndonalds/math8/poly-ex.xlsx}{data} $\{(t_i,y_i)\}=\{(1,2),(2,5),(3,7),(4,4)\}$.
+	\begin{enumerate}
+	  \item For the best-fitting linear model, we use the same $P$ (and thus $P^TP$) from the previous example:
+	  \begin{align*}
+	  	\twovec mc&=(P^TP)^{-1}P^T\vy=
+	  	\begin{pmatrix}
+				30&10\\
+				10&4
+			\end{pmatrix}^{-1}
+			\!\!
+			\begin{pmatrix}
+				1&2&3&4\\
+				1&1&1&1
+			\end{pmatrix}
+			\!\!\fourvec{2}{5}{7}{4} =\frac 1{10}
+			\begin{pmatrix}
+				2&-5\\
+				-5&15
+			\end{pmatrix}
+			\!\!\twovec{49}{18} =\twovec{0.8}{2.5}
+		\end{align*}
+		which yields $\hat y(t)=0.8t+2.5$. The predicted values and coefficient of determination are then
+		\[
+			\hat\vy=
+			\begin{pmatrix}
+				1&2&3&4\\
+				1&1&1&1
+			\end{pmatrix}
+			\twovec{0.8}{2.5}=\fourvec{3.3}{4.1}{4.9}{5.7}\qquad R^2=\frac{84.2-81}{94-81}\approx 0.2462
+		\]
+		The \textcolor{blue}{linear model} predicts only 24.6\% of the variance in the output; not very accurate.
 		
-	\item We can even find a \textcolor{magenta}{cubic} model ($P$ is a $4\times 4$ matrix!)
-	\[\hat y=\frac 1{6}(-4t^3+21t^2-17t+12)\]
-	The cubic passes through all four data points,
-	there is \emph{no error} and $R^2=1$.
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.4\linewidth}\vspace{-12pt}
-		\flushright\includegraphics[scale=1]{reg-quad1}
-	\end{minipage}
-	\smallbreak
-	For real-world data this is likely \emph{less useful} than the quadratic model; it certainly takes longer to find! More importantly, experimental error in the $y$-data is having a strong effect on the `perfect' model; we are, in effect, modelling \emph{noise.} Do you expect $y(5)$ to be closer to $\textcolor{orange}{-1}$ or $\textcolor{magenta}{-8}$?
-\end{enumerate}
+		\item For a quadratic model; all that changes is the matrix $P$%, though the numbers are significantly less pleasant!
+		\begin{gather*}
+			P=
+			\begin{pmatrix}
+				1&1&1\\
+				4&2&1\\
+				9&3&1\\
+				16&4&1
+			\end{pmatrix}
+			\implies P^TP=
+			\begin{pmatrix}
+				1&4&9&16\\
+				1&2&3&4\\
+				1&1&1&1
+			\end{pmatrix}
+			\begin{pmatrix}
+				1&1&1\\
+				4&2&1\\
+				9&3&1\\
+				16&4&1
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				354&100&30\\
+				100&30&10\\
+				30&10&4
+			\end{pmatrix}\\
+			\implies \threevec abc=(P^TP)^{-1}P^T\smash[t]{\fourvec 2574}=
+			\begin{pmatrix}
+				354&100&30\\
+				100&30&10\\
+				30&10&4
+			\end{pmatrix}^{-1}
+			\threevec{149}{49}{18}=\threevec{-1.5}{8.3}{-5}
+		\end{gather*}
+		from which $\hat y=-1.5t^2+8.3t-5$. To quantify its accuracy, compute the vector of predicted values $\hat y_i=\hat y(t_i)$ and the coefficient of determination:
+		\begin{gather*}
+			\hat\vy=P\threevec{-1.5}{8.3}{-5}=\fourvec{1.8}{5.6}{6.4}{4.2}\qquad\qquad
+			R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2}=\frac{93.2-81}{94-81} \approx 0.9385
+		\end{gather*}\par
+		
+		\begin{minipage}[t]{0.58\linewidth}\vspace{-5pt}
+			The \textcolor{orange}{quadratic} model is far superior to the \textcolor{blue}{linear}, explaining 94\% of the observed variance.
+			
+			\item We can even find a \textcolor{magenta}{cubic} model ($P$ is a $4\times 4$ matrix!)
+			\[
+				\hat y=\frac 1{6}(-4t^3+21t^2-17t+12)
+			\]
+			The cubic passes through all four data points, there is \emph{no error} and $R^2=1$.
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}\vspace{-12pt}
+			\flushright\includegraphics[scale=1]{reg-quad1}
+		\end{minipage}
+		\smallbreak
+		For real-world data this is possibly \emph{less useful} than the quadratic model---it certainly takes longer to find! More importantly, likely experimental error in the $y$-data has a strong effect on the `perfect' model---we are, in effect, modelling \emph{noise.} Do you expect $y(5)$ to be closer to $\textcolor{orange}{-1}$ or $\textcolor{magenta}{-8}$?
+	\end{enumerate}
 \end{example}
 
 \goodbreak
@@ -872,139 +953,159 @@ which yields $\hat y(t)=0.8t+2.5$. The predicted values and coefficient of deter
 % \end{thm}
 
 \begin{exercises}{}{}
-\exstart Recall Example \ref{ex:almostquadseq}, with the following \emph{almost} linear data set.
-\[\begin{array}{c|cccccc}
-x&0&2&4&6&8&10\\\hline
-y&3&23&41&59&77&93
-\end{array}\]
- Find the best-fitting straight line for the data, then use a spreadsheet to find the best-fitting quadratic. Is the extra effort worth it? 
-
-\begin{enumerate}\setcounter{enumi}{1}
-  \item You are given the following data consisting of measurements from an experiment recorded at times $t_i$ seconds.
-  \[\begin{array}{c|cccccccccc}
-  t_i&1&2&3&4&5&6&7&8&9&10\\\hline
-  y_i&7&5&3&2&3&5&6&9&8&12
-  \end{array}\]
-  \begin{enumerate}
-    \item Given the values
-  	\[\sum t_i=55,\quad \sum t_i^2=385,\quad \sum y_i=60,\quad \sum t_iy_i=385\]
-  	find the best-fitting least-squares linear model for this data, and use it to predict $\hat y(13)$.
-    
-    \item Find the best-fitting quadratic model for the data: feel free to use a spreadsheet!
-    
-    \item The graphs below show the best-fitting least-squares linear, quadratic, cubic, quartic, and ninth-degree models and their coefficients of determination.
-    \begin{center}
-    	\begin{tabular}[t]{@{}c@{\quad}c@{\quad}c@{}}
-    		\includegraphics{midterm-reg1}
-				&
-    		\includegraphics{midterm-reg2}
-    		&
-    		\includegraphics{midterm-reg3}
-    		\\
-    		\includegraphics{midterm-reg4}
-    		&
-    		\includegraphics{midterm-reg9}
-    		&
-    		\begin{tabular}[b]{c|c}
-    		Degree&$R^2$\\\hline
-    		1&0.4264\\
-    		2&0.8830\\
-    		3&0.9319\\
-    		4&0.9336\\
-    		\vdots&\vdots\\
-    		9&1\\
-    		\multicolumn{2}{c}{}
-    		\end{tabular}
-    	\end{tabular}
-    \end{center}
-
-    Which of these models would \emph{you} choose for this data and why? What considerations would you take into account?  
+	\exstart Recall Example \ref{ex:almostquadseq}, with the following \emph{almost} linear data set.
+	\[
+		\begin{array}{c|cccccc}
+			x&0&2&4&6&8&10\\\hline
+			y&3&23&41&59&77&93
+		\end{array}
+	\]
+	Find the best-fitting straight line for the data, then use a spreadsheet to find the best-fitting quadratic. Is the extra effort worth it? 
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item You are given the following data consisting of measurements from an experiment recorded at times $t_i$ seconds.
+	  \[
+	  	\begin{array}{c|cccccccccc}
+	  		t_i&1&2&3&4&5&6&7&8&9&10\\\hline
+	  		y_i&7&5&3&2&3&5&6&9&8&12
+	  	\end{array}
+	  \]
+	  \begin{enumerate}
+	    \item Given the values
+	  	\[
+	  		\sum t_i=55,\quad \sum t_i^2=385,\quad \sum y_i=60,\quad \sum t_iy_i=385
+	  	\]
+	  	find the best-fitting least-squares linear model for this data, and use it to predict $\hat y(13)$.
+	    
+	    \item Find the best-fitting quadratic model for the data: feel free to use a spreadsheet!
+	    
+	    \item The graphs below show the best-fitting least-squares linear, quadratic, cubic, quartic, and ninth-degree models and their coefficients of determination.
+	    \begin{center}
+	    	\begin{tabular}[t]{@{}c@{\quad}c@{\quad}c@{}}
+	    		\includegraphics{midterm-reg1}
+					&
+	    		\includegraphics{midterm-reg2}
+	    		&
+	    		\includegraphics{midterm-reg3}
+	    		\\
+	    		\includegraphics{midterm-reg4}
+	    		&
+	    		\includegraphics{midterm-reg9}
+	    		&
+	    		\begin{tabular}[b]{c|c}
+		    		Degree&$R^2$\\\hline
+		    		1&0.4264\\
+		    		2&0.8830\\
+		    		3&0.9319\\
+		    		4&0.9336\\
+		    		\vdots&\vdots\\
+		    		9&1\\
+		    		\multicolumn{2}{c}{}
+	    		\end{tabular}
+	    	\end{tabular}
+	    \end{center}
+	
+	    Which of these models would \emph{you} choose for this data and why? What considerations would you take into account?  
+		\end{enumerate}
 	\end{enumerate}
-\end{enumerate}
 \end{exercises}
+
 
 \clearpage
 
 
-\subsection{Exponentials, Power Functions \& Regression}
+\subsection{Exponential \& Power Regression Models}
 
 If you suspect that your data would be better modelled by a non-polynomial function, there are several things you can try.\medbreak
 
-Minimizing the sum of squared-errors might be very difficult for non-polynomial functions because there is likely no simple tie-in with linear equations/algebra. Attempting this is likely to result in a horrible \emph{non-linear} system for your coefficients which is difficult to analyze either theoretically or using a computer.\footnote{As an example of how horrific this is, suppose you want to minimize the sum of square-errors for data $(t_i,y_i)$ using an exponential model $\hat y(t)=ae^{kt}$. The coefficients of our model, $a,k$ should minimize
-\[S(a,k)=\sum_{i=1}^n\bigl(ae^{kt_i}-y_i\bigr)^2\]
-Differentiating this with respect to $a,k$ and setting equal to zero results in
-\[
-\begin{cases}
-\partials[S]{a}=2\sum e^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0 \\
-\partials[S]{k}=2a\sum t_ie^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0
-\end{cases}
-\implies  \bigl(\sum y_ie^{kt_i}\bigr)\bigl(\sum t_ie^{2kt_i}\bigr)=\bigl(\sum e^{2kt_i}\bigr)\bigl(\sum t_iy_ie^{kt_i}\bigr)
-\]
-where we substituted for $a$ to obtain the last equation. Remember that this is an equation for $k$; if you think you can solve this easily, think again!
+Minimizing the sum of squared-errors might be very difficult for non-polynomial functions because there is likely no simple tie-in with linear equations/algebra. Attempting this is likely to result in a horrible \emph{non-linear} system for your coefficients which is difficult to analyze either theoretically or using a computer.\footnote{%
+	As an example of how horrific this is, suppose you want to minimize the sum of square-errors for data $(t_i,y_i)$ using an exponential model $\hat y(t)=ae^{kt}$. The coefficients of our model, $a,k$ should minimize
+	\[
+		S(a,k)=\sum_{i=1}^n\bigl(ae^{kt_i}-y_i\bigr)^2
+	\]
+	Differentiating this with respect to $a,k$ and setting equal to zero results in
+	\[
+		\begin{cases}
+			\partials[S]{a}=2\sum e^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0 \\
+			\partials[S]{k}=2a\sum t_ie^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0
+		\end{cases}
+		\implies  \bigl(\sum y_ie^{kt_i}\bigr)\bigl(\sum t_ie^{2kt_i}\bigr) =\bigl(\sum e^{2kt_i}\bigr)\bigl(\sum t_iy_ie^{kt_i}\bigr)
+	\]
+	where we substituted for $a$ to obtain the last equation. Remember that this is an equation for $k$; if you think you can solve this easily, think again!
 }
 
 \boldinline{Log Plots}
 
 The most common approach when trying to fit an exponential model $\hat y=e^{mt+c}$ to data is to use a log plot: taking logarithms of both sides results in
-\[\ln\hat y=mt+c\]
+\[
+	\ln\hat y=mt+c
+\]
 If we take $\hat Y:=\ln\hat y$ as a new variable, the model is now a \emph{straight-line}! The idea is then to use linear regression to find the coefficients $m,\ln a$.
 
 \begin{example*}{\ref{ex:poprabbits}, cont}{}
-Recall our earlier rabbit-population $P(t)$, repeated in the table below. We previously considered modelling this with an exponential function for two reasons:\par
-\begin{minipage}[t]{0.55\linewidth}\vspace{-6pt}
-\begin{enumerate}\itemsep0pt
-  \item We were told it was population data!
-  \item The \emph{$t$-differences} are constant $(2)$, while the \emph{$P$-ratios} are approximately so ($\approx 1.41$).
-\end{enumerate}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
-\flushright $\begin{array}{c|cccccc}
-t_i&0&2&4&6&8&10\\\hline
-P_i&5&7&10&14&19&28\\\hline\hline
-\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33
-\end{array}$
-\end{minipage}\medbreak
-After constructing a log-plot, the relationship is much clearer:
-\begin{center}
-\includegraphics{rabbits3}
-\qquad\qquad
-\includegraphics{rabbits4}
-\end{center}
-Since the relationship between $t$ and $\ln P$ appears linear, we perform a linear regression calculation to find the best-fitting least-squares line for the $(t_i,\ln P_i)$ data.\par
-
-\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
-Everything necessary comes from extending the table.
-\begin{gather*}\def\arraystretch{1.2}
-\begin{array}{c|cccccc|c}
-\multicolumn{7}{c|}{\text{Data}}&\text{average}\\\hline\hline
-t_i&0&2&4&6&8&10&5\\\hline
-P_i&5&7&10&14&19&28&13.83\\\hline\hline
-\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33&2.46\\\hline
-t_i^2&0&4&16&36&64&100&36.67\\\hline
-t_i\ln P_i&0&3.89&9.21&15.83&23.56&33.32&14.30
-\end{array}\\[5pt]
-m=\frac{\cl{t\ln P}-\cl t\cdot\cl{\ln P}}{\cl{t^2}-\cl t^2}=\frac{14.30-5\cdot 2.46}{36.67-5^2} =0.171\\[2pt]
-c=\cl{\ln P}-m\cl t=3.46-0.171\cdot 5=1.609
-\end{gather*}
-which yields the exponential model
-\[\hat P(t)=e^{0.171t+1.609}=4.998(1.186)^t\]
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-\flushright\includegraphics{rabbits5}\\
-\includegraphics{rabbits6}
-\end{minipage}\medbreak
-
-This is very close to the model ($5(1.188)^t$) we obtained previously by pure guesswork. The approximate doubling time $T$ for the population satisfies
-\[e^{mT}=2\implies T=\frac{\ln 2}{m}=4.06\ \text{months}\]
+	Recall our earlier rabbit-population $P(t)$, repeated in the table below. We previously considered modelling this with an exponential function for two reasons:\par
+	\begin{minipage}[t]{0.55\linewidth}\vspace{-6pt}
+		\begin{enumerate}\itemsep0pt
+		  \item We were told it was population data!
+		  \item The \emph{$t$-differences} are constant $(2)$, while the \emph{$P$-ratios} are approximately so ($\approx 1.41$).
+		\end{enumerate}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
+		\flushright $\begin{array}{c|cccccc}
+			t_i&0&2&4&6&8&10\\\hline
+			P_i&5&7&10&14&19&28\\\hline\hline
+			\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33
+		\end{array}$
+		\end{minipage}\medbreak
+		After constructing a log-plot, the relationship is much clearer:
+		\begin{center}
+			\includegraphics{rabbits3}
+			\qquad\qquad
+			\includegraphics{rabbits4}
+		\end{center}
+		Since the relationship between $t$ and $\ln P$ appears linear, we perform a linear regression calculation to find the best-fitting least-squares line for the $(t_i,\ln P_i)$ data.\par
+		
+		\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
+			Everything necessary comes from extending the table.
+			\begin{gather*}\def\arraystretch{1.2}
+				\begin{array}{c|cccccc|c}
+					\multicolumn{7}{c|}{\text{Data}}&\text{average}\\\hline\hline
+					t_i&0&2&4&6&8&10&5\\\hline
+					P_i&5&7&10&14&19&28&13.83\\\hline\hline
+					\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33&2.46\\\hline
+					t_i^2&0&4&16&36&64&100&36.67\\\hline
+					t_i\ln P_i&0&3.89&9.21&15.83&23.56&33.32&14.30
+				\end{array}\\[5pt]
+				m=\frac{\cl{t\ln P}-\cl t\cdot\cl{\ln P}}{\cl{t^2}-\cl t^2}=\frac{14.30-5\cdot 2.46}{36.67-5^2} =0.171\\[2pt]
+				c=\cl{\ln P}-m\cl t=3.46-0.171\cdot 5=1.609
+			\end{gather*}
+			which yields the exponential model
+			\[
+				\hat P(t)=e^{0.171t+1.609}=4.998(1.186)^t
+			\]
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
+			\flushright\includegraphics{rabbits5}\\
+			\includegraphics{rabbits6}
+	\end{minipage}\medbreak
+	
+	This is very close to the model ($5(1.188)^t$) we obtained previously by pure guesswork. The approximate doubling time $T$ for the population satisfies
+	\[
+		e^{mT}=2\implies T=\frac{\ln 2}{m}=4.06\ \text{months}
+	\]
 \end{example*}
 
 When using the log plot method, interpreting errors and the goodness of fit of a model is a little more difficult. Typically one computes the coefficient of determination $R^2$ of the \emph{underlying linear model}: in our example,\footnote{This needs more decimal places of accuracy for the log-values than what's in our table!}
-\[R^2=m^2\frac{\Var t}{\Var\ln P}=99.3\%\]
+\[
+	R^2=m^2\frac{\Var t}{\Var\ln P}=99.3\%
+\]
 \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-It is important to appreciate that the log plot method does not treat all errors equally: taking logarithms tends to reduce error by a greater amount when the output  $y$ is large. This should be clear from the picture, and more formally by the mean value theorem: if $y_1<y_2$, then there is some $\xi\in(y_1,y_2)$ for which 
-\[\ln y_1-\ln y_2<\frac 1{\xi}(y_1-y_2)\]
+	It is important to appreciate that the log plot method does not treat all errors equally: taking logarithms tends to reduce error by a greater amount when the output  $y$ is large. This should be clear from the picture, and more formally by the mean value theorem: if $y_1<y_2$, then there is some $\xi\in(y_1,y_2)$ for which 
+	\[
+		\ln y_1-\ln y_2<\frac 1{\xi}(y_1-y_2)
+	\]
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
@@ -1019,100 +1120,102 @@ The log plot approach therefore places a higher emphasis on accurately matching 
 \boldinline{Log-Log Plots} 
 
 If you suspect a \emph{power function model} $\hat y=at^m$, then taking logarithms
-\[\ln\hat y=m\ln t+\ln a\]
+\[
+	\ln\hat y=m\ln t+\ln a
+\]
 results in a linear relationship between $\ln y$ and $\ln t$. As before, we can apply a linear regression approach to find a mode; the goodness of fit is again described by the coefficient of determination of the underlying model. 
 
 
-
-
 \begin{exercises}{}{}
-\exstart You suspect a logarithmic model for a data set. Describe how you would approach finding a model in the context of this section.
-
-
-\begin{enumerate}\setcounter{enumi}{1}
-  \item The table shows the average weight and length of a fish species measured at different ages.\par
-	\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
-	\centering\begin{tabular}{c|c|c}
-	Age (years)&Length(cm)& Weight (g)\\\hline\hline
-	1 & 5.2 & 2\\
-	2 & 8.5 & 8\\
-	3 & 11.5 & 21\\
-	4 & 14.3 & 38\\
-	5 & 16.8 & 69\\
-	6 & 19.2 & 117\\
-	7 & 21.3 & 148\\
-	8 & 23.3 & 190\\
-	9 & 25.0 & 264\\
-	10 & 26.7 & 293\\
-	11 & 28.2 & 318\\
-	12 & 29.6 & 371\\
-	13 & 30.8 & 455\\
-	14 & 32.0 & 504\\
-	15 & 33.0 & 518\\
-	16 & 34.0 & 537\\
-	17 & 34.9 & 651\\
-	18 & 36.4 & 719\\
-	18 & 37.1 & 726\\
-	20 & 37.7 & 810
-	\end{tabular}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.54\linewidth}\vspace{0pt}
-	\hfill\includegraphics[scale=0.95]{fishexp}
-	\vspace{-5pt}
-	\begin{enumerate}
-	  \item Do you think an exponential model is a good fit for this data? Take logarithms of the weight values and use a \href{http://math.uci.edu/~ndonalds/math8/fishdata.xlsx}{spreadsheet} to obtain a model $\hat w(\ell)=ae^{m\ell}$ where $w,\ell$ are the weight and length respectively.
-	  \item What happens if you try a log-log plot? Given what we're measuring, why do you expect a power model to be mode accurate?
+	\exstart You suspect a logarithmic model for a data set. Describe how you would approach finding a model in the context of this section.
+	
+	\begin{enumerate}\setcounter{enumi}{1}
+	  \item The table shows the average weight and length of a fish species measured at different ages.\par
+		\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
+			\centering
+			\begin{tabular}{c|c|c}
+				Age (years)&Length(cm)& Weight (g)\\\hline\hline
+				1 & 5.2 & 2\\
+				2 & 8.5 & 8\\
+				3 & 11.5 & 21\\
+				4 & 14.3 & 38\\
+				5 & 16.8 & 69\\
+				6 & 19.2 & 117\\
+				7 & 21.3 & 148\\
+				8 & 23.3 & 190\\
+				9 & 25.0 & 264\\
+				10 & 26.7 & 293\\
+				11 & 28.2 & 318\\
+				12 & 29.6 & 371\\
+				13 & 30.8 & 455\\
+				14 & 32.0 & 504\\
+				15 & 33.0 & 518\\
+				16 & 34.0 & 537\\
+				17 & 34.9 & 651\\
+				18 & 36.4 & 719\\
+				18 & 37.1 & 726\\
+				20 & 37.7 & 810
+			\end{tabular}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.54\linewidth}\vspace{0pt}
+			\hfill\includegraphics[scale=0.95]{fishexp}
+			\vspace{-5pt}
+			\begin{enumerate}
+		  	\item Do you think an exponential model is a good fit for this data? Take logarithms of the weight values and use a \href{http://math.uci.edu/~ndonalds/math8/fishdata.xlsx}{spreadsheet} to obtain a model $\hat w(\ell)=ae^{m\ell}$ where $w,\ell$ are the weight and length respectively.
+		  	\item What happens if you try a log-log plot? Given what we're measuring, why do you expect a power model to be mode accurate?
+			\end{enumerate}
+		\end{minipage}
+		\medbreak
+	  
+	  
+		\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
+	  	\item Population data for Long Beach CA is given.\smallbreak
+	   	Using a spreadsheet or otherwise, find linear, quadratic, exponential and logarithmic regression models for this data.\par
+	   	Which of these models seems to fit the data best, and which would you trust to best predict the population in 2020?\par
+	   	Look up the population of Long Beach in 2020; does it confirm your suspicions? What do you think is going on?
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
+	  	\flushright\begin{tabular}{c|c|c}
+			  Year&Years since 1900&Population\\\hline
+			  1900&0&2,252\\
+			  1910&10&17,809\\
+				1920&20&55,593\\
+				1930&30&142,032\\
+				1940&40&164,271\\
+				1950&50&250,767\\
+				1960&60&334,168\\
+				1970&70&358,879\\
+				1980&80&361,498\\
+				1990&90&429,433\\
+				2000&100&461,522\\
+				2010&110&462,257%\\
+				%2020&120&466,742
+	  	\end{tabular}
+		\end{minipage}
+	  
+	  
+	  \item In the early 1600s, Johannes Kepler used observational data to derive his \emph{laws of planetary motion,} the third of which relates the orbital period $T$ of a planet (how long it takes to go round the sun) to its (approximate) distance $r$ from the sun.
+	
+		\begin{minipage}[t]{0.59\linewidth}\vspace{0pt}
+			\centering\begin{tabular}{c|c|c}
+				Planet&$T$ (years)&$r$ (millions km)\\\hline\hline
+				Mercury & 0.24 & 58\\
+				Venus & 0.61 & 110\\
+				Earth & 1 & 150\\
+				Mars & 1.88 & 230\\
+				Jupiter & 11.9 & 780\\
+				Saturn & 29.5 & 1400\\
+				Uranus & 84 & 2900\\
+				Neptune & 165 & 4500
+			\end{tabular}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
+			\flushright\includegraphics{kepler}
+		\end{minipage}\par
+		The table shows the data for all the planets. Use a \href{http://math.uci.edu/~ndonalds/math8/kepler.xlsx}{spreadsheet} to analyze this data and find a model relating $T$ to $r$.\smallbreak
+		Kepler did not known about Uranus and Neptune and only had relative distances for the planets. Research the correct statement of Kepler's third law and compare it with your findings.
 	\end{enumerate}
-\end{minipage}
-\medbreak
-  
-  
-\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
-   \item Population data for Long Beach CA is given.\smallbreak
-   Using a spreadsheet or otherwise, find linear, quadratic, exponential and logarithmic regression models for this data.\par
-   Which of these models seems to fit the data best, and which would you trust to best predict the population in 2020?\par
-   Look up the population of Long Beach in 2020; does it confirm your suspicions? What do you think is going on?
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
-  \flushright\begin{tabular}{c|c|c}
-  Year&Years since 1900&Population\\\hline
-  1900&0&2,252\\
-  1910&10&17,809\\
-	1920&20&55,593\\
-	1930&30&142,032\\
-	1940&40&164,271\\
-	1950&50&250,767\\
-	1960&60&334,168\\
-	1970&70&358,879\\
-	1980&80&361,498\\
-	1990&90&429,433\\
-	2000&100&461,522\\
-	2010&110&462,257%\\
-	%2020&120&466,742
-  \end{tabular}
-\end{minipage}
-  
-  
-  \item In the early 1600s, Johannes Kepler used observational data to derive his \emph{laws of planetary motion,} the third of which relates the orbital period $T$ of a planet (how long it takes to go round the sun) to its (approximate) distance $r$ from the sun.
-
-	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-	\centering\begin{tabular}{c|c|c}
-	Planet&$T$ (years)&$r$ (millions km)\\\hline\hline
-	Mercury & 0.24 & 58\\
-	Venus & 0.61 & 110\\
-	Earth & 1 & 150\\
-	Mars & 1.88 & 230\\
-	Jupiter & 11.9 & 780\\
-	Saturn & 29.5 & 1400\\
-	Uranus & 84 & 2900\\
-	Neptune & 165 & 4500
-	\end{tabular}
-	\end{minipage}\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-	\flushright\includegraphics{kepler}
-	\end{minipage}\par
-	The table shows the data for all the planets. Use a \href{http://math.uci.edu/~ndonalds/math8/kepler.xlsx}{spreadsheet} to analyze this data and find a model relating $T$ to $r$.\smallbreak
-	Kepler did not known about Uranus and Neptune and only had inaccurate \emph{relative} distances for the planets. Research the correct statement of Kepler's third law and compare it with your findings.
-\end{enumerate}
 \end{exercises}
