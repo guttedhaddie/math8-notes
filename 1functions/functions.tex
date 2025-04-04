@@ -292,103 +292,114 @@ Can you think of other ways to represent a function? How might you decide which 
 \end{exercises}
 
 
-\clearpage
 
+\clearpage
 
 
 
 \subsection{Linear Polynomials}
 
-Perhaps the simplest functions are the \emph{linear polynomials}, whose graphs are straight lines;
+Perhaps the simplest functions are the \emph{linear polynomials}, whose graphs are straight lines,
 \[
 	y=f(x)=mx+c\quad\text{where $m,c$ are constants} \tag{$\ast$}
 \]
-These functions make for very simple models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. Given some experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$) relating these variables. In practice, models are usually only \emph{approximate.} Later in the course we'll consider how to find good linear models for approximately linear data.
+Linear polynomials make very simple models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. Given experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$) relating these variables. In practice, models are \emph{approximations} to the real-world data. Later in the course we'll consider what should be meant by, and how to find, a `good' linear model for approximately linear data.\smallbreak
 
+Some of your earliest forays into algebra likely involved finding equations of straight lines.
 
 \begin{example}{}{}
 	Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.
 	\par
 	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
-		Substitute both points into the equation and solve
-		\begin{align*}
+		Suppose the polynomial is $y=mx+c$. Since both $A$ and $B$ satisfy this equation, we start by substituting both points into the equation to find two relationships between $m$ and $c$
+		\[
 			\begin{cases}
-			3=m+c\\
-			1=4m+c
+				3=m+c\\
+				1=4m+c
 			\end{cases}
-			&\overset{(\ast)}{\implies} -2=3m\\
-			&\implies m=-\frac 23,\quad c=3-m=\frac{11}3
-		\end{align*}
-		There is some technique required in $(\ast)$: how would you explain this to a grade-school student?
+		\]
+		This is a system of two linear equations in two unknowns ($m,c$). By now you should know several ways to solve such, but consider what might be easiest for a grade-school student\ldots
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
+	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
 		\flushright\includegraphics{line-line}
 	\end{minipage}
-	\medbreak
-	
-	The \emph{\textcolor{Brown}{gradient/slope} $m$} represents how far one climbs/falls on travelling one unit to the right.
-	\smallbreak
-	The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the graph with the $y$-axis.
-	\tcblower
+	\medbreak 
+	Regardless of how you phrase it (solve one equation for $c$ and substitute into the other, subtract one question from the other, etc.), we obtain
+	\[
+		-2=3m\implies m=-\frac 23\implies c=3-m=\frac{11}3
+	\]
+	whence the required polynomial is $y=\frac 13(11-2x)$.\smallbreak
+	As the picture suggests, the \emph{\textcolor{Brown}{gradient/slope} $m$} represents how far one climbs/falls on travelling one unit to the right.	The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the graph with the vertical axis.
 \end{example}
 
+The above process works for any two points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ provided $x_0\neq x_1$: is it clear why this should be the case? The details are in Exercise \ref{exs:lineparam}. You might feel that such a problem is too abstract for your students, that such a `proof' might be too intimidating. Indeed it might be counterproductive for some students, but consider several counterpoints:
+\begin{itemize}
+  \item Once a student has developed comfort with concrete examples as above, Exercise \ref{exs:lineparam} helps summarize and unify what they've learned. A general/abstract discussion helps build confidence by convincing a student that any such problem can be solved the same way.
+  \item The most helpful elementary proofs are those which essentially replicate an example abstractly. Exercise \ref{exs:lineparam} is not some abstract existence proof---it involves no trickery---it simply \emph{reinforces} the core technique by applying it in the most general situation.
+  \item Helping and encouraging students to think abstractly is one of the overarching learning outcomes of all mathematics. You might get push-back, but it's part of the job\ldots
+\end{itemize}
 
-Some bookkeeping is required here: how do we know that every (non-vertical) line corresponds to such a linear function? This follows easily from a useful fact regarding parametrizations.
 
-\begin{thm}{}{lineparametrize}
-	Given distinct points $A,B$, the set of points on the line through $A$ and $B$ is
+\goodbreak
+
+
+\boldsubsubsection{Parametrized Lines}\phantomsection\label{sec:paramline}
+
+Another way to consider a straight line is to view it as a \emph{ruler.} Imagine a ruler placed so that its zero point is at the origin $O=(0,0)$ and the ``1" lies at a point $C=(c_1,c_2)$. The ruler describes a line whose points have co-ordinates
+\[
+	tC=(tc_1,tc_2) \tag{$\ast$}
+\]
+
+\begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
+	where $t$ (a real number) is the reading on our imaginary ruler.\par
+	To describe the line through points $A$ and $B$, place a ruler so that \textcolor{Green}{0} corresponds to $A$ and \textcolor{Green}{1} to $B$. Now \textcolor{Brown}{slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a parallel line, with $B$ transformed to the point $C=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line.
 	\[
-		\ell_{A,B}=\bigl\{(1-t)A+tB:t\in\R\bigr\}
+		(x,y) =A+\textcolor{Green}{t}C
+		=A+\textcolor{Green}{t}(B-A)
+		=(1-\textcolor{Green}{t})A+\textcolor{Green}{t}B
 	\]
-\end{thm}
-
-
-In this description of a line, $t=0$ corresponds to $A$ and $t=1$ to $B$. In essence, we are laying a ruler onto the line whose units correspond to the distance $\nm{AB}$.
-
-\begin{proof}
-	There are several ways to think about this; we use what is essentially \emph{vector addition}.\par
-	\begin{minipage}[t]{0.65\linewidth}\vspace{-5pt}
-	The line through the origin and the point $B-A$ is described by the set of points
-	\[
-		\ell_{O,B-A}=\{t(B-A):t\in\R\}
-	\]
-	We simply \textcolor{Brown}{shift} this line by $A$.
-	\smallbreak
-	The points corresponding to various values of $t$ are \textcolor{Green}{marked}.
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
 		\flushright
 		\includegraphics{line-line2}
-	\end{minipage}\smallbreak
-\end{proof}
+	\end{minipage}\bigbreak
 
-Would you consider presenting an argument like this in a grade-school class? Is the argument helpful for understanding \emph{how} to visualize/describe a line? Discuss\ldots
+In essence, this description utilizes vector addition. The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
 
-\goodbreak
+One challenge with this approach is that a line may be parametrized using infinitely many distinct rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description of a line is unique.\medbreak
 
-Exercise \ref{exs:lineparam} uses this result to show how any non-vertical line may be described by a linear polynomial. This is nothing more than a generalization of a simple example.
+Continue to contrast the parametrized description with the linear polynomial approach: Which is easier to understand or to work with? Which fits better with your intuitive understanding of \emph{line}? Which description do you think a grade-school student might have more difficulty with? Why?\smallbreak
 
-\goodbreak
-
+In the Exercises we make sure that the two descriptions of a line correspond. As is often the case in mathematics, the discussion is little more than the generalization of an example.
 
 \begin{example}{}{}
 	The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
 	\[
 		(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)
 	\]
-	By solving for $t$ in terms of $x$, we see that this has equation
+	To convert this to a linear polynomial, we first solve to $t$ in terms of $x$,
 	\[
-		y=6-2t=6-2\cdot\frac{3-x}{4} =\frac 12x-\frac 92
+		x=3-4t\implies t=\frac 14(3-x)
+	\]
+	before substituting this into our expression for $y$:
+	\[
+		y=6-2t=6-\frac 24(3-x) =\frac 12x-\frac 92
 	\]
 \end{example}
 
 
-\bigbreak
+\vfil
+
+\pagebreak[4]
 
 
 \begin{exercises}{}{}
+	Beakers problem
+
+
+
 	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for how the cost of gasoline depends on time.
 
 

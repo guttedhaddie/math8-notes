@@ -4,7 +4,7 @@ texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
 \usepackage{mathpazo}
 \usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+%\usepackage{textcomp}
 ");
 import graph;
 
@@ -32,8 +32,8 @@ ttick(-0.5,"$-\frac 12$",heavygreen);
 draw(pt(-0.75)--pt(1.75),blue);
 
 draw((0,0)--2*(B-A),blue);
-draw((0,0)--A,brown+dashed,Arrow(Relative(0.6),arrowhead=TeXHead));
-draw(B-A--B,brown+dashed,Arrow(Relative(0.6),arrowhead=TeXHead));
+draw((0,0)--A,brown+dashed);
+draw(B-A--B,brown+dashed);
 
 
 xaxis(red);
@@ -42,5 +42,5 @@ yaxis(red);
 
 dot("$A$",A,SE,blue);
 dot("$B$",B,SE,blue);
-dot("$B-A$",B-A,SE,blue);
+dot("$C=B-A$",B-A,SE,blue);
 dot("$O$",(0,0),SW,blue);
