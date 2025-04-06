@@ -307,7 +307,7 @@ Linear polynomials make very simple models: increase the input by $\Delta x$ and
 
 Some of your earliest forays into algebra likely involved finding equations of straight lines.
 
-\begin{example}{}{}
+\begin{example}{}{mxplusc}
 	Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.
 	\par
 	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
@@ -344,16 +344,27 @@ The above process works for any two points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ provi
 \goodbreak
 
 
-\boldsubsubsection{Parametrized Lines}\phantomsection\label{sec:paramline}
+\begin{example}{}{beakers}
+	Often the challenge of modeling lies in converting a word problem into algebra---don't underestimate how hard students find this! Here is a simple, though disguised, straight line model.\smallbreak
+	Beaker A contains a 300\,ml solution of 2\% acid. Beaker B contains 400\,ml of acid of unknown concentration. The beakers are mixed together to produce an acid with concentration 6\%. What was the concentration in beaker B?\smallbreak
+	\emph{Given your mathematical experience}, it should seem natural to denote the unknown concentration (beaker B) by $x$. After mixing, we have a 700\,ml solution containing $300\times\frac 2{100}+400x$\,ml of pure acid, whence its concentration is a linear polynomial function of $x$:
+	\[
+	 C(x)=\frac{6+400x}{700}
+	\]
+	The problem is now easily solved: $C(x)=\frac 6{100}\Longleftrightarrow x=\frac 9{100}=9\%$.
+\end{example}
 
-Another way to consider a straight line is to view it as a \emph{ruler.} Imagine a ruler placed so that its zero point is at the origin $O=(0,0)$ and the ``1" lies at a point $C=(c_1,c_2)$. The ruler describes a line whose points have co-ordinates
+
+
+\boldinline{Parametrized Lines}\phantomsection\label{pg:paramline}
+
+Straight lines admit an alternative visualization. Imagine placing a \emph{ruler} so that its zero point is at the origin $O=(0,0)$ and the ``1" lies at a point $C=(c_1,c_2)$. If $t$ (a real number) is the measure on the ruler, then the points on the line have co-ordinates
 \[
 	tC=(tc_1,tc_2) \tag{$\ast$}
 \]
 
 \begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
-	where $t$ (a real number) is the reading on our imaginary ruler.\par
-	To describe the line through points $A$ and $B$, place a ruler so that \textcolor{Green}{0} corresponds to $A$ and \textcolor{Green}{1} to $B$. Now \textcolor{Brown}{slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a parallel line, with $B$ transformed to the point $C=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line.
+	To describe the line through points $A$ and $B$, place a ruler so that \textcolor{Green}{0} corresponds to $A$ and \textcolor{Green}{1} to $B$. Now \textcolor{Brown}{slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a parallel line through the origin, with $B$ transformed to the point $C=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line:
 	\[
 		(x,y) =A+\textcolor{Green}{t}C
 		=A+\textcolor{Green}{t}(B-A)
@@ -366,41 +377,35 @@ Another way to consider a straight line is to view it as a \emph{ruler.} Imagine
 		\includegraphics{line-line2}
 	\end{minipage}\bigbreak
 
-In essence, this description utilizes vector addition. The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
+%The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
 
-One challenge with this approach is that a line may be parametrized using infinitely many distinct rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description of a line is unique.\medbreak
+Contrast the parametrized description of a line with the linear polynomial approach: for instance, one challenge is that a line may be parametrized using infinitely many distinct rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description is unique. Does the parametrized approach have any advantages? Which description is easier to understand or to work with? Which fits better with your intuitive understanding of \emph{line}? Which might cause a grade-school student the greater challenge?\smallbreak
 
-Continue to contrast the parametrized description with the linear polynomial approach: Which is easier to understand or to work with? Which fits better with your intuitive understanding of \emph{line}? Which description do you think a grade-school student might have more difficulty with? Why?\smallbreak
-
-In the Exercises we make sure that the two descriptions of a line correspond. As is often the case in mathematics, the discussion is little more than the generalization of an example.
+In the Exercises we make sure that the two descriptions of a line correspond. The discussion is little more than the generalization of an example.
 
 \begin{example}{}{}
 	The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
 	\[
 		(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)
 	\]
-	To convert this to a linear polynomial, we first solve to $t$ in terms of $x$,
+	To convert this to a linear polynomial, first solve for $t$ in terms of $x$,
 	\[
 		x=3-4t\implies t=\frac 14(3-x)
 	\]
-	before substituting this into our expression for $y$:
+	before substituting into our expression for $y$:
 	\[
 		y=6-2t=6-\frac 24(3-x) =\frac 12x-\frac 92
 	\]
 \end{example}
 
 
-\vfil
 
-\pagebreak[4]
+\goodbreak
+
 
 
 \begin{exercises}{}{}
-	Beakers problem
-
-
-
-	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for how the cost of gasoline depends on time.
+	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for the cost of gasoline as a function of time.
 
 
 	\begin{enumerate}\setcounter{enumi}{1}
@@ -410,19 +415,28 @@ In the Exercises we make sure that the two descriptions of a line correspond. As
 	    \item \$10 per month and 5\textcent{} per minute for all calls.
 	    \item \$30 per month, regardless of how many calls you make.
 	  \end{enumerate}
-	  How should you determine which of the plans to purchase?
+	  How should you determine which plan to purchase?
 	  
 	  
 	  \item Revisit Exercise \ref*{sec:funcdef}.\ref{exs:templinear}. Find an approximate linear model $T(t)=mt+c$ for this data.\par
-	  (\emph{There is no perfect answer}!)
+	  (\emph{There is no perfect answer})
+	  
+	  
+	  \item Revisit the beakers problem (Example \ref{ex:beakers}). This time suppose we know that the concentration in beaker B is 9\%. How much from beaker B should we pour into beaker A to obtain an acid with concentration 5\%? Would you consider this a linear polynomial problem? Why/why not?
     
     
-    \item Suppose $y=mx+c$ is the equation of a linear function. Choose any two points $A,B$ on this line, and thus find an explicit parametrization in the style of Theorem \ref{thm:lineparametrize}.
-    
-    \item\label{exs:lineparam} Suppose $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. If $x_1\neq x_0$, find the equation $y=mx+c$ of the line through these points.
-    \par
-    (\emph{You should recognize $m$ as the familiar `rise over run'})
-    
+    \item\label{exs:lineparam}
+    Suppose points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. 
+    \begin{enumerate}
+      \item If $x_1\neq x_0$, use the method of Example \ref{ex:mxplusc} to find the equation $y=mx+c$ of the line through these points.
+      
+      \item Now use the parametrized approach where $A$ corresponds to 0 and $B$ to 1. If, in addition, $x_1\neq x_0$, make things match up with your answer to part (a).\par
+      What parametrization do you get if $A=(0,c)$ and $B=(1,m+c)$?
+	  
+			\item Part (a) provides an \emph{algebraic} justification of the claim made on page \pageref{pg:paramline}, that the linear polynomial description of a line is unique (`\emph{the} equation'). How might you help a student believe this claim if the algebra is unconvincing or too intimidating?\par
+			(\emph{Think about Example \ref{ex:mxplusc}})
+    \end{enumerate}
+        
     
     \item A straight line is sometimes described as the set of points $(x,y)\in\R^2$ satisfying an equation of the form
     \[
@@ -431,12 +445,11 @@ In the Exercises we make sure that the two descriptions of a line correspond. As
     for some constants $a,b,c$ where $a,b$ are not both zero. How does this approach differ from our use of linear polynomials?
     
     
-    \item Suppose that a linear polynomial $f(x)=mx+c$ is also a \emph{linear function}:
+    \item Throughout mathematics (particularly within \emph{linear algebra}), a function $f:\R\to\R$ is said to be \emph{linear} if it satisfies the condition
     \[
     	\text{For all }\lambda,x\in\R,\quad f(\lambda x)=\lambda f(x)
     \]
-    What can you say about $f$?\par
-    (\emph{This is the meaning of \emph{linear} you'll encounter in a linear algebra class})
+    Is this the same thing as a linear polynomial? Explain.
    
   \end{enumerate}
 \end{exercises}
