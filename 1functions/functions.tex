@@ -564,21 +564,21 @@ Polynomials are often employed in modelling due to their simplicity and ease of 
 	Since each interval has duration 1\,s, each $\Delta y$ is the \emph{average speed} of the falling body over that interval.
 \end{example}
 
-You'll have seen problems like this in calculus; likely you want to \emph{differentiate} to find the \emph{velocity} $y(t)=-10t$\,m/s and \emph{acceleration} $y''(t)=-10$\,m/s$^2$. However, historically and in introductory calculus, it is problems like these that \emph{motivate the definition} of the derivative.\footnote{The last line of the table really does suggest that speed is a linear function!}\par
-Armed with calculus, Galileo's observation is that the height $y(t)$ solves the differential equation
+You'll have seen problems like this in calculus; likely you want to \emph{differentiate} to find the \emph{velocity} $y'(t)=-10t$\,m/s and \emph{acceleration} $y''(t)=-10$\,m/s$^2$. However, historically and in introductory calculus, it is problems like these that \emph{motivate the definition} of the derivative.\footnote{The last line of the table really does suggest that speed is a linear function!}\par
+Armed with calculus, Galileo's observation is that the height $y(t)$ solves a differential equation
 \[
-	\diff[^2y]{t^2}=-g
+	\diff[^2y]{t^2}=-g \implies y'(t)=-gt+v_0\implies y(t)=-\frac 12gt^2+v_0t+h_0
 \]
-where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2$ or 10\,m/s$^2$. Unless you are explicitly teaching calculus or Newtonian physics, this is probably a bad place to start! 
+where $g$ (approximately 32\,ft/s$^2$ or 10\,m/s$^2$) is the constant acceleration due to gravity, and the constants of integration $h_0,v_0$ are the initial height and vertical velocity. Unless you are explicitly teaching calculus or Newtonian physics, this is probably a bad place to start! 
 
 
 
-\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.3\linewidth]{}{frisbee}
-	Your frisbee is stuck 15\,m up a tree. Standing 10\,m from the base, you throw a ball with the intent of knocking the frisbee out of the tree.\smallbreak
-	The standard approach to modelling such problems involves considering the horizontal and vertical motions separately.
+\begin{example}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.32\linewidth]{}{frisbee}
+	Your frisbee is stuck 15\,m up a tree. Standing 10\,m from the base of the trunk, you throw a ball with the intent of knocking the frisbee out of the tree.\smallbreak
+	The standard approach to modeling such problems involves considering the horizontal and vertical motions separately.
 	\begin{quote}
 		\emph{Horizontal}\lstsp $x(t)=pt+q$ is a \emph{linear function} of time.\smallbreak
-		\emph{Vertical}\lstsp $y(t)=-10t^2+rt+s$ is a \emph{quadratic function} of time.
+		\emph{Vertical}\lstsp $y(t)=-5t^2+rt+s$ is a \emph{quadratic function} of time.
 	\end{quote}
 	Substituting for $t$ yields a quadratic function for the \textcolor{blue}{trajectory}
 	\[
@@ -591,17 +591,20 @@ where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2
 
 
 \begin{exercises}{}{}
-	\exstart Complete the square for each quadratic function, use it to find the range and to graph the function.
+	\exstart Complete the square for each quadratic function. Use your answer to find the range and to graph the function.
 	\begin{enumerate}\setcounter{enumi}{1}  
 	  \item[]\begin{enumerate}
 	    \item $f(x)=x^2-6x+5$ %$(x-3)^2-4$
 	    \item $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
 	    \item $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
 	  \end{enumerate}
-	  %For part (a), also find two intervals $(-\infty,k]$ and $[k,\infty)$ (same $k$!) on which $f$ is invertible. For each interval, compute the inverse function $f^{-1}$.
-	  
+	 
 	  
 	  \item For the quadratic function $y=2x^2-5x+7$, produce a table for $x\in\{0,1,2,3,4,5,6\}$ similarly to that in Example \ref{ex:quadseqgraph}. What do you observe about $\Delta y$?
+	  
+	  
+	  
+	  \item Find the implied domain of the function $f(x)=\frac 1{\sqrt{4-7x+x^2}}$
 	  
 	  
 		\item\begin{enumerate}
@@ -609,15 +612,15 @@ where $g$ is the constant acceleration due to gravity; approximately 32\,ft/s$^2
 			\item More generally, if $P=(a,b)$ and $Q=(c,d)$ are given, where $c\neq a$, find all quadratic functions whose graphs contain $P$ and $Q$.
 		\end{enumerate}
 	  
-	  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}).
+	  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}). Assume you're standing at the origin and that the frisbee is at the point $(10,15)$.
 	  \begin{enumerate}
-	    \item Assume that you're standing at the origin and the frisbee is at the point $(10,15)$. Find all trajectories.
-	    \item (Hard)\lstsp Find a formula linking the initial speed and gradient of the parabola (the initial speed and direction in which you throw the ball).
+	    \item  Find/describe all suitable trajectories that result in the ball hitting the frisbee.
+	    \item (Hard)\lstsp Find a formula relating the initial speed $v$ and initial slope $m$ of the parabola (the initial speed/direction in which you throw the ball).
 	    \begin{enumerate}
 				\item If you throw the ball in such a way that the initial \emph{vertical} speed of the ball is twice its \emph{horizontal} speed, find how fast you have to throw the ball in order to hit the frisbee.
 	      \item What is the \emph{minimum} speed at which you could throw the ball if you want to dislodge the frisbee?
 	    \end{enumerate}
-	    (\emph{Hint: You'll need some calculus! In the language of the original problem, the initial slope is $m=\frac rp$ and speed $v=\sqrt{p^2+r^2}$; why?})
+	    (\emph{Hint: You'll need some calculus! In the language of the original problem, the initial slope is $m=\frac rp$ and the initial speed $v=\sqrt{p^2+r^2}$; why?})
 		\end{enumerate}
 
 	\end{enumerate}
