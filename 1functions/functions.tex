@@ -595,8 +595,9 @@ where $g$ (approximately 32\,ft/s$^2$ or 10\,m/s$^2$) is the constant accelerati
 	\begin{enumerate}\setcounter{enumi}{1}  
 	  \item[]\begin{enumerate}
 	    \item $f(x)=x^2-6x+5$ %$(x-3)^2-4$
-	    \item $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
-	    \item $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
+	    \qquad\qquad
+	    (b) \ $f(x)=-x^2+x+1$ %$-(x-\frac 12)^2+\frac 54$
+	    \item[(c)] $f(x)=-3x^2+8x+5$ %$3(x+\frac 43)^2-\frac 13$
 	  \end{enumerate}
 	 
 	  
@@ -611,6 +612,9 @@ where $g$ (approximately 32\,ft/s$^2$ or 10\,m/s$^2$) is the constant accelerati
 		  \item Find the equations of all quadratic polynomial functions which pass through the points $(1,3)$ and $(2,4)$.
 			\item More generally, if $P=(a,b)$ and $Q=(c,d)$ are given, where $c\neq a$, find all quadratic functions whose graphs contain $P$ and $Q$.
 		\end{enumerate}
+		
+		
+		\item Describe as best you can how the graph of the function $f(x)=3x^2+bx+2$ depends on $b$.
 	  
 	  \item\label{exs:frisbee} Consider the frisbee/tree problem (Example \ref{ex:frisbee}). Assume you're standing at the origin and that the frisbee is at the point $(10,15)$.
 	  \begin{enumerate}
@@ -642,7 +646,7 @@ That this approach provides \emph{all} roots relies on several familiar algebrai
   \item No zero-divisors: $g(x)h(x)=0\iff g(x)=0$ or $h(x)=0$. 
   \item A quadratic has \emph{at most two} distinct roots.
 \end{enumerate}
-We'll examine this more closely at the end of this section. For students first learning factorization, it isn't the \emph{why} that's the challenge, it's the \emph{how.} Multiplying out $(x-3)(x+5)$ is mechanical, but factorizing requires some creativity; we can't really factor without somehow knowing that 3 and $-5$ are roots! Beyond making a lucky guess, how do we go about this? 
+We'll examine this more closely at the end of this section. For students first learning factorization, it isn't the \emph{why} that's the challenge, it's the \emph{how.} Multiplying out $(x-3)(x+5)$ is mechanical, but factorizing requires some creativity; we can't really factor without somehow knowing that 3 and $-5$ are roots! Beyond making a lucky guess, how might we go about this? 
 
 \begin{example}{}{ratroots1}
 	Let's re-examine $f(x)=x^2+2x-15=0$ in a couple of stages.
@@ -693,11 +697,12 @@ A quadratic polynomial has degree 2 and a linear polynomial $mx+c$ degree one\fo
 Our analysis in Example \ref{ex:ratroots1} generalizes to a famous result.
 
 \begin{thm}{Rational Roots}{}
-	Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in simplest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ divides into $\textcolor{red}{a_0}$.
+	Suppose $f(x)=\textcolor{blue}{a_n}x^n+\cdots+\textcolor{red}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in simplest terms, then $\textcolor{blue}{q}$ divides into $\textcolor{blue}{a_n}$ and $\textcolor{red}{p}$ into $\textcolor{red}{a_0}$.\par
+	In particular, if $\textcolor{blue}{a_n=1}$, then the only possible rational roots are integers.
 \end{thm}
 
 \begin{proof}
-	Substitute $x$ into the function and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-13pt}
+	Substitute $\frac pq$ into $f(x)$ and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-11pt}
 	\[
 		\underbrace{\textcolor{blue}{a_np^n}+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{red}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+\textcolor{red}{a_0q^n}}^{\text{divisible by $\textcolor{blue}{q}$}}=0
 	\]
@@ -706,19 +711,17 @@ Our analysis in Example \ref{ex:ratroots1} generalizes to a famous result.
 
 
 \begin{examples}{}{}
-	\exstart If $x=\frac pq$ is a rational root of $f(x)=2x^2-x-3$ in lowest terms, then $q=1$ or 2 and $p=\pm 1$ or $\pm 3$. The possibilities are therefore
+	\exstart If $x=\frac pq$ is a rational root of $f(x)=2x^2-x-3$ in lowest terms, then $q=1$ or 2 and $p=\pm 1$ or $\pm 3$. The eight possibilities for $x$ are easily checked:
 	\[
-		x=\pm 1,\pm 3,\pm\tfrac 12,\pm\tfrac 32
-	\]
-	all of which are easily checked:
-	\[
-		\def\arraystretch{1.1}
+		\def\arraystretch{1.2}
 		\begin{array}{c|cccccccc}
 			x&1&\textcolor{red}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{red}{\frac 32}&-\frac 32\\\hline
-			f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3
+			2x-1&1&\textcolor{red}{-3}&5&-7&0&-2&\textcolor{red}{2}&-4
+			%x(2x-1)=3\text{?}&&\checkmark&5&-7&0&-2&\textcolor{red}{2}&-4\\\hline
+			%f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3\\\hline
 		\end{array}
 	\]
-	The two roots are \textcolor{red}{indicated} and the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
+	You may prefer to compute $f(x)$ directly: as in the previous example, since we already know $x$ it is quicker to check whether $x(2x-1)=3$ rather than $f(x)=0$ (consider whether this trick would be helpful or confusing in a grade-school context). The two roots are \textcolor{red}{indicated}; it is easily verified that the polynomial can be factorized $f(x)=(2x-3)(x+1)$.
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item If the cubic polynomial $f(x)=x^3-2x^2+5$ had any rational roots, the only possibilities would be $\pm 1$ or $\pm 5$. It is quickly verified that none of these work,
 	  \[
@@ -728,7 +731,7 @@ Our analysis in Example \ref{ex:ratroots1} generalizes to a famous result.
 	\end{enumerate}
 \end{examples}
 
-Unless there are very few candidates, it can be time-consuming to check everything by hand. Moreover, unless you find enough ($n$) distinct rational roots, you don't know that you have everything. The rational roots theorem is therefore typically used together with factorization; it just gives you options for where to start. This still isn't easy, as the next example shows.
+Unless there are very few candidates for rational roots, checking all possibilities by hand is time-consuming. The rational roots theorem is therefore typically used in conjunction with factorization by providing options for how to start factorizing. This still isn't easy, as the next example shows.
 
 
 \goodbreak
@@ -873,13 +876,17 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 	  \item Factorize the polynomials and thereby find their (real) roots. Explain your steps carefully.
 	  \begin{enumerate}
 	    \item $f(x)=x^3+2x^2-3x$ %$(x-1)(x+3)x$
-	    \item $f(x)=x^4-13x^2+36$ %$(x^2-9)(x^2-4)$
-	    \item $f(x)=x^3-7x-6$ %(x+2)(x^2-2x-3)
+	    \qquad\qquad\qquad
+	    (b) \ $f(x)=x^4-13x^2+36$ %$(x^2-9)(x^2-4)$
+	    \item[(c)] $f(x)=x^3-7x-6$ %(x+2)(x^2-2x-3)
 	  \end{enumerate}
 	  
 	  
 	  \item Factorize the polynomial $f(x)=x^6-2x^5-x^4-4x^3-4x^2-4x-6$ %$=(x+1)(x^5-3x^4+2x^3-6x^2+2x-6)=(x-3)(x+1)(x^4+2x^2+2)$
 	  and thus demonstrate that it has exactly two real roots.
+	  
+	  
+	  \item Students often follow a heuristic when trying to factorize a polynomial $f(x)=0$: try some small integer values for $x$ until you find a root, then apply long division. For what types of polynomial $f(x)$ will this approach work? Explain.
 	  
 		
 		\item The polynomial $f(x)=2x^4-3x^3+2x^2+3x-9$ has only one rational root. Find it and factorize the polynomial as $f(x)=g(x)q(x)$ where $\deg g=1$.
@@ -1297,7 +1304,7 @@ where we chose the \emph{negative} square root since $\operatorname{range}(f^{-1
 
 \fi
 
-We finish with an algebraically tougher example: you may feel that more detail is justified!
+We finish with an algebraically tougher example, where you may feel that more detail is justified.
 
 \begin{example}{}{function-easy}
 	Let $y=f(x)=\frac 1{(x-2)^2}$. Its implied \textcolor{red}{\emph{domain}} consists of all real numbers except 2.
@@ -1339,7 +1346,7 @@ We finish with an algebraically tougher example: you may feel that more detail i
 	\begin{enumerate}\setcounter{enumi}{1}
 	  \item Consider $f(x)=x^2+2x-3$. Similarly to Example \ref{ex:invexs}, find \emph{two inverses} of $f$.
 	  
-	  \item Sketch the graph of the following function
+	  \item Sketch the graph of the function
 	  \[
 	  	f(x)=
 	  	\begin{cases}
