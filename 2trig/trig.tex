@@ -59,11 +59,13 @@ If you've done sufficient calculus you might know of other definitions, for inst
 There are two standard ways to measure angles (to sensibly associate a \emph{number} to each angle).
 
 \begin{description}
-	\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree measure dates back to ancient Babylon 2--4000 years ago.\footnote{It is not known why they chose 360, but it fits nicely with their \emph{base-60} system of counting (decimals are base-10). The traditional subdivisions of a degree are also base-60. For instance, $\ang{34}12'45"$ is 34 degrees, 12 (arc)minutes and 45 (arc)seconds; converted to decimal notation, this becomes
+	\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree measure dates back to ancient Babylon 2--4000 years ago.\footnote{%
+	It is not known why they chose 360, but it fits nicely with their \emph{base-60} system of counting (decimals are base-10). The traditional subdivisions of a degree are also base-60. For instance, $\ang{34}12'45"$ is 34 degrees, 12 (arc)minutes and 45 (arc)seconds; converted to decimal notation, this becomes
 	\[
 		\ang{34}12'45" =34+\frac{12}{60}+\frac{45}{60^2}=\ang{34.2125}
 	\]
-	The standard hour-minute-second measurement of time has the same origin.}
+	The standard hour-minute-second measurement of time has the same origin.%
+}
 
 
 	\item[\normalfont\emph{Radians}] The radian measure of an angle is the \textcolor{blue}{length of the arc} subtending the angle in a circle of radius 1. Since the circumference of a unit circle is $2\pi$, we have the following identifications.\par
@@ -101,7 +103,7 @@ In elementary mathematics, degrees are the most common way to measure angles. Do
 	  \item Explain how to get the values of sine and cosine in the above table.\par
 	  (\emph{Hint: Draw some triangles and use Pythagoras}!)
 	  
-	  \item Using the pictures, explain why we have the relations
+	  \item\label{exs:trigshift} Using the pictures, explain why we have the relations
 		\[
 			\sin(\tfrac \pi 2-\theta)=\cos\theta=\sin(\theta+\tfrac\pi 2),
 			\qquad 
@@ -111,79 +113,113 @@ In elementary mathematics, degrees are the most common way to measure angles. Do
 	\end{enumerate}
 \end{exercises}
 
+
 \clearpage
 
 
 \subsection{Periodicity, Graphs \& Inverses}\label{ssec:trigperiod}
 
-One advantage of the circle definition is that it allows us to easily extend trigonometric functions \emph{periodically.} We can measure the polar angle counter-clockwise as many times round the origin as we like; for any integer $n$,
+One advantage of the circle definition is that it makes sketching the graphs of sine and cosine very easy. Simply draw axes next to a unit circle and transfer the heights across.
+\begin{center}
+	\includegraphics{invsine4}
+\end{center}
+By Exercise \ref*{ssec:trigdef}.\ref{exs:trigshift}, the graph of $\cos x=\sin(x+\frac\pi 2)$ is simply that of sine shifted $\frac\pi 2=\ang{90}$ to the left. Moreover, the circle definition allows us easily to extend trigonometric functions \emph{periodically} since we can measure the polar angle by looping as many times round the origin as we like: for any integer $n$,
 \[
-	\sin(\theta+2n\pi)=\sin\theta,\quad \cos(\theta+2n\pi)=\cos\theta
+	\sin(\theta+2n\pi)=\sin\theta,\quad 
+	\cos(\theta+2n\pi)=\cos\theta
 \]
-Otherwise said, sine and cosine have period $2\pi$. It is now easy to draw the graphs: just think about the circle when $0\le \theta<2\pi$ and continue periodically! Plainly sine and cosine are \emph{non-invertible} unless we choose a domain on which they are 1--1.\par
+Otherwise said, sine and cosine have period $2\pi$ radians ($\ang{360}$).\medbreak
+
+
+Sine and cosine are \emph{non-invertible} unless we choose a domain on which they are 1--1.\par
 \begin{minipage}[t]{0.6\textwidth}\vspace{-3pt}
 	\includegraphics[scale=0.95]{invsine2}\par
 	$f(x)=\sin x$ is 1--1 on the domain $[-\frac\pi 2,\frac\pi 2]$\smallbreak
 	Inverse function $f^{-1}(x)=\arcsin x=\sin^{-1}x$\smallbreak
 	Domain $\dom(\arcsin)=[-1,1] =\operatorname{range}(\sin)$\smallbreak
 	Range $\operatorname{range}(\arcsin)=[-\frac\pi 2,\frac\pi 2]=\dom(\sin)$\medbreak
-	This is why your calculator always returns a value in the interval $[-\frac\pi 2,\frac\pi 2]=[-\ang{90},\ang{90}]$ when you hit the $\sin^{-1}$ button!
+	This is why your calculator always returns a value in the interval $[-\frac\pi 2,\frac\pi 2]=[-\ang{90},\ang{90}]$ when you hit the $\sin^{-1}$ button.
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.39\textwidth}\vspace{-5pt}
-	\flushright\includegraphics[scale=0.93]{invsine}
+	\flushright\includegraphics[scale=0.9]{invsine}
 \end{minipage}
 
-\begin{example}{}{}
-	If you know the graphs, then symmetry and periodicity helps you solve equations. For example, if $\sin \theta=\frac 9{10}$ then all solutions are given by
+\begin{example}{}{sineeasy}
+	If you know the graphs, then symmetry and periodicity help you solve equations. For example, if $\sin \theta=\frac 9{10}$ then all solutions are given by
 	\[
 		\theta=\sin^{-1}\frac 9{10}+2\pi n
 		\quad\text{or}\quad 
 		\pi-\sin^{-1}\frac 9{10}+2\pi n \tag{$n$ is any integer}
 	\]
 	\begin{center}
-		\includegraphics[scale=1]{invsine3}
+		\includegraphics[scale=0.95]{invsine3}
 	\end{center}
-	Alternatively, we could use the circle definition: $\sin\theta=\frac 9{10}$ means we want angles $\theta$ corresponding to the intersections of the unit circle with the \emph{horizontal line} $y=\frac 9{10}$ (why?).
+	Alternatively, we could use the circle definition directly: $\sin\theta=\frac 9{10}$ means we want angles $\theta$ corresponding to the intersections of the unit circle with the \emph{horizontal line} $y=\frac 9{10}$.
 \end{example}
+
+
+\goodbreak
 
 
 \boldinline{Periodic Models}
 
-Trig functions find applications in modelling because they are \emph{periodic.}
+Trig functions find applications in modeling precisely because they are \emph{periodic.} In general, a function has period $T$ if
+\[
+	f(x+T)=f(x)\ \text{ for all $x$}
+\]
+It is easy to find the period of the function $f(x)=\sin kx$ just by considering what we have to add to the input $x$ to increase the argument $kx$ of sine by $2\pi$:
+\[
+	T=\frac{2\pi}k\implies f(x+T)=\sin(kx+2\pi)=\sin kx=f(x)
+\]
+We may therefore obtain a simple periodic model regardless of what period is required.
 
 \begin{example}{}{}
-	The tide is a periodic function of time. At a particular location, suppose high tide occurs at 6:00 with a water depth of 10\,ft and that low tide occurs 12:12 with a depth of 4\,ft. The tide might be modelled by the periodic function
-	\[
-		h(t)=7+3\cos\left(\frac{5\pi}{31}(t-6)\right)
-	\] 
-	where $t$ is measured in hours from midnight. 
+	On a given day, high tide occurs at 2:00 with a water depth of 10\,ft, whereas low tide occurs at 8:12 with a depth of 4\,ft. We might model this using a periodic function with period $T=2\times 6\frac{12}{60}=\frac{62}{5}$ hours. For instance\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-8pt}
+		\[
+			h(t)=7+3\cos\left(\frac{5\pi}{31}(t-4)\right)
+		\] 
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-18pt}
+		\flushright\includegraphics{tide}
+	\end{minipage}\medbreak
+	where $t$ is measured in hours from midnight might be suitable. In reality, tidal height is very close to being periodic, but the magnitude of the high and low tides are somewhat variable.
 \end{example}
 
-In reality, the tide is very close to being periodic, but the size of the high and low tides are somewhat variable.\bigbreak
 
-In fact \emph{any} periodic function may be suitably approximated using trigonometric functions: if $f(x)$ has period $T$, then there are constants $a_n,b_n$ for which
+In fact \emph{any} periodic function may be approximated using trigonometric functions. Indeed if $f(x)$ has period $T$ and we define constants
 \[
-	f(x)\approx \frac{a_0}2+a_1\cos\frac{2\pi x}T +b_1\sin\frac{2\pi x}T +a_2\cos\frac{4\pi x}T +b_2\sin\frac{4\pi x}T +\cdots \tag{$\ast$}
+	a_n=\int_{-\frac T2}^{\frac T2} f(x)\cos\frac{2\pi nx}T\,\dx,\qquad 
+	b_n=\int_{-\frac T2}^{\frac T2} f(x)\sin\frac{2\pi nx}T\,\dx
+	\tag{$\ast$}
 \]
-This is the \emph{Fourier series} of $f(x)$. Often taking only 10 terms results in a very good approximation. It is not important for this course, but if you know integration, these constants may be computed as follows
+then
 \[
-	a_n=\int_{-\frac T2}^{\frac T2} f(x)\cos\frac{2\pi nx}T\,\dx,\quad b_n=\int_{-\frac T2}^{\frac T2} f(x)\sin\frac{2\pi nx}T\,\dx
+	f(x)\approx \frac{a_0}2+a_1\cos\frac{2\pi x}T +b_1\sin\frac{2\pi x}T +a_2\cos\frac{4\pi x}T +b_2\sin\frac{4\pi x}T +\cdots \tag{$\dag$}
 \]
-Modern data-compression algorithms often employ Fourier series. Given a period function $f(x)$, one uses a computer to estimate (say) the first 100 Fourier coefficients and transmits only these values. The receiver then recovers an approximation to the original function using $(\ast)$.
+This is the \emph{Fourier series} of $f(x)$. It often takes only a small number of terms to obtain a very good approximation. Modern data-compression algorithms often employ Fourier series. Given a periodic function $f(x)$, one uses a computer to estimate (say) the first 100 Fourier coefficients ($\ast$) and transmits these values to the receiver, who recovers an approximation to the original function using $(\dag)$.
 
 \begin{example}{}{}
-	A square-wave function with period $T=2\pi$ is given by
+	A square-wave function with period $T=2\pi$ is given by\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-10pt}
+		\[
+			f(x)=
+			\begin{cases}
+				1&\text{if }0\le x<\pi\\
+				-1&\text{if }\pi\le x<2\pi
+			\end{cases}
+		\]
+		extended periodically to the real line. With a little calculus, it is easily checked that the Fourier coefficients are
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-2pt}
+		\flushright\includegraphics[scale=0.95]{square-wave}
+	\end{minipage}\par
 	\[
-		f(x)=
-		\begin{cases}
-			1&\text{if }0<x\le \pi\\
-			-1&\text{if }\pi<x\le 0
-		\end{cases}
-	\]
-	and then extended periodically to the real line. It can be checked that the Fourier coefficients are
-	\[
-		a_n=\int_{-\pi}^{\pi} f(x)\cos nx\,\dx=0,\quad b_n=\int_{-\pi}^{\pi} f(x)\sin nx\,\dx=
+		a_n=\int_{-\pi}^{\pi} f(x)\cos nx\,\dx=0,\qquad 
+		b_n=\int_{-\pi}^{\pi} f(x)\sin nx\,\dx=
 		\begin{cases}
 			\frac 4{\pi n}&\text{if $n$ is odd}\\
 			0&\text{if $n$ is even}
@@ -191,6 +227,9 @@ Modern data-compression algorithms often employ Fourier series. Given a period f
 	\]
 	Use a graphics tool to see how the first few terms of the series \href{https://www.math.uci.edu/~ndonalds/math121b/orth-fourier.html}{approximate the function.}
 \end{example}
+
+
+\goodbreak
 
 
 \begin{exercises}
@@ -204,6 +243,8 @@ Modern data-compression algorithms often employ Fourier series. Given a period f
 	  \item Explain why the tangent function has period $\pi$; that is $\tan(\theta+n\pi)=\tan \theta$. What facts are we using about sine and cosine and why are they obvious from the definition?
 	  
 	  \item Describe all solutions to the equation $\tan x=5$.
+	  
+	  \item Let $f(x)=\csc x=\frac 1{\sin x}$ be the cosecant function. Describe a domain on which this function is 1--1 and sketch the graph of its inverse $y=f^{-1}(x)$.
 	  
 	  \item Use a computer to sketch the curve
 	  \[
