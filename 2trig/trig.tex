@@ -244,6 +244,11 @@ This is the \emph{Fourier series} of $f(x)$. It often takes only a small number 
 	  
 	  \item Describe all solutions to the equation $\tan x=5$.
 	  
+	  \item\begin{enumerate}
+	    \item Suppose $\theta=\cos^{-1}\frac 9{41}$. Find the exact values for $\sin\theta$ and $\tan\theta$.
+	    \item What changes if $\theta=\cos^{-1}\frac{-9}{41}$?
+	  \end{enumerate} 
+	  
 	  \item Let $f(x)=\csc x=\frac 1{\sin x}$ be the cosecant function. Describe a domain on which this function is 1--1 and sketch the graph of its inverse $y=f^{-1}(x)$.
 	  
 	  \item Use a computer to sketch the curve
@@ -491,7 +496,9 @@ Computing $x=r\cos\theta$ and $y=r\sin\theta$ is easy given $r$ and $\theta$.
 \begin{example}{}{polar}
 	A point with polar co-ordinates $\textcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
 	\[
-		\textcolor{blue}{(x,y)=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr) =\bigl(-\sqrt 3,1\bigr)}
+		\textcolor{blue}{(x,y)
+		=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr)
+		=\bigl(-\sqrt 3,1\bigr)}
 	\]
 \end{example}
 
@@ -516,7 +523,8 @@ Computing polar co-ordinates from Cartesian is harder, requiring some \emph{visu
 	\]
 	For the polar angle,
 	\[
-		\tan\theta=\frac yx=-\frac 1{\sqrt 3}=\tan\left(-\frac\pi 6\right)\notimplies \theta=\textcolor{orange}{-\frac\pi 6}
+		\tan\theta =\frac yx =-\frac 1{\sqrt 3}
+		=\tan\left(-\frac\pi 6\right)\notimplies \theta=\textcolor{orange}{-\frac\pi 6}
 	\]
 	Arctan has range $(-\frac\pi 2,\frac\pi 2)$, so always returns an angle in quadrants 1 or 4. Our point is in the \emph{second} quadrant ($x<0<y$) so we need to adjust, using the fact that $\tan$ is $\pi$-periodic:
 	\[
@@ -533,7 +541,8 @@ The example wasn't too tricky since the polar angle was exactly computable. When
 \begin{example}{}{}
 	The point $(x,y)=(-8,-15)$ has polar co-ordinates (quadrant 3!)
 	\[
-		r=\sqrt{8^2+15^2}=17,\qquad \theta=\pi+\tan^{-1}\tfrac{15}8\approx \ang{241.93}
+		r=\sqrt{8^2+15^2}=17,\qquad 
+		\theta=\pi+\tan^{-1}\tfrac{15}8 \approx \ang{241.93}
 	\]
 \end{example}
 
@@ -547,7 +556,8 @@ We could summarize with formulæ describing precisely how to compute $\theta$ de
 
 Polar co-ordinates are well-suited to describing curves that encircle the origin. Indeed circles centered at the origin with radius $a>0$ have the very simple polar form $r=a$. Converting to rectangular co-ordinates recovers the the natural parametrization of a circle:
 \[
-	x(\theta)=a\cos\theta,\quad y(\theta)=a\sin\theta
+	x(\theta)=a\cos\theta,\quad 
+	y(\theta)=a\sin\theta
 \]
 This partly explains why mathematicians call sine and cosine \emph{circular functions.}\smallbreak
 
@@ -582,7 +592,9 @@ General polar graphs are harder to visualize, though the major reason is lack of
 	  \item The curve $r=2\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
 		This looks like a circle! To see this, multiply both sides by $r$ and complete the square:
 		\[
-			r^2=2r\sin\theta\implies x^2+y^2=2y \implies x^2+(y-1)^2=1
+			r^2=2r\sin\theta
+			\implies x^2+y^2=2y 
+			\implies x^2+(y-1)^2=1
 		\]
 		describes the set of points with distance 1 from the point $(0,1)$: a circle!
 	\end{enumerate}
@@ -614,10 +626,16 @@ You should think about what happens in both examples if we extend the domain:
 			r(\theta)=\frac{2a}{1-\sin\theta}
 		\]
 		is a parabola in disguise and sketch it when $a=1$. How does the graph depend on $a$?
+		
+		
+		\item In a similar vein to the previous question, sketch the curve $r=\frac 2{2+\sin\theta}$. What type of curve is this?
+		
 		 
 	  \item Try to sketch the following curves.
 		\begin{enumerate}
-	  	\item $r=\theta(\theta-4)$\qquad (b)\lstsp $r=(\theta-1)^2+1$\qquad (c)\lstsp $r=(\theta-1)^2-1$
+	  	\item $r=\theta(\theta-4)$\qquad 
+	  	(b)\lstsp $r=(\theta-1)^2+1$\qquad 
+	  	(c)\lstsp $r=(\theta-1)^2-1$
 		\end{enumerate}
 		As well as plotting points directly, you should sketch the curve first on rectangular axes (e.g.,{} (a) is $y=x(x-4)$). What happens to (c) when $\theta=1$?\par
 		Once you've tried these, use a \href{https://www.desmos.com/calculator}{grapher} to see if you're right, though see how close you can get without it! 
