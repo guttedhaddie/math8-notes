@@ -10,7 +10,9 @@ analogous to how multiplication represents repeated addition
 \[
 	5a=a+a+a+a+a
 \]
-The problem with this approach is that it doesn't help you understand what should be meant by, say, $a^{3/4}$ or $a^{\sqrt 2}$: multiplying something by itself `$\sqrt 2$ times' sounds\footnote{The same issue arises for multiplication: $3\sqrt 2=\sqrt 2+\sqrt 2+\sqrt 2$ is relatively easy to understand, but how would you convince someone what $\pi\sqrt 2$ means?} insane!\smallbreak
+The problem with this approach is that it doesn't help you understand what should be meant by, say, $a^{3/4}$ or $a^{\sqrt 2}$: multiplying something by itself `$\sqrt 2$ times' sounds\footnote{%
+	The same issue arises for multiplication: $3\sqrt 2=\sqrt 2+\sqrt 2+\sqrt 2$ is relatively easy to understand, but how would you convince someone what $\pi\sqrt 2$ means?%
+} insane!\smallbreak
 To rigorously address this problem requires \emph{continuity} and other ideas surrounding the foundations of calculus which you'll encounter in upper-division analysis; topics unsuitable for this course. Instead, we assume some familiarity with exponential functions via introductory calculus, where they are unavoidable and offer two ways to introduce exponential functions and $e$ via modelling.
 
 
@@ -34,7 +36,9 @@ where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if
 	\flushright\includegraphics[scale=1]{slopefields-01}
 \end{example}
 
-\footnotetext{A similar approach is available for any first-order differential equation $\diff[y]{x}=F(x,y)$: the equation defines its \emph{slope field} (arrows), to which  solution curves must be tangent.}
+\footnotetext{%
+	A similar approach is available for any first-order differential equation $\diff[y]{x}=F(x,y)$: the equation defines its \emph{slope field} (arrows), to which  solution curves must be tangent.%
+}
 
 
 \begin{defn}{}{}
@@ -43,7 +47,9 @@ where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if
 
 Recall the \emph{exponential laws,}\phantomsection\label{pg:explaws} which are very natural when $x,y,r$ are positive integers:
 \[
-	\tcbhighmath{a^{x+y}=a^xa^y\qquad a^{x-y}=\frac{a^x}{a^y}\qquad (a^x)^r=a^{rx}}
+	\tcbhighmath{a^{x+y}=a^xa^y\qquad 
+	a^{x-y}=\frac{a^x}{a^y}\qquad 
+	(a^x)^r=a^{rx}}
 \]
 These hold for all exponents, with the same continuity caveats we saw previously. 
 For modelling, the crucial property of exponential functions is that they have proportional derivative.
@@ -51,13 +57,15 @@ For modelling, the crucial property of exponential functions is that they have p
 \begin{thm}{}{}
 	The rate of change of $f(x)=a^x$ is proportional to $f(x)$. Specifically,
 	\[
-		f'(x)=\lim_{h\to 0}\frac{a^{x+h}-a^x}h=a^x\lim_{h\to 0}\frac{a^{h}-1}h
+		f'(x) =\lim_{h\to 0}\frac{a^{x+h}-a^x}h
+		=a^x\lim_{h\to 0}\frac{a^{h}-1}h
 	\]
 	so that $f(x)=a^x$ satisfies the natural growth/decay equation $\diff[y]{x}=ky$ with proportionality constant
 	\[
-		k=f'(0)=\lim_{h\to 0}\frac{a^{h}-1}h
+		k =f'(0) =\lim_{h\to 0}\frac{a^{h}-1}h
 	\]
 \end{thm}
+
 
 \goodbreak
 
@@ -90,11 +98,13 @@ It appears as if there is a special number somewhere between 2.7 and 2.75 for wh
 	The \emph{natural\footnotemark{} exponential function} $\exp(x)=e^x$ has derivative $\diff xe^x=e^x$.
 \end{defn}
 
-\footnotetext{\emph{Natural} here means \emph{unavoidable}: an old cliche suggests that if aliens were to land on Earth, they'd have to understand $e$ given the technology they'd require to get here. Of course they'd likely use a different symbol; ours comes from Leonhard Euler around 1728. Like $\pi$ and $\sqrt 2$, the constant $e$ is an \emph{irrational number}: its decimal representation contains no repeating pattern. There isn't the same geeky fascination with memorizing the digits of $e$ as there is with $\pi$, neither is there an `$e$-day' (Feb 7\th{} at 6:28\,p.m.\ anyone?).}
+\footnotetext{%
+	\emph{Natural} here means \emph{unavoidable}: an old cliche suggests that if aliens were to land on Earth, they'd have to understand $e$ given the technology they'd require to get here. Of course they'd likely use a different symbol; ours comes from Leonhard Euler around 1728. Like $\pi$ and $\sqrt 2$, the constant $e$ is an \emph{irrational number}: its decimal representation contains no repeating pattern. There isn't the same geeky fascination with memorizing the digits of $e$ as there is with $\pi$, neither is there an `$e$-day' (Feb 7\th{} at 6:28\,p.m.?).%
+}
 
 The function $f(x)=\frac 12e^x$ is plotted in Example \ref{ex:naturalgrowth}. Of course there are many other solutions to the natural growth equation $\smash{\diff[y]{x}=y}$: for any constants $c,k$,
 \[
-	y=ce^{kx}\implies\diff[y]{x}=\diff x ce^{kx}=cke^{kx} = ky
+	y=ce^{kx}\implies \diff[y]{x}=\diff x ce^{kx} =ck e^{kx} =ky
 \]
 In fact the converse also holds; for the details, take a differential equations course!
 
@@ -165,9 +175,14 @@ The first description of $e$ came in 1683 when Jacob Bernoulli tried to model th
 
 In fact this is a theorem, though it requires significant work (beyond this class) to prove it:
 \[
-	\tcbhighmath{e=\lim_{n\to\infty}\left(1+\frac 1n\right)^n\quad\text{and more generally}\quad e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n}
+	\tcbhighmath{
+		e =\lim_{n\to\infty}\left(1+\frac 1n\right)^n
+		\quad\text{and more generally}\quad 
+		e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n
+	}
 \]
 This again shows that $e$ arises very naturally.
+
 
 \boldinline{Simple, Monthly \& Continuous Interest}
 
@@ -180,6 +195,7 @@ In finance, interest is typically computed in one of three ways. In each case we
 		e^{\frac{rt}{100}}=\exp\frac{rt}{100} =\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n
 	\]
 \end{description}
+
 
 \begin{example}{}{}
 	A bank account earns 6\% annual interest paid monthly. To what simple annual interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
@@ -195,7 +211,9 @@ In finance, interest is typically computed in one of three ways. In each case we
 	\]
 \end{example}
 
+
 \goodbreak
+
 
 There are several reasons for these varying approaches, not all of them consumer-friendly:
 \begin{enumerate}\itemsep0pt
@@ -214,9 +232,11 @@ There are several reasons for these varying approaches, not all of them consumer
 		not the \$107,000 you might have expected! This corresponds to a simple interest rate (one payment at the end of the year) of 7.25\%.\footnotemark{}
 \end{example}
 
-\footnotetext{In the US, mortgage companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,
+\footnotetext{%
+	In the US, mortgage companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,
   then the effective annual (simple) interest rate is $\left(1+\frac{0.07}{12}\right)^{12}-1=7.229\%$.
-  By law, this higher \emph{effective APR} must be quoted somewhere, though it is unlikely to be as prominently posted\ldots}
+  By law, this higher \emph{effective APR} must be quoted somewhere, though it is unlikely to be as prominently posted\ldots%
+ }
 
 
 
