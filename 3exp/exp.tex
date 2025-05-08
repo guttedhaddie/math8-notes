@@ -256,7 +256,7 @@ There are several reasons for these varying approaches, not all of them consumer
 	  \begin{enumerate}
 	    \item How much money will you have after 5 years?
 	    %\item To what \emph{continuous} rate of interest is 4\% equivalent?
-	    \item If you close the account after 2 years and 3 months, the bank needs to decide how much interest to credit you with. Do this is two ways (the answers will be different!):
+	    \item If you close the account after 2 years and 3 months, the bank needs to decide how much interest to credit you with. Do this in two ways (the answers will be different!):
 	    \begin{enumerate}
 	      \item Compute using the simple interest rate for 2.25 years ($(1+\frac r{100})^{2.25}$).
 	      \item Suppose that interest is paid at 4\% for all completed years and then at 4\% paid monthly for any completed months of an incomplete year. Find the balance of the account at closing.
@@ -283,11 +283,11 @@ There are several reasons for these varying approaches, not all of them consumer
 
 \subsection{Logarithmic Functions}
 
-Since $e>1>0$, the exponential satisfies the following properties:
+Since $e>1>0$, the natural exponential function satisfies several properties:
 \[
 	\lim_{x\to -\infty}e^x=0,\qquad \lim_{x\to\infty}e^x=\infty,\qquad \diff xe^x=e^x>0
 \]
-The $\exp:\R\to(0,\infty)$ is a \emph{continuous, increasing} function with domain $\R$ and range $(0,\infty)$. It is therefore \emph{invertible.}
+Thus $\exp:\R\to(0,\infty)$ is a \emph{differentiable (so continuous), increasing} function with domain $\R$ and range $(0,\infty)$. It is therefore \emph{invertible.}
 
 
 \begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.4\linewidth]{}{}
@@ -302,7 +302,8 @@ The $\exp:\R\to(0,\infty)$ is a \emph{continuous, increasing} function with doma
 
 Since $\exp$ and $\ln$ are inverse functions, we can solve equations in the usual way: for instance,
 \[
-	e^{3x+1}=100 \implies 3x+1=\ln 100\implies x=\frac 13(\ln 100-1) \approx 1.202
+	e^{3x+1}=100 \implies 3x+1=\ln 100
+	\implies x=\frac 13(\ln 100-1) \approx 1.202
 \]
 
 
@@ -332,8 +333,10 @@ This identity is crucial for interpreting and analyzing natural growth models.
 	  	\flushright\includegraphics{rabbits}
 	  \end{minipage}\par\vspace{-3pt}
 	  \[
-	  	\diff tP(t)=\diff t10e^{\frac t6\ln 2}=\frac{10\ln 2} 62^{t/6}
-	  	\implies P'(9)=\frac{10\ln 2}62^{3/2}\approx 3.27\text{ rabbits/month}
+	  	\diff tP(t)=\diff t10e^{\frac t6\ln 2}
+	  	=\frac{10\ln 2} 62^{t/6}
+	  	\implies P'(9)=\frac{10\ln 2}62^{3/2}
+	  	\approx 3.27\text{ rabbits/month}
 	  \]
 	  If you ask students this question, what do you expect to be the most common \emph{incorrect} answers? Why?
 \end{example}
@@ -394,6 +397,7 @@ The natural logarithm has base $e$. Unless the base is very simple (e.g.{} $a=2$
 
 
 \clearpage
+
 
 
 \subsection{Modifying the Natural Growth Model}
