@@ -523,7 +523,7 @@ This geometric idea generalizes\ldots
 	\]
 \end{defn}
 
-\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
 	Our two previous observations still hold:
 	\begin{enumerate}
 	  \item If $L=\lim\limits_{n\to\infty}x_n$ exists and $f'(L)\neq 0$, then
@@ -531,15 +531,15 @@ This geometric idea generalizes\ldots
 	  	L=L-\frac{f(L)}{f'(L)}\implies f(L)=0
 	  \]
 		That is, the limit $L$ is a root of the \textcolor{blue}{function $f(x)$}.
-		\item The \textcolor{Green}{tangent line} at the point $\bigl(x_n,f(x_n)\bigr)$ has equation
+		\item The \textcolor{Green}{tangent line} at $\bigl(x_n,f(x_n)\bigr)$ forms a \textcolor{Green}{right-triangle} with base $x_n-x_{n+1}$ and height $f(x_n)$, from which its slope is
 		\[
-			y=f(x_n)+f'(x_n)(x-x_n)
+			f'(x_n)=\frac{f(x_n)}{x_n-x_{n+1}} %y=f(x_n)+f'(x_n)(x-x_n)
 		\]
-		and thus $x$-intercept ($y=0$) at $x_n-\frac{f(x_n)}{f'(x_n)} =x_{n+1}$.
+		Rearranging this gives the formula $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$.
 	\end{enumerate}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
 	\flushright\includegraphics{newton-raphson3}
 \end{minipage}\bigbreak
 
