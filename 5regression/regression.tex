@@ -4,7 +4,7 @@
 
 We've studied several types of function and seen how to spot whether a given data set might suit a particular model. To get further with this analysis, we need a method for comparing how bad a particular model is for given data.
 
-\subsection{Best-fitting Lines and Linear Regression}
+\subsection{Best-fitting Lines and Linear Regression}\label{sec:reg1}
 
 We start with an example of some data which appears reasonably linear.
 
@@ -68,13 +68,15 @@ We need a sensible definition of \emph{best-fitting line} for a given data set. 
 For reasons of computational simplicity, uniqueness, statistical interpretation, and to discourage large individual errors, we \emph{don't} do this! The standard approach is instead to minimize the \emph{sum of the squared errors.}
 
 
-\begin{defn}{}{}
-	Let $(t_i,y_i)$ be data points, where $i=1,\ldots,n$. Let $\hat y=mt+c$ be a linear predictor (model) for $y$ given $t$.
+\begin{defn}{}{regdef}
+	Let $(t_i,y_i)$ be data points with at least two distinct $t$-values. Let $\hat y=mt+c$ be a linear predictor (model) for $y$ given $t$.
 	\begin{itemize}\itemsep0pt
 	  \item The \emph{i\th{} error} in the model is the difference $e_i:=\hat y_i-y_i=mt_i+c-y_i$.
-	  \item The \emph{regression line} or \emph{best-fitting least-squares line} is the function $\hat y=mt+c$ which minimizes the sum $S:=\sum e_i^2$ of the \emph{squares} of the errors.
+	  \item The \emph{regression line} or \emph{best-fitting least-squares line} is the function $\hat y=mt+c$ which minimizes the sum $S:=\sum e_i^2 =\sum (\hat y_i-y_i)^2$ of the \emph{squares} of the errors.
 	\end{itemize}
 \end{defn}
+
+Having at least two distinct $t$-values (some $t_i\neq t_j$) is necessary for the regression line to be unique.
 
 \begin{example*}{\ref{ex:reg1}, cont}{}
 	Suppose the predictor was $\hat y=mt+c$. We expand the table
@@ -117,7 +119,7 @@ For reasons of computational simplicity, uniqueness, statistical interpretation,
 		\negthickspace\implies 
 	m=\frac{21}{5},\ c=-\frac{4}{5} \implies \hat y=\frac 1{5}(21t-4)
 	\]
-	By 6\,p.m., we'd predict that the runner would have covered 24.4 miles. The sum of the squared errors for our regression line is $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=4.4$, compared to 5, 53 and 14 for our three earlier options.
+	By 6\,p.m., we predict that the runner would have covered 24.4 miles. The sum of the squared errors for our regression line is $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=4.4$, compared to 5, 53 and 14 for our earlier options.
 \end{example*}
 
 
@@ -128,14 +130,14 @@ To obtain the general result for $n$ data points, we return to our computations 
 	\partials[S]{m}=\sum\partials{m}(mt_i+c-y_i)^2 =2\sum t_i(mt_i+c-y_i) =2\Bigl[\left(\sum t_i^2\right)m+\left(\sum t_i\right)c-\sum t_iy_i\Bigr]\\[3pt]
 	\partials[S]{c}=\sum\partials{c}(mt_i+c-y_i)^2 =2\sum (mt_i+c-y_i) =2\Bigl[\left(\sum t_i\right)m+nc-\sum y_i\Bigr]
 \end{gather*}
-These sums are often written differently, using a short-hand notation for \emph{average}:
+These sums are often written using a short-hand notation for \emph{average}:
 \[
 	\cl t=\frac 1n\sum_{i=1}^nt_i,\qquad \cl{t^2}=\frac 1n\sum_{i=1}^nt_i^2,\qquad \cl{y}=\frac 1n\sum_{i=1}^ny_i^2,\qquad \cl{ty}=\frac 1n\sum_{i=1}^nt_iy_i
 \]
-Now we put it all together.
+%Now we put it all together.
 
 \begin{thm}{Linear Regression}{linreg}
-	Given $n$ data points $(t_i,y_i)$, the best-fitting least-squares line has equation $\hat y=mt+c$ where $m,c$ satisfy
+	Given $n$ data points $(t_i,y_i)$ with at least two distinct $t$-values, the best-fitting least-squares line has equation $\hat y=mt+c$, where $m,c$ satisfy
 	\[
 		\begin{cases}
 			\left(\sum t_i^2\right)m+\left(\sum t_i\right)c=\sum t_iy_i\\
@@ -147,13 +149,13 @@ Now we put it all together.
 			\cl tm+c=\cl y\\
 		\end{cases}
 	\]
-	This is a pair of simultaneous equations for the coefficients $m,c$, which can be solved either as a matrix problem or by substitution:
+	This is a pair of simultaneous equations for the coefficients $m,c$, with solution
 	\[
-		m=\frac{\cl{ty}-\cl t \cl y}{\cl{t^2}-\cl t^2},\qquad c=\cl y-m\cl t %= \frac{n\sum t_iy_i-\sum t_i\sum y_i}{n\sum t_i^2-\left(\sum t_i\right)^2} =\frac{\sum(t_i-\cl t)(y_i-\cl y)}{\sum (t_i-\cl t)^2}  %=\frac{\Cov(t,y)}{\Var t}
+		m=\frac{\cl{ty}-\cl t \cl y}{\cl{t^2}-\cl t^2},\qquad c=\cl y-m\cl t
 	\]
 \end{thm}
 
-The expression for $c$ shows that the regression line passes through the data's \emph{center of mass} $(\cl t,\cl y)$.
+As the next section shows, having two distinct $t$-values guarantees a non-zero denominator $\cl{t^2}-\cl t^2$. The expression for $c$ shows that the regression line passes through the data's \emph{center of mass} $(\cl t,\cl y)$.
 
 
 
@@ -237,6 +239,7 @@ The expression for $c$ shows that the regression line passes through the data's 
 	% \end{minipage}\par
 	% The line for predicting Quiz 1 given Quiz 2 is $\textcolor{blue}{\hat t=\frac 1{37}(20y+115)}$, whence $\hat t(8)=\frac{275}{37}\approx 7.432$. Notice how this minimizes the sum of the squares of the \textcolor{Green}{horizontal deviations} and is therefore \emph{different} to the line in the previous question (dotted in the picture).
 \end{example}
+
 \goodbreak
 
 
@@ -273,14 +276,14 @@ The expression for $c$ shows that the regression line passes through the data's 
 	  \end{enumerate}
 	  
 	  
-	  \item Ten children had their height (inches) measured on their first and second birthdays. The data was as follows.
+	  \item\label{exs:kidsheights} Ten children had their heights (inches) measured on their first and second birthdays. The data was as follows.
 	  \[
 	  	\begin{array}{l|cccccccccc}
 	  		\text{1\st{} birthday}&28&28&29&29&29&30&30&32&32&33\\\hline
 	  		\text{2\nd{} birthday}&30&32&31&34&35&33&36&37&35&37
 	  	\end{array}
 	  \]
-	  Given this data, find the regression model for predicting the height at 2 years of a child who measures 32 inches at age 1. %What is the coefficient of determination and what does it say about your confidence in your prediction?
+	  Given this data, find a regression model and use it to predict the height at 2 years of a child who measures 32 inches at age 1.
 	  \par
 	  (\emph{It is acceptable---and encouraged!---to use a spreadsheet to find the necessary ingredients. You can do this by hand if you like, but the numbers are large; it is easier with some formulæ from the next section.})
 	  
@@ -325,7 +328,7 @@ Variance and standard-deviation are measures of how data deviates from being con
 		&\sigma_y=\frac{\sqrt{10}}2%\\
 		%&\cl z=\frac 14(2+6+10+6)=6&&\Var z=\frac 14\Bigl((-4)^2+(-2)^2+ 4^2+2^2\Bigr)=10&\sigma_z=\sqrt{10}
 	\end{align*}
-	The square-root means that $\sigma_y$ has the same units as $y$. Loosely speaking we `expect' a typical data value to be approximately $\sigma_y=\frac 12\sqrt{10}\approx 1.58$ from the mean $\cl y=3$.
+	The square-root means that $\sigma_y$ has the same units as $y$. Loosely speaking, a typical data value is expected to lie approximately $\sigma_y=\frac 12\sqrt{10}\approx 1.58$ from the mean $\cl y=3$.
 \end{example}
 
 To obtain a measure for how well a regression line fits given data $(t_i,y_i)$, we ask what \emph{fraction} of the variance in $y$ is explained by the model.
@@ -369,9 +372,7 @@ To obtain a measure for how well a regression line fits given data $(t_i,y_i)$, 
 
 \goodbreak
 
-In general, the coefficient of determination is somewhere between these extremes\footnote{%
-	We won't justify the fact that $R^2\le 1$ though it is a theorem---indeed a version of Pythagoras' theorem in linear algebra!%
-} $0\le R^2\le 1$. Before we revisit our examples from the previous section, observe that the average of the model's outputs $\hat y_i$ is the same as that of the original data:
+In fact, the coefficient of determination always lies somewhere between these extremes $0\le R^2\le 1$: Exercise \ref{exs:Rsqalt} demonstrates this and that the extreme situations are essentially those just encountered; in practice, therefore, $0<R^2<1$. Before we revisit our examples from the previous section, observe that the average of the model's outputs $\hat y_i$ is the same as that of the original data:
 \[
 	\frac 1n\sum_{i=1}^n\hat y_i=\frac 1n\sum_{i=1}^n(mt_i+c)=m\cl t+c=\cl y
 \]
@@ -451,18 +452,25 @@ The four examples are plotted below for easy visual comparison between the $R^2$
 
 If you want to compute by hand, our current process is lengthy and awkward. To obtain a more efficient alternative we first consider an alternative expression for the variance of any collection of data:
 \[
-	\Var x=\frac 1n\sum(x_i-\cl x)^2=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i =\cl x^2-\cl x^2
+	\Var x=\frac 1n\sum(x_i-\cl x)^2=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i =\cl{x^2}-\cl x^2
 \]
+Plainly $\Var x\ge 0$ with equality if and only if all data values $x_i$ are equal. The alternative expression $\cl{x^2}-\cl x^2$ justifies the uniqueness of the regression line in Definition \ref{defn:regdef} and Theorem \ref{thm:linreg}.
+
+\goodbreak
+
 Now expand the variance of the predicted outputs:
 \[
 	\Var\hat y=\frac 1n\sum(\hat y_i-\cl y)^2=\frac 1n\sum\bigl(mt_i+c-(m\cl t+c)\bigr)^2 =\frac{m^2}n\sum(t_i-\cl t)^2=m^2\Var t
 \]
-Putting these together, with a little extra algebra, we obtain several equivalent expressions for the coefficient of determination:\phantomsection\label{pg:rsqalt}
-\begin{align*}
-	R^2&=\frac{\Var\hat y}{\Var y} =m^2\frac{\Var t}{\Var y} = m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} = \frac{(\cl{ty}-\cl t\cl y)^2}{(\cl{y^2}-\cl y^2)(\cl{t^2}-\cl t^2)}
+Putting these together, we obtain several equivalent expressions for the coefficient of determination:\phantomsection\label{pg:rsqalt}
+\[
+	R^2 =\frac{\Var\hat y}{\Var y} 
+	=m^2\frac{\Var t}{\Var y} 
+	=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2}
+	=\frac{(\cl{ty}-\cl t\cl y)^2}{(\cl{t^2}-\cl t^2)(\cl{y^2}-\cl y^2)}
 %=1-\frac{\sum e_i^2}{n\Var y} %=\frac{\Cov(y,t)}{\sqrt{\Var y\Var t}}
 \tag{$\ast$}
-\end{align*}
+\]
 
 \begin{example}{}{finalreg}
 	We do one more easy example with simple data $(t_i,y_i):(1,4),(2,1),(3,2),(4,0)$.\par
@@ -502,13 +510,22 @@ By ($\ast$), the regression model may be re-written in terms of the standard-dev
 \[
 	\hat y(t)=mt+c=\cl y+m(t-\cl t) =\cl y+\textcolor{red}{\sqrt{R^2}}\frac{\sigma_y}{\sigma_t}(t-\cl t) \implies \hat y(\cl t+\lambda\sigma_t)=\cl y+\lambda\textcolor{red}{\sqrt{R^2}}\sigma_y
 \]
-The fact that $R^2\le 1$ is called \emph{reversion to the mean.} If $t$ is one standard-deviation from the mean $\cl t$, then we expect $\hat y$ to be \emph{less} than one standard-deviation from $\cl y$. With respect to the `neutral' measure given by the standard-deviation, a prediction $\cl y$ is closer to the average than any input.
 
 \begin{defn}{}{}
-	The value $r:=\pm\sqrt{R^2}$, with sign equal to that of $m$ is called the \emph{correlation coefficient.}
+	The \emph{correlation coefficient} is the value $r:=\pm\sqrt{R^2}$ (sign equal to that of $m$).
 \end{defn}
 
-An input $\lambda$ standard-deviations above the mean ($t=\cl t+\lambda\sigma_t$) results in a prediction $\lambda r$ standard-deviations above the mean ($\hat y=\cl y+\lambda r\sigma_y$).
+An input $\lambda$ standard-deviations above the mean ($t=\cl t+\lambda\sigma_t$) results in a prediction $\lambda r$ standard-deviations above the mean ($\hat y=\cl y+\lambda r\sigma_y$). Unless the data is perfectly linear, we have $R^2<1$; relative to the `neutral' measure given by the standard-deviation a prediction $\hat y(t)$ is closer to the mean than the input $t$
+\[
+	\frac{\nm{\hat y(t)-\cl y}}{\sigma_y} =r\frac{\nm{\hat t-\cl t}}{\sigma_t}
+	<\frac{\nm{\hat t-\cl t}}{\sigma_t}
+\]
+
+
+
+
+\goodbreak
+
 
 \begin{example*}{\ref{ex:finalreg}, cont}{}
 	We compute the details. The correlation coefficient is $r=-\sqrt{R^2}\approx -0.832$; we say that the data is \emph{negatively correlated,} since the output $y$ seems to \emph{decrease} as $t$ increases. The standard deviations may be read off from the table:
@@ -526,12 +543,12 @@ An input $\lambda$ standard-deviations above the mean ($t=\cl t+\lambda\sigma_t$
 \end{example*}
 
 
-\boldinline{Weaknesses in Linear Regression}
+\boldinline{Weaknesses of Linear Regression}
 
-While linear regression is undoubtedly useful it has obvious weaknesses, for instance:
+There are two obvious issues:
 \begin{itemize}
   \item Outliers massively influence the regression line. Dealing with this problem is complicated and there are a variety of approaches that can be used. It is important to remember that any approach to modelling, including our regression model, requires some \emph{subjective choice.}
-  \item If the data is not very linear then the regression model will produce a weak predictor. There are several ways around this. Sometimes data looks more linear after some manipulation, particularly by exponential or logarithmic functions. We'll think about this shortly. In the next section we consider how to find polynomial models for data, though to do this without losing sanity points requires a little detour into matrix multiplication.
+  \item If the data is not very linear then the regression model will produce a weak predictor. There are several ways around this as we'll see in the remaining sections: higher-degree polynomial regression can be performed, and data sometimes becomes more linear after some manipulation, say by an exponential or logarithmic function.
 \end{itemize}
 
 
@@ -539,19 +556,29 @@ While linear regression is undoubtedly useful it has obvious weaknesses, for ins
 	\exstart Suppose $(z_i)=(2,4,10,8)$ is \emph{double} the data set in Example \ref{ex:vareasy}. Find $\cl z,\Var z$ and $\sigma_z$. Why are you not surprised?
 	
 	\begin{enumerate}\setcounter{enumi}{1}
+	  \item Use a spreadsheet to find $R^2$ for the predictor in Exercise \ref*{sec:reg1}.\ref{exs:kidsheights}. How confident do you feel in your prediction?
+	  
+	  
 	  \item Find the standard deviations and correlation coefficients for the data in Examples \ref{ex:reg1} and \ref{ex:reg2}.
 	  
 	  
-	  \item The adult heights of men and women in a given population have the following means and standard deviations.
+	  \item The adult heights of men and women in a given population satisfy the following:
 	  \begin{quote}
-	  	Men:\lstsp average 69.5 in, \ $\sigma=3.2$ in.\par
-	  	Women:\lstsp average 63.7 in, \ $\sigma=2.5$ in.
+	  	Men:\lstsp average 69.5\,in, \ $\sigma=3.2$\,in.\qquad
+	  	Women:\lstsp average 63.7\,in, \ $\sigma=2.5$\,in.
 	  \end{quote}
-	  The height of a father and his adult daughter have correlation coefficient $0.35$. If a man is 72 in tall, how tall do you expect his daughter to be?
+	  The height of a father and his adult daughter have correlation coefficient $0.35$. If a father's height is 72\,in (mother's height unknown), how tall do you expect their daughter to be?
 	
 	  
-	  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. What is the coefficient of determination for the reversed predictor $\hat t(y)$? Why?\par
-	  (\emph{Hint: consider one of the alternative expressions for $R^2$ on page \pageref{pg:rsqalt}})
+	  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. Use one of the alternative expressions for $R^2$ (page \pageref{pg:rsqalt}) to find the coefficient of determination for the reversed predictor $\hat t(y)$? Are you surprised?
+	  	  
+	  
+	  \item\label{exs:Rsqalt} Suppose that a data set $\{(t_i,y_i)\}_{1\le i\le n}$ has at least two distinct $t$- and $y$-values (some $t_i\neq t_j$, etc.), that it has regression line $\hat y=mt+c$ and coefficient of determination $R^2$.
+	  \begin{enumerate}
+	    \item Show that $R^2=0\Longleftrightarrow m=0$.
+	    \item (Hard)\lstsp Prove that the sum of squared errors equals $S=\sum_{i=1}^ne_i^2 =n(\Var y-\Var\hat y)$.
+	    \item Obtain the alternative expression $R^2=1-\frac S{n\Var y}$. Hence conclude that $R^2\le 1$, with equality if and only if the original data set is perfectly linear.
+		\end{enumerate}	
 	\end{enumerate}
 
 \end{exercises}
@@ -759,7 +786,8 @@ where $\Nm\vy$ is the \emph{length} of a vector.
 		   27&9\\9&3
 		  \end{smatrix}$ 
 		  which isn't invertible: $27\cdot 3-9\cdot 9=0$. The linear regression method doesn't work!\smallbreak
-		  It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{Green}{average} $(3,4)$, though it could have \emph{any} slope!
+		  It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{Green}{average} $(3,4)$, though it could have \emph{any} slope!\par
+		  This illustrates our fundamental assumption: linear regression requires at least two distinct $t$-values.
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
@@ -768,12 +796,13 @@ where $\Nm\vy$ is the \emph{length} of a vector.
 	\end{enumerate}
 \end{examples}
 
-It is unnecessary ever to use the matrix approach for linear regression, though the method does have significant advantages.
-\begin{itemize}
+It is unnecessary ever to use the matrix approach for linear regression, though the method has significant advantages.
+\begin{itemize}\itemsep2pt
   \item Computers store and manipulate data in matrix format, so this method is computer-ready.
-  \item Suppose you repeat an experiment several times, taking measurements $y_i$ at times $t_i$. Since $P$ depends only on the $t$-data, you need only compute the matrix $(P^TP)^{-1}P^T$ \emph{once}, making computation of the regression line for each experiment very efficient. 
-  \item As we'll see momentarily, the method easily generalizes to polynomial regression.
+  \item Suppose you repeat an experiment several times, taking measurements $y_i$ at times $t_i$. Since $P$ depends only on the $t$-data, you need only compute the matrix $(P^TP)^{-1}P^T$ \emph{once}, making computation of the regression line for repeat experiments very efficient. 
+  \item The method generalizes (easily for computers!) to polynomial regression\ldots
 \end{itemize}
+
 
 \goodbreak
 
