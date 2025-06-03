@@ -1134,7 +1134,7 @@ When using the log plot method, interpreting errors and the goodness of fit of a
 \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
 	It is important to appreciate that the log plot method does not treat all errors equally: taking logarithms tends to reduce error by a greater amount when the output  $y$ is large. This should be clear from the picture, and more formally by the mean value theorem: if $y_1<y_2$, then there is some $\xi\in(y_1,y_2)$ for which 
 	\[
-		\ln y_1-\ln y_2<\frac 1{\xi}(y_1-y_2)
+		\ln y_2-\ln y_1=\frac 1{\xi}(y_2-y_1)<\frac 1{y_1}(y_2-y_1)
 	\]
 \end{minipage}
 \hfill
@@ -1143,7 +1143,7 @@ When using the log plot method, interpreting errors and the goodness of fit of a
 \end{minipage}
 \medbreak
 
-The log plot approach therefore places a higher emphasis on accurately matching data when the output $y$ is \emph{small.} This isn't such a bad thing, since our intuitive view of error depends on the size of the data. For instance, you might be very annoyed to discover that you've misplaced a \$100 bill, but if you've just bought a house for \$1 million, a \$100 mistake in escrow is unlikely to concern you very much! Exponential data can more easily vary over large orders of magnitude than linear or quadratic data. 
+The log plot approach therefore places a higher emphasis on accurately matching data when the output $y$ is \emph{small.} This isn't such a bad thing since our intuitive view of error depends on the size of the data. For instance, misplacing a \$100 bill is annoying, but a \$100 mistake in escrow when buying a house is unlikely to concern you very much! Exponential data can more easily vary over large orders of magnitude than linear or quadratic data. 
 
 \goodbreak
 
