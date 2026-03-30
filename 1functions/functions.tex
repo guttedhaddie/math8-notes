@@ -3,52 +3,45 @@
 
 \title{Math 8 --- Functions and Modeling}
 \author{Neil Donaldson}
-\date{Spring 2025}
+\date{Spring 2026}
 \maketitle	
+
 
 \section*{Introduction}
 
-This course aims to refresh and reinforce the conceptual foundations behind several topics commonly encountered in grade-school mathematics. The job of a teacher is often one of \emph{selection}: choosing examples and explanations suited to the level and experience of your students. To select effectively, and to anticipate student questions, your must understand concepts at a higher level than you'll likely ever teach. Not all of our topics are central to the grade-school curriculum, and it is not our goal to teach you \emph{how} to teach, though the ideas and approaches we'll explore are often suitable for a grade-school audience. The \emph{mathematics} in this course shouldn't present much difficulty for math majors, requiring at most elementary calculus and a tiny bit of linear algebra; you should instead be considering how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\par
+This course aims to refresh and reinforce some of the conceptual foundations of grade-school mathematics. The job of a teacher is often one of \emph{selection}: choosing examples and explanations suited to the level of your students. To select effectively and anticipate student questions, you must understand concepts at a higher level than you'll likely ever teach. %Not all of our topics are central to the grade-school curriculum. It is moreover not our goal to teach you \emph{how} to teach! 
+The \emph{mathematics} in this course shouldn't present much difficulty for math majors, requiring at most elementary calculus and a tiny bit of linear algebra. You should instead be thinking about how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\smallbreak
 
-\begin{minipage}[t]{0.72\linewidth}\vspace{0pt}
-	We start with two motivational problems.\footnotemark
+We start with two motivational problems.\footnotemark
 	\begin{enumerate}
-	  \item You wish to travel across the surface of a cube between two opposite vertices so that your path is as short as possible.\par
-	  Should you follow the path indicated?\par
-	  If yes, explain why.\par
-	  If not, how should you find the shortest path?
-	\end{enumerate}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.25\linewidth}\vspace{-10pt}
-	\flushright
-	\includegraphics{intro-cube_0}
-\end{minipage}
-\smallbreak
-
-\begin{minipage}[t]{0.51\linewidth}\vspace{0pt}
-	\begin{enumerate}\setcounter{enumi}{1}
+	  \item How can we travel across the surface of a cube between two opposite vertices so that the path is as short as possible?\par
+	  Should you follow the path indicated? If yes, explain why. If not, how should you find the shortest path?\vspace{-15pt}
+	  \begin{center}	
+	  	\tagpdfsetup{table/header-rows={2}}
+			\begin{tabular}{c@{\qquad\qquad}c}
+	  		\includegraphics[alt={crossing the surface of a cube}]{intro-cube}
+	  		&
+	  		\includegraphics[alt={connecting two houses to the electricity supply}]{intro-elec}
+	  		\\
+	  		Problem 1
+	  		&
+	  		Problem 2	
+			\end{tabular}
+	  \end{center}
 	  \item Two houses are to be connected to the electricity supply using a single connection.\par
-	  How should we determine where to place the connection so as to minimize the required length of wire?\par
-	  What information do you need in order to find the connection point?
+	  How should we determine where to place the connection so as to minimize the required length of wire? What information do you need in order to find the connection point?
 	\end{enumerate}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\linewidth}\vspace{0pt}
-	\flushright
-	\includegraphics[scale=0.9]{intro-elec}
-\end{minipage}
-\medbreak
 
 \footnotetext{%
 	We are grateful to materials from UT Austin's UTeach program for suggesting several of the examples in this course including these motivational problems.%
 }
 
-Your goal shouldn't only be to find the right answer! Consider how you might discuss these problems with grade-school students of different ability levels. Why might calculus \emph{not} be a sensible approach? Are there any similarities between the two problems? Brainstorm some strategies\ldots
+Don't just think about the right answer! Consider how you might discuss these problems with students of different ability levels. Why might calculus \emph{not} be a sensible approach? Are there any similarities between the two problems? Brainstorm some strategies\ldots
 
 %Unfold for the first then straight line. Reflection helps for the second: make equal angle, so split the distance between the houses in same ratio as the distances from the houses to the wire (similar triangles).
 
-\goodbreak
+
+\pagebreak[3]
 
 
 
@@ -56,94 +49,88 @@ Your goal shouldn't only be to find the right answer! Consider how you might dis
 
 \subsection{Basic Definitions}\label{sec:funcdef}
 
-Consider how central functions are to mathematics, and how long you've been using them. How would you \emph{define} ``function'' to someone with limited mathematical knowledge? Would you use words like \emph{rule, assign, element, domain, vertical line test,} etc.? How helpful are these to your audience?
+When did you first encounter a function? Middle-school? Elementary school? Earlier\ldots How would you define \emph{function} to someone with limited mathematical knowledge? Would you use words like \emph{rule, assign, element, domain, vertical line test,} etc.? How helpful are these to your audience?
 
 \begin{examples}{}{funcbasic}
-	How would you explain the idea that the following do or do not represent functions?\vspace{-5pt}
-	\begin{enumerate}\itemsep0pt
+	How would you explain the idea that the following do or do not represent functions?
+	\begin{enumerate}
 	  \item $y=x^2$
-	  \item\label{ex:funcbasic2} Mon: fish,\quad Tue: pork,\quad Wed: fajitas,\quad Thur: carbonara,\quad Fri: pizza,\quad Sat: fish,\quad Sun: pizza
+	  \item\label{ex:funcbasic2} Mon: fish,\ \ Tue: pork,\ \ Wed: fajitas,\ \ Thur: carbonara,\ \ Fri: pizza
 	  \item $(3,5)$, $(2,6)$, $(4,2)$, $(3,1)$.
 	  \item $x^2=y^2$
 	\end{enumerate}
 \end{examples}
 
 After considering the examples, perhaps you settle on a semi-formal definition:
-\[
-	\tcbhighmath{\text{A function $f$ is rule which assigns to each input $x$ exactly one output $f(x)$}}
-\]
+\begin{quote}
+	\texthigh{A function $f$ is rule assigning exactly one output $f(x)$ to each input $x$}
+\end{quote}
 Is this a useful definition? In what ways is it imprecise? Does the imprecision matter?
-\medbreak
+\bigbreak
 
-Of course the answers to these questions depend on your audience! What ideas do you want to convey to your students and can you do so without overburdening and intimidating them? To begin working towards a more complete picture, consider what we might allow to be \emph{inputs} and \emph{outputs.} This requires a small amount of set notation.
+Of course the answers to these questions depend on your audience! What ideas do you want to convey to your students, and can you do so without overburdening and intimidating them? To begin working towards a more complete picture, we need to think about what the \emph{inputs} and \emph{outputs} are allowed to be. This introduces some vocabulary and requires a small amount of set notation.
+
 
 \begin{defn}{}{}
-	A \emph{set} $A$ is a collection of objects, or \emph{elements.}\footnotemark{} The notation $a\in A$ means that $a$ is an element of $A$, sometimes read `$a$ lies in $A$.' Sets are often written upper case and elements lower.\par
-	\begin{minipage}[t]{0.75\linewidth}\vspace{-5pt}
+	A \emph{set} $A$ is a collection of objects, or \emph{elements.}\footnotemark{} The notation $a\in A$ means that $a$ is an element of $A$, sometimes read `$a$ lies in $A$.' In the abstract, sets are often written upper case and their elements in lower case.\par
+	\begin{minipage}[t]{0.77\linewidth}\vspace{-5pt}
 		A set $B$ is a \emph{subset} of a set $A$, written $B\subseteq A$, if every element of $B$ is also an element of $A$: that is,
 		\[
 			b\in B\implies b\in A
+			\tag{``If $b$ lies in $B$, then $b$ lies in $A$''}
 		\]
 		The picture illustrates sets $A,B$ and elements $a,b$ for which $B\subseteq A$, $a\in A$, $b\in B$ and $a\notin B$ ($a$ does not lie in $B$).
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.24\linewidth}\vspace{-6pt}
-		\flushright
-		\includegraphics[scale=0.95]{functions-subset}
+	\begin{minipage}[t]{0.2\linewidth}\vspace{-6pt}
+		\hfill\includegraphics[alt={venn diagram of a subset}]{functions-subset}
 	\end{minipage}
 \end{defn}
 
 \footnotetext{%
-	This is enough for our purposes, though a course in set theory will convince you that this definition has its own problems. Selection is always at work\ldots%
+	This is enough for our purposes, though a course in set theory should convince you that this definition is not without its own problems. Selection is always at work\ldots%
 }
 
 
-\begin{examples}{}{}
-	\exstart Suppose the elements of a set $A$ are the numbers 1, 3, 5, 7 and 9. The simplest way to write this is using \emph{roster notation}: we list the elements (in any order) between braces
+\pagebreak[3]
+
+
+\begin{example}{}{}
+	Suppose the elements of a set $A$ are the numbers 1, 3, 5, 7 and 9. The simplest way to write this is using \emph{roster notation}: we list the elements (in any order) between braces
 	\[
 		A=\{1,3,5,7,9\}
 	\]
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]Subsets are commonly expressed using \emph{set-builder notation}. %: $\{a\in A:\text{condition on $a$}\}$. 
-	  For example, here is a subset of $A$:
-	 	\[
-	 		B=\{a\in A:2<a<8\} %\tag{the set of $a$ in $A$ such that $a$ lies strictly between 2 and 8}
-	 	\]
-	 	This is read, ``The set of $a$ in $A$ such that $a$ lies strictly between 2 and 8.'' In roster notation, $B=\{3,5,7\}$. Can you express $B$ in other ways using set-builder notation?
-	 	
-	  \goodbreak
-  
-	  \item We summarize several common sets of numbers using informal combinations of roster and set-builder notation, all of which should be familiar.
-	  \begin{description}
-			\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance, $5\in\N$ but $-3\not\in\N$.
-			\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance, $-4\in\Z$ but $\frac 45\not\in\Z$.
-			\item[Rational numbers] (fractions) \ $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$; in this case $p=-6$ is an integer, and $q=7$ a natural number.
-			\item[Real numbers] $\R$. For instance, $\sqrt 2\in\R$. A formal definition is difficult, though we often informally visualize $\R$ as a \emph{ruler}. \emph{Intervals} are particularly important subsets, e.g.,
-			\[
-				[-4,\pi)=\{x\in\R:-4\le x<\pi\}
-			\]
-			is a half-open interval.\smallbreak
-			You should also be familiar with the \emph{Cartesian plane}: $\R^2=\{(x,y):x,y\in\R\}$. The notation $(3,4)\in\R^2$ here describes a \emph{point} in the plane with \emph{co-ordinates} $x=3$, $y=4$; don't confuse this with the \emph{interval} $(3,4)=\{x\in\R:3<x<4\}$ which is a subset of $\R$!
-		\end{description}
-		The subset relationships between these sets are in the order listed:
-		\[
-			\N\subseteq\Z\subseteq\Q\subseteq\R
-		\]
-		You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.
-	\end{enumerate}
-\end{examples}
+	Subsets are commonly expressed using \emph{set-builder notation}. 
+	Here is a subset of $A$:
+	\[
+	 	B=\{a\in A:2<a<8\} \tag{``The set of $a$ in $A$ such that $a$ lies strictly between 2 and 8''}
+	\]
+	In roster notation, $B=\{3,5,7\}$. Can you express $B$ in other ways using set-builder notation?
+\end{example}
 
-\bigskip
+Several familiar sets of numbers can be expressed using informal combinations of these notations.
+\begin{description}\itemsep0pt
+	\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance, $5\in\N$ but $-3\not\in\N$.
+	\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance, $-4\in\Z$ but $\frac 45\not\in\Z$.
+	\item[Rational numbers] (fractions) \ $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$. %; in this case $p=-6$ is an integer, and $q=7$ a natural number.
+	\item[Real numbers] $\R$. For instance, $\sqrt 2\in\R$. A formal definition is difficult, though we often informally visualize $\R$ as a \emph{ruler}. \emph{Intervals} are particularly important subsets, e.g.,
+	\[
+		[-4,\pi)=\{x\in\R:-4\le x<\pi\} \tag{a half-open interval}
+	\]
+	%is a half-open interval.\smallbreak
+	%You should also be familiar with the \emph{Cartesian plane}: $\R^2=\{(x,y):x,y\in\R\}$. The notation $(3,4)\in\R^2$ here describes the \emph{point} with \emph{co-ordinates} $x=3$, $y=4$; don't confuse this with the \emph{interval} $(3,4)=\{x\in\R:3<x<4\}$, which is a subset of $\R$!
+\end{description}
+The subset relationships between these sets are in the order listed: $\N\subseteq\Z\subseteq\Q\subseteq\R$.\par
+You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.\medbreak
 
-
-The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements} of sets. Here is a \emph{very} formal definition of ``function.''
+The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements of sets}. Here is a \emph{very} formal definition of function.%\enlargethispage{2\baselineskip}
 
 \begin{defn}{}{function}
-	The \emph{Cartesian product} of sets $A,B$ is the set of \emph{ordered pairs}
+	The \emph{Cartesian product} of sets $A$ and $B$ is the set of \emph{ordered pairs}
 	\[
-		A\times B=\bigl\{(a,b):a\in A,b\in B\bigr\}
+		A\times B=\big\{(a,b):a\in A,b\in B\big\}
 	\]
-	A \emph{function} from $A$ to $B$ is a non-empty subset $f\subseteq A\times B$ which satisfies the \emph{vertical line test}
+	A \emph{function} from $A$ to $B$ is a non-empty subset $f\subseteq A\times B$ which satisfies the \emph{vertical line test}:
 	\[
 		\text{For each $a\in A$, there is a \emph{unique} $b\in B$ such that $(a,b)\in f$} \tag{$\ast$}
 	\]
@@ -152,84 +139,77 @@ The reason we need this language when discussing functions is that the inputs an
 		f:A\to B\quad\text{and}\quad f(a)=b
 	\]
 	To a function $f:A\to B$ are associated three useful sets:
-	\begin{itemize}\itemsep0pt
+	\begin{itemize}
 	  \item Domain: $\dom f=A$ is the set of \emph{inputs.}
 	  \item Codomain: $\codom f=B$ is the set of \emph{possible outputs.}
 	  \item Range: $\range f=\{b\in B:b=f(a)\text{ for some }a\in A\}$ is the set of \emph{realized outputs.}
 	\end{itemize}
 \end{defn}
 
-This probably isn't the definition you should give to 10\th{} graders, or even to freshman calculus students! But what should you do? How much of this is helpful in a a given context?
-
-\goodbreak
+This probably isn't the definition you should give to 10\th{} graders, or even to freshman calculus students! But what should you do? How much of this is helpful in a given context?
 
 
-\begin{example*}{\ref{ex:funcbasic}.\ref{ex:funcbasic2} cont.}{}
+\begin{example*}{\ref*{ex:funcbasic}.\ref{ex:funcbasic2} cont.}{}
 	We revisit our food-based example in this formal setting. To properly view this as a function $f:A\to B$, we have to carefully label the constituent sets.
 	\begin{gather*}
-		A=\bigl\{\text{Mon, Tue, Wed, Thu, Fri}\bigr\},\qquad\qquad
-		B=\bigl\{\text{carbonara, fajitas, fish, pizza, pork}\bigr\},\\[5pt]
-		f=\bigl\{(\text{Mon,\ fish}),\ (\text{Tue,\ pork}),\ (\text{Wed,\ fajitas}), \ (\text{Thu,\ carbonara}),\\
-		\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
-		(\text{Fri,\ pizza}),\ (\text{Sat,\ fish}),\ (\text{Sun,\ pizza})\bigr\}
+		A=\big\{\text{Mon, Tue, Wed, Thu, Fri}\big\},\qquad\qquad
+		B=\big\{\text{carbonara, fajitas, fish, pizza, pork}\big\},\\[5pt]
+		f=\big\{(\text{Mon,\ fish}),\ (\text{Tue,\ pork}),\ (\text{Wed,\ fajitas}), \ (\text{Thu,\ carbonara}), \ (\text{Fri,\ pizza})\big\}
 	\end{gather*}
-	The domain $A$ should be clear, but we had to make a choice for the codomain $B$: in this case we chose it to equal to \emph{range.} Can you suggest a different choice for $B$? Try the other examples yourself.
+	The domain $A$ should be clear, but we had to make a choice for the codomain $B$: in this case we made it to equal to \emph{range.} Can you suggest a different choice for $B$? Note how the function is simply the list of ordered pairs (day, food). Try the other examples yourself.
 \end{example*}
 
 
-\boldsubsubsection{Representing Functions}
+\subsubsection*{Representing Functions}
 
 Functions can be represented in various ways. We illustrate a few in an example.
 
 \begin{example}{}{introfunction}
-	We consider the familiar \emph{formula/rule} $f(x)=x^2$ in several contexts.
-	\begin{description}\itemsep8pt
-	  \begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
-	  	\item \emph{Table}\lstsp This presentation is most helpful when the domain is very small. The table shows the situation when $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$
-	  
-	  	\item \emph{Arrows}\lstsp A pictorial arrow diagram might also be helpful when the domain is small.
-	  
-	  	\item \emph{Graph}\lstsp This is the set of ordered pairs $\bigl\{\bigl(x,f(x)\bigr):x\in\dom f\bigr\}$: in the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\smallbreak
-		 	For formulæ whose inputs and outputs are real numbers, two conventions are often observed:
+	We consider the familiar \emph{formula/rule} $f(x)=x^2$ in several contexts.\par
+	\begin{minipage}[t]{0.73\linewidth}\vspace{0pt}
+	  \emph{Table}\lstsp This presentation is most helpful when the domain is very small.
+	  \begin{description}
+	  	\item[\normalfont\emph{Arrows}] Also useful when the domain is small. Both this and the table describe $f$ when $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$.
+	  	\item[\normalfont\emph{Graph}] This is the set of ordered pairs $\bigl\{\bigl(x,f(x)\bigr):x\in\dom f\bigr\}$. In the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\par
+	  	For formulæ whose inputs and outputs are real numbers, two conventions are often observed:
 		 	\begin{itemize}
-		 	  \item The \textcolor{red}{domain} is \emph{implied} to be all real numbers for which the formula makes sense.
-				\item The codomain is taken to be the set of real numbers.
+		 	  \item The \textcolor{red}{domain} is \emph{implied} to be all values for which the formula makes sense (don't do silly stuff like dividing by zero!).
+				\item The codomain is the set of real numbers.
 			\end{itemize}
-			If no other information is provided, we'd assume that the function defined by the formula $f(x)=x^2$ has both domain and codomain the entire set of real numbers: $f:\R\to\R$.
-			\smallbreak
-			
-			The \textcolor{Brown}{range} of the function is the set of possible outputs, in this case
+			If no other information is provided, we'd assume that the formula $f(x)=x^2$ represents a function $f:\R\to\R$, in which case the \textcolor{Brown}{range} (the set of realized outputs) is the interval
 			\[
 				\operatorname{range}f=\{x^2\in\R:x\in\R\}=[0,\infty)
 			\]
-			is the half-open interval of non-negative real numbers.
+			\smallskip
+			For `calculus' functions like these, the vertical line test ($\ast$) really does involve \textcolor{Green}{vertical lines}; every vertical line intersects the graph in precisely one point.
 			\smallbreak
-			
-			For `calculus' functions like these, the vertical line test ($\ast$) really involves \textcolor{Green}{vertical lines}; every vertical line intersects the graph in precisely one point.
-			\smallbreak
-			In the picture, the \textcolor{orange}{dots} are the graph when the domain is the finite set $\{-1,0,1,2,3\}$ (as described in the table/arrow-diagram).
-	  \end{minipage}
-	  \hfill
-	  \begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
-	  	\flushright
-	  	$\begin{array}{@{}c|ccccc@{}}
-				x&-1&0&1&2&3\\\hline
-				f(x)&1&0&1&4&9
-			\end{array}$
-			\bigbreak
-			\includegraphics[scale=0.95]{functions-quad2}\bigbreak
-			\includegraphics[scale=0.95]{functions-quad}
-	  \end{minipage}
-	\end{description}
+			In the picture, the \textcolor{orange}{dots} are the graph when the domain is the set $\{-1,0,1,2,3\}$ (as described in the table/arrow-diagram).
+	  \end{description} 
+ 	\end{minipage}
+  \hfill
+ 	\begin{minipage}[t]{0.25\linewidth}\vspace{-5pt}
+ 	  \hfill
+ 	  $\begin{array}{@{}c|ccccc@{}}
+ 			x&-1&0&1&2&3\\\hline
+ 			f(x)&1&0&1&4&9
+ 		\end{array}$
+ 		\medbreak
+ 	  \hfill\includegraphics[scale=0.95,alt={depicting a function using an arrow diagram}]{functions-quad2}
+ 	  \medbreak
+ 		\hfill\includegraphics[scale=0.85,alt={the graph of a calculus-style function}]{functions-quad}
+ 	 \end{minipage}
 \end{example}
 
 Can you think of other ways to represent a function? How might you decide which to use?
 
 
-\goodbreak
+\pagebreak[3]
 
 
 \begin{exercises}{}{}
+	Key concepts. Add extra questions from high school stuff. Standard Cartesian plane question?
+
+
 	\exstart Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$. 
 
 	\begin{enumerate}\setcounter{enumi}{1}
@@ -259,7 +239,7 @@ Can you think of other ways to represent a function? How might you decide which 
 	    \[
 	    	B=\{x\in A:x^2>10\}
 	    \]
-	    and state $B$ in roster notation.
+	    and state it in roster notation.
 	    \item Find the set $C=\{x\in\N:(x-1)^2<16\}$ in roster notation.
 	    \item Find the Cartesian product $B\times C$ in roster notation. Is it the same as $C\times B$?
 	  \end{enumerate}
@@ -295,7 +275,7 @@ Can you think of other ways to represent a function? How might you decide which 
 
 \clearpage
 
-
+\iffalse
 
 \subsection{Linear Polynomials}
 
@@ -1369,6 +1349,8 @@ We finish with an algebraically tougher example, where you may feel that more de
 	  
 	\end{enumerate}
 \end{exercises}
+
+\fi
 
 \iffalse
 \clearpage

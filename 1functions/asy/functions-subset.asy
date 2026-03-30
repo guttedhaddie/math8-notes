@@ -1,8 +1,11 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
+\usepackage[otfmath,theoremfont,trueslanted,largesc]{newpx}
+\setmathfont{TeX Gyre Pagella Math}
+%\everydisplay{\Umathoperatorsize\displaystyle=4.5ex}
 \usepackage[svgnames]{xcolor}
 ");
 import graph;
