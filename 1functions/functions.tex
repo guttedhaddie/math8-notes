@@ -9,8 +9,7 @@
 
 \section*{Introduction}
 
-This course aims to refresh and reinforce some of the conceptual foundations of grade-school mathematics. The job of a teacher is often one of \emph{selection}: choosing examples and explanations suited to the level of your students. To select effectively and anticipate student questions, you must understand concepts at a higher level than you'll likely ever teach. %Not all of our topics are central to the grade-school curriculum. It is moreover not our goal to teach you \emph{how} to teach! 
-The \emph{mathematics} in this course shouldn't present much difficulty for math majors, requiring at most elementary calculus and a tiny bit of linear algebra. You should instead be thinking about how to \emph{explain} the material, particularly to students with less mathematical knowledge than yourself.\smallbreak
+This course aims to help future teachers refresh and reinforce some of the conceptual foundations of grade-school mathematics. Teaching is often a matter of \emph{selection}: choosing examples and explanations suited to the level of your students. To do this effectively, you must understand concepts at a higher level than you teach. The \emph{mathematics} in this course shouldn't be difficult for math majors. Instead this is an opportunity to think about content you might one day \emph{teach}. How would \emph{you} explain the material? How does it connect to other ideas? Can you anticipate student questions, and how would you respond?\medbreak
 
 We start with two motivational problems.\footnotemark
 	\begin{enumerate}
@@ -108,6 +107,7 @@ Of course the answers to these questions depend on your audience! What ideas do 
 	In roster notation, $B=\{3,5,7\}$. Can you express $B$ in other ways using set-builder notation?
 \end{example}
 
+
 Several familiar sets of numbers can be expressed using informal combinations of these notations.
 \begin{description}\itemsep0pt
 	\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance, $5\in\N$ but $-3\not\in\N$.
@@ -142,11 +142,11 @@ The reason we need this language when discussing functions is that the inputs an
 	\begin{itemize}
 	  \item Domain: $\dom f=A$ is the set of \emph{inputs.}
 	  \item Codomain: $\codom f=B$ is the set of \emph{possible outputs.}
-	  \item Range: $\range f=\{b\in B:b=f(a)\text{ for some }a\in A\}$ is the set of \emph{realized outputs.}
+	  \item Range: $\range f=\big\{b\in B:b=f(a)\text{ for some }a\in A\big\}$ is the set of \emph{realized outputs.}
 	\end{itemize}
 \end{defn}
 
-This probably isn't the definition you should give to 10\th{} graders, or even to freshman calculus students! But what should you do? How much of this is helpful in a given context?
+This probably isn't the definition you should give to 10\th{} graders! How much of this is helpful in a given context? Is it important that \emph{you've} been exposed to this definition?
 
 
 \begin{example*}{\ref*{ex:funcbasic}.\ref{ex:funcbasic2} cont.}{}
@@ -166,11 +166,11 @@ Functions can be represented in various ways. We illustrate a few in an example.
 
 \begin{example}{}{introfunction}
 	We consider the familiar \emph{formula/rule} $f(x)=x^2$ in several contexts.\par
-	\begin{minipage}[t]{0.73\linewidth}\vspace{0pt}
+	\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
 	  \emph{Table}\lstsp This presentation is most helpful when the domain is very small.
 	  \begin{description}
 	  	\item[\normalfont\emph{Arrows}] Also useful when the domain is small. Both this and the table describe $f$ when $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$.
-	  	\item[\normalfont\emph{Graph}] This is the set of ordered pairs $\bigl\{\bigl(x,f(x)\bigr):x\in\dom f\bigr\}$. In the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\par
+	  	\item[\normalfont\emph{Graph}] This is the set of ordered pairs $\bigl\{\bigl(x,x^2\bigr):x\in\dom f\bigr\}$. In the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\par
 	  	For formulæ whose inputs and outputs are real numbers, two conventions are often observed:
 		 	\begin{itemize}
 		 	  \item The \textcolor{red}{domain} is \emph{implied} to be all values for which the formula makes sense (don't do silly stuff like dividing by zero!).
@@ -187,32 +187,33 @@ Functions can be represented in various ways. We illustrate a few in an example.
 	  \end{description} 
  	\end{minipage}
   \hfill
- 	\begin{minipage}[t]{0.25\linewidth}\vspace{-5pt}
+ 	\begin{minipage}[t]{0.23\linewidth}\vspace{-5pt}
  	  \hfill
  	  $\begin{array}{@{}c|ccccc@{}}
  			x&-1&0&1&2&3\\\hline
  			f(x)&1&0&1&4&9
  		\end{array}$
  		\medbreak
- 	  \hfill\includegraphics[scale=0.95,alt={depicting a function using an arrow diagram}]{functions-quad2}
+ 	  \hfill\includegraphics[alt={depicting a function using an arrow diagram}]{functions-quad2}
  	  \medbreak
- 		\hfill\includegraphics[scale=0.85,alt={the graph of a calculus-style function}]{functions-quad}
+ 		\hfill\includegraphics[alt={the graph of a calculus-style function}]{functions-quad}
  	 \end{minipage}
 \end{example}
 
-Can you think of other ways to represent a function? How might you decide which to use?
+Can you think of other ways to represent a function? How might your audience influence your choice? 
 
 
 \pagebreak[3]
 
 
 \begin{exercises}{}{}
-	Key concepts. Add extra questions from high school stuff. Standard Cartesian plane question?
-
-
-	\exstart Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$. 
-
-	\begin{enumerate}\setcounter{enumi}{1}
+	\emph{Key concepts: \ Function, \ Domain, \ Range, \ Codomain, \ Representations of Functions,}\\
+	\hspace*{\leftmargini}\emph{Multiple descriptions/selection}
+	
+	\begin{enumerate}
+	  \item Let $d$ represent the cost in millions of dollars to produce $n$ cars, where $n$ is measured in 1000s. As clearly as you can, explain what is meant by $d(25)=431$.
+	  
+	  
 	  \item A movie theater seats 200 people. For any particular show, the amount of money the theater takes in is a function of the number of people $n$ in attendance. If a ticket costs \$25, describe the domain and range of the function using set notation.
 	  
 	  
@@ -249,16 +250,26 @@ Can you think of other ways to represent a function? How might you decide which 
 	  Describe $f$ using a table, an arrow diagram and a graph.
 	  
 	  
-	  \item Find the implied domain and range for the functions defined by each rule:
+	  \item Find the implied domain and range (as subsets of the real numbers $\R$) for the functions defined by each rule:
 	  \begin{enumerate}
-	    \item $f(x)=\frac{x^2-4}{x-2}$\qquad\qquad
-	    (b) \ $g(x)=\sqrt{x^2-16x}$\qquad\qquad
-	    (c) \ $h(x)=\frac 1x\sqrt{4x-x^2}$
+	    \item $f(x)=\frac{x^2-4}{x-2}$
+	    \item $g(x)=\sqrt{x^2-16x}$
+	    \item $h(x)=\frac 1x\sqrt{4x-x^2}$
 	  \end{enumerate}
 	  (\emph{What is the largest set of real numbers for which the formula makes sense}?)
 	  
 	  
-	  \item You ask your students to determine the range of the function $f$ defined by the rule $f(x)=x^2$ with domain the interval $[-5,2]$. You obtain various responses, including $[25,4]$, $[4,25]$, and $[-25,4]$. What is going wrong? What is the correct answer, and how would you explain it to your students?\par
+	  
+	  \item You should be familiar with the Cartesian plane: $\R^2=\big\{(x,y):x,y\in\R\big\}$. This is the set of ordered pairs, typically thought of as co-ordinates.
+	  \begin{enumerate}
+	    \item Draw a picture of the set $\big\{(x,\sqrt x):x\ge 0\big\}$. Is this the graph of a function? Explain.
+	    \item Draw a picture of the set $\big\{(y^2,y):y\in\R\big\}$. Is this the graph of a function? Explain.
+	    \item Draw a picture of the \emph{set} $\{(3,4)\}\times (3,4)$. Be careful to distinguish between an ordered pair and an interval. Consider how you would explain this to a student.
+	  \end{enumerate}
+	  
+	  
+	  \item You ask your students to determine the range of the function $f$ defined by the rule $f(x)=x^2$ with domain the interval $[-5,2]$. You obtain various responses, including $[25,4]$, $[4,25]$, and $[-25,4]$.\par
+	  What is going wrong? What is the correct answer, and how would you explain it to your students?\par
 	  More generally, if $\dom f=[a,b]$ (where $a\le b$), what is $\range f$?
 	  
 	  
@@ -268,12 +279,19 @@ Can you think of other ways to represent a function? How might you decide which 
 	    \item Describe \emph{two} functions $f:[-1,1]\to\R$ and $g:[-1,1]\to\R$ whose graphs together comprise the circle. What are the ranges of each function?
 	  \end{enumerate}
 	  
+	  
+	  \item\begin{enumerate}
+	    \item The differential operator $D=\diffat x{x=0}$ can be thought of as a function: $D(f)=f'(0)$ takes as its input a function $f$ and returns its derivative evaluated at $x=0$.\par
+	    Give an example of a function $f$ which does not lie in the (implied) domain of $D$.
+	    
+	    \item (If you've done integral calculus) \ Let $I$ be the integral operator $I=\int_0^x$ whose domain is the set of continuous functions $f:\R\to\R$. Otherwise said, if $f$ is a continuous function with domain $\R$, then $I(f)=\int_0^xf(t)\,\dt$.\par
+	    State at least one function that is \emph{not} in the range of $I$. Explain your answer!
+		\end{enumerate} 
 	\end{enumerate}
 \end{exercises}
 
-
-
 \clearpage
+
 
 \iffalse
 
