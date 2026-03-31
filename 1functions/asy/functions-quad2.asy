@@ -3,11 +3,12 @@ defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage[otfmath,theoremfont,trueslanted,largesc]{newpx}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
 \setmathfont{TeX Gyre Pagella Math}
-%\everydisplay{\Umathoperatorsize\displaystyle=4.5ex}
 \usepackage[svgnames]{xcolor}
 ");
+
 import graph;
 
 

@@ -3,13 +3,13 @@ defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage[otfmath,theoremfont,trueslanted,largesc]{newpx}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
 \setmathfont{TeX Gyre Pagella Math}
-%\everydisplay{\Umathoperatorsize\displaystyle=4.5ex}
 \usepackage[svgnames]{xcolor}
 ");
-import graph;
 
+import graph;
 
 size(110,0);
 
@@ -26,7 +26,7 @@ draw((2,0)--(2,11),dashed+heavygreen);
 
 dotfactor=10;
 for(int n=-1; n<=3; ++n){
-		dot((n,f(n)),orange);
+		dot((n,f(n)),magenta);
 	}
 
 labelx("$x$",3.2,red);
