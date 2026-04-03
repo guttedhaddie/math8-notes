@@ -115,13 +115,11 @@ Several familiar sets of numbers can be expressed using informal combinations of
 	\[
 		[-4,\pi)=\{x\in\R:-4\le x<\pi\} \tag{a half-open interval}
 	\]
-	%is a half-open interval.\smallbreak
-	%You should also be familiar with the \emph{Cartesian plane}: $\R^2=\{(x,y):x,y\in\R\}$. The notation $(3,4)\in\R^2$ here describes the \emph{point} with \emph{co-ordinates} $x=3$, $y=4$; don't confuse this with the \emph{interval} $(3,4)=\{x\in\R:3<x<4\}$, which is a subset of $\R$!
 \end{description}
 The subset relationships between these sets are in the order listed: $\N\subseteq\Z\subseteq\Q\subseteq\R$.\par
 You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.\medbreak
 
-The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements of sets}. Here is a \emph{very} formal definition of function.%\enlargethispage{2\baselineskip}
+The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements of sets}. Here is a \emph{very} formal definition of function.
 
 \begin{defn}{}{function}
 	The \emph{Cartesian product} of sets $A$ and $B$ is the set of \emph{ordered pairs}
@@ -298,36 +296,46 @@ Are there other ways to represent a function? How might your audience influence 
 \clearpage
 
 
-\iffalse
 
 \subsection{Linear Polynomials}
 
-Perhaps the simplest functions are the \emph{linear polynomials}, whose graphs are straight lines,
+Perhaps the simplest functions are those whose graphs are straight lines. These are the \emph{linear polynomials},
 \[
-	y=f(x)=mx+c\quad\text{where $m,c$ are constants} \tag{$\ast$}
+	y=f(x)=mx+c \tag{$\ast$}
 \]
-Linear polynomials make very simple models: increase the input by $\Delta x$ and the output changes by $\Delta y=m\Delta x$ \emph{regardless} of the starting value $x$. Given experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$) relating these variables. In practice, models are \emph{approximations} to the real-world data. Later in the course we'll consider what should be meant by, and how to find, a `good' linear model for approximately linear data.\smallbreak
+where $m,c$ are constants.\smallbreak
 
-Some of your earliest forays into algebra likely involved finding equations of straight lines.
+Linear polynomials make for very simple models: regardless of the initial input, if we increase $x$ by $\Delta x$, then the output changes by $\Delta y=m\Delta x$. Given experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$). In practice, models only \emph{approximate} to real-world data. Later in the course we'll consider what should be meant by, and how to find, a `good' linear model for approximately linear data.\smallbreak
+
+By this stage of your mathematical career, you should be \emph{very} familiar with linear polynomials. From a teaching viewpoint this can be dangerous. The real challenge is how to explain your understanding to those who don't have it. For instance, some of your earliest forays into algebra likely involved finding equations of the straight line through two given points. Ask a college freshman how to solve such a problem and they'll likely offer some version of the \emph{point-slope formula}. But what is this, and why does it work? More importantly, could you teach it?
+
+Abstract concepts in mathematics are very often just a way of writing down all possible examples simultaneously. In such a case, it is usually better to start with an example first before sharing any general formulæ. 
 
 \begin{example}{}{mxplusc}
-	Find the equation of the \textcolor{blue}{straight line} through the points $A=(1,3)$ and $B=(4,1)$.
+	We find the equation of the \textcolor{blue}{linear polynomial} passing through the points $A=(1,3)$ and $B=(4,1)$.
 	\par
 	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
-		Suppose the polynomial is $y=mx+c$. Since both $A$ and $B$ satisfy this equation, we start by substituting both points into the equation to find two relationships between $m$ and $c$
+		Plainly the first thing to do is to plot the given points relative to some axes, and sketch the straight line.\par
+		Suppose the polynomial is $y=mx+c$. The natural approach is to substitute both points into the equation to find two relationships between $m$ and $c$
 		\[
 			\begin{cases}
 				3=m+c\\
 				1=4m+c
 			\end{cases}
 		\]
-		This is a system of two linear equations in two unknowns ($m,c$). By now you should know several ways to solve such, but consider what might be easiest for a grade-school student\ldots
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-		\flushright\includegraphics{line-line}
+		\hfill\includegraphics[alt={finding the equaltion of a straight line}]{line-line}
 	\end{minipage}
 	\medbreak 
+	
+		You might have students who are very comfortable solving this system of equations algebraically for $m$ and $c$. The problem with such an approach is that it loses the \emph{geometric intuition.} Instead think about what it is you are trying to motivate: the point-slope formula. We want the slope---we \emph{know} this is $m$---so\ldots\par
+		Ask the students how to get from point $A$ to point $B$. Hopefully you get some version of, ``Along three and down two.'' But they've just told you the slope:
+		\[
+			\Delta y=-2=3m=m\Delta x\implies m=-\frac 32
+		\]
+		This is a system of two linear equations in two unknowns ($m,c$). By now you should know several ways to solve such, but consider what might be easiest for a grade-school student\ldots
 	Regardless of how you phrase it (solve one equation for $c$ and substitute into the other, subtract one question from the other, etc.), we obtain
 	\[
 		-2=3m\implies m=-\frac 23\implies c=3-m=\frac{11}3
@@ -344,8 +352,6 @@ The above process works for any two points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ provi
 \end{itemize}
 
 
-\goodbreak
-
 
 \begin{example}{}{beakers}
 	Often the challenge of modeling lies in converting a word problem into algebra---don't underestimate how hard students find this! Here is a simple, though disguised, straight line model.\smallbreak
@@ -359,7 +365,7 @@ The above process works for any two points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ provi
 
 
 
-\boldinline{Parametrized Lines}\phantomsection\label{pg:paramline}
+\subsubsection*{Parametrized Lines}\phantomsection\label{pg:paramline}
 
 Straight lines admit an alternative visualization. Imagine placing a \emph{ruler} so that its zero point is at the origin $O=(0,0)$ and the ``1" lies at a point $C=(c_1,c_2)$. If $t$ (a real number) is the measure on the ruler, then the points on the line have co-ordinates
 \[
@@ -376,8 +382,7 @@ Straight lines admit an alternative visualization. Imagine placing a \emph{ruler
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
-		\flushright
-		\includegraphics{line-line2}
+		\hfill\includegraphics[alt={parametrizing a line by laying a ruler along it}]{line-line2}
 	\end{minipage}\bigbreak
 
 %The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
@@ -403,7 +408,7 @@ In the Exercises we make sure that the two descriptions of a line correspond. Th
 
 
 
-\goodbreak
+
 
 
 
@@ -462,6 +467,7 @@ In the Exercises we make sure that the two descriptions of a line correspond. Th
 \clearpage
 
 
+\iffalse
 
 \subsection{Quadratic Polynomials}
 
@@ -1032,7 +1038,7 @@ Certainly Example \ref{ex:easyinvfunc} satisfies the input--output properties ($
 \end{examples}
 
 
-\boldinline{What makes a function invertible?}
+\paragraph{What makes a function invertible?}
 
 The fixes in the last example can be rephrased succinctly:
 % \begin{quote}
@@ -1083,7 +1089,7 @@ Putting these ideas together, a function is both 1--1 and onto precisely when ev
 \goodbreak
 
 
-\boldinline{An algorithm for inverting functions}
+\paragraph{An algorithm for inverting functions}
 
 Our discussion provides an algorithmic process for making a function $f:A\to B$ invertible and finding an inverse.
 \begin{enumeratea}\itemsep2pt
@@ -1198,7 +1204,7 @@ There is a lot going on here, though hopefully the simple fix of restricting the
 \goodbreak
 
 
-\boldinline{What makes a function invertible?}
+\paragraph{What makes a function invertible?}
 
 To motivate, we return to the example and consider how the \emph{vertical line test} (Definition \ref{defn:function}) provides an alternative viewpoint. A function may be envisioned as first transporting an input \emph{vertically} from the $x$-axis until it hits the graph, then projecting it \emph{horizontally} to the $y$-axis. An inverse function should reverse this process:\par
 
