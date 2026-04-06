@@ -26,14 +26,25 @@ draw(pt(-0.6)--pt(1.4),blue);
 xaxis(0,5.7,red,RightTicks);
 yaxis("$y$",0,4,red,LeftTicks());
 
-ytick(Label("$c$",align=NE),c,heavygreen);
+//ytick(Label("$c$",align=NE),c,heavygreen);
 
 labelx("$x$",5.5,S,red);
 
+pair P=pt(0.4);
+pair Pl=(A.x,P.y);
+pair Ab=(A.x,B.y);
 
-draw("$m$",A--(A.x,A.y+m),brown,Arrow(Relative(0.65),arrowhead=TeXHead));
-draw("$1$",(A.x,A.y+m)--(A.x+1,A.y+m),brown,Arrow(Relative(0.6),arrowhead=TeXHead));
-draw((A.x,A.y+m)--(A.x,0),brown+dashed);
-draw((A.x+1,A.y+m)--(A.x+1,0),brown+dashed);
+
+//draw("$m$",A--(A.x,A.y+m),brown,Arrow(Relative(0.65),arrowhead=TeXHead));
+//draw("$1$",(A.x,A.y+m)--(A.x+1,A.y+m),brown,Arrow(Relative(0.6),arrowhead=TeXHead));
+//draw((A.x,A.y+m)--(A.x,0),brown+dashed);
+//draw((A.x+1,A.y+m)--(A.x+1,0),brown+dashed);
+
+draw(P--Pl);
+draw(A--Ab--B);
+draw(shift(Pl)*box((0,0),(0.2,0.2)));
+draw(shift(Ab)*box((0,0),(0.2,0.2)));
+
 dot("$A$",A,NE,heavygreen);
 dot("$B$",B,NE,heavygreen);
+dot("$P=(x,y)$",P,NE,heavygreen);

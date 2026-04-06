@@ -88,6 +88,8 @@ Of course the answers to these questions depend on your audience! What ideas do 
 	This is enough for our purposes, though a course in set theory should convince you that this definition is not without its own problems. Selection is always at work\ldots%
 }
 
+The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements of sets}. 
+
 
 \pagebreak[3]
 
@@ -108,18 +110,19 @@ Of course the answers to these questions depend on your audience! What ideas do 
 
 Several familiar sets of numbers can be expressed using informal combinations of these notations.
 \begin{description}\itemsep0pt
-	\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance, $5\in\N$ but $-3\not\in\N$.
+	\item[Natural numbers] $\N=\{1,2,3,4,\ldots\}$. For instance, $5\in\N$ but $-3\not\in\N$. Most students think this is the meaning of \emph{number} until they've done \emph{lots} of math.
 	\item[Integers] $\Z=\{\ldots,-2,-1,0,1,2,3,\ldots\}$. For instance, $-4\in\Z$ but $\frac 45\not\in\Z$.
 	\item[Rational numbers] (fractions) \ $\Q=\bigl\{\frac pq:p\in\Z,\ q\in\N\bigr\}$. For instance $-\frac 67\in\Q$. %; in this case $p=-6$ is an integer, and $q=7$ a natural number.
 	\item[Real numbers] $\R$. For instance, $\sqrt 2\in\R$. A formal definition is difficult, though we often informally visualize $\R$ as a \emph{ruler}. \emph{Intervals} are particularly important subsets, e.g.,
 	\[
 		[-4,\pi)=\{x\in\R:-4\le x<\pi\} \tag{a half-open interval}
 	\]
+	You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.
 \end{description}
-The subset relationships between these sets are in the order listed: $\N\subseteq\Z\subseteq\Q\subseteq\R$.\par
-You should also have informally encountered the notion of \emph{irrationality}: for instance, $\sqrt 2$ and $\pi$ are real numbers but not rational numbers.\medbreak
+The subset relationships between these sets are in the order listed: $\N\subseteq\Z\subseteq\Q\subseteq\R$.
+\bigbreak
 
-The reason we need this language when discussing functions is that the inputs and outputs of a function are \emph{elements of sets}. Here is a \emph{very} formal definition of function.
+We now turn to a \emph{very} formal definition of function.
 
 \begin{defn}{}{function}
 	The \emph{Cartesian product} of sets $A$ and $B$ is the set of \emph{ordered pairs}
@@ -196,10 +199,7 @@ Functions can be represented in various ways. We illustrate a few in an example.
  	 \end{minipage}
 \end{example}
 
-Are there other ways to represent a function? How might your audience influence your choice? 
-
-
-\pagebreak[3]
+Are there other ways to represent a function? How might your audience influence your choice? We'll have many more chances to analyze and represent functions as we move on. The challenge here is primarily one of vocabulary. A student has perhaps 15 years---elementary school to early college---to become comfortable with all this language. How would you help a student, regardless of where they are on that journey, to take the next step?  
 
 
 \begin{exercises}{}{}
@@ -301,22 +301,72 @@ Are there other ways to represent a function? How might your audience influence 
 
 Perhaps the simplest functions are those whose graphs are straight lines. These are the \emph{linear polynomials},
 \[
-	y=f(x)=mx+c \tag{$\ast$}
+	y=f(x)=mx+c,\tag{$\ast$}
 \]
-where $m,c$ are constants.\smallbreak
+where $m,c$ are constants. Such functions make for very simple models:\footnote{%
+	Given experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$). In practice, models only \emph{approximate} to real-world data. Later in the course we'll consider what should be meant by, and how to find, a `good' linear model for approximately linear data.
+}%
+regardless of the initial input, if we increase $x$ by $\Delta x$, then the output changes by a constant multiple $\Delta y=m\Delta x$.\smallbreak
 
-Linear polynomials make for very simple models: regardless of the initial input, if we increase $x$ by $\Delta x$, then the output changes by $\Delta y=m\Delta x$. Given experimental data or a physical situation relating two quantities $x$ and $y$, a \emph{linear model} is an linear polynomial ($\ast$). In practice, models only \emph{approximate} to real-world data. Later in the course we'll consider what should be meant by, and how to find, a `good' linear model for approximately linear data.\smallbreak
+By this stage of your mathematical career, you should be \emph{very} familiar with linear polynomials. From a teaching viewpoint this can be dangerous. The real challenge is how to explain your understanding to those who don't have it. For instance, some of your earliest forays into algebra likely involved finding equations of the straight line through two given points. Ask a college freshman how to solve such a problem and they'll likely offer some version of the \emph{point-slope formula}. But what is this, and why does it work? More importantly, could you teach it?\smallbreak
 
-By this stage of your mathematical career, you should be \emph{very} familiar with linear polynomials. From a teaching viewpoint this can be dangerous. The real challenge is how to explain your understanding to those who don't have it. For instance, some of your earliest forays into algebra likely involved finding equations of the straight line through two given points. Ask a college freshman how to solve such a problem and they'll likely offer some version of the \emph{point-slope formula}. But what is this, and why does it work? More importantly, could you teach it?
+Abstract concepts in mathematics are very often just a way of writing down all possible examples simultaneously. In such a case, it is usually better to start with an example first before sharing any general formulæ. Here are two questions you could use to introduce abstract concepts around linear polynomials.
 
-Abstract concepts in mathematics are very often just a way of writing down all possible examples simultaneously. In such a case, it is usually better to start with an example first before sharing any general formulæ. 
+
+\subsubsection*{1.\quad How to graph $y=mx+c$? Why is the graph a straight line?} 
+
+\begin{example}{}{easyline}
+Suppose we want to graph $y=f(x)=\frac 12x+1$.\par
+\begin{minipage}[t]{0.7\linewidth}\vspace{-4pt}
+One way to start is to consider the most obvious point on the graph: plug in $x=0$ to obtain $y=1$ and the point $(0,1)$. Next, consider other values of $x$, for instance integers, and plot these:
+	\[
+		\begin{array}{c|ccccc}
+			x&0&1&2&3&4\\\hline
+			f(x)&1&1.5&2&2.5&3
+		\end{array}
+	\]
+	Joining these points, it certainly appears as if the graph is a straight line. At this stage you may have enough to convince a middle-school student.
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
+	\hfill\includegraphics[alt={a simple straight line plot}]{line-easyplot}
+\end{minipage}
+\end{example}
+
+In the abstract, to graph $y=f(x)=mx+c$,
+\begin{itemize}
+  \item Find the $y$-intercept: $x=0\Longrightarrow y=f(0)=c$ yields the point $(0,c)$.
+  \item Plot a few more points $(1,m+c)$, $(2,2m+c)$, $(3,3m+c)$ and draw the line through them.
+\end{itemize}
+
+But what if a student is not convinced? What if you are teaching higher-level students? Just because the graph \emph{looks like} a line doesn't guarantee that it is a line. At this point you might have to appeal to some elementary geometry: \emph{similar triangles.}\smallbreak
+
+Plot three points: the $y$-intercept $(0,c)$, the point $(1,1+c)$, and a general point $(x,mx+c)$, and complete two right-triangles as pictured. These triangles are \emph{similar}. Why?\par
+\begin{minipage}[t]{0.6\linewidth}\vspace{-6pt}
+	\begin{itemize}
+	  \item Perhaps your students observe that both are right-angled with the same slope: 
+	  \[
+	  	\frac{\text{rise}}{\text{run}}=\frac m1=\frac{mx}x
+	  \]
+	  \item Perhaps they've studied trigonometry and say that the left angle in both triangles is $\arctan m$.
+	\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+	\hfill\includegraphics[alt={The SAS similarity theorem shows we have a straight line}]{line-easyplot2}
+\end{minipage}\smallbreak
+Both observations are just rephrasings of Euclid's SAS triangle similarity theorem.\footnote{%
+	If two triangles have two pairs of sides in a common ratio (here $m$) and the angle between them congruent (here \ang{90}), then the triangles are similar. This result is \emph{much} older (c.\,2300 years) than the concept of graphs and equations like $f(x)=mx+c$ (400 years).}
+
+
+\subsubsection*{2.\quad How to find the equation of the line through two points?} 
 
 \begin{example}{}{mxplusc}
-	We find the equation of the \textcolor{blue}{linear polynomial} passing through the points $A=(1,3)$ and $B=(4,1)$.
+	We find the equation of the \textcolor{blue}{linear polynomial} $y=mx+c$ passing through the points $A=(1,3)$ and $B=(4,1)$.
 	\par
 	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
 		Plainly the first thing to do is to plot the given points relative to some axes, and sketch the straight line.\par
-		Suppose the polynomial is $y=mx+c$. The natural approach is to substitute both points into the equation to find two relationships between $m$ and $c$
+		The natural approach is to substitute both given points into the equation to find two relationships between $m$ and $c$
 		\[
 			\begin{cases}
 				3=m+c\\
@@ -325,33 +375,63 @@ Abstract concepts in mathematics are very often just a way of writing down all p
 		\]
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-		\hfill\includegraphics[alt={finding the equaltion of a straight line}]{line-line}
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-13pt}
+		\hfill\includegraphics[alt={finding the equation of a straight line}]{line-line}
 	\end{minipage}
 	\medbreak 
 	
-		You might have students who are very comfortable solving this system of equations algebraically for $m$ and $c$. The problem with such an approach is that it loses the \emph{geometric intuition.} Instead think about what it is you are trying to motivate: the point-slope formula. We want the slope---we \emph{know} this is $m$---so\ldots\par
-		Ask the students how to get from point $A$ to point $B$. Hopefully you get some version of, ``Along three and down two.'' But they've just told you the slope:
-		\[
-			\Delta y=-2=3m=m\Delta x\implies m=-\frac 32
-		\]
-		This is a system of two linear equations in two unknowns ($m,c$). By now you should know several ways to solve such, but consider what might be easiest for a grade-school student\ldots
-	Regardless of how you phrase it (solve one equation for $c$ and substitute into the other, subtract one question from the other, etc.), we obtain
+	Your students might be comfortable solving this system of equations algebraically for $m$ and $c$. But algebra is only convincing if you're already comfortable with the language! Instead consider what you are trying to motivate: the \emph{point-slope formula}. We want the slope $m$, so\ldots\smallbreak
+	Ask the students how to get from point $A$ to point $B$. Hopefully you get some version of \emph{along three and down two}. But they've just told you the slope!
 	\[
-		-2=3m\implies m=-\frac 23\implies c=3-m=\frac{11}3
+		m =\frac{\text{rise}}{\text{run}}
+		=\frac{\text{2 down}}{\text{3 along}}
+		=-\frac 23
 	\]
-	whence the required polynomial is $y=\frac 13(11-2x)$.\smallbreak
-	As the picture suggests, the \emph{\textcolor{Brown}{gradient/slope} $m$} represents how far one climbs/falls on travelling one unit to the right.	The \textcolor{Green}{\emph{$y$-intercept} $c$} is the intersection of the graph with the vertical axis.
+	
+	\begin{minipage}[t]{0.64\linewidth}\vspace{-5pt}
+	To get to any other point $P=(x,y)$ on the line, we're back to similar triangles:
+	\begin{gather*}
+		-\frac 23=m=\frac{\text{rise}}{\text{run}} =\frac{y-3}{x-1}\\
+		\implies y=3-\frac 23(x-1)=\frac 13(11-2x)
+	\end{gather*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-20pt}
+		\hfill\includegraphics[alt={finding the equation of a straight line}]{line-line3}
+	\end{minipage}
 \end{example}
 
-The above process works for any two points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ provided $x_0\neq x_1$: is it clear why this should be the case? The details are in Exercise \ref{exs:lineparam}. You might feel that such a problem is too abstract for your students, that such a `proof' might be too intimidating. Indeed it might be counterproductive for some students, but consider several counterpoints:
+
+\pagebreak[3]
+
+
+This process works for any two given points with distinct $x$ co-ordinates.
+
+\begin{thm}{Point-slope formula}{}
+	If $x_A\neq x_B$, then the straight line through points $A=(x_A,y_A)$ and $B=(x_B,y_B)$ has slope
+	\[
+		m=\frac{\Delta y}{\Delta x}=\frac{y_B-y_A}{x_B-x_A}
+	\]
+	and equation
+	\[
+		y=y_A+m(x-x_A)
+	\]
+\end{thm}
+
+The details are in Exercise \ref{exs:lineparam}. Depending on their level, the abstract point-slope formula might be too intimidating for your students. Even if they are capable of applying it, you might feel that its derivation is beyond them. Indeed it might be so for some students, but consider several counterpoints:
 \begin{itemize}
-  \item Once a student has developed comfort with concrete examples as above, Exercise \ref{exs:lineparam} helps summarize and unify what they've learned. A general/abstract discussion helps build confidence by convincing a student that any such problem can be solved the same way.
-  \item The most helpful elementary proofs are those which essentially replicate an example abstractly. Exercise \ref{exs:lineparam} is not some abstract existence proof---it involves no trickery---it simply \emph{reinforces} the core technique by applying it in the most general situation.
-  \item Helping and encouraging students to think abstractly is one of the overarching learning outcomes of all mathematics. You might get push-back, but it's part of the job\ldots
+  \item Once a student has developed comfort with concrete examples, the point-slope formula and its proof help to summarize and unify what they've learned. An abstract discussion can help build confidence by convincing a student that any such problem can be solved the same way.
+  \item The most helpful elementary proofs are those which replicate an examples. Exercise \ref{exs:lineparam} involves no trickery; it simply \emph{reinforces the core technique} by applying it in general.
+  \item Encouraging students to think abstractly is an overarching learning outcome of mathematics. You might get push-back, but it's part of the job\ldots
 \end{itemize}
 
-
+Another common issue is that students resist examples and clamor for the point-slope formula: ``So we just need to memorize the formula, right?'' In the moment, the desire for \emph{efficiency} often dominates student thinking: they have many demands on their time and are tempted by a short-cut, the promising of knowing how to do a problem without putting in the work necessary to understand how or why it works. Fighting against this is hard, but consider the following.
+\begin{itemize}
+  \item Effective learning is rarely efficient. Your goal as a teacher is often to force students to think slowly about something, even when they don't want to. 
+  \item Memorizing formulae and algebraic algorithms sacrifices geometric intuition. Mathematics is a language for modeling and describing the real world. The pictures, the \emph{geometry}, are what is real.
+  \item Mathematics is interconnected. In this case, the fundamental underlying concept of the point-slope formula is SAS similarity. Linking the discussion to this helps motivate the study of and reinforce foundational geometry. 
+  \item You are doing a student no favors by letting them get away with a \emph{see this do that} approach to mathematics. By the end of high-school, there are too many concepts to memorize this way. Your job is to build the scaffolding, not paint the wall for them\ldots
+\end{itemize}
 
 \begin{example}{}{beakers}
 	Often the challenge of modeling lies in converting a word problem into algebra---don't underestimate how hard students find this! Here is a simple, though disguised, straight line model.\smallbreak
