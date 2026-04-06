@@ -313,7 +313,7 @@ By this stage of your mathematical career, you should be \emph{very} familiar wi
 Abstract concepts in mathematics are very often just a way of writing down all possible examples simultaneously. In such a case, it is usually better to start with an example first before sharing any general formulæ. Here are two questions you could use to introduce abstract concepts around linear polynomials.
 
 
-\subsubsection*{1.\quad How to graph $y=mx+c$? Why is the graph a straight line?} 
+\subsubsection*{1. \ How to graph $y=mx+c$? Why is the graph a straight line?} 
 
 \begin{example}{}{easyline}
 Suppose we want to graph $y=f(x)=\frac 12x+1$.\par
@@ -359,7 +359,7 @@ Both observations are just rephrasings of Euclid's SAS triangle similarity theor
 	If two triangles have two pairs of sides in a common ratio (here $m$) and the angle between them congruent (here \ang{90}), then the triangles are similar. This result is \emph{much} older (c.\,2300 years) than the concept of graphs and equations like $f(x)=mx+c$ (400 years).}
 
 
-\subsubsection*{2.\quad How to find the equation of the line through two points?} 
+\subsubsection*{2. \ How to find the equation of the line through two points?} 
 
 \begin{example}{}{mxplusc}
 	We find the equation of the \textcolor{blue}{linear polynomial} $y=mx+c$ passing through the points $A=(1,3)$ and $B=(4,1)$.
@@ -407,14 +407,14 @@ Both observations are just rephrasings of Euclid's SAS triangle similarity theor
 
 This process works for any two given points with distinct $x$ co-ordinates.
 
-\begin{thm}{Point-slope formula}{}
+\begin{thm}{Point-slope formula}{pointslope}
 	If $x_A\neq x_B$, then the straight line through points $A=(x_A,y_A)$ and $B=(x_B,y_B)$ has slope
 	\[
 		m=\frac{\Delta y}{\Delta x}=\frac{y_B-y_A}{x_B-x_A}
 	\]
 	and equation
 	\[
-		y=y_A+m(x-x_A)
+		y=y_A+m(x-x_A) =y_A+\frac{y_B-y_A}{x_B-x_A}(x-x_A)
 	\]
 \end{thm}
 
@@ -433,46 +433,59 @@ Another common issue is that students resist examples and clamor for the point-s
   \item You are doing a student no favors by letting them get away with a \emph{see this do that} approach to mathematics. By the end of high-school, there are too many concepts to memorize this way. Your job is to build the scaffolding, not paint the wall for them\ldots
 \end{itemize}
 
+
+
+\subsubsection*{Modeling with straight lines}
+
+Often the challenge of modeling lies in converting a word problem into algebra---don't underestimate how hard students find this! Here is a simple, if disguised, straight line model.
+	
 \begin{example}{}{beakers}
-	Often the challenge of modeling lies in converting a word problem into algebra---don't underestimate how hard students find this! Here is a simple, though disguised, straight line model.\smallbreak
-	Beaker A contains a 300\,ml solution of 2\% acid. Beaker B contains 400\,ml of acid of unknown concentration. The beakers are mixed together to produce an acid with concentration 6\%. What was the concentration in beaker B?\smallbreak
-	\emph{Given your mathematical experience}, it should seem natural to denote the unknown concentration (beaker B) by $x$. After mixing, we have a 700\,ml solution containing $300\times\frac 2{100}+400x$\,ml of pure acid, whence its concentration is a linear polynomial function of $x$:
+	Beaker A contains a 300\,ml solution of a 2\% acid. Beaker B contains 400\,ml of the same acid but of unknown concentration. When the beakers are mixed together the result is an acid with concentration 6\%. What was the concentration in beaker B?\smallbreak
+	It should seem natural to denote the unknown concentration (beaker B) by $x$. After mixing:
+	\begin{itemize}
+	  \item The total volume of the solution is $300+400=700$\,ml.
+	  \item The solution contains $300\times\frac 2{100}+400x =6+400x$\,ml of pure acid.
+	\end{itemize}
+	Putting this together, the concentration of the resulting solution is a linear polynomial function of $x$:
 	\[
 	 C(x)=\frac{6+400x}{700}
 	\]
-	The problem is now easily solved: $C(x)=\frac 6{100}\Longleftrightarrow x=\frac 9{100}=9\%$.
+	The problem is now easily solved: $C(x)=\frac 6{100}\Longrightarrow x=\frac 9{100}=9\%$.
 \end{example}
+
+While the algebra in the example is straightforward to those with sufficient experience, consider what natural mistakes grade-school students might make with this problem\ldots
 
 
 
 \subsubsection*{Parametrized Lines}\phantomsection\label{pg:paramline}
 
-Straight lines admit an alternative visualization. Imagine placing a \emph{ruler} so that its zero point is at the origin $O=(0,0)$ and the ``1" lies at a point $C=(c_1,c_2)$. If $t$ (a real number) is the measure on the ruler, then the points on the line have co-ordinates
+Here is an alternative visualization of a straight line. Imagine placing a \emph{ruler} so that its zero point is at the origin $O=(0,0)$ and its ``1" lies at a point $P=(p,q)$. If $t$ (a real number) is the number on the ruler, then the points on the line have co-ordinates
 \[
-	tC=(tc_1,tc_2) \tag{$\ast$}
+	tP=(tp,tq) \tag{$\ast$}
 \]
 
 \begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
-	To describe the line through points $A$ and $B$, place a ruler so that \textcolor{Green}{0} corresponds to $A$ and \textcolor{Green}{1} to $B$. Now \textcolor{Brown}{slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a parallel line through the origin, with $B$ transformed to the point $C=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line:
-	\[
-		(x,y) =A+\textcolor{Green}{t}C
-		=A+\textcolor{Green}{t}(B-A)
-		=(1-\textcolor{Green}{t})A+\textcolor{Green}{t}B
-	\]
+	To describe the line through points $A$ and $B$, place a virtual ruler so that \textcolor{Green}{0} corresponds to $A$ and \textcolor{Green}{1} to $B$. \textcolor{Brown}{Slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a \emph{parallel line} through the origin, with $B$ transformed to $P=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line:
+	\begin{align*}
+		(x,y) &=A+\textcolor{Green}{t}P
+		=A+\textcolor{Green}{t}(B-A)\\
+		&=(1-\textcolor{Green}{t})A+\textcolor{Green}{t}B
+	\end{align*}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
 		\hfill\includegraphics[alt={parametrizing a line by laying a ruler along it}]{line-line2}
-	\end{minipage}\bigbreak
+	\end{minipage}
+	\bigbreak
 
-%The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
+The points corresponding to various values of $t$ are \textcolor{Green}{marked}.\medbreak
 
-Contrast the parametrized description of a line with the linear polynomial approach: for instance, one challenge is that a line may be parametrized using infinitely many distinct rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description is unique. Does the parametrized approach have any advantages? Which description is easier to understand or to work with? Which fits better with your intuitive understanding of \emph{line}? Which might cause a grade-school student the greater challenge?\smallbreak
+Contrast this description with the linear polynomial approach. One challenge is that a line may be parametrized using infinitely many different rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description is unique. Does the parametrized approach have any advantages? Which description is easier to understand or to work with?\smallbreak
 
 In the Exercises we make sure that the two descriptions of a line correspond. The discussion is little more than the generalization of an example.
 
 \begin{example}{}{}
-	The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized by
+	The line through points $A=(3,6)$ and $B=(-1,4)$ may be parametrized
 	\[
 		(x,y)=(1-t)(3,6)+t(-1,4)=\bigl(3-4t,6-2t\bigr)
 	\]
@@ -480,23 +493,24 @@ In the Exercises we make sure that the two descriptions of a line correspond. Th
 	\[
 		x=3-4t\implies t=\frac 14(3-x)
 	\]
-	before substituting into our expression for $y$:
+	Now substitute this into our expression for $y$:
 	\[
 		y=6-2t=6-\frac 24(3-x) =\frac 12x-\frac 92
 	\]
 \end{example}
 
 
-
-
-
+\vfil
 
 
 \begin{exercises}{}{}
-	\exstart The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for the cost of gasoline as a function of time.
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Linear Polynomial, \ Relationship with a straight line, \ Point-slope formula, \ Parametrizing a line using a ruler}
 
 
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
+	  \item The cost of gasoline is \$4.20 per gallon on January 1\st{} and \$4.90 on March 1\st. State a \emph{linear} function/model for the cost of gasoline as a function of time.
+
 	  \item You have a choice of three different cell-phone plans.
 	  \begin{enumerate}
 	    \item No monthly charge and 10\textcent{} per minute for all calls.
@@ -514,15 +528,12 @@ In the Exercises we make sure that the two descriptions of a line correspond. Th
     
     
     \item\label{exs:lineparam}
-    Suppose points $A=(x_0,y_0)$ and $B=(x_1,y_1)$ are given. 
+    Suppose points $A=(x_A,y_A)$ and $B=(x_B,y_B)$ are given. 
     \begin{enumerate}
-      \item If $x_1\neq x_0$, use the method of Example \ref{ex:mxplusc} to find the equation $y=mx+c$ of the line through these points.
+      \item If $x_B\neq x_A$, use the method of Example \ref{ex:mxplusc} to prove the point-slope formula (Theorem \ref{thm:pointslope}). Otherwise said: find the equation $y=mx+c$ of the line through these points.
       
-      \item Now use the parametrized approach where $A$ corresponds to 0 and $B$ to 1. If, in addition, $x_1\neq x_0$, make things match up with your answer to part (a).\par
+      \item Find a parametrized description of the same line (page \pageref{pg:paramline}) where $A$ corresponds to 0 and $B$ to 1. If $x_B\neq x_A$, make things match up with your answer to part (a).\par
       What parametrization do you get if $A=(0,c)$ and $B=(1,m+c)$?
-	  
-			\item Part (a) provides an \emph{algebraic} justification of the claim made on page \pageref{pg:paramline}, that the linear polynomial description of a line is unique (`\emph{the} equation'). How might you help a student believe this claim if the algebra is unconvincing or too intimidating?\par
-			(\emph{Think about Example \ref{ex:mxplusc}})
     \end{enumerate}
         
     
@@ -530,7 +541,7 @@ In the Exercises we make sure that the two descriptions of a line correspond. Th
     \[
     	ax+by=c
     \]
-    for some constants $a,b,c$ where $a,b$ are not both zero. How does this approach differ from our use of linear polynomials?
+    where $a,b,c$ are constants and $a,b$ are not both zero. How does this approach differ from our use of linear polynomials? Are these descriptions covering exactly the same collection of objects?
     
     
     \item Throughout mathematics (particularly within \emph{linear algebra}), a function $f:\R\to\R$ is said to be \emph{linear} if it satisfies the condition

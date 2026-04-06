@@ -1,11 +1,14 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
 \usepackage[svgnames]{xcolor}
-%\usepackage{textcomp}
 ");
+
 import graph;
 
 
@@ -42,5 +45,5 @@ yaxis(red);
 
 dot("$A$",A,SE,blue);
 dot("$B$",B,SE,blue);
-dot("$C=B-A$",B-A,SE,blue);
+dot("$P=B-A$",B-A,SE,blue);
 dot("$O$",(0,0),SW,blue);
