@@ -1,13 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
 \usepackage[svgnames]{xcolor}
 ");
+
 import graph;
 
-size(0,220);
+size(180,0);
 
 real r=0.3;
 
@@ -44,9 +48,12 @@ real sc=0.7/15;
 pair A=(-10sc,0);
 pair B=(0,0.7);
 dot("$F$",B,SE,blue);
-dot("start",A,E,blue);
+dot(A,blue);
 
 real m=5;
 real f(real x){return sc*((3-2m)/20*(x/sc+10)^2+m*(x/sc+10));}
 
 draw(graph(f,-10*sc,0),blue,Arrow(Relative(0.5)));
+
+draw("10\,m",shift((0,-sc/2))*brace(A,(0,0),-0.05));
+draw("15\,m",shift((-sc/2,0))*brace(A,(-10sc,B.y),0.05),W);

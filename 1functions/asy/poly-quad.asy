@@ -1,16 +1,18 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
 \usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
 ");
+
 import graph;
 
 
-size(160,0);
+size(140,140,IgnoreAspect);
 
 real m=-2.5;
 real M=1.5;
@@ -24,7 +26,7 @@ real g(real x){return a*x^2;}
 real h(real x){return a*(x+b/(2*a))^2;}
 real j(real x){return a*x^2+b*x+c;}
 
-path cl=box((m,(4*a*c-b^2)/(4*a)-0.5),(M,f(M)));
+path cl=box((m,(4*a*c-b^2)/(4*a)-1),(M,f(M)));
 
 draw(Label("$y=x^2$",Relative(0.5),NE),graph(f,m,M),blue);
 draw(Label("$1$",Relative(0.3)),graph(g,m,M),0.6blue+0.4heavygreen);
