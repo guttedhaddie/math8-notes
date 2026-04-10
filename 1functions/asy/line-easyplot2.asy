@@ -6,8 +6,10 @@ texpreamble("\usepackage{amsmath}
 \usepackage{unicode-math}
 \setmainfont{TeX Gyre Pagella}
 \setmathfont{TeX Gyre Pagella Math}
-\usepackage[svgnames]{xcolor}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
 
 import graph;
 
@@ -30,19 +32,19 @@ pair Bb=(B.x,A.y);
 
 
 
-xaxis(0,3.6,red,RightTicks(new real[]{0,1}));
-yaxis(0,pt(3.6).y,red,LeftTicks(new real[]{0}));
+xaxis(0,3.6,RightTicks(new real[]{0,1}));
+yaxis(0,pt(3.6).y,LeftTicks(new real[]{0}));
 
 //labelx("$x$",3.7,2S,red);
 //labely("$y$",2.7,2W,red);
 
-xtick(Label("$x$",align=S),X,S,red);
-ytick(Label("$c$",align=W),c,W,red);
-ytick(Label("$1+c$",align=W),B.y,W,red);
-ytick(Label("$mx+c$",align=W),P.y,W,red);
+xtick(Label("$x$",align=S),X,S);
+ytick(Label("$c$",align=W),c,W);
+ytick(Label("$1+c$",align=W),B.y,W);
+ytick(Label("$mx+c$",align=W),P.y,W);
 
 
-draw(pt(-0.6)--pt(3.6),blue);
+draw(pt(-0.6)--pt(3.6),Blue);
 draw("$m$",Bb--B);
 draw(A--Pb);
 draw("$mx$",Pb--P);
@@ -54,9 +56,9 @@ draw(shift(Bb)*box((-0.12,0),(0,0.12)));
 draw(shift(Pb)*box((-0.12,0),(0,0.12)));
 
 
-dot(A,heavygreen);
-dot(B,heavygreen);
-dot(P,heavygreen);
+dot(A,Crimson);
+dot(B,Crimson);
+dot(P,Crimson);
 
 
 

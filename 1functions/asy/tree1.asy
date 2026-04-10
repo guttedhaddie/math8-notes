@@ -6,8 +6,10 @@ texpreamble("\usepackage{amsmath}
 \usepackage{unicode-math}
 \setmainfont{TeX Gyre Pagella}
 \setmathfont{TeX Gyre Pagella Math}
-\usepackage[svgnames]{xcolor}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
 
 import graph;
 
@@ -37,7 +39,7 @@ int n=5;
 
 for(int i=1; i<=n; ++i){
 	pp[i]=step(pp[i-1]);
-	draw(pp[i],P,linewidth(0.15)+(i/n)*brown+((n+1-i)/n)*green);
+	draw(pp[i],P,linewidth(0.15)+(i/n)*Brown+((n+1-i)/n)*Lime);
 	//add(step(currentpicture));
 }
 
@@ -47,13 +49,13 @@ real sc=0.7/15;
 
 pair A=(-10sc,0);
 pair B=(0,0.7);
-dot("$F$",B,SE,blue);
-dot(A,blue);
+dot("$F$",B,SE,Blue);
+dot(A,Blue);
 
 real m=5;
 real f(real x){return sc*((3-2m)/20*(x/sc+10)^2+m*(x/sc+10));}
 
-draw(graph(f,-10*sc,0),blue,Arrow(Relative(0.5)));
+draw(graph(f,-10*sc,0),Blue,Arrow(Relative(0.5)));
 
 draw("10\,m",shift((0,-sc/2))*brace(A,(0,0),-0.05));
 draw("15\,m",shift((-sc/2,0))*brace(A,(-10sc,B.y),0.05),W);
