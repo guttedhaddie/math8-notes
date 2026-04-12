@@ -10,6 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
+pen lgreen=rgb("00a000");
 
 import graph;
 
@@ -31,17 +32,17 @@ real j(real x){return a*x^2+b*x+c;}
 path cl=box((m,(4*a*c-b^2)/(4*a)-1),(M,f(M)));
 
 draw(Label("$y=x^2$",Relative(0.5),NE),graph(f,m,M),Blue);
-draw(Label("$1$",Relative(0.3)),graph(g,m,M),0.6Blue+0.4Crimson);
-draw(Label("$2$",Relative(0.16)),graph(h,m,M),0.3Blue+0.7Crimson);
-draw(Label("$3$",Relative(0.16)),graph(j,m,M),Crimson);
+draw(Label("$1$",Relative(0.3)),graph(g,m,M),0.6Blue+0.4lgreen);
+draw(Label("$2$",Relative(0.16)),graph(h,m,M),0.3Blue+0.7lgreen);
+draw(Label("$3$",Relative(0.16)),graph(j,m,M),lgreen);
 
-label("$y=ax^2+bx+c$",(-b/2a,j(-b/2a)),S,Crimson);
+label("$y=ax^2+bx+c$",(-b/2a,j(-b/2a)),S,lgreen);
 dot((-b/2a,j(-b/2a)));
 
 clip(cl);
 
-xaxis(m,M);
-yaxis((4*a*c-b^2)/(4*a)-0.2,f(M));
+xaxis(m,M,Red);
+yaxis((4*a*c-b^2)/(4*a)-0.2,f(M),Red);
 
-xtick(Label("$-\frac b{2a}$",align=S),-b/(2*a),S,Crimson);
-ytick(Label("$\frac{4ac-b^2}{4a}$",align=E),(4*a*c-b^2)/(4*a),E,Crimson);
+xtick(Label("$-\frac b{2a}$",align=S),-b/(2*a),S,lgreen);
+ytick(Label("$\frac{4ac-b^2}{4a}$",align=E),(4*a*c-b^2)/(4*a),E,lgreen);

@@ -10,12 +10,11 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-pen Dpink=defaultpen+0.85*DeepPink+0.15*black;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 
-size(150,0);
+size(160,0);
 
 pair A=(1,2);
 pair B=(4,3);
@@ -29,11 +28,11 @@ void ttick(real t, string s, pen p){pair dd=rotate(90,(0,0))*0.2*unit(B-A);
 	label(s,pt(t)+3*dd,p);
 }
 
-ttick(0.5,"$\frac 12$",Crimson);
-ttick(1,"$1$",Crimson);
-ttick(0,"$0$",Crimson);
-ttick(1.5,"$\frac 32$",Crimson);
-ttick(-0.5,"$-\frac 12$",Crimson);
+ttick(0.5,"$\frac 12$",Magenta);
+ttick(1,"$1$",Magenta);
+ttick(0,"$0$",Magenta);
+ttick(1.5,"$\frac 32$",Magenta);
+ttick(-0.5,"$-\frac 12$",Magenta);
 
 draw(pt(-0.75)--pt(1.75),Blue);
 
@@ -42,11 +41,11 @@ draw((0,0)--A,Brown+dashed);
 draw(B-A--B,Brown+dashed);
 
 
-xaxis();
-yaxis();
+xaxis(Red);
+yaxis(Red);
 
 
-dot("$A$",A,SE,Blue);
-dot("$B$",B,SE,blue);
-dot("$P=B-A$",B-A,SE,Blue);
-dot("$O$",(0,0),SW,Blue);
+dot("$A$",A,SE,lgreen);
+dot("$B$",B,SE,lgreen);
+dot("$P=B-A$",B-A,SE,lgreen);
+dot("$O$",(0,0),SW,lgreen);

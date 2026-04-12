@@ -10,7 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 
@@ -32,16 +32,13 @@ pair Bb=(B.x,A.y);
 
 
 
-xaxis(0,3.6,RightTicks(new real[]{0,1}));
-yaxis(0,pt(3.6).y,LeftTicks(new real[]{0}));
+xaxis(0,3.6,Red,RightTicks(new real[]{0,1}));
+yaxis(0,pt(3.6).y,Red,LeftTicks(new real[]{0}));
 
-//labelx("$x$",3.7,2S,red);
-//labely("$y$",2.7,2W,red);
-
-xtick(Label("$x$",align=S),X,S);
-ytick(Label("$c$",align=W),c,W);
-ytick(Label("$1+c$",align=W),B.y,W);
-ytick(Label("$mx+c$",align=W),P.y,W);
+xtick(Label("$x$",align=S),X,S,Red);
+ytick(Label("$c$",align=W),c,W,Red);
+ytick(Label("$1+c$",align=W),B.y,W,Red);
+ytick(Label("$mx+c$",align=W),P.y,W,Red);
 
 
 draw(pt(-0.6)--pt(3.6),Blue);
@@ -56,9 +53,9 @@ draw(shift(Bb)*box((-0.12,0),(0,0.12)));
 draw(shift(Pb)*box((-0.12,0),(0,0.12)));
 
 
-dot(A,Crimson);
-dot(B,Crimson);
-dot(P,Crimson);
+dot(A,lgreen);
+dot(B,lgreen);
+dot(P,lgreen);
 
 
 

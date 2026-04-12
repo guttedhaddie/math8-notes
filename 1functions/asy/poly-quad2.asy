@@ -10,7 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 
@@ -20,13 +20,11 @@ real f(real x){return -3x^2+12x+4;}
 
 draw(graph(f,-0.5,4.5),Blue);
 
-xaxis(-1,5,RightTicks(new real[]{-1,0,1,3,4}));
-yaxis("$y$",0,17,LeftTicks(new real[]{4,8,12}));
+xaxis(-1,5,Red,RightTicks(new real[]{-1,0,1,3,4}));
+yaxis("$y$",0,17,Red,LeftTicks(new real[]{4,8,12}));
 
-dot((2,16),Blue);
-xtick(Label("2",align=S),2,S,Crimson);
-ytick(Label("16",align=W),16,W,ForestGreen);
-//xtick(2+4/(sqrt(3)),Purple);
-//xtick(2-4/(sqrt(3)),Purple);
+dot((2,16),lgreen);
+xtick(Label("2",align=S),2,S,lgreen);
+ytick(Label("16",align=W),16,W,Magenta);
 
-labelx("$x$",4.8,S);
+labelx("$x$",4.8,S,Red);

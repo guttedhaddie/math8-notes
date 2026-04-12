@@ -10,7 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 
@@ -25,10 +25,10 @@ pair pt(real t){return t*A+(1-t)*B;}
 
 draw(pt(-0.6)--pt(1.4),Blue);
 
-xaxis(0,5.7,RightTicks);
-yaxis("$y$",0,4,LeftTicks());
+xaxis(0,5.7,Red,RightTicks);
+yaxis("$y$",0,4,Red,LeftTicks());
 
-labelx("$x$",5.5,S);
+labelx("$x$",5.5,S,Red);
 
 pair P=pt(0.4);
 pair Pl=(A.x,P.y);
@@ -40,6 +40,6 @@ draw(A--Ab--B);
 draw(shift(Pl)*box((0,0),(0.2,0.2)));
 draw(shift(Ab)*box((0,0),(0.2,0.2)));
 
-dot("$A$",A,NE,Blue);
-dot("$B$",B,NE,Blue);
-dot("$P=(x,y)$",P,NE,Blue);
+dot("$A$",A,NE,lgreen);
+dot("$B$",B,NE,lgreen);
+dot("$P=(x,y)$",P,NE,lgreen);

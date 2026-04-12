@@ -4,10 +4,17 @@
 \usepackage[fleqn]{amsmath}
 
 \usepackage[svgnames,x11names]{xcolor}
-\colorlet{Dgreen}{ForestGreen!98!black}
-\colorlet{Dpink}{DeepPink!85!black}
-%Blue, BlueViolet, Brown, Crimson,
-%Teal, blue, Green
+%Requires contrast ration 4.5 for AA
+%asy: write(hex(heavygreen)); to return hex codes for asy colors
+%pen lgreen=rgb("00a000"); to define via hex codes
+
+\definecolor{mRed}{HTML}{EB0000}%Red 3.99
+\definecolor{dRed}{HTML}{E50000}%Red against lime thm background 4.52
+\definecolor{mMagenta}{HTML}{D000D3}%Magenta: 3.13
+\definecolor{mPink}{HTML}{E5007E}%DeepPink: 3.63
+\definecolor{mGreen}{HTML}{008A00}%lgreen(00a000)/heavygreen/LimeGreen/Lime: 3.48/2.45/2.11/1.37 (Green 5.13)
+\definecolor{mOrange}{HTML}{AE6200}%Orange: 1.97
+%No problem: Blue, BlueViolet, Brown, Crimson, DarkOrchid, Green, MediumVioletRed, Teal
 
 \usepackage{graphicx}
 \usepackage{polynom}

@@ -10,6 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
+pen lgreen=rgb("00a000");
 
 import graph;
 

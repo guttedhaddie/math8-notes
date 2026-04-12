@@ -169,10 +169,10 @@ Functions can be represented in various ways. We illustrate a few in an example.
 	  \emph{Table}\lstsp This presentation is most helpful when the domain is very small.
 	  \begin{description}
 	  	\item[\normalfont\emph{Arrows}] Also useful when the domain is small. Both this and the table describe $f$ when $\dom f=\{-1,0,1,2,3\}$ and $\operatorname{range}f=\{0,1,4,9\}$.
-	  	\item[\normalfont\emph{Graph}] This is the set of ordered pairs $\bigl\{\bigl(x,x^2\bigr):x\in\dom f\bigr\}$. In the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\par
+	  	\item[\normalfont\emph{Graph}] This is the set of ordered pairs $\big\{\big(x,x^2\big):x\in\dom f\big\}$. In the context of the formal definition (\ref{defn:function}), \emph{the graph is the function!}\par
 	  	For formulæ whose inputs and outputs are real numbers, two conventions are often observed:
 		 	\begin{itemize}
-		 	  \item The \textcolor{Crimson}{domain} is \emph{implied} to be all values for which the formula makes sense (don't do silly stuff like dividing by zero!).
+		 	  \item The \textcolor{mRed}{domain} is \emph{implied} to be all values for which the formula makes sense (don't do silly stuff like dividing by zero!).
 				\item The codomain is the set of real numbers.
 			\end{itemize}
 			If no other information is provided, we'd assume that the formula $f(x)=x^2$ represents a function $f:\R\to\R$, in which case the \textcolor{Brown}{range} (the set of realized outputs) is the interval
@@ -180,9 +180,9 @@ Functions can be represented in various ways. We illustrate a few in an example.
 				\operatorname{range}f=\{x^2\in\R:x\in\R\}=[0,\infty)
 			\]
 			\smallskip
-			For `calculus functions' like this, the vertical line test ($\ast$) really does involve \textcolor{Teal}{vertical lines}; every vertical line intersects the graph in precisely one point.
+			For `calculus functions' like this, the vertical line test ($\ast$) really does involve \textcolor{mPink}{vertical lines}; every vertical line intersects the graph in precisely one point.
 			\smallbreak
-			In the picture, the \textcolor{Dpink}{dots} are the graph when the domain is the set $\{-1,0,1,2,3\}$ (as described in the table/arrow-diagram).
+			In the picture, the \textcolor{mGreen}{dots} are the graph when the domain is the set $\{-1,0,1,2,3\}$ (as described in the table/arrow-diagram).
 	  \end{description} 
  	\end{minipage}
   \hfill
@@ -325,7 +325,7 @@ Abstract concepts in mathematics are very often just a way of writing down all p
 					f(x)&1&1.5&2&2.5&3
 				\end{array}
 			\]
-			Joining these points, it certainly appears as if the graph is a straight line. At this stage you may have enough to convince a middle-school student.
+			Joining these \textcolor{mGreen}{points}, it certainly appears as if the graph is a \textcolor{Blue}{straight line}. At this stage you may have enough to convince a middle-school student.
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
@@ -467,11 +467,11 @@ Here is an alternative visualization of a straight line. Imagine placing a \emph
 \]
 
 \begin{minipage}[t]{0.65\linewidth}\vspace{-8pt}
-	To describe the line through points $A$ and $B$, place a virtual ruler so that \textcolor{Crimson}{0} corresponds to $A$ and \textcolor{Crimson}{1} to $B$. \textcolor{Brown}{Slide} the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a \emph{parallel line} through the origin, with $B$ transformed to $P=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line:
+	To describe the line through points $A$ and $B$, place a virtual ruler so that 0 corresponds to $A$ and 1 to $B$. Slide the ruler so that $A$ moves to the origin $O$: this amounts to \emph{subtracting} the co-ordinates of $A$ from all points on the line. We obtain a \emph{parallel line} through the origin, with $B$ transformed to $P=B-A$. Putting this together with ($\ast$) results in a parametrized description of the line:
 	\begin{align*}
-		(x,y) &=A+\textcolor{Crimson}{t}P
-		=A+\textcolor{Crimson}{t}(B-A)\\
-		&=(1-\textcolor{Crimson}{t})A+\textcolor{Crimson}{t}B
+		(x,y) &=A+\mathcolor{mMagenta}{t}P
+		=A+\mathcolor{mMagenta}{t}(B-A)\\
+		&=(1-\mathcolor{mMagenta}{t})A+\mathcolor{mMagenta}{t}B
 	\end{align*}
 	\end{minipage}
 	\hfill
@@ -480,7 +480,7 @@ Here is an alternative visualization of a straight line. Imagine placing a \emph
 	\end{minipage}
 	\bigbreak
 
-The points corresponding to various values of $t$ are \textcolor{Crimson}{marked}.\medbreak
+The points corresponding to various values of $t$ are \textcolor{mMagenta}{marked}.\medbreak
 
 Contrast this description with the linear polynomial approach. One challenge is that a line may be parametrized using infinitely many different rulers (choose \emph{any} two points on the line!), whereas the linear polynomial description is unique. Does the parametrized approach have any advantages? Which description is easier to understand or to work with?\smallbreak
 
@@ -579,20 +579,20 @@ though the required creativity can make this difficult, particularly when coeffi
 \begin{example}{}{quadraticeasy}
 	Describe/graph the parabola $y=-3x^2+12x+4$.\par
 	\begin{minipage}[t]{0.69\linewidth}\vspace{-5pt}
-		Pay attention to the $x$ terms; $-3x^2+12x=-3(x^2-\textcolor{Crimson}{4}x)$. Observe that
+		Pay attention to the $x$ terms; $-3x^2+12x=-3(x^2-\textcolor{mGreen}{4}x)$. Observe that
 		\[
-			-3(x-\textcolor{Crimson}{2})^2=-3(x^2-\textcolor{Crimson}{4}x+4)=-3x^2+12x-12
+			-3(x-\textcolor{mGreen}{2})^2=-3(x^2-\textcolor{mGreen}{4}x+4)=-3x^2+12x-12
 		\]
-		gives most of what we want: note how we \emph{divided the \textcolor{Crimson}{$x$-coefficient} by two.} To finish, just tidy everything up,
+		gives most of what we want: note how we \emph{divided the \textcolor{mGreen}{$x$-coefficient} by two.} To finish, just tidy everything up
 		\[
-			y=(-3x^2+12x-12)+16=-3(x-\textcolor{Crimson}{2})^2+\textcolor{Dgreen}{16}
+			y=(-3x^2+12x-12)+16=-3(x-\textcolor{mGreen}{2})^2+\textcolor{mMagenta}{16}
 		\]
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.29\linewidth}\vspace{-18pt}
 		\hfill\includegraphics[alt={graph of a quadratic polynomial opening downwards}]{poly-quad2}
 	\end{minipage}\medbreak
-	The parabola therefore opens downwards ($-3<0$) with its vertex, here the maximum, at $(x,y)=(\textcolor{Crimson}{2},\textcolor{Dgreen}{16})$. Otherwise said, we translate the parabola $y=-3x^2$ to the right by \textcolor{Crimson}{2} and up by \textcolor{Dgreen}{16}.
+	The parabola therefore opens downwards ($-3<0$) with its vertex (maximum) at $(x,y)=(\textcolor{mGreen}{2},\textcolor{mMagenta}{16})$. Otherwise said, we translate the parabola $y=-3x^2$ to the right by \textcolor{mGreen}{2} and up by \textcolor{mMagenta}{16}.
 \end{example}
 
 This is easy, if intimidating, to repeat in general:
@@ -770,8 +770,8 @@ We'll examine this more closely at the end of this section. For students first l
 		There are only \emph{eight possible candidates} for $n$, and it doesn't take long to test them all:
 		\[
 			\begin{array}{c|cccccccc}
-				n&1&-1&\textcolor{Crimson}{3}&-3&5&\textcolor{Crimson}{-5}&15&-15\\\hline
-				n+2&3&1&\textcolor{Crimson}{5}&-1&7&\textcolor{Crimson}{-3}&17&-13%\\\hline
+				n&1&-1&\textcolor{mRed}{3}&-3&5&\textcolor{mRed}{-5}&15&-15\\\hline
+				n+2&3&1&\textcolor{mRed}{5}&-1&7&\textcolor{mRed}{-3}&17&-13%\\\hline
 				%n(n+2)=15\text{?}&-12&-17&\textcolor{red}{0}&-12&20&\textcolor{red}{0}&240&180
 			\end{array}
 		\]
@@ -783,7 +783,7 @@ We'll examine this more closely at the end of this section. For students first l
 		Remembering that $p,q$ are \emph{integers,} we rearrange this equation in two ways:
 		\begin{description}
 		  \item[$\textcolor{Blue}{p}(p+2q)=15q^2$]\lstsp Since the \textcolor{Blue}{left side} is a multiple of $p$, so also is the \emph{right.} Since $p,q$ have no common factors, it follows that $p$ divides into 15 (15 is a multiple of $p$).
-		  \item[$p^2=\textcolor{Crimson}{q}(15q-2p)$]\lstsp Since the \textcolor{Crimson}{right side} is a multiple of $q$, so also is the \emph{left.} Since $p,q$ have no common factors, we conclude that $q=1$.
+		  \item[$p^2=\textcolor{mRed}{q}(15q-2p)$]\lstsp Since the \textcolor{mRed}{right side} is a multiple of $q$, so also is the \emph{left.} Since $p,q$ have no common factors, we conclude that $q=1$.
 		\end{description}
 		The upshot is that the only rational solutions to $f(x)=0$ are the two \emph{integers} we've already found.
 	\end{description}
@@ -807,7 +807,7 @@ We'll examine this more closely at the end of this section. For students first l
 Our analysis in Example \ref{ex:ratroots1} generalizes to a famous result.
 
 \begin{thm}{Rational Roots}{}
-	Suppose $f(x)=\textcolor{Blue}{a_n}x^n+\cdots+\textcolor{Crimson}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in simplest terms, then $\textcolor{Blue}{q}$ divides into $\textcolor{Blue}{a_n}$ and $\textcolor{Crimson}{p}$ into $\textcolor{Crimson}{a_0}$.\par
+	Suppose $f(x)=\textcolor{Blue}{a_n}x^n+\cdots+\textcolor{dRed}{a_0}$ has \emph{integer} coefficients where $a_n$ and $a_0$ are non-zero. If $x=\frac pq$ is a rational root in simplest terms, then $\textcolor{Blue}{q}$ divides into $\textcolor{Blue}{a_n}$ and $\textcolor{dRed}{p}$ into $\textcolor{dRed}{a_0}$.\par
 	In particular, if $\textcolor{Blue}{a_n=1}$, then the only possible rational roots are integers.
 \end{thm}
 
@@ -816,9 +816,9 @@ While you are unlikely to teach the rational roots theorem to grade-school stude
 \begin{proof}
 	Substitute $\frac pq$ into $f(x)$ and multiply by $q^n$ to obtain an equation where everything is an \emph{integer}\vspace{-11pt}
 	\[
-		\underbrace{\textcolor{Blue}{a_np^n}+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\textcolor{Crimson}{p}$}} \hspace{-129pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+\textcolor{Crimson}{a_0q^n}}^{\text{divisible by $\textcolor{Blue}{q}$}}=0
+		\underbrace{\mathcolor{Blue}{a_np^n}+a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}_{\text{divisible by $\mathcolor{mRed}{p}$}} \hspace{-135pt} \overbrace{\phantom{a_{n-1}p^{n-1}q+\cdots+a_1pq^{n-1}}+\mathcolor{mRed}{a_0q^n}}^{\text{divisible by $\mathcolor{Blue}{q}$}}=0
 	\]
-	By considering the braced terms we see that $\textcolor{Blue}{a_np^n}$ is divisible by $\textcolor{Blue}{q}$ and $\textcolor{Crimson}{a_0q^n}$ by $\textcolor{Crimson}{p}$. Since $p,q$ have no common factors, we obtain the result.
+	By considering the braced terms we see that $\mathcolor{Blue}{a_np^n}$ is divisible by $\mathcolor{Blue}{q}$ and $\mathcolor{mRed}{a_0q^n}$ by $\mathcolor{mRed}{p}$. Since $p,q$ have no common factors, we obtain the result.
 \end{proof}
 
 
@@ -829,13 +829,13 @@ While you are unlikely to teach the rational roots theorem to grade-school stude
 		\[
 			\def\arraystretch{1.2}
 			\begin{array}{c|cccccccc}
-				x&1&\textcolor{Crimson}{-1}&3&-3&\frac 12&-\frac 12&\textcolor{Crimson}{\frac 32}&-\frac 32\\\hline
-				2x-1&1&\textcolor{Crimson}{-3}&5&-7&0&-2&\textcolor{Crimson}{2}&-4
-				%x(2x-1)=3\text{?}&&\checkmark&5&-7&0&-2&\textcolor{red}{2}&-4\\\hline
-				%f(x)&-2&\textcolor{red}{0}&12&18&-3&-2&\textcolor{red}{0}&3\\\hline
+				x&1&\mathcolor{mRed}{-1}&3&-3&\frac 12&-\frac 12&\mathcolor{mRed}{\frac 32}&-\frac 32\\\hline
+				2x-1&1&\mathcolor{mRed}{-3}&5&-7&0&-2&\mathcolor{mRed}{2}&-4
+				%x(2x-1)=3\text{?}&&\checkmark&5&-7&0&-2&\mathcolor{red}{2}&-4\\\hline
+				%f(x)&-2&\mathcolor{red}{0}&12&18&-3&-2&\mathcolor{red}{0}&3\\\hline
 			\end{array}
 		\]
-		You may prefer to compute $f(x)$ directly: as in the previous example, since we already know $x$ it is quicker to check whether $x(2x-1)=3$ rather than $f(x)=0$. The two roots are \textcolor{Crimson}{indicated}; it is easily verified that the polynomial can be factorized
+		You may prefer to compute $f(x)$ directly: as in the previous example, since we already know $x$ it is quicker to check whether $x(2x-1)=3$ rather than $f(x)=0$. The two roots are \textcolor{mRed}{indicated}; it is easily verified that the polynomial can be factorized
 		\[
 			f(x)=(2x-3)(x+1)
 		\]
@@ -874,19 +874,19 @@ Unless there are very few candidates, checking all possibilities is time-consumi
 	  
 	  \item[\normalfont\emph{Term-by-term factorization}]\lstsp With practice, you can construct the required quadratic factor term-by-term as you go without showing any work. \emph{Teaching} such an approach is likely a terrible idea unless your students are already very comfortable\ldots
 	  \begin{enumeratea}
-	    \item To create $\textcolor{Crimson}{x^3}$, the first term of the quadratic factor must be $\textcolor{Crimson}{x^2}$ 
+	    \item To create $\mathcolor{mRed}{x^3}$, the first term of the quadratic factor must be $\mathcolor{mRed}{x^2}$ 
 	    \[
-	    	\textcolor{Crimson}{x^3}\textcolor{Blue}{\,-\,x^2}\textcolor{Green}{\,-\,7x}\textcolor{Purple}{\,+\,10}=(x-2)(\textcolor{Crimson}{x^2}\,+\cdots)=\textcolor{Crimson}{x^3}\textcolor{Blue}{\,-\,2x^2}+\cdots
+	    	\mathcolor{mRed}{x^3}\mathcolor{Blue}{-x^2}\mathcolor{mGreen}{-7x}\mathcolor{Purple}{+10}=(x-2)(\mathcolor{mRed}{x^2}+\cdots)=\mathcolor{mRed}{x^3}\mathcolor{Blue}{-2x^2}+\cdots
 	    \]
-	    \item We have $\textcolor{Blue}{-2x^2}$ but want $\textcolor{Blue}{-x^2}$. To correct this, add $\textcolor{Green}{x}$ to the quadratic ($\textcolor{Green}{x^2}\textcolor{Blue}{\,-\,2x^2}=\textcolor{Blue}{-x^2}$):
+	    \item We have $\mathcolor{Blue}{-2x^2}$ but want $\mathcolor{Blue}{-x^2}$. To correct this, add $\mathcolor{mGreen}{x}$ to the quadratic ($\mathcolor{mGreen}{x^2}\mathcolor{Blue}{-2x^2}=\mathcolor{Blue}{-x^2}$):
 	    \[
-	    	(x-2)(x^2+\,\textcolor{Green}{x}\,+\cdots)=\textcolor{Crimson}{x^3}\textcolor{Blue}{\,-\,x^2}\,\textcolor{Green}{-\,2x}+\cdots
+	    	(x-2)(x^2+\mathcolor{mGreen}{x}+\cdots)=\mathcolor{mRed}{x^3}\mathcolor{Blue}{-x^2}\mathcolor{mGreen}{-2x}+\cdots
 	    \]
-	    \item We have \textcolor{Green}{$-2x$} but want $\textcolor{Green}{-7x}$. To fix, subtract $\textcolor{Purple}{5}$ from the quadratic ($\textcolor{Purple}{-5x}\textcolor{Green}{\,-\,2x}=\textcolor{Green}{-7x}$):
+	    \item We have $\mathcolor{Green}{-2x}$ but want $\mathcolor{Green}{-7x}$. To fix, subtract \textcolor{Purple}{5} from the quadratic ($\mathcolor{Purple}{-5x}\mathcolor{mGreen}{-2x}=\mathcolor{mGreen}{-7x}$):
 	    \[
-	    	(x-2)(x^2+x-\textcolor{Purple}{\,5})=\textcolor{Crimson}{x^3}\textcolor{Blue}{\,-\,x^2}\,\textcolor{Green}{-\,7x}\textcolor{Purple}{\,+\,10}
+	    	(x-2)(x^2+x-\mathcolor{Purple}{5})=\mathcolor{mRed}{x^3}\mathcolor{Blue}{-x^2}\,\mathcolor{mGreen}{-7x}\mathcolor{Purple}{+10}
 	    \]
-	    \item Since the last term $\textcolor{Purple}{10}$ is correct, the factorization worked!
+	    \item Since the last term \textcolor{Purple}{10} is correct, the factorization worked!
 		\end{enumeratea}
 	\end{description}
 	
@@ -979,12 +979,13 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 \end{example}
 
 
+\vfil
 
 
 \begin{exercises}{}{}
 	\hangindent\leftmargini
 	\emph{Key concepts: Rational Root Theorem, \ Factorizing, \ Factor Theorem}
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
 	  \item Apply the rational roots theorem to the polynomial $x^3+2x^2-x-2$ and use it to factorize the polynomial.
 	  
 	  \item Repeat the previous question for the polynomial $6x^2+x-2$.
@@ -1003,7 +1004,11 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 	  and thus demonstrate that it has exactly two real roots.
 	  
 	  
-	  \item Students often follow a heuristic when trying to factorize a polynomial $f(x)=0$: try some small integer values for $x$ until you find a root, then apply long division. For what types of polynomial $f(x)$ will this approach work? When will it fail? Explain.
+	  \item Students often follow a heuristic when trying to factorize a polynomial $f(x)=0$:
+	  \begin{quote}
+	  	Try some small integer values for $x$ until you find a root, then apply long division.
+	  \end{quote}
+	  Discuss when this might or might not be a good idea. For what types of polynomial $f(x)$ will this approach work? When will it fail?
 	  
 		
 		\item The polynomial $f(x)=2x^4-3x^3+2x^2+3x-9$ has only one rational root. Find it and factorize the polynomial as $f(x)=g(x)q(x)$ where $\deg g=1$.
@@ -1029,6 +1034,10 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 	    \item Show that $\deg(fg)=kl$.
 	    \item Is it always the case that $\deg(f+g)=\max(k,l)$? Why/why not?
 	  \end{enumerate}
+	  
+	  
+	  \item You are given a cubic polynomial $f(x)=x^3+7x^2+px+q$ where $p,q$ are (as yet) unknown.\par
+	  If $f(x)=0$ has three real roots $x=1,2$ and $c$, find $c$ and the coefficients $p,q$.
 	\end{enumerate}
 \end{exercises}
 

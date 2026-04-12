@@ -10,8 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-pen Dpink=defaultpen+0.85*DeepPink+0.15*black;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 
@@ -29,13 +28,13 @@ pair pt(real t){return (1-t)*A+t*B;}
 draw(pt(-0.6)--pt(3.6),Blue);
 
 for(int i=0; i<=3; ++i){
-	dot(pt(i),Crimson);
+	dot(pt(i),lgreen);
 }
 
-xaxis(0,3.6,RightTicks(new real[]{0,1,2,3,4},new real[]{0.5,1.5,2.5,3.5}));
-yaxis(0,LeftTicks(new real[]{0,1,2,3},new real[]{0.5,1.5,2.5}));
+xaxis(0,3.6,Red,RightTicks(new real[]{0,1,2,3,4},new real[]{0.5,1.5,2.5,3.5}));
+yaxis(0,Red,LeftTicks(new real[]{0,1,2,3},new real[]{0.5,1.5,2.5}));
 
-labelx("$x$",3.7,2S);
-labely("$y$",2.7,2W);
+labelx("$x$",3.7,2S,Red);
+labely("$y$",2.7,2W,Red);
 
 

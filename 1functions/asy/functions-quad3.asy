@@ -10,8 +10,7 @@ texpreamble("\usepackage{amsmath}
 ");
 
 import x11colors;
-pen Dpink=defaultpen+0.85*DeepPink+0.15*black;
-
+pen lgreen=rgb("00a000");
 import graph;
 
 size(110,0);
@@ -21,18 +20,17 @@ real f(real x){return x^2;}
 path p=graph(f,-3.3,3.3);
 draw(p,Blue);
 
-//xaxis(-3.3,3.5,red,RightTicks(new real[]{-2,0,2}));
-xaxis(-3.3,3.5,Crimson,RightTicks(Ticks=new real[]{-2,0,2},ticks=new real[]{-3,-1,1,3}));
+xaxis(-3.3,3.5,Red,RightTicks(Ticks=new real[]{-2,0,2},ticks=new real[]{-3,-1,1,3}));
 yaxis("$y$",0,Brown,LeftTicks(Ticks=new real[]{2,4,6,8,10},ticks=new real[]{1,3,5,7,9,11}));
 
-draw((2,0)--(2,11),dashed+Teal);
+draw((2,0)--(2,11),dashed+DeepPink);
 
 dotfactor=8;
 for(int n=-1; n<=3; ++n){
-		dot((n,f(n)),Dpink);
+		dot((n,f(n)),lgreen);
 	}
 
-labelx("$x$",3.2,Crimson);
+labelx("$x$",3.2,Red);
 
 
 
