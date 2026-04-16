@@ -25,7 +25,7 @@ real c=(B.x/(B.x-A.x))*(A.y-B.y)+B.y;
 
 pair pt(real t){return (1-t)*A+t*B;}
 
-draw(pt(-0.6)--pt(3.6),Blue);
+draw(pt(-0.6)--pt(3.6),Blue+linewidth(1));
 
 for(int i=0; i<=3; ++i){
 	dot(pt(i),lgreen);

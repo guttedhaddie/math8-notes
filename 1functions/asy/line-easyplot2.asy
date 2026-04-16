@@ -41,7 +41,7 @@ ytick(Label("$1+c$",align=W),B.y,W,Red);
 ytick(Label("$mx+c$",align=W),P.y,W,Red);
 
 
-draw(pt(-0.6)--pt(3.6),Blue);
+draw(pt(-0.6)--pt(3.6),Blue+linewidth(1));
 draw("$m$",Bb--B);
 draw(A--Pb);
 draw("$mx$",Pb--P);

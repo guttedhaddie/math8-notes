@@ -984,7 +984,8 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 
 \begin{exercises}{}{}
 	\hangindent\leftmargini
-	\emph{Key concepts: Rational Root Theorem, \ Factorizing, \ Factor Theorem}
+	\emph{Key concepts: \ Rational Root Theorem, \ Factorizing, \ Factor Theorem}
+	
 	\begin{enumerate}
 	  \item Apply the rational roots theorem to the polynomial $x^3+2x^2-x-2$ and use it to factorize the polynomial.
 	  
@@ -1041,6 +1042,7 @@ In elementary school, this is typically written $m\div n=q\,\textsf{r}\,r$ \ ($q
 	\end{enumerate}
 \end{exercises}
 
+
 \clearpage
 
 
@@ -1068,137 +1070,141 @@ The informal idea of an inverse function is that $f^{-1}$ takes the \emph{output
 		The inverse $f^{-1}$ is the function obtained by \emph{reversing the arrows} or flipping the table upside-down.
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
+	\begin{minipage}[t]{0.25\linewidth}\vspace{-13pt}
 		\hfill
-		\includegraphics{inverse-easy}
+		\includegraphics[alt={find the inverse by reversing the arrows}]{inverse-easy}
 	\end{minipage}
 \end{example}
 
 
 \begin{defn}{}{inversefn}
-	A function $f:A\to B$ is \emph{invertible} if it has an \emph{inverse}: a function $f^{-1}:B\to A$ for which
+	A function $f:A\to B$ is \emph{invertible} if it has an \emph{inverse}: a function $f^{-1}:B\to A$ which, for all possible values $x\in A$ and $y\in B$, satisfies
 	\[
 		f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y \tag{$\ast$}
 	\]
-	for all possible inputs $x\in A$ and $y\in B$.
 \end{defn}
 
-Certainly Example \ref{ex:easyinvfunc} satisfies the input--output properties ($\ast$). Our concerns are identifying when a function is invertible, how to make it so if not, and how to compute an inverse. %To motivate this, we consider two simple examples.
+Certainly Example \ref{ex:easyinvfunc} satisfies the input--output properties ($\ast$). Our concerns are identifying when a function is invertible, how to make it so if not, and how to compute an inverse.
 
-
-
-\begin{examples}{}{invexs}
-	%\exstart Define a simple function using a table or an arrow diagram
-	% \begin{enumerate}\setcounter{enumi}{1}
-	% \begin{minipage}[t]{0.74\linewidth}\vspace{-17pt}
-	% \item[]\[\def\arraystretch{1.1}\begin{array}{c|cccc}
-	% x&1&2&3&4\\\hline
-	% f(x)&4&2&5&7
-	% \end{array}\qquad\begin{array}{c|cccc}
-	% y&4&2&5&7\\\hline
-	% f^{-1}(y)&1&2&3&4
-	% \end{array}
-	% \]
-	% Its inverse $f^{-1}$ is plainly the function obtained by \emph{reversing the arrows} or flipping the table upside-down. Certainly\vspace{-5pt}
-	% \end{minipage}\hfill\begin{minipage}[t]{0.25\linewidth}\vspace{-17pt}
-	% \flushright\includegraphics{inverse-easy}
-	% \end{minipage}\par
-	% \[f^{-1}\bigl(f(x)\bigr)=x\quad\text{and}\quad f\bigl(f^{-1}(y)\bigr)=y\tag{$\ast$}\]
-	% for all possible inputs $x,y$ to either function, so inputs are indeed recovered from outputs.
-	\exstart The function $f(x)=2x$ has inverse $f^{-1}(y)=\frac y2$.
+\begin{example}{}{invex1}
+	The simple linear function $f:\R\to\R$ defined by $f(x)=2x$ has inverse $f^{-1}(y)=\frac y2$. Its \textcolor{Blue}{graph} admits a similar interpretation to the arrow diagram.\par
+	\begin{minipage}[t]{0.75\linewidth}\vspace{0pt}
+		\begin{itemize}
+			\item The function takes an input $x$, moves it \textcolor{mGreen}{vertically} to the graph, then projects \textcolor{mGreen}{horizontally} to the $y$-axis. This interpretation is precisely the vertical line test (Definition \ref{defn:function})!
+			\item The inverse function $f^{-1}$ \emph{reverses the arrows}: project a value on the $y$-axis \textcolor{mMagenta}{horizontally} to the graph, and then \textcolor{mMagenta}{vertically} to the $x$-axis.
+		\end{itemize}
+		It is unnecessary, but you might want to re-draw the graph of the inverse function so that its domain (inputs) are on the horizontal axis. It is entirely up to you whether to also switch the labels $x$ and $y$.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.24\linewidth}\vspace{-23pt}
+		\hfill
+		\includegraphics[alt={the inverse of a straight line function is the same graph in reverse}]{inverses-line}
+	\end{minipage}
 	
-	\begin{enumerate}\setcounter{enumi}{1}
-			\item[]The input--output conditions $(\ast)$ are certainly satisfied.
-			\smallbreak
-		\begin{minipage}[t]{0.79\linewidth}\vspace{-10pt}
-			The \textcolor{Blue}{graph} admits an interpretation of $f^{-1}$ similar to the arrow diagram.
-			\begin{itemize}
-			  \item The function $f$ takes an input $x$, moves it \textcolor{Green}{vertically} to the graph, then \textcolor{Green}{projects} to the $y$-axis. This interpretation is precisely the vertical line test (Definition \ref{defn:function})!
-			  \item The inverse function \emph{reverses the arrows}: transport an input $y$ \textcolor{Orange}{horizontally} to the graph, then \textcolor{Orange}{project} to the $x$-axis.
-			\end{itemize}
-		\end{minipage}
+	\vspace{-20pt}
+	
+	\begin{center}
+		\begin{tabular}{c@{\qquad}c}
+			\includegraphics[alt={the inverse function with the input on the horizontal axis - no relabeling}]{inverses-line2}
+			&
+			\includegraphics[alt={the inverse function with the input on the horizontal axis - axes relabeled}]{inverses-line3}
+			\\
+			Axes reversed: $f^{-1}(y)=\frac y2$
+			&
+			Axes and labels reversed: $f^{-1}(x)=\frac x2$
+		\end{tabular}
+	\end{center}
+\end{example}
+
+
+Since we are interested in the question of \emph{which} functions can be inverted, it is helpful to consider a function where this arrow-reversing procedure fails.
+
+\begin{example}{}{invexs1}
+	Consider $f:\R\to\R$ where $f(x)=x^2-1$. This time, when we attempt to move a real number $y$ horizontally to the graph to compute $x=f^{-1}(y)$, we (usually) encounter one of two problems:\par
+	\begin{minipage}[t]{0.71\linewidth}\vspace{0pt}
+		\begin{enumeratea}
+			\item If $y>-1$, the horizontal line has \textcolor{mMagenta}{two intersections} with the graph, producing  \textcolor{mMagenta}{two choices} of $x$.
+			\item If $y<-1$, the horizontal line has \textcolor{BlueViolet}{no intersection} with the graph, so there is \textcolor{BlueViolet}{no way to choose} a suitable $x$.
+		\end{enumeratea}
+		The naïve approach of \emph{reversing the arrows} fails to define an inverse. However, a simple remedy arises from staring at the graph:
+		\begin{itemize}
+			\item Problem (a) goes away if we delete the \textcolor{Brown}{left half} of the graph. Otherwise said, we \emph{restrict the domain} of $f$ to $[0,\infty)$. 
+			 \item Problem (b) disappears if we insist that $y\ge-1$. Equivalently, we \emph{restrict the codomain} of $f$ to its \emph{range} $[-1,\infty)$. 
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.28\linewidth}\vspace{-10pt}
 		\hfill
-		\begin{minipage}[t]{0.2\linewidth}\vspace{-25pt}
-			\hfill
-			\includegraphics{inverses-line}
-		\end{minipage}
-		\smallbreak
-
-			\item\label{ex:invexs1} Consider $f(x)=x^2-1$. This time, when attempting to move a real number $y$ \textcolor{Orange}{horizontally} to the graph, we usually encounter one of two problems:
-		\begin{minipage}[t]{0.71\linewidth}\vspace{-5pt}
-			\begin{enumerate}
-			  \item If $y>-1$, there are \textcolor{Orange}{two choices} of $x$ (two intersections).
-			  \item If $y<-1$, there is \textcolor{Purple}{no intersection} with the graph.
-			\end{enumerate}
-			The naïve approach of \emph{reversing the arrows} is insufficient to define an inverse. However, a simple remedy arises by staring at the graph:
-			\begin{itemize}
-			  \item Problem (a) goes away if we delete the \textcolor{Brown}{left half} of the graph. Equivalently, we \emph{restrict the domain} of $f$ to $[0,\infty)$. 
-			  \item Problem (b) disappears if we insist that $y\ge-1$. Equivalently, we \emph{restrict the codomain} of $f$ to its \emph{range} $[-1,\infty)$. 
-			\end{itemize}
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
-			\hfill
-			\includegraphics{inverses-quad}
-		\end{minipage}
-		\medbreak	
-		After making these restrictions so that $f:[0,\infty)\to [-1,\infty)$, it is easily checked that
-		\[
-			f^{-1}(y)=\sqrt{y+1},\quad f^{-1}:[-1,\infty)\to[0,\infty)
-		\]
-		satisfies the input--output conditions $(\ast)$ and is therefore the inverse of $f$:
-		\begin{gather*}
-			x\in [0,\infty)\implies f^{-1}\bigl(f(x)\bigr) =\sqrt{(x^2-1)+1}=x\\
-			y\in[-1,\infty)\implies f\bigl(f^{-1}(y)\bigr)=\bigl(\sqrt{y+1}\bigr)^2-1=y
-		\end{gather*}
-	\end{enumerate}
-\end{examples}
+		\includegraphics[alt={trying to invert a quadratic function}]{inverses-quad}
+	\end{minipage}
+	\medbreak	
+	After making these restrictions so that $f:[0,\infty)\to [-1,\infty)$, we have a nicely defined inverse function. Indeed
+	\[
+		f^{-1}:[-1,\infty)\to[0,\infty),\quad f^{-1}(y)=\sqrt{y+1}
+	\]
+	is easily seen to satisfy the input--output conditions $(\ast)$:
+	\begin{gather*}
+		x\in [0,\infty)\implies f^{-1}\big(f(x)\big) =\sqrt{(x^2-1)+1}=\sqrt{x^2}=x \tag{since $x\ge 0$!!!}\\
+		y\in[-1,\infty)\implies f\big(f^{-1}(y)\big) =\big(\sqrt{y+1}\big)^2-1=y
+	\end{gather*}
+	We could have made a different choice in part (a) by instead deleting the \textcolor{Blue}{right side} of the graph. This amounts to restricting the domain to $\dom f=(-\infty,0]$ and produces a \emph{different inverse function}. We'll return to this example shortly. The takeaway at present should be the importance of paying attention to \emph{domains} and \emph{ranges}\ldots 
+\end{example}
 
 
 
-\paragraph{What makes a function invertible?}
+\subsubsection*{What makes a function invertible?}
 
-The fixes in the last example can be rephrased succinctly:
+The fixes in the last example can be rephrased succinctly. A function is invertible precisely when it passes the\ldots  
 \begin{quote}
 	\texthigh{
-		Horizontal line test: every horizontal line must intersect the graph exactly once%
+		Horizontal line test: every horizontal line intersects the graph exactly once%
 	}
 \end{quote}
-This unpacks to two conditions, each of which addresses one of the problems seen in the example.
+This unpacks to two conditions, each of which addresses one of the problems in the example.
 
 
 \begin{defn}{}{}
 	Let $f:A\to B$ be a function. We say that $f$ is:
 	\begin{enumeratea}
-		\item \emph{1--1/one-to-one} if distinct inputs $x_1\neq x_2\in A$ have distinct outputs $f(x_1)\neq f(x_2)$. Equivalently,
+		\item \emph{One-to-one} (1--1) if distinct inputs $x_1\neq x_2\in A$ have distinct outputs $f(x_1)\neq f(x_2)$. Otherwise said, there is \emph{at most} one way to achieve a given output: 
 	  \[
-	  	\text{Given $x_1,x_2\in A$, we have }\ f(x_1)=f(x_2)\implies x_1=x_2
+	  	f(x_1)=f(x_2)\implies x_1=x_2
 	  \]
-	  If $A,B$ are sets of real numbers, each horizontal line intersects the graph \textcolor{orange}{at most once}.
+	  If $A,B$ are sets of real numbers with $A$ along the $x$-axis, this is the assertion that each horizontal line intersects the graph \textcolor{dMagenta}{at most once}.
 	  \item \emph{Onto} if $\operatorname{range}f=B$. Equivalently,
 	  \[
-	  	\text{Given $y\in B$, there is some $x\in A$ for which $y=f(x)$}
+	  	\text{Given $y\in B$, there is some input $x\in A$ for which $y=f(x)$}
 	  \]
-	  If $A,B\subseteq\R$, the horizontal line through $y\in B$ intersects the graph \textcolor{Purple}{at least once}.
+	  Again, if $A,B\subseteq\R$ with $A$ along the $x$-axis, this says that the horizontal line through $y\in B$ intersects the graph \textcolor{BlueViolet}{at least once}.
 	\end{enumeratea}
 \end{defn}
 
-Putting these ideas together, a function is both 1--1 and onto precisely when every $y\in B$ corresponds to a \emph{unique} $x\in A$ for which $y=f(x)$. In summary:
+Putting these ideas together, a function $y=f(x)$ is both 1--1 and onto precisely when every output $y\in B$ corresponds to a \emph{unique input} $x\in A$. In summary:
 
 \begin{thm}{}{}
-	$f:A\to B$ is invertible if and only if it is both 1--1 and onto. Its inverse is the function $f^{-1}:B\to A$ such that $f^{-1}(y)=x$ whenever $y=f(x)$.
+	A function $f:A\to B$ is invertible if and only if it is both 1--1 and onto.\smallbreak
+	In such a case, it inverse is the function $f^{-1}:B\to A$ such that $f^{-1}(y)=x$ whenever $y=f(x)$.\smallbreak
+	Moreover, $\dom f^{-1}=\operatorname{range}f=B$ and $\operatorname{range} f^{-1}=\dom f=A$.
 \end{thm}
 
-%Let us revisit our previous example in this context.
+Let us revisit our previous example in this context.
 
-\begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,II}{}
-	Consider the two properties in the context of the example $f(x)=x^2-1$:
+\begin{example*}{\ref{ex:invexs1}, mk.\,II}{}
+	Consider the two properties in the context of the function $f:\R\to\R$ with formula $f(x)=x^2-1$:
 	\begin{enumeratea}
-		\item $f(x_1)=f(x_2)\Longrightarrow x_1^2-1=x_2^2-1\Longrightarrow x_1^2=x_2^2\Longrightarrow x_1=\pm x_2$.\par
-		To force $f$ to be 1--1, it is enough to \emph{restrict the domain} so that all $x$ have the same sign: the obvious choice is $\dom f=[0,\infty)$.
-		\item $\operatorname{range} f=\bigl\{x^2-1:x\in[0,\infty)\bigr\}=[-1,\infty)$. We force $f$ to be onto by \emph{restricting its codomain} to $[-1,\infty)$.
+		\item Suppose $x_1,x_2$ are real numbers, then 
+		\begin{align*}
+			f(x_1)=f(x_2)&\implies x_1^2-1=x_2^2-1\implies x_1^2=x_2^2\\
+			&\implies x_1=\pm x_2
+		\end{align*}
+		To force $f$ to be 1--1, it is enough to \emph{restrict the domain} so that all $x$ have the same sign: the natural choice is $\dom f=[0,\infty)$.
+		\item Compute the range:
+		\[
+			\operatorname{range} f=\big\{x^2-1:x\in[0,\infty)\big\}=[-1,\infty)
+		\]
+		We therefore force $f$ to be onto by \emph{restricting its codomain} to $[-1,\infty)$.
 	\end{enumeratea}
-	The inverse function is obtained by solving $y=x^2-1$ for $x$:
+	After making these restrictions, the function $f:[0,\infty)\to[-1,\infty)$ is invertible. Its inverse function is obtained by solving $y=x^2-1$ for $x$:
 	\[
 		x^2=y+1\implies x=f^{-1}(y)=\sqrt{y+1}
 	\]
@@ -1207,92 +1213,112 @@ Putting these ideas together, a function is both 1--1 and onto precisely when ev
 
 
 
-\paragraph{An algorithm for inverting functions}
+\subsubsection*{An algorithm for inverting functions}
 
-Our discussion provides an algorithmic process for making a function $f:A\to B$ invertible and finding an inverse.
-\begin{enumeratea}
-	\item Check that $f$ is 1--1. If not, \emph{restrict the domain} until it is.
+Our discussions suggest an algorithmic process for making a function $f:A\to B$ invertible and for computing an inverse.
+\begin{enumerate}
+	\item Check that $f$ is 1--1. If not, \emph{restrict the domain} to make it so.
 	\item Check that $f$ is onto. If not, \emph{redefine} $B=\operatorname{range} f$.
-	\item Solve $y=f(x)$ for $x=f^{-1}(y)$.
-\end{enumeratea}
+	\item \emph{Solve} $y=f(x)$ for $x=f^{-1}(y)$.
+	\item (Optional) \emph{Switch the symbols} $x,y$ and write $y=f^{-1}(x)$.
+\end{enumerate}
 
-Since $x$ is typically preferred as an input, it is common to \emph{switch} $x,y$ at the end of step 3 and write $y=f^{-1}(x)$. If $A,B\subseteq\R$, switching $x\leftrightarrow y$ is equivalent to \emph{reflecting the graph} in the line $y=x$.\smallbreak
+The last optional step is because mathematical culture tends to prefer $x$ as an input. If $A,B\subseteq\R$, switching $x\leftrightarrow y$ is equivalent to \emph{reflecting the graph} in the line $y=x$. It is safest to do this step \emph{last}, since you will likely have to consider domains in step 3\ldots\smallbreak
 
-Note also that step (a) likely involves a \emph{choice}; depending on how you restrict the domain, you can find multiple inverse functions! To see this in action, we return once more to our example.
+Note that step 1 likely involves a \emph{choice}; depending on how you restrict the domain, you might be able to find multiple inverse functions! To make this explicit, we return once more to our example.
 
 
 
-\begin{example*}{\ref*{ex:invexs}.\ref{ex:invexs1}, mk.\,III}{}
+\begin{example*}{\ref{ex:invexs1}, mk.\,III}{}
 	Recall that if $f(x)=x^2-1$, then
 	\[
 		f(x_1)=f(x_2)\implies x_1=\pm x_2
 	\]
-	Instead of restricting the domain to $[0,\infty)$, we can instead force $f$ to be 1--1 by taking the \textcolor{Brown}{other half} of the graph; by \emph{choosing} $\dom f=(-\infty,0]$. The range/codomain remains $[-1,\infty)$, but the inverse function is now different:
+	Instead of restricting the domain to $[0,\infty)$, we can instead force $f$ to be 1--1 by taking the \textcolor{Brown}{left half} of the graph; that is by \emph{choosing} $\dom f=(-\infty,0]$. The range/codomain remains $[-1,\infty)$, but the inverse function is now different:
 	\[
 		x^2=y+1\implies x=-\sqrt{y+1}\in (-\infty,0]=\dom f \implies f^{-1}(x)=-\sqrt{x+1}
 	\]
-	This time the new domain for $f$ forced us to use the \emph{negative square root.}
+	The domain of $f$ forces us to take the \emph{negative square root.}
 	\begin{center}
 		\begin{minipage}[t]{0.52\linewidth}\vspace{30pt}
-			\centering\includegraphics{inverses-combi}
+			\centering\includegraphics[alt={original graph broken into two domains}]{inverses-combi}
 		\end{minipage}
 		\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
 			\centering
 			\begin{tabular}{@{}c@{}}
-				\includegraphics{inverses-combi2}\\[20pt]
-				\includegraphics{inverses-combi3}
+				\includegraphics[alt={inverse when the domain of f is positive}]{inverses-combi2}\\[10pt]
+				\includegraphics[alt={inverse when the domain of f is negative}]{inverses-combi3}
 			\end{tabular}
 		\end{minipage}
 	\end{center}
-	We could choose other domains on which $f$ is 1--1, but these are the most natural choices.
+	There are other domains on which $f$ is 1--1, but these are the most natural choices. The moral is that you cannot invert a function unless you are precise about its domain and range!
 \end{example*}
 
-The moral is that you cannot invert a function unless you are precise about its domain and range!
+
+\pagebreak[3]
 
 
-We finish with an algebraically tougher example, where you may feel that more detail is justified.
+We finish with an algebraically tougher example where you may feel that more detail is justified.
 
 \begin{example}{}{function-easy}
-	Let $y=f(x)=\frac 1{(x-2)^2}$. Its implied \textcolor{red}{\emph{domain}} consists of all real numbers except 2.\par
-		\begin{minipage}[t]{0.68\linewidth}\vspace{-7pt}
-	\begin{description}
-			\item The \textcolor{Green}{\emph{vertical line test}} is clearly visible on the graph: every vertical line $x=a$, except $x=2$, intersects the graph exactly once.
-			\item The \textcolor{Brown}{\emph{range}} is the interval $\R^+=(0,\infty)$ as can be seen by solving
-			\[
-				f(x)=y\iff \frac 1{x-2}=\pm \sqrt y\iff x=2\pm \frac 1{\sqrt y}
-			\]
-			Any positive output $y$ may be obtained via $y=f\bigl(2+\frac 1{\sqrt y}\bigr)$.\par
-			The $\pm$-term shows that $f$ fails the \textcolor{orange}{\emph{horizontal line test}}: it isn't 1--1.
-			\item There are two natural choices for an inverse:
-			\begin{enumeratea}
-			  \item Choose \textcolor{blue}{$\dom f=(2,\infty)$}, then $\pm\sqrt y=\frac 1{x-2}$ is \emph{positive}. We take the \emph{positive} square root and obtain the inverse function
-			  \[
-			  	g:(0,\infty)\to(2,\infty),\quad g(x)=2+\frac 1{\sqrt y}
-			  \] 
-			  \item Choose \textcolor{Purple}{$\dom f=(-\infty,2)$}, then $\pm\sqrt y=\frac 1{x-2}$ is \emph{negative} and we obtain a second inverse function
-			  \[
-			  	h:(0,\infty)\to(-\infty,2),\quad h(x)=2-\frac 1{\sqrt y}
-			  \] 
-			\end{enumeratea}
-	\end{description}
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.31\linewidth}\vspace{-12pt}
-			\hfill
-			\includegraphics{functions-easyex1}\par
-			\includegraphics{functions-easyex2}
-		\end{minipage}
+	We compute inverses for the function with formula $y=f(x)=\frac 1{(x-2)^2}$.\smallbreak
+	The implied \textcolor{mRed}{\emph{domain}} is $\R\setminus\{2\}=(-\infty,2)\cup(2,\infty)$: all real numbers except 2.\smallbreak
+	The \textcolor{mGreen}{\emph{vertical line test}} is clearly visible on the graph: every vertical line through a point on the domain (except $x=3$) intersects the graph exactly once.\smallbreak
+	The \textcolor{BlueViolet}{\emph{range}} is the interval $\R^+=(0,\infty)$: since
+	\[
+		f(x)=y\iff \frac 1{x-2}=\pm \sqrt y\iff x=2\pm \frac 1{\sqrt y} \tag{$\ast$}
+	\]
+	any positive output $y$ may be obtained by evaluating $y=f\bigl(2+\frac 1{\sqrt y}\bigr)$.\smallbreak
+	The $\pm$ in ($\ast$) is because $f$ fails the \textcolor{mMagenta}{\emph{horizontal line test}}: it isn't 1--1.
+	
+	\begin{center}
+	  \tagpdfsetup{table/header-rows={2}}
+		\begin{tabular}{c@{\qquad}c}
+			\includegraphics[alt={The graph of the function one over x minus 2 all squared}]{functions-easyex1}
+			&
+			\includegraphics[alt={The graphs of two possible inverse functions}]{functions-easyex2}
+			\\
+			The function $f(x)=\frac 1{(x-2)^2}$
+			&
+			Two inverse functions $\mathcolor{Blue}{g}$ and $\mathcolor{Brown}{h}$
+		\end{tabular}
+	\end{center}
+
+	There are two natural choices for an inverse:
+	\begin{enumerate}
+		\item Choose \textcolor{blue}{$\dom f=(2,\infty)$}. Then
+		\[
+		 	\pm\sqrt y=\frac 1{x-2}>0
+		\]
+		so we take the \emph{positive} square-root. The inverse function is therefore
+		\[
+			g:(0,\infty)\to(2,\infty),\quad g(x)=2+\frac 1{\sqrt y}
+		\] 
+		\item Choose \textcolor{Brown}{$\dom f=(-\infty,2)$}. This time
+		\[
+		 	\pm\sqrt y=\frac 1{x-2}<0
+		\]
+		We take the \emph{negative} square-root to obtain a second inverse function
+		\[
+		  h:(0,\infty)\to(-\infty,2),\quad h(x)=2-\frac 1{\sqrt y}
+		\] 
+	\end{enumerate}
 \end{example}
 
 
+\pagebreak[3]
+
 
 \begin{exercises}{}{}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Definition of an inverse, \ Visualizing inverses, \ Horizontal line test, \ 1--1 and onto, \ Domain and range restriction}
 	
 	\begin{enumerate}
 	  \item If $\dom f=\R$, check that $f(x)=x^3+8$ passes the horizontal line test. Find $f^{-1}$.
 
 
-	  \item Consider $f(x)=x^2+2x-3$. Similarly to Example \ref{ex:invexs}, find \emph{two inverses} of $f$.
+	  \item Consider $f(x)=x^2+2x-3$. Similarly to Example \ref{ex:invexs1}, find \emph{two inverses} of $f$.
+	  
 	  
 	  \item Sketch the graph of the function
 	  \[
@@ -1305,13 +1331,26 @@ We finish with an algebraically tougher example, where you may feel that more de
 	  \]
 		Find \emph{three} domains on which $f$ is 1--1 and thus compute three distinct inverses.
 	
-	  \item Show that the following function $f:\R\to(\frac 32,\infty)$ is 1--1 and onto, sketch its graph and find $f^{-1}$. 
-	  \[f(x)=\begin{cases}
-	  3-\frac 12x&\text{if }x\le 2\\
-	  2-\frac 1x&\text{if }x>2
-	  \end{cases}\]
+	
+	  \item Sketch the graph of the function
+	  \[
+	  	f:\R\to(\tfrac 32,\infty)
+	  	\qquad 
+	  	f(x)=
+	  	\begin{cases}
+	  		3-\frac 12x&\text{if }x\le 2\\
+	  		2-\frac 1x&\text{if }x>2
+	  	\end{cases}
+	  \]
+	 	Show that $f$ is 1--1 and onto, and compute $f^{-1}$.
+	 	 
 	  
-	  \item (Hard)\lstsp Find the implied domain and range of $f(x)=\smash[b]{\frac{x+1}{1+\frac 1{x+1}}}$. Now find an interval on which $f$ is 1--1 and compute its inverse.
+	  \item (Hard)\lstsp Find the implied domain and range of
+	  \[
+	  	f(x)=\frac{x+1}{1+\frac 1{x+1}}
+	  \]
+	  Find an interval on which $f$ is 1--1 and compute its inverse.
+	  
 	  
 	  \item An astute student observes that Definition \ref{defn:inversefn} only describes the properties satisfied by \emph{an} inverse and asks why we keep referring to \emph{the} inverse. How would you respond?
 	  

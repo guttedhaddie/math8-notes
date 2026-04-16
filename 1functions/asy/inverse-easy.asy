@@ -1,10 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -35,6 +42,6 @@ oval(3.15,0,0.8,2);
 //arr((0,-0.5),(3,-0.5));
 //arr((0,-1.5),(3,-1.5));
 
-draw(Label("$f$",align=N),(0.65,0.6)..(1.475,0.75)..(2.3,0.6),heavygreen,Arrow);
-draw(Label("$f^{-1}$",align=S),(2.3,-0.6)..(1.475,-0.75)..(0.65,-0.6),orange,Arrow);
+draw(Label("$f$",align=N),(0.65,0.6)..(1.475,0.75)..(2.3,0.6),lGreen,Arrow);
+draw(Label("$f^{-1}$",align=S),(2.3,-0.6)..(1.475,-0.75)..(0.65,-0.6),Magenta,Arrow);
 

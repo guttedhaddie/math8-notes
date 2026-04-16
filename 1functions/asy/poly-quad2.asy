@@ -18,7 +18,7 @@ size(140,130,IgnoreAspect);
 
 real f(real x){return -3x^2+12x+4;}
 
-draw(graph(f,-0.5,4.5),Blue);
+draw(graph(f,-0.5,4.5),Blue+linewidth(1));
 
 xaxis(-1,5,Red,RightTicks(new real[]{-1,0,1,3,4}));
 yaxis("$y$",0,17,Red,LeftTicks(new real[]{4,8,12}));

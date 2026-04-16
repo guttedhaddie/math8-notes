@@ -23,7 +23,7 @@ real c=(B.x/(B.x-A.x))*(A.y-B.y)+B.y;
 
 pair pt(real t){return t*A+(1-t)*B;}
 
-draw(pt(-0.6)--pt(1.4),Blue);
+draw(pt(-0.6)--pt(1.4),Blue+linewidth(1));
 
 xaxis(0,5.7,Red,RightTicks);
 yaxis("$y$",0,4,Red,LeftTicks());

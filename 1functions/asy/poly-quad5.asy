@@ -19,7 +19,7 @@ size(140,130,IgnoreAspect);
 
 real f(real x){return -5x^2+125;}
 
-draw(graph(f,0,5),Blue);
+draw(graph(f,0,5),Blue+linewidth(1));
 
 xaxis(0,5.75,Red,RightTicks(new real[]{0,2,4},new real[]{1,3,5}));
 yaxis(0,145,Red,LeftTicks(new real[]{0,50,100},new real[]{25,75,125}));

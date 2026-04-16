@@ -34,7 +34,7 @@ ttick(0,"$0$",Magenta);
 ttick(1.5,"$\frac 32$",Magenta);
 ttick(-0.5,"$-\frac 12$",Magenta);
 
-draw(pt(-0.75)--pt(1.75),Blue);
+draw(pt(-0.75)--pt(1.75),Blue+linewidth(1));
 
 draw((0,0)--2*(B-A),Blue);
 draw((0,0)--A,Brown+dashed);
