@@ -1,10 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 size(420);
@@ -22,10 +29,10 @@ path r=graph(F,pi/2,1.6pi,operator..);
 draw(p,blue);
 draw(q,blue+dashed);
 draw(r,blue+dashed);
-xtick(Label("$\sin^{-1}\!\frac 9{10}$",align=S),a,S,heavygreen);
-xtick(a-2pi,S,heavygreen);
-xtick(-a-pi,S,magenta);
-xtick(pi-a,S,magenta);
+xtick(Label("$\sin^{-1}\!\frac 9{10}$",align=S),a,S,lGreen);
+xtick(a-2pi,S,lGreen);
+xtick(-a-pi,S,Magenta);
+xtick(pi-a,S,Magenta);
 
 draw((-2pi,0.9)--(2.5pi,0.9),dashed+cyan);
 
@@ -33,10 +40,10 @@ dotfactor=8;
 
 dot((pi/2,1),blue);
 dot((-pi/2,-1),blue);
-dot((a,0.9),heavygreen);
-dot((pi-a,0.9),magenta);
-dot((-a-pi,0.9),magenta);
-dot((a-2pi,0.9),heavygreen);
+dot((a,0.9),lGreen);
+dot((pi-a,0.9),Magenta);
+dot((-a-pi,0.9),Magenta);
+dot((a-2pi,0.9),lGreen);
 
 xaxis("$\theta$",-2.1pi,1.7pi,red);
 yaxis("$y$",-1.1,1.2,red,LeftTicks(new real[]{-1,1}));
@@ -48,7 +55,7 @@ xtick(Label("$\frac{3\pi}2$",align=S),3pi/2,S,red);
 xtick(Label("$-\frac{3\pi}2$",align=S),-3pi/2,S,red);
 //xtick(Label("$2\pi$",align=S),2pi,S,red);
 xtick(Label("$-2\pi$",align=S),-2pi,S,red);
-label("$\pi-\sin^{-1}\!\frac 9{10}$",(pi-asin(0.9),-1.1),magenta);
+label("$\pi-\sin^{-1}\!\frac 9{10}$",(pi-asin(0.9),-1.1),Magenta);
 //draw("$\pi-\sin^{-1}\!\frac 9{10}$",(pi-asin(0.9),-0.7)--(pi,-0.7),purple,Arrows);
 
 

@@ -4,44 +4,58 @@
 
 In this chapter we review trigonometry and periodic functions and discuss their relation to polar co-ordinates. Some of this will be non-standard.
 
+
 \subsection{Definitions \& Measuring Angles}\label{ssec:trigdef}
 
-\begin{minipage}[t]{0.74\linewidth}\vspace{-5pt}
-	Trigonometric functions date back at least 2000 years. Ancient mathematicians were interested in the relationship between the \emph{chord} of a circle and the central angle, often for the purpose of astronomical measurement. It wasn't until 1595 that the term \emph{trigonometry} (literally \emph{triangle measure}) was coined, and the functions were considered as coming from triangles.
+\begin{minipage}[t]{0.77\linewidth}\vspace{-5pt}
+	Trigonometric functions date back at least 2000 years. Ancient mathematicians were interested in the relationship between the \emph{chord} of a circle and the central angle, often for the purpose of astronomical measurement. It wasn't until 1595 that the term \emph{trigonometry} (literally \emph{triangle measure}) was coined and the functions were considered as coming from triangles.
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.25\linewidth}\vspace{-15pt}
-	\flushright
-	\includegraphics{defn-chord}
+\begin{minipage}[t]{0.22\linewidth}\vspace{-15pt}
+	\hfill
+	\includegraphics[alt={chord of subtending a central angle}]{defn-chord}
 \end{minipage}
-\smallbreak
+\bigbreak
 
-Here are several related definitions of sine, cosine and tangent based either on triangles or circles.
+As with a lot of grade-school mathematics, it is likely that you know several ways of getting at the basic trigonometric functions.
 
-
-\begin{defn}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.28\linewidth]{}{polarcoord}
-	\hangindent\doubleind
-	1.\lstsp(a)\lstsp Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\textcolor{blue}{\sin\theta}$ and $\textcolor{Green}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\vspace{-5pt}
-	\begin{enumerate}\setcounter{enumi}{1} 
-	  \item[]
-	  \begin{enumerate}\setcounter{enumii}{1}
-	    \item[] Define $\tan\theta=\frac{\sin\theta}{\cos\theta}$ to be the slope of the hypotenuse.
+\begin{defn}{}{polarcoord}
+	Here are several related definitions.
+	\begin{enumerate}
+	  \item\begin{enumerate}
+	    \item Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\textcolor{blue}{\sin\theta}$ and $\textcolor{dGreen}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\par
+	    Define $\tan\theta=\frac{\sin\theta}{\cos\theta}$ to be the slope of the hypotenuse.
+	    
 	    \item Given a right triangle with angle $\theta$, \emph{hypotenuse} $r$, \emph{adjacent} $x$ and \emph{opposite} $y$, define
 			\[
 				\sin\theta=\frac yr\qquad \cos\theta=\frac xr\qquad \tan\theta=\frac yx
 			\]
-	  \end{enumerate}\vspace{-8pt}
-	  \item\begin{enumerate}
-	    \item $(\cos\theta,\sin\theta)$ are the co-ordinates of a point on the unit circle, where $\theta$ is its \emph{polar angle} measured counter-clockwise from the positive $x$-axis. Provided $\cos\theta\neq 0$, also define $\tan\theta=\frac{\sin\theta}{\cos\theta}$.
-	    \item Repeat the definition for a circle of radius $r$ with co-ordinates $(r\cos\theta,r\sin\theta)$.
 	  \end{enumerate}
+	  
+		\item\begin{enumerate}
+	    \item The co-ordinates $(\cos\theta,\sin\theta)$ describe a point on the unit circle where $\theta$ is the \emph{polar angle} measured counter-clockwise from the positive $x$-axis.
+	    \item The co-ordinates $(r\cos\theta,r\sin\theta)$ describe a point on the circle of \emph{radius} $r\ge 0$ centered at the origin, where $\theta$ is again the polar angle. We call $(r,\theta)$ the \emph{polar co-ordinates} of the point.
+	  \end{enumerate}
+	  In either case, if $\cos\theta\neq 0$, we also define $\tan\theta=\frac{\sin\theta}{\cos\theta}$.
 	\end{enumerate}
-	\tcblower
-	\flushright
-	\includegraphics{defn-trig1}\par
-	\includegraphics{defn-trig2}\par
-	\includegraphics{defn-trig3}\phantom{bobo}
+	\begin{center}
+		\begin{tabular}{c@{\qquad}c@{\qquad}c}
+			\includegraphics[alt={sine and cosine as side lengths of a given triangle}]{defn-trig1}
+			&
+			\includegraphics[alt={sine and cosine as ratios of lengths in a triangle}]{defn-trig2}
+			&
+			\includegraphics[alt={sine and cosine as coordinates of points on a circle}]{defn-trig3}
+			\\
+			Definition 1(a)
+			&
+			Definition 1(b)
+			&
+			Definition 2(a)
+		\end{tabular}
+	\end{center}
 \end{defn}
+
+\pagebreak[3]
 
 Discuss some of the advantages and weaknesses of these definitions:
 \begin{itemize}
@@ -49,17 +63,18 @@ Discuss some of the advantages and weaknesses of these definitions:
   \item Is it easier to think about \emph{lengths} rather than ratios?
   \item Where do you need basic facts from Euclidean geometry such as \emph{congruent/similar} triangles?
   \item Convince yourself that that the triangle definitions follow from the circle definitions. What is missing if you try to use the triangle definition to justify the circle version?
-  \item If you were introducing trigonometry for the first time, what would you use?
+  \item If you were introducing trigonometry for the first time, which approach would you use?
 \end{itemize}
-If you've done sufficient calculus you might know of other definitions, for instance using power (Maclaurin) series. Plainly these are not suitable for grade-school, but have the great benefit of making the calculus relationship $\diff\theta\sin\theta=\cos\theta$ very simple. Establishing this using the triangle definition is a somewhat tricky!
+
+You might even have met other definitions, for instance using power (Maclaurin) series or differential equations. Plainly these are not suitable for grade-school, but have the great benefit of making the calculus relationship $\diff\theta\sin\theta=\cos\theta$ very simple. Establishing this using the triangle definition is a somewhat tricky!
 
 
-\boldsubsubsection{Measuring Angles}
+\subsubsection*{Measuring Angles}
 
 There are two standard ways to measure angles (to sensibly associate a \emph{number} to each angle).
 
 \begin{description}
-	\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree measure dates back to ancient Babylon 2--4000 years ago.\footnote{%
+	\item[\normalfont\emph{Degrees}] A full revolution has \ang{360} and a right-angle \ang{90}. Degree-measure dates back to ancient Babylon 2--4000 years ago.\footnote{%
 	It is not known why they chose 360, but it fits nicely with their \emph{base-60} system of counting (decimals are base-10). The traditional subdivisions of a degree are also base-60. For instance, $\ang{34}12'45"$ is 34 degrees, 12 (arc)minutes and 45 (arc)seconds; converted to decimal notation, this becomes
 	\[
 		\ang{34}12'45" =34+\frac{12}{60}+\frac{45}{60^2}=\ang{34.2125}
@@ -69,9 +84,9 @@ There are two standard ways to measure angles (to sensibly associate a \emph{num
 
 
 	\item[\normalfont\emph{Radians}] The radian measure of an angle is the \textcolor{blue}{length of the arc} subtending the angle in a circle of radius 1. Since the circumference of a unit circle is $2\pi$, we have the following identifications.\par
-	\begin{minipage}[t]{0.59\linewidth}\vspace{-18pt}
+	\begin{minipage}[t]{0.59\linewidth}\vspace{-10pt}
 		\[
-			\def\arraystretch{1.1}
+			\def\arraystretch{1.15}
 			\begin{array}{c|c|c|c|c}
 				\text{Degrees}&\text{Radians}&\sin\theta&\cos\theta&\tan\theta\\\hline
 				\ang{0}&0&0&1&0\\
@@ -84,32 +99,34 @@ There are two standard ways to measure angles (to sensibly associate a \emph{num
 		\]
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.4\linewidth}\vspace{-10pt}
-		\flushright
-		\includegraphics[scale=0.95]{defn-radians}
+	\begin{minipage}[t]{0.4\linewidth}\vspace{-6pt}
+		\hfill
+		\includegraphics[alt={comparing radians and degrees}]{defn-radians}
 	\end{minipage}
 \end{description}
 
 In elementary mathematics, degrees are the most common way to measure angles. Do you know any other methods?
 
 \begin{exercises}
-	\exstart The identity $\cos^2\!\theta+\sin^2\!\theta=1$ is the Pythagorean Theorem in disguise. Why?
-	
-	\begin{enumerate}\setcounter{enumi}{1}
+	\emph{Key concepts: \ Multiple definitions of sine and cosine, \ Degrees, \ Radians}
+
+	\begin{enumerate}
+	  \item The identity $\cos^2\!\theta+\sin^2\!\theta=1$ is the Pythagorean Theorem in disguise. Why?
+	  
 	  \item The word \emph{sine} is the result of a long list of translations and transliterations from an ancient Sanskrit term meaning \emph{half-chord.} For the chord picture on page \pageref{sec:trig}, how does the length of the chord $\operatorname{crd}\theta$ relate to modern trigonometric functions?
 	
-		\item It is conventional not to state units when using radians since they are effectively a ratio and therefore \emph{unitless.} Think this through: if the central angle in a circle of radius $r$ is subtended by an arc with arc-length $\ell$, what is the radian measure of the angle? What facts from Euclidean geometry justify this observation?
+		\item It is conventional \emph{not} to state units when using radians since they are effectively a ratio and therefore \emph{unitless.} Think this through: if the central angle in a circle of radius $r$ is subtended by an arc with length $\ell$, what is the radian measure of the angle? What facts from basic geometry justify this observation?
 		
 	  \item Explain how to get the values of sine and cosine in the above table.\par
 	  (\emph{Hint: Draw some triangles and use Pythagoras}!)
 	  
-	  \item\label{exs:trigshift} Using the pictures, explain why we have the relations
+	  \item\label{exs:trigshift} Using one of more pictures in Definition \ref{defn:polarcoord}, explain why the following relations are true
 		\[
 			\sin(\tfrac \pi 2-\theta)=\cos\theta=\sin(\theta+\tfrac\pi 2),
 			\qquad 
 			\sin(-\theta)=-\sin\theta,\qquad \sin(\pi-\theta)=\sin\theta
 			\]
-		(\emph{You cannot use multiple-angle formulæ for this!})
+		(\emph{You cannot use graphs or the multiple-angle formulæ for this!})
 	\end{enumerate}
 \end{exercises}
 
@@ -117,33 +134,42 @@ In elementary mathematics, degrees are the most common way to measure angles. Do
 \clearpage
 
 
+
 \subsection{Periodicity, Graphs \& Inverses}\label{ssec:trigperiod}
 
-One advantage of the circle definition is that it makes sketching the graphs of sine and cosine very easy. Simply draw axes next to a unit circle and transfer the heights across.
+One advantage of the circle definition is that it makes sketching the graph of sine very easy. Simply draw axes next to a unit circle and transfer the height across!
 \begin{center}
-	\includegraphics{invsine4}
+	\includegraphics[alt={recovering the graph of the sine function from the circle definition}]{invsine4}
 \end{center}
-By Exercise \ref*{ssec:trigdef}.\ref{exs:trigshift}, the graph of $\cos x=\sin(x+\frac\pi 2)$ is simply that of sine shifted $\frac\pi 2=\ang{90}$ to the left. Moreover, the circle definition allows us easily to extend trigonometric functions \emph{periodically} since we can measure the polar angle by looping as many times round the origin as we like: for any integer $n$,
+You \emph{could} try the same trick for the cosine graph (plot the $x$-co-ordinate), though it is tricky to get the picture correct. Alternatively, by Exercise \ref*{ssec:trigdef}.\ref{exs:trigshift}, the graph of $\cos \theta=\sin(\theta+\frac\pi 2)$ is simply that of sine shifted $\frac\pi 2=\ang{90}$ to the \emph{left}.\smallbreak
+The circle definition also allows us to extend trigonometric functions \emph{periodically} since we can measure the polar angle by looping as many times round the origin as we like: that is, for any integer $n$,
 \[
 	\sin(\theta+2n\pi)=\sin\theta,\quad 
 	\cos(\theta+2n\pi)=\cos\theta
 \]
-Otherwise said, sine and cosine have period $2\pi$ radians ($\ang{360}$).\medbreak
+Otherwise said, sine and cosine have period $2\pi$ radians ($\ang{360}$).
+ 
 
+\subsubsection*{Inverse Trigonometric Functions}
 
-Sine and cosine are \emph{non-invertible} unless we choose a domain on which they are 1--1.\par
-\begin{minipage}[t]{0.6\textwidth}\vspace{-3pt}
-	\includegraphics[scale=0.95]{invsine2}\par
+Sine and cosine are \emph{non-invertible} unless we choose a domain on which they are 1--1. The standard convention is to restrict to the domain $[-\frac\pi 2,\frac\pi 2]$: the graph should make it clear why.\par
+\begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
+	\includegraphics[alt={by restricting the domain, sine becomes one to one}]{invsine2}\smallbreak
 	$f(x)=\sin x$ is 1--1 on the domain $[-\frac\pi 2,\frac\pi 2]$\smallbreak
-	Inverse function $f^{-1}(x)=\arcsin x=\sin^{-1}x$\smallbreak
+	Denote the inverse function $f^{-1}(x)=\arcsin x=\sin^{-1}x$\smallbreak
 	Domain $\dom(\arcsin)=[-1,1] =\operatorname{range}(\sin)$\smallbreak
-	Range $\operatorname{range}(\arcsin)=[-\frac\pi 2,\frac\pi 2]=\dom(\sin)$\medbreak
-	This is why your calculator always returns a value in the interval $[-\frac\pi 2,\frac\pi 2]=[-\ang{90},\ang{90}]$ when you hit the $\sin^{-1}$ button.
+	Range $\operatorname{range}(\arcsin)=[-\frac\pi 2,\frac\pi 2]=\dom(\sin)$
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.39\textwidth}\vspace{-5pt}
-	\flushright\includegraphics[scale=0.9]{invsine}
-\end{minipage}
+	\hfill\includegraphics[alt={the inverse sine graph is the original reflected in the line y equals x}]{invsine}
+\end{minipage}\smallbreak
+These choices are why your calculator returns a value in the interval $[-\frac\pi 2,\frac\pi 2]=[-\ang{90},\ang{90}]$ whenever you hit the $\sin^{-1}$ button.\smallbreak
+Thinking about the inverse cosine and 
+\vfil
+
+\pagebreak[3]
+
 
 \begin{example}{}{sineeasy}
 	If you know the graphs, then symmetry and periodicity help you solve equations. For example, if $\sin \theta=\frac 9{10}$ then all solutions are given by
@@ -153,43 +179,48 @@ Sine and cosine are \emph{non-invertible} unless we choose a domain on which the
 		\pi-\sin^{-1}\frac 9{10}+2\pi n \tag{$n$ is any integer}
 	\]
 	\begin{center}
-		\includegraphics[scale=0.95]{invsine3}
+		\includegraphics[alt={solving trigonometric algebra problems using a graph}]{invsine3}
 	\end{center}
 	Alternatively, we could use the circle definition directly: $\sin\theta=\frac 9{10}$ means we want angles $\theta$ corresponding to the intersections of the unit circle with the \emph{horizontal line} $y=\frac 9{10}$.
 \end{example}
 
 
-\goodbreak
 
 
-\boldinline{Periodic Models}
 
-Trig functions find applications in modeling precisely because they are \emph{periodic.} In general, a function has period $T$ if
+\subsubsection*{Periodic Models}
+
+Trigonometric functions find applications in modeling precisely because they are \emph{periodic.} In general, a function has period $T$ if
 \[
 	f(x+T)=f(x)\ \text{ for all $x$}
 \]
-It is easy to find the period of the function $f(x)=\sin kx$ just by considering what we have to add to the input $x$ to increase the argument $kx$ of sine by $2\pi$:
+If $k$ is constant, it is easy to find the period of the function $f(x)=\sin kx$ just by considering what we have to add to the input $x$ to increase the argument $kx$ by $2\pi$:
 \[
 	T=\frac{2\pi}k\implies f(x+T)=\sin(kx+2\pi)=\sin kx=f(x)
 \]
 We may therefore obtain a simple periodic model regardless of what period is required.
 
 \begin{example}{}{}
-	On a given day, \textcolor{Magenta}{high tide} occurs at 2:00 with a water depth of 10\,ft, whereas \textcolor{Green}{low tide} occurs at 8:12 with a depth of 4\,ft. We might model this using a periodic function with period $T=2\times 6\frac{12}{60}=\frac{62}{5}$ hours. For instance\par
-	\begin{minipage}[t]{0.6\linewidth}\vspace{-8pt}
+	On a given day at the local pier, \textcolor{mMagenta}{high tide} occurs at 02:00 with a water depth of 10\,ft and \textcolor{mGreen}{low tide} at 08:12 with a depth of 4\,ft.\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-4pt}
+		We might model the water depth using a periodic function. Since it takes 6 hours and 12 minutes to go from high to low tide, the function should have period $T=2\times 6\frac{12}{60}=\frac{62}{5}$ hours. In this case
 		\[
 			h(t)=7+3\cos\left(\frac{5\pi}{31}(t-4)\right)
 		\] 
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.39\linewidth}\vspace{-18pt}
-		\flushright\includegraphics{tide}
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-4pt}
+		\hfill\includegraphics[alt={modeling the tide using a sine wave}]{tide}
 	\end{minipage}\medbreak
-	where $t$ is measured in hours from midnight might be suitable. In reality, tidal height is very close to being periodic, but the magnitude of the high and low tides are somewhat variable.
+	would do the trick, where $t$ is measured in hours after midnight (is it clear why? How did we get this?).\par
+	In reality, tidal height is very close to being periodic, but the magnitude of the high and low tides are somewhat variable.
 \end{example}
 
 
-In fact \emph{any} periodic function may be approximated using trigonometric functions. Indeed if $f(x)$ has period $T$ and we define constants
+
+\paragraph{Fourier Series (non-examinable)}
+
+In fact \emph{any} periodic function may be approximated using trigonometric functions. This is easy to state if you are familiar with integration. If $f(x)$ has period $T$ and we define constants
 \[
 	a_n=\int_{-\frac T2}^{\frac T2} f(x)\cos\frac{2\pi nx}T\,\dx,\qquad 
 	b_n=\int_{-\frac T2}^{\frac T2} f(x)\sin\frac{2\pi nx}T\,\dx
@@ -199,7 +230,8 @@ then
 \[
 	f(x)\approx \frac{a_0}2+a_1\cos\frac{2\pi x}T +b_1\sin\frac{2\pi x}T +a_2\cos\frac{4\pi x}T +b_2\sin\frac{4\pi x}T +\cdots \tag{$\dag$}
 \]
-This is the \emph{Fourier series} of $f(x)$. It often takes only a small number of terms to obtain a very good approximation. Modern data-compression algorithms often employ Fourier series. Given a periodic function $f(x)$, one uses a computer to estimate (say) the first 100 Fourier coefficients ($\ast$) and transmits these values to the receiver, who recovers an approximation to the original function using $(\dag)$.
+This expression is called the \emph{Fourier series} of $f(x)$. It often takes only a small number of terms to obtain a pretty good approximation. Modern data-compression algorithms often employ Fourier series. Given a periodic function $f(x)$, one estimate (say) the first 10 Fourier coefficients ($\ast$)---for a real-world function, this would likely be done by computer. The Fourier coefficients are transmitted to the receiver, who quickly recovers an approximation to the original function using $(\dag)$.
+
 
 \begin{example}{}{}
 	A square-wave function with period $T=2\pi$ is given by\par
@@ -211,11 +243,11 @@ This is the \emph{Fourier series} of $f(x)$. It often takes only a small number 
 				-1&\text{if }\pi\le x<2\pi
 			\end{cases}
 		\]
-		extended periodically to the real line. With a little calculus, it is easily checked that the Fourier coefficients are
+		extended periodically to the real line. If you are comfortable with basic integrals, it is easily checked that the Fourier coefficients are
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.39\linewidth}\vspace{-2pt}
-		\flushright\includegraphics[scale=0.95]{square-wave}
+		\hfill\includegraphics[alt={a periodic square wave function}]{square-wave}
 	\end{minipage}\par
 	\[
 		a_n=\int_{-\pi}^{\pi} f(x)\cos nx\,\dx=0,\qquad 
@@ -225,22 +257,35 @@ This is the \emph{Fourier series} of $f(x)$. It often takes only a small number 
 			0&\text{if $n$ is even}
 		\end{cases}
 	\]
-	Use a graphics tool to see how the first few terms of the series \href{https://www.math.uci.edu/~ndonalds/math121b/orth-fourier.html}{approximate the function.}
+	Use a graphics tool to see how the first few terms of the series \href{https://www.math.uci.edu/~ndonalds/math121b/orth-fourier.html}{approximate the function}. The \textcolor{mGreen}{graph} obtained by taking the first four non-zero terms is shown below. 
+	\begin{center}
+		\includegraphics[alt={the first four non zero terms of the fourier series}]{square-wave2}\par
+		The graph of $y=\frac 4\pi\left(\sin x+\frac 13\sin 3x+\frac 15\sin 5x+\frac 17\sin 7x\right)$
+	\end{center}
 \end{example}
 
 
-\goodbreak
+
+
+
+\pagebreak[3]
 
 
 \begin{exercises}
-	\exstart $f(x)=\sin x$ is also 1--1 on the interval $[\frac\pi 2,\frac{3\pi}2]$. Sketch the graph of its corresponding inverse function.
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Finding the sine graph from a circle, \ Periodicity, \ Choosing a domain for inversion, \ Solving algebraic trigonometric equations, \ Modeling using periodic functions}
 	
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
+		\item $f(x)=\sin x$ is also 1--1 on the interval $[\frac\pi 2,\frac{3\pi}2]$. Sketch the graph of its corresponding inverse function.
+	
 	  \item Draw the graph for cosine and observe that it is invertible if we restrict the domain to the interval $[0,\pi]$. Draw the graph of $\cos^{-1}$.
 	  
 	  \item Describe all solutions to the equation $\cos x=-0.2$.
 	  
-	  \item Explain why the tangent function has period $\pi$; that is $\tan(\theta+n\pi)=\tan \theta$. What facts are we using about sine and cosine and why are they obvious from the definition?
+	  \item\begin{enumerate}
+	    \item Explain why the tangent function has period $\pi$; that is $\tan(\theta+n\pi)=\tan \theta$. What facts are we using about sine and cosine and why are they obvious from the definition?
+	    \item Graph the tangent function. Find an interval on which the tangent function is 1-1. Draw its inverse function.
+	  \end{enumerate}
 	  
 	  \item Describe all solutions to the equation $\tan x=5$.
 	  
@@ -259,8 +304,9 @@ This is the \emph{Fourier series} of $f(x)$. It often takes only a small number 
 	\end{enumerate}
 \end{exercises}
 
-\clearpage
 
+\clearpage
+\iffalse
 
 % \noindent\begin{minipage}{0.56\textwidth}
 % \includegraphics[width=\textwidth]{invcos2}\\
@@ -642,6 +688,7 @@ You should think about what happens in both examples if we extend the domain:
 	\end{enumerate}
 \end{exercises}
 
+\fi
 
 \iffalse
 \begin{minipage}[t]{0.7\linewidth}\vspace{0pt}

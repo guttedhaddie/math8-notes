@@ -1,10 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 size(180);
@@ -17,14 +24,14 @@ path p=graph(F,-pi/2,pi/2,operator..);
 path q=graph(G,-pi/2,pi/2,operator..);
 
 draw(p,blue);
-draw(q,deepgreen);
+draw(q,lGreen);
 label("$y=\sin x$",(-1,1),blue);
-label("$y=\sin^{-1}x$",(1,-1),deepgreen);
+label("$y=\sin^{-1}x$",(1,-1),lGreen);
 
 dot(F(pi/2),blue);
 dot(F(-pi/2),blue);
-dot(G(pi/2),deepgreen);
-dot(G(-pi/2),deepgreen);
+dot(G(pi/2),lGreen);
+dot(G(-pi/2),lGreen);
 
 xaxis("$x$",-pi/2,pi/2,red,RightTicks(new real[]{-1,1}));
 yaxis("$y$",-pi/2,pi/2,red,LeftTicks(new real[]{-1,1}));
