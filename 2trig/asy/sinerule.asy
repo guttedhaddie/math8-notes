@@ -1,15 +1,21 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
-size(140);
+size(160);
 
 real anA=15;
 real anB=85;
@@ -23,10 +29,10 @@ pair D=x*unit(A-C);
 
 draw("$c$",A--B,blue);
 draw("$a$",B--C,red);
-draw("$b$",C--A,heavygreen);
+draw("$b$",C--A,lGreen);
 
 draw("$A$",arc(A,A+0.22*unit(B-A),A+0.22*unit(C-A)),red);
-draw("$B$",arc(B,B+0.16*unit(C-B),B+0.16*unit(A-B)),heavygreen);
+draw("$B$",arc(B,B+0.16*unit(C-B),B+0.16*unit(A-B)),lGreen);
 draw("$C$",arc(C,C+0.1*unit(A-C),C+0.1*unit(B-C)),blue);
 
 label("$x$",(D+C)/2+0.1(D-B));

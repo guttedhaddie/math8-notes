@@ -23,7 +23,7 @@ As with a lot of grade-school mathematics, it is likely that you know several wa
 	Here are several related definitions.
 	\begin{enumerate}
 	  \item\begin{enumerate}
-	    \item Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\textcolor{blue}{\sin\theta}$ and $\textcolor{dGreen}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\par
+	    \item Given a right triangle with \emph{hypotenuse} (longest side) 1 and angle $\theta$, define $\mathcolor{blue}{\sin\theta}$ and $\mathcolor{dGreen}{\cos\theta}$ to be the side lengths \emph{opposite} and \emph{adjacent} to $\theta$.\par
 	    Define $\tan\theta=\frac{\sin\theta}{\cos\theta}$ to be the slope of the hypotenuse.
 	    
 	    \item Given a right triangle with angle $\theta$, \emph{hypotenuse} $r$, \emph{adjacent} $x$ and \emph{opposite} $y$, define
@@ -311,7 +311,6 @@ This expression is called the \emph{Fourier series} of $f(x)$. It often takes on
 
 
 \clearpage
-\iffalse
 
 % \noindent\begin{minipage}{0.56\textwidth}
 % \includegraphics[width=\textwidth]{invcos2}\\
@@ -334,47 +333,53 @@ This expression is called the \emph{Fourier series} of $f(x)$. It often takes on
 % \end{minipage}
 
 
+
 \subsection{Solving Triangles}
 
-Basic trigonometry often involves finding the edges and angles of a triangle given partial data.
+Basic trigonometric calculations typically involve finding the edges and angles of a triangle given partial data.
 
 \begin{example}{}{easytree}
 	To find the height $h$ of a tall tree, two angles of elevation \ang{45} and \ang{30} are measured a distance 20 ft apart along a straight line from the base of the trunk.\smallbreak
-	This is easily attacked by drawing a picture and observing that we have two right-triangles. If the (unknown) distance from the base of the tree to the nearer measurement is $x$, then\par
+	This problem is easily attacked by drawing a picture and observing that the tree-trunk completes two right-triangles. If the (unknown) distance from the base of the tree to the nearer measurement is $x$, then\par
 	\begin{minipage}[t]{0.54\linewidth}\vspace{-7pt}
 		\[
 			\frac 1{\sqrt 3}=\tan\ang{30}=\frac h{x+20}\qquad 1=\tan\ang{45}=\frac hx
 		\]
-		Substituting the second equation into the first returns
+		Substitute the second equation into the first to obtain
 		\[
 			h=\frac{20}{\sqrt 3-1}\approx 27.32\,\text{ft}
 		\]
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.45\linewidth}\vspace{-12pt}
-		\flushright\includegraphics{tree2}
+		\hfill\includegraphics[alt={measuring the height of a tree}]{tree2}
 	\end{minipage}\smallbreak
-		In fact there is enough data in the problem to recover everything about the \textcolor{blue}{original triangle.}
-	\begin{itemize}\itemsep2pt
+	While this certainly answers the original question, there is in fact enough data in the problem to recover everything about the \textcolor{blue}{original triangle.}
+	\begin{itemize}
 	  \item The second base angle is ($\ang{180}-\ang{45}=\ang{135}$).
 	  \item The third (summit) angle is $\ang{180}-\ang{30}-\ang{135}=\ang{15}$.
-	  \item Two applications of Pythagoras compute the remaining sides of the triangle
+	  \item Two applications of Pythagoras' Theorem compute the remaining sides of the triangle
 	  \begin{gather*}
-	  	\sqrt{x^2+h^2}=\sqrt 2h=\frac{20\sqrt 2}{\sqrt 3-1}\approx 38.64\\
-	  	\sqrt{h^2+(x+20)^2}=\sqrt{h^2+3h^2}=2h=\frac{40}{\sqrt 3-1}\approx 54.64
+	  	\sqrt{x^2+h^2}=\sqrt 2h=\frac{20\sqrt 2}{\sqrt 3-1}\approx 38.64\text{ ft}\\
+	  	\sqrt{h^2+(x+20)^2}=\sqrt{h^2+3h^2}=2h=\frac{40}{\sqrt 3-1}\approx 54.64\text{ ft}
 	  \end{gather*}
 	\end{itemize}
 \end{example}
 
+
 \begin{minipage}[t]{0.7\textwidth}\vspace{-5pt}
-	The example is just a disguised version of \emph{solving a triangle}: computing all six sides and angles of a triangle given three of them. The Euclidean triangle congruence theorems tell us which combinations are sufficient to determine all the others. The example is the ASA congruence: angle-side-angle data (\ang{30}--20--\ang{135}) is enough to compute everything else about the triangle.
+	The example is a disguised version of \emph{solving a triangle}: given three pieces of data (from the three sides and angles), compute the remaining three. The Euclidean triangle congruence theorems tell us which combinations are sufficient to determine all the others. The example is the ASA congruence: angle-side-angle data (\ang{30}--20--\ang{135}) is enough to compute everything else about the triangle.
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.29\textwidth}\vspace{-10pt}
-	\flushright\includegraphics{euler}
+	\hfill\includegraphics[alt={standard labeling for the vertices, angles and sides of a triangle}]{euler}
 \end{minipage}\medbreak
 
-When in doubt, you can always attack basic trigonometry problems as we did in the example: create a right-triangle, then use the definitions of sin/cos/tan and/or Pythagoras.
+When in doubt, basic trigonometry problems can always be attacked as in the example: drop a perpendicular (the tree trunk!) to create a right-triangle, then use the definitions of sin/cos/tan and/or Pythagoras.
+
+
+\pagebreak[3]
+
 
 \begin{example}{}{saseasy}
 	Given the SAS (side-angle-side) combination 5--\ang{60}--9, find the third side of the triangle.\par
@@ -391,27 +396,29 @@ When in doubt, you can always attack basic trigonometry problems as we did in th
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.29\textwidth}\vspace{0pt}
-		\flushright\includegraphics{exsas2}
+		\hfill\includegraphics[alt={solving a triangle given S A S data}]{exsas2}
 	\end{minipage}\medbreak
 	Since we now know $c$ and $9-x=\frac{13}2$ the remaining angles could also be easily found.
 \end{example}
-\goodbreak
+
+
+\subsubsection*{The Sine and Cosine Rules}
 
 
 In elementary situations it is typically easier to have students drop the perpendicular as we've done. However, once comfortable with the method, it is helpful to have short-cuts which skip the need to work with the perpendicular at all.
 
 
-\begin{thm}{Sine and Cosine Rules}{}
-	For any triangle,
+\begin{thm}{}{}
+	For any triangle (labeled so that $a$ is the side opposite angle $A$, etc.),
 	\[
 		\frac{\sin A}a=\frac{\sin B}b=\frac{\sin C}c\ \ \text{ and }\ \ c^2=a^2+b^2-2ab\cos C
 	\]
 \end{thm}
 
-The cosine rule is just the Pythagorean Theorem with a correction for non-right triangles. Both rules follow straightforwardly by drawing an altitude as before!
+The cosine rule is just Pythagoras' Theorem with a correction for non-right triangles. Both rules follow straightforwardly by dropping an altitude as before!
 
 \begin{proof}
-	Consider the picture. We have\par
+	Consider the picture where we dropped an altitude and defined\par
 	\begin{minipage}[t]{0.6\linewidth}\vspace{-11pt}
 		\[
 			h=a\sin C=c\sin A,\quad x=a\cos C,\quad b-x=c\cos A
@@ -420,78 +427,84 @@ The cosine rule is just the Pythagorean Theorem with a correction for non-right 
 		\[
 			\frac{\sin A}a=\frac{\sin C}c
 		\]
-		Two applications of Pythagoras give the cosine rule
+		Symmetry (drop a second altitude) for the rest.
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.39\linewidth}\vspace{-5pt}
-		\flushright\includegraphics{sinerule}
+		\hfill\includegraphics[alt={proving the sine rule by dropping a perpendicular}]{sinerule}
 	\end{minipage}\smallbreak
-	\[
-		c^2=h^2+(b-x)^2=h^2+x^2+b^2-2bx =a^2+b^2-2ab\cos C
-	\]
-	The remaining part of the sine rule and the other versions of the cosine rule are obtained by choosing other altitudes.
+	The cosine rule comes from the same picture via two applications of Pythagoras,' first on the right half, then the left:
+	\begin{align*}
+		c^2&=h^2+(b-x)^2=h^2+x^2+b^2-2bx\\
+		&=a^2+b^2-2ab\cos C
+	\end{align*}
+	The other versions of the cosine rule are obtained by choosing other altitudes.
 \end{proof}
 
 
-Here are two examples where we use the rules instead of explicitly drawing an altitude.
+\pagebreak[3]
+
 
 \begin{examples}{}{trigiant}
-	\exstart A triangle has sides 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.%\par
-	\begin{enumerate}\setcounter{enumi}{1}
-		\item[] We apply the cosine rule with $\textcolor{red}{a=2}$, $\textcolor{Green}{b=\sqrt 3-1}$ and $\textcolor{blue}{C=\ang{120}}$\par
+	We use the rules instead of explicitly drawing an altitude, though the latter approach is always acceptable.
+	\begin{enumerate}
+		\item A triangle has sides 2 and $\sqrt 3-1$, and the angle between them is \ang{120}. Find the remaining sides and angles.\par
+		We apply the cosine rule with $\mathcolor{mRed}{a=2}$, $\mathcolor{mGreen}{b=\sqrt 3-1}$ and $\mathcolor{Blue}{C=\ang{120}}$\par
 		\begin{minipage}[t]{0.79\linewidth}\vspace{-20pt}
 		  \begin{align*}
 		    c^2&=a^2+b^2-2ab\cos C\\
 		    &=2^2+(\sqrt 3-1)^2-2\cdot 2(\sqrt 3-1)\cos\ang{120} \\
 		    &=4+3+1-2\sqrt 3+2(\sqrt 3-1) =6
 		  \end{align*}
-		  We have an opposite pair $(\textcolor{blue}{c},\textcolor{blue}{C})=(\textcolor{blue}{\sqrt 6},\textcolor{blue}{\ang{120}})$, so the sine rule may be used
+		  We have an opposite pair $(\mathcolor{Blue}{c},\mathcolor{Blue}{C})=(\mathcolor{Blue}{\sqrt 6},\mathcolor{Blue}{\ang{120}})$, so the sine rule may be applied
 		  \[
-		  	\sin A=\frac 2{\sqrt 6}\sin\ang{120}=\frac{2\sqrt 3}{2\sqrt 6}=\frac 1{\sqrt 2}\implies \textcolor{red}{A=\ang{45}}
+		  	\sin A=\frac 2{\sqrt 6}\sin\ang{120}=\frac{2\sqrt 3}{2\sqrt 6}=\frac 1{\sqrt 2}\implies \mathcolor{mRed}{A=\ang{45}}
 		  \]
 		  We chose the acute angle since $A=\ang{180}-B-C=\ang{60}-B<\ang{90}$.\smallbreak
-		  The final angle is then $\textcolor{Green}{B}=\ang{180}-\textcolor{red}{\ang{45}}-\textcolor{blue}{\ang{120}}=\textcolor{Green}{\ang{15}}$.
+		  The final angle is then $\mathcolor{mGreen}{B}=\ang{180}-\mathcolor{mRed}{\ang{45}}-\mathcolor{Blue}{\ang{120}}=\mathcolor{mGreen}{\ang{15}}$.
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{0.2\linewidth}\vspace{-28pt}
-			\flushright\includegraphics{exsas}
+			\hfill\includegraphics[alt={solving a triang with S A S data}]{exsas}
 		\end{minipage}\smallbreak
 		
 		You could instead drop a perpendicular, say from the vertex $A$ to the \emph{extension} of the side of length 2. Think about why the perpendicular has to be \emph{outside} the triangle\ldots
 
-		\goodbreak
+
 		
 		\item A triangle has one side with length 5 and its two adjacent angles are \ang{40} and \ang{65}. Find the remaining data.\par
-		\begin{minipage}[t]{0.69\linewidth}\vspace{-5pt}
-			This time the initial data is ASA. Writing $\textcolor{blue}{c=5}$, $\textcolor{red}{A=\ang{40}}$ and $\textcolor{Green}{B=\ang{65}}$, the remaining angle is plainly 
+		\begin{minipage}[t]{0.74\linewidth}\vspace{-5pt}
+			This time the initial data is ASA. Writing $\mathcolor{Blue}{c=5}$, $\mathcolor{mRed}{A=\ang{40}}$ and $\mathcolor{mGreen}{B=\ang{65}}$, the remaining angle is plainly 
 			\[
-				\textcolor{blue}{C}=\ang{180}-\textcolor{red}{\ang{40}}-\textcolor{Green}{\ang{65}}=\textcolor{blue}{\ang{75}}
+				\mathcolor{Blue}{C}=\ang{180}-\mathcolor{mRed}{\ang{40}}-\mathcolor{mGreen}{\ang{65}}=\mathcolor{Blue}{\ang{75}}
 			\]
-			This gives us an opposite pair $(\textcolor{blue}{c,C})$, so we can apply the sine rule
+			This gives us an opposite pair $(\mathcolor{Blue}{c,C})$, so we can apply the sine rule
 			\[
-				\textcolor{red}{a}=c\,\frac{\sin A}{\sin C}=\textcolor{blue}{5}\,\frac{\sin\textcolor{red}{\ang{40}}}{\sin\textcolor{blue}{\ang{75}}}\approx 3.327
+				\mathcolor{mRed}{a}=c\,\frac{\sin A}{\sin C}=\mathcolor{Blue}{5}\,\frac{\sin\mathcolor{mRed}{\ang{40}}}{\sin\mathcolor{Blue}{\ang{75}}}\approx 3.327
 			\]
 			A second application yields
 			\[
-				b=c\,\frac{\sin B}{\sin c}=\textcolor{blue}{5}\,\frac{\sin\textcolor{Green}{\ang{65}}}{\sin\textcolor{blue}{\ang{75}}}\approx 4.691
+				b=c\,\frac{\sin B}{\sin c}=\mathcolor{Blue}{5}\,\frac{\sin\mathcolor{mGreen}{\ang{65}}}{\sin\mathcolor{Blue}{\ang{75}}}\approx 4.691
 			\]
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.3\linewidth}\vspace{-5pt}
-			\flushright\includegraphics{exasa}
+		\begin{minipage}[t]{0.25\linewidth}\vspace{-5pt}
+			\hfill\includegraphics[alt={solving a triangle with A S A data}]{exasa}
 		\end{minipage}
 		
-		\item\label{ex:trigiant3} (Discuss: courtesy of an 8 year-old contributor) Model Earth as a sphere of radius 3963 miles. If identical vertical ladders are placed in Irvine, CA and Irvine, Scotland, 5145 miles apart by great circle, how tall would they have to be for people at the top to `see' each other?
+		
+		\item\label{ex:trigiant3} (Courtesy of an 8 year-old contributor) \ Suppose the Earth is modeled as a sphere of radius 3960 miles. Suppose identically tall Giants stood in California and Scotland, 5150 miles apart by great circle; how tall would they (their eyes) have to be to `see' each other?\par
+		What does this problem have to do with triangles?
 	\end{enumerate}
 \end{examples}
 
 
+\subsubsection*{Multiple-angle Formulae}
 
-\begin{minipage}[t]{0.6\textwidth}\vspace{0pt}
-	\boldsubsubsection{Multiple-angle Formulae}
+\begin{minipage}[t]{0.6\textwidth}\vspace{-10pt}
 	Also useful in the context of basic trigonometry is the ability to sum angles. The picture provides a simple justification of
 	\[
-		\sin(\alpha+\beta)=\textcolor{Green}{\sin\alpha\cos\beta} + \textcolor{blue}{\cos\alpha\sin\beta}
+		\sin(\alpha+\beta)=\mathcolor{mGreen}{\sin\alpha\cos\beta} + \mathcolor{Blue}{\cos\alpha\sin\beta}
 	\]
 	at least when $0<\alpha+\beta<\frac\pi 2$. If you look carefully, you should be able to see how the same picture establishes
 	\[
@@ -500,19 +513,18 @@ Here are two examples where we use the rules instead of explicitly drawing an al
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.39\textwidth}\vspace{0pt}
-	\flushright\includegraphics[scale=0.85]{multipleangle}
+	\hfill\includegraphics[alt={proving the multiple angle formulas by stacking triangles}]{multipleangle}
 \end{minipage}
 
 
-
-
-
-\vfil
-
   
 \begin{exercises}{}{}
-	\exstart Find the remaining angles in the triangle in Example \ref{ex:saseasy}.%; you'll need a calculator to convert to degrees.
-	\begin{enumerate}\setcounter{enumi}{1}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Solving triangles means finding sides and angles given three pieces of data,  Relation to the Euclidean triangle congruence theorems (SAS, SSS, ASA, SSA)}
+
+	\begin{enumerate}
+		\item Find the remaining angles in the triangle in Example \ref{ex:saseasy}.%; you'll need a calculator to convert to degrees.
+
 	  \item The other Euclidean congruence theorems are SSS and SAA. Explain how to solve triangles using these minimal data in two ways:
 	  \begin{enumerate}
 	    \item By drawing an altitude. \qquad\qquad 
@@ -530,12 +542,15 @@ Here are two examples where we use the rules instead of explicitly drawing an al
 	  	 \item Two wooden wedges with slope $\frac 14$ are placed on top of each other to make a steeper slope. What is the gradient of the new slope?
 	  \end{enumerate} 
 	  
-	  \item Carefully explain why the answer to Example \ref*{ex:trigiant}.\ref{ex:trigiant3} is approximately 1012 miles.
+	  \item Calculate the required heights of the Giants in Example \ref*{ex:trigiant}.\ref{ex:trigiant3}
 	\end{enumerate}
 \end{exercises}
 
 
 \clearpage
+
+
+\iffalse
 
 
 \subsection{Polar Co-ordinates}
@@ -545,9 +560,9 @@ Definition \ref{defn:polarcoord} provides an alternative way to describe points 
 Computing $x=r\cos\theta$ and $y=r\sin\theta$ is easy given $r$ and $\theta$.
 
 \begin{example}{}{polar}
-	A point with polar co-ordinates $\textcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
+	A point with polar co-ordinates $\mathcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
 	\[
-		\textcolor{blue}{(x,y)
+		\mathcolor{blue}{(x,y)
 		=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr)
 		=\bigl(-\sqrt 3,1\bigr)}
 	\]
@@ -568,22 +583,22 @@ Computing polar co-ordinates from Cartesian is harder, requiring some \emph{visu
 \end{enumerate}
 
 \begin{example*}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{\ref{ex:polar}, cont}{}
-	If $\textcolor{blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy
+	If $\mathcolor{blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy
 	\[
 		r=\sqrt{(\sqrt 3)^2+1^2}=2
 	\]
 	For the polar angle,
 	\[
 		\tan\theta =\frac yx =-\frac 1{\sqrt 3}
-		=\tan\left(-\frac\pi 6\right)\notimplies \theta=\textcolor{orange}{-\frac\pi 6}
+		=\tan\left(-\frac\pi 6\right)\notimplies \theta=\mathcolor{orange}{-\frac\pi 6}
 	\]
 	Arctan has range $(-\frac\pi 2,\frac\pi 2)$, so always returns an angle in quadrants 1 or 4. Our point is in the \emph{second} quadrant ($x<0<y$) so we need to adjust, using the fact that $\tan$ is $\pi$-periodic:
 	\[
-		\textcolor{blue}{\theta=\pi-\frac\pi 6=\frac{5\pi}6} =\ang{150}
+		\mathcolor{blue}{\theta=\pi-\frac\pi 6=\frac{5\pi}6} =\ang{150}
 	\]
 	We could alternatively add any integer multiple of $2\pi$.
 	\tcblower
-	\flushright\includegraphics{expolar}
+	\hfill\includegraphics{expolar}
 \end{example*}
 
 
@@ -703,7 +718,7 @@ A fun application is to recover polar forms for the standard conics. We use the 
 \[\frac re+r\cos\theta=k+\frac ke \implies r=\frac{k(1+e)}{1+e\cos\theta}\]
 This is \emph{independent} of the type of conic, and even works when $e=0$; $r=2k$ is a circle with radius $k$!
 \end{minipage}\begin{minipage}[t]{0.3\linewidth}\vspace{0pt}
-\flushright\includegraphics{eccentric}
+\hfill\includegraphics{eccentric}
 \end{minipage}
 
 \begin{itemize}

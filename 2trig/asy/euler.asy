@@ -1,11 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
@@ -17,8 +23,8 @@ pair C=dir(100);
 
 draw("$c$",A--B,blue);
 draw("$a$",B--C,red);
-draw("$b$",C--A,heavygreen);
+draw("$b$",C--A,lGreen);
 
 draw("$A$",arc(A,A+0.1*unit(B-A),A+0.1*unit(C-A)),red);
-draw("$B$",arc(B,B+0.2*unit(C-B),B+0.2*unit(A-B)),heavygreen);
+draw("$B$",arc(B,B+0.2*unit(C-B),B+0.2*unit(A-B)),lGreen);
 draw("$C$",arc(C,C+0.15*unit(A-C),C+0.15*unit(B-C)),blue);

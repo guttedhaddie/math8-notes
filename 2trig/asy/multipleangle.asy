@@ -1,14 +1,21 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
-size(200,0);
+size(180,0);
 
 real al=25;
 real be=40;
@@ -36,15 +43,15 @@ pair Dl=dir(al);
 real d=0.05;
 draw(D+d*Dl--D+d*(Dp+Dl)--D+d*Dp);
 draw(D--A);
-draw(Label("$\cos\beta$",Relative(0.55),align=0.4*(D-B)),O--D,heavygreen);
+draw(Label("$\cos\beta$",Relative(0.55),align=0.4*(D-B)),O--D,lGreen);
 draw(Label("$\sin\beta$",Relative(0.4),align=0.4*A),D--B,blue);
 draw(B--P,blue+dashed);
 draw(P--D,dashed);
 draw(P+(d,0)--P+(d,d)--P+(0,d));
-draw(D--Q,dashed+heavygreen);
+draw(D--Q,dashed+lGreen);
 draw(Q+(d,0)--Q+(d,d)--Q+(0,d));
 
-draw("$\sin\alpha\cos\beta$",X+(d,0)--(X.x+d,D.y),dashed+heavygreen);
+draw("$\sin\alpha\cos\beta$",X+(d,0)--(X.x+d,D.y),dashed+lGreen);
 draw("$\cos\alpha\sin\beta$",(X.x+d,D.y)--(X.x+d,B.y),dashed+blue);
 draw(X+(0.5d,0)--X+(1.5d,0));
 draw((X.x+0.5d,D.y)--(X.x+1.5d,D.y));
