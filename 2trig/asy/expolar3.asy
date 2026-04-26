@@ -1,32 +1,39 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
-size(160,0);
+size(180,0);
 
 real thmax=2;
 
 path c=arc((0,0),(1,0),(-1,0),CCW);
 
-draw(scale(1)*c,heavygreen+dashed);
-draw(scale(0.5)*c,heavygreen+dashed);
-draw(scale(1.5)*c,heavygreen+dashed);
-draw(scale(2)*c,heavygreen+dashed);
+draw(scale(1)*c,lGreen+dashed);
+draw(scale(0.5)*c,lGreen+dashed);
+draw(scale(1.5)*c,lGreen+dashed);
+draw(scale(2)*c,lGreen+dashed);
 
-draw((0,0)--thmax*dir(30),heavygreen+dashed);
-label("$\frac\pi 6$",1.1*thmax*dir(30),heavygreen);
-draw((0,0)--thmax*dir(60),heavygreen+dashed);
-label("$\frac\pi 3$",1.1*thmax*dir(60),heavygreen);
-draw((0,0)--thmax*dir(120),heavygreen+dashed);
-draw((0,0)--thmax*dir(150),heavygreen+dashed);
-label("$\frac{2\pi}3$",1.1*thmax*dir(120),heavygreen);
-label("$\frac{5\pi}6$",1.1*thmax*dir(150),heavygreen);
+draw((0,0)--thmax*dir(30),lGreen+dashed);
+label("$\frac\pi 6$",1.1*thmax*dir(30),lGreen);
+draw((0,0)--thmax*dir(60),lGreen+dashed);
+label("$\frac\pi 3$",1.1*thmax*dir(60),lGreen);
+draw((0,0)--thmax*dir(120),lGreen+dashed);
+draw((0,0)--thmax*dir(150),lGreen+dashed);
+label("$\frac{2\pi}3$",1.1*thmax*dir(120),lGreen);
+label("$\frac{5\pi}6$",1.1*thmax*dir(150),lGreen);
 
 
 

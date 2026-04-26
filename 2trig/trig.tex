@@ -550,27 +550,25 @@ The cosine rule is just Pythagoras' Theorem with a correction for non-right tria
 \clearpage
 
 
-\iffalse
-
 
 \subsection{Polar Co-ordinates}
 
-Definition \ref{defn:polarcoord} provides an alternative way to describe points in the plane. If $\theta$ is the polar angle of a point with Cartesian (rectangular) co-ordinates $(x,y)$, then its polar-coordinates are precisely the values $(r,\theta)$ seen in the definition!\smallbreak
-
-Computing $x=r\cos\theta$ and $y=r\sin\theta$ is easy given $r$ and $\theta$.
+Definition \ref{defn:polarcoord} provides an alternative way to describe points in the plane. If $\theta$ is the polar angle of a point with Cartesian (rectangular) co-ordinates $(x,y)$, then its polar-coordinates are precisely the values $(r,\theta)$ in the definition!
 
 \begin{example}{}{polar}
-	A point with polar co-ordinates $\mathcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
+	Computing $x=r\cos\theta$ and $y=r\sin\theta$ is easy given $r$ and $\theta$. For instance, the point with polar co-ordinates $\mathcolor{blue}{(r,\theta)=(2,\frac{5\pi}6)}$ has Cartesian co-ordinates
 	\[
 		\mathcolor{blue}{(x,y)
-		=\bigl(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\bigr)
-		=\bigl(-\sqrt 3,1\bigr)}
+		=\big(2\cos\tfrac{5\pi}6,2\sin\tfrac{5\pi}6\big)
+		=\big(-\sqrt 3,1\big)}
 	\]
 \end{example}
 
-Computing polar co-ordinates from Cartesian is harder, requiring some \emph{visualization.}  
+
+Computing polar co-ordinates from Cartesian is harder, requiring at least some visualization.  
 \begin{enumerate}
-  \item Every point $(x,y)$ has a unique radius $r=\sqrt{x^2+y^2}$, but not polar angle. If $\theta$ is a polar angle, so is $\theta+2\pi n$ for any integer $n\in\Z$. The origin $(x,y)=(0,0)$ is even stranger; certainly $r=0$, but \emph{any} $\theta$ is a legitimate polar angle!
+  \item Every point $(x,y)$ has a unique radius $r=\sqrt{x^2+y^2}$ but non-unique polar angle. If $\theta$ is a polar angle, so also is $\theta+2\pi n$ for any integer $n$. The origin $(x,y)=(0,0)$ is even stranger; certainly $r=0$, but \emph{any} $\theta$ provides a legitimate polar angle!
+  
   \item Whenever $x\neq 0$ (away from the $y$-axis),
   \[
   	\begin{cases}
@@ -579,26 +577,31 @@ Computing polar co-ordinates from Cartesian is harder, requiring some \emph{visu
   	\end{cases}
   	\implies \tan\theta=\frac yx
   \]
-	however, this \emph{doesn't} guarantee that $\theta=\tan^{-1}\frac yx$. Continuing the example shows us why\ldots
+	however, this doesn't guarantee that $\theta=\tan^{-1}\frac yx$. Continuing the example shows us why\ldots
 \end{enumerate}
 
-\begin{example*}[lower separated=false, sidebyside, sidebyside align=top seam, sidebyside gap=0pt, righthand width=0.35\linewidth]{\ref{ex:polar}, cont}{}
-	If $\mathcolor{blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy
-	\[
+\begin{example*}{\ref{ex:polar}, cont}{}
+	If $\mathcolor{Blue}{(x,y)=(-\sqrt 3,1)}$, then the radius is easy\par
+	\begin{minipage}[t]{0.65\linewidth}\vspace{-10pt}
+		\[
 		r=\sqrt{(\sqrt 3)^2+1^2}=2
 	\]
 	For the polar angle,
 	\[
 		\tan\theta =\frac yx =-\frac 1{\sqrt 3}
-		=\tan\left(-\frac\pi 6\right)\notimplies \theta=\mathcolor{orange}{-\frac\pi 6}
+		=\tan\left(-\frac\pi 6\right) \notimplies \theta=\mathcolor{Brown}{-\frac\pi 6}
 	\]
-	Arctan has range $(-\frac\pi 2,\frac\pi 2)$, so always returns an angle in quadrants 1 or 4. Our point is in the \emph{second} quadrant ($x<0<y$) so we need to adjust, using the fact that $\tan$ is $\pi$-periodic:
+	however we cannot (and should not!) conclude that $\theta=\mathcolor{Brown}{-\frac\pi 6}$.\smallbreak
+	Arctan has range $(-\frac\pi 2,\frac\pi 2)$ and so always returns an angle in quadrants 1 or 4. \textcolor{Blue}{Our point} is in the \emph{second} quadrant ($x<0<y$) so we need to adjust. We use the fact that $\tan$ is $\pi$-periodic:
 	\[
-		\mathcolor{blue}{\theta=\pi-\frac\pi 6=\frac{5\pi}6} =\ang{150}
+		\mathcolor{Blue}{\theta=\pi}\mathcolor{Brown}{-\frac\pi 6}=\mathcolor{Blue}{\frac{5\pi}6 =\ang{150}}
 	\]
 	We could alternatively add any integer multiple of $2\pi$.
-	\tcblower
-	\hfill\includegraphics{expolar}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
+		\hfill\includegraphics[alt={the point root 3 negative 1 in polat coordinates}]{expolar}
+	\end{minipage}
 \end{example*}
 
 
@@ -608,17 +611,17 @@ The example wasn't too tricky since the polar angle was exactly computable. When
 	The point $(x,y)=(-8,-15)$ has polar co-ordinates (quadrant 3!)
 	\[
 		r=\sqrt{8^2+15^2}=17,\qquad 
-		\theta=\pi+\tan^{-1}\tfrac{15}8 \approx \ang{241.93}
+		\theta=\pi+\tan^{-1}\tfrac{15}8 \approx \ang{242}
 	\]
 \end{example}
 
 
-We could summarize with formulæ describing precisely how to compute $\theta$ dependent on quadrant (the signs of $x,y$), though it is better to get in to the habit of drawing a picture!
-
-\goodbreak
+We could summarize with a formula describing precisely how to compute $\theta$ dependent on quadrant (the signs of $x,y$), though it is better to get in to the habit of drawing a picture.
 
 
-\boldsubsubsection{Curves in Polar Co-ordinates}
+
+
+\subsubsection*{Curves in Polar Co-ordinates}
 
 Polar co-ordinates are well-suited to describing curves that encircle the origin. Indeed circles centered at the origin with radius $a>0$ have the very simple polar form $r=a$. Converting to rectangular co-ordinates recovers the the natural parametrization of a circle:
 \[
@@ -627,44 +630,46 @@ Polar co-ordinates are well-suited to describing curves that encircle the origin
 \]
 This partly explains why mathematicians call sine and cosine \emph{circular functions.}\smallbreak
 
-General polar graphs are harder to visualize, though the major reason is lack of familiarity. Have a little empathy: to graph \emph{polar} functions, you'll likely have to follow the same approach as new students use to sketch \emph{Cartesian} curves like $y=x^2$! Here are a couple of examples.
+General polar graphs are harder to visualize, though the major reason is lack of familiarity. Have a little empathy: whatever discomfort you feel graphing \emph{polar} functions is similar to what grade-school students feel when asked to sketch Cartesian curves for the first time.
 
-\begin{examples}{}{}
-	\exstart The curve $r=\theta$ is relatively easy to plot since $r$ increases at exactly the same rate as the angle; we therefore have a \emph{spiral.}\vspace{-5pt}
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]To confirm this, plot several points $(\theta,\theta)$; we've done for $\theta$ in multiples of $\frac\pi 6$ \ ($\ang{30}$) from 0 to $2\pi$. It is sensible to use `polar graph paper' with concentric circles separated by (say) $\frac\pi 2\approx 1.57$.
+\begin{examples}{}{polargraphs}
+	We plot two examples of polar curves. Try drawing out \textcolor{mGreen}{polar grid lines} and making a table of points for nice values of $\theta$.
+	\begin{enumerate}
+	  \item The curve $r=\theta$ is easy to plot since $r$ increases at exactly the same rate as the angle; we therefore have a \emph{spiral.} We've plotted points for $\theta$ a multiple of $\frac\pi 6$ \ ($\ang{30}$) from 0 to $2\pi$.
 	  \begin{center}
+	  	\tagpdfsetup{table/header-rows={2}}
 	  	\begin{tabular}{c@{\qquad\qquad}c}
-	  		\begin{tabular}{c}
-	  			\includegraphics{expolar2}
+	  			\includegraphics[alt={spiral polar graph of r equals theta}]{expolar2}
+	  			&
+	  			\includegraphics[alt={circular polar graph of r two sine theta}]{expolar3}
 	  			\\
-	  			$r=\theta$, \ $0\le \theta\le 2\pi$
-	  		\end{tabular}
-	  		&
-	  		\begin{tabular}{c}
-	  			\includegraphics{expolar3}
-	  			\\
-	  			$r=2\sin\theta$, \ $0\le \theta\le\pi$
-	  			\\[8pt]
-	  			$\def\arraystretch{1.2}
-	  			\begin{array}{|c|cccccc|}\hline
-						\theta&\frac\pi 6&\frac{2\pi}3&\frac\pi 2&\frac{4\pi}3&\frac{5\pi}6&\pi\\\hline
-						2\sin\theta&1&1.73&1&1.73&1&0\\\hline
-					\end{array}$
-	  		\end{tabular}
+	  			Example 1: $0\le\theta\le 2\pi$
+	  			&
+	  			Example 2: $0\le\theta\le\pi$
 	  	\end{tabular}
 	  \end{center}
 	  
-	  \item The curve $r=2\sin\theta$ is a little easier to work with since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
-		This looks like a circle! To see this, multiply both sides by $r$ and complete the square:
-		\[
-			r^2=2r\sin\theta
-			\implies x^2+y^2=2y 
-			\implies x^2+(y-1)^2=1
-		\]
-		describes the set of points with distance 1 from the point $(0,1)$: a circle!
+	  \item\label{ex:polarcircle} The curve $r=2\sin\theta$ is a little easier to work with, since we know exact values for sine, assisted by $\sqrt 3\approx 1.73$.\par
+	  \begin{minipage}[t]{0.57\linewidth}\vspace{-6pt}
+	  	This looks like a circle! To confirm, multiply both sides by $r$ and complete the square:
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.4\linewidth}\vspace{-20pt}
+	  	$\def\arraystretch{1.3}
+ 	  	\begin{array}{c|cccccc}
+ 				\theta&\frac\pi 6&\frac{2\pi}3&\frac\pi 2&\frac{4\pi}3&\frac{5\pi}6&\pi\\\hline
+ 				2\sin\theta&1&1.73&1&1.73&1&0
+ 			\end{array}$
+	  \end{minipage}
+			\[
+				r^2=2r\sin\theta
+				\implies x^2+y^2=2y 
+				\implies x^2+(y-1)^2=1
+			\]
+			This describes the set of points with distance 1 from the point $(0,1)$: a circle!
 	\end{enumerate}
 \end{examples}
+
 
 You should think about what happens in both examples if we extend the domain:
 \begin{itemize}
@@ -673,42 +678,52 @@ You should think about what happens in both examples if we extend the domain:
 \end{itemize}
 
 
-\clearpage
 
 
 \begin{exercises}{}{}
-	\exstart Convert the following points to polar co-ordinates.
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]\begin{enumerate}
-	    \item $(-5,5)$\qquad (b)\lstsp $(3,-4)$\qquad (c)\lstsp $(-5\sqrt 3,-15)$
-	    \item[(d)] $(-1,\tan 3)$\quad (tricky---this is 3 radians!)
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Converting to and from polar co-ordinates, Graph sketching}
+	
+	\begin{enumerate}
+	  \item Convert the following points to polar co-ordinates.
+	  \begin{enumerate}
+	    \item $(-5,5)$
+			\item $(3,-4)$
+			\item $(-5\sqrt 3,-15)$
+	    \item $(-1,\tan 3)$\quad (careful---this is 3 radians!)
 	  \end{enumerate}
+	  
+	  
+	  \item Define a function $\theta(x,y)$ returning the polar angle $\theta\in[0,2\pi)$ for \emph{any} non-origin point $(x,y)\neq (0,0)$.\par
+	  (\emph{The answer is not pleasant: think about arctan, and don't divide by zero\ldots})
+	  
 	  
 	  \item If $a>0$, describe the curve with polar equation $r=2a\cos\theta$.\par
 	  (\emph{Be careful with $\theta>\frac\pi 2$ since cosine goes negative\ldots})
 	  
-	  \item The algebraic trickery in the last example sometimes bears fruit, though you have to be lucky! By multiplying both sides by $1-\sin\theta$ and converting to rectangular co-ordinates, show that the polar function
+	  
+	  \item\label{exs:polarparb} The algebraic trickery in the Example \ref*{ex:polargraphs}.\ref{ex:polarcircle} sometimes bears fruit, though you have to be lucky! By multiplying both sides by $1-\sin\theta$ and converting to rectangular co-ordinates, show that the polar function
 		\[
 			r(\theta)=\frac{2a}{1-\sin\theta}
 		\]
 		is a parabola in disguise and sketch it when $a=1$. How does the graph depend on $a$?
 		
 		
-		\item In a similar vein to the previous question, sketch the curve $r=\frac 2{2+\sin\theta}$. What type of curve is this?
+		\item In a similar vein to Exercise \ref*{exs:polarparb}, sketch the curve $r=\frac 2{2+\sin\theta}$. What type of curve is this?
 		
 		 
 	  \item Try to sketch the following curves.
 		\begin{enumerate}
-	  	\item $r=\theta(\theta-4)$\qquad 
-	  	(b)\lstsp $r=(\theta-1)^2+1$\qquad 
-	  	(c)\lstsp $r=(\theta-1)^2-1$
+	  	\item $r=\theta(\theta-4)$
+	  	\item $r=(\theta-1)^2+1$
+	  	\item $r=(\theta-1)^2-1$
 		\end{enumerate}
-		As well as plotting points directly, you should sketch the curve first on rectangular axes (e.g.,{} (a) is $y=x(x-4)$). What happens to (c) when $\theta=1$?\par
-		Once you've tried these, use a \href{https://www.desmos.com/calculator}{grapher} to see if you're right, though see how close you can get without it! 
+		If you're unsure what to do, plot some points as in the examples. Perhaps also sketch the curve first on rectangular axes (e.g.,{} (a) corresponds to $y=x(x-4)$). What happens to (c) when $\theta=1$?\par
+		Once you've tried these, use some technology to see how close you got to the real thing. 
 	\end{enumerate}
 \end{exercises}
 
-\fi
+
 
 \iffalse
 \begin{minipage}[t]{0.7\linewidth}\vspace{0pt}

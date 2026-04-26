@@ -1,34 +1,41 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
-size(160,0);
+size(140,0);
 
 real thmax=2pi;
 
-draw(scale(pi/2)*unitcircle,heavygreen+dashed);
-draw(scale(pi)*unitcircle,heavygreen+dashed);
-draw(scale(3*pi/2)*unitcircle,heavygreen+dashed);
-draw(scale(2pi)*unitcircle,heavygreen+dashed);
+draw(scale(pi/2)*unitcircle,lGreen+dashed);
+draw(scale(pi)*unitcircle,lGreen+dashed);
+draw(scale(3*pi/2)*unitcircle,lGreen+dashed);
+draw(scale(2pi)*unitcircle,lGreen+dashed);
 
-draw(-thmax*dir(30)--thmax*dir(30),heavygreen+dashed);
-label("$\frac\pi 6$",1.15*thmax*dir(30),heavygreen);
-label("$\frac{7\pi}6$",-1.15*thmax*dir(30),heavygreen);
-draw(-thmax*dir(60)--thmax*dir(60),heavygreen+dashed);
-label("$\frac\pi 3$",1.15*thmax*dir(60),heavygreen);
-label("$\frac{4\pi}3$",-1.15*thmax*dir(60),heavygreen);
-draw(-thmax*dir(120)--thmax*dir(120),heavygreen+dashed);
-label("$\frac{2\pi}3$",1.15*thmax*dir(120),heavygreen);
-label("$\frac{5\pi}3$",-1.15*thmax*dir(120),heavygreen);
-draw(-thmax*dir(150)--thmax*dir(150),heavygreen+dashed);
-label("$\frac{5\pi}6$",1.15*thmax*dir(150),heavygreen);
-label("$\frac{11\pi}6$",-1.15*thmax*dir(150),heavygreen);
+draw(-thmax*dir(30)--thmax*dir(30),lGreen+dashed);
+label("$\frac\pi 6$",1.15*thmax*dir(30),lGreen);
+label("$\frac{7\pi}6$",-1.15*thmax*dir(30),lGreen);
+draw(-thmax*dir(60)--thmax*dir(60),lGreen+dashed);
+label("$\frac\pi 3$",1.15*thmax*dir(60),lGreen);
+label("$\frac{4\pi}3$",-1.15*thmax*dir(60),lGreen);
+draw(-thmax*dir(120)--thmax*dir(120),lGreen+dashed);
+label("$\frac{2\pi}3$",1.15*thmax*dir(120),lGreen);
+label("$\frac{5\pi}3$",-1.15*thmax*dir(120),lGreen);
+draw(-thmax*dir(150)--thmax*dir(150),lGreen+dashed);
+label("$\frac{5\pi}6$",1.15*thmax*dir(150),lGreen);
+label("$\frac{11\pi}6$",-1.15*thmax*dir(150),lGreen);
 
 
 
