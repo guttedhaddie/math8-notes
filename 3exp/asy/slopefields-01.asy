@@ -1,10 +1,16 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
 
 import graph;
 
@@ -17,9 +23,9 @@ pair b=(2,2);
      
 
 real f(real x){return exp(x);}
-//draw(graph(f,-2,2),blue);
+//draw(graph(f,-2,2),Blue);
 real f(real x){return 0.5exp(x);}
-draw(graph(f,-2,2),heavygreen+linewidth(1));
+draw(graph(f,-2,2),lGreen+linewidth(1));
 real f(real x){return -0.3exp(x);}
 //draw(graph(f,-2,2),orange);
 real f(real x){return -0.7exp(x);}

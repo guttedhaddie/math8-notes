@@ -1,12 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -21,12 +26,12 @@ xaxis("$t$",0,b,red,RightTicks);
 yaxis("$P$",0,30,red,LeftTicks(Step=10,step=5));
 
 
-dot((0,10),heavygreen);
-dot((6,20),heavygreen);
+dot((0,10),lGreen);
+dot((6,20),lGreen);
 
 real x=9;
 real ht=f(x);
-draw((x,0)--(x,ht)--(0,ht),heavygreen+dashed);
+draw((x,0)--(x,ht)--(0,ht),lGreen+dashed);
 //dot((x,f(x)),heavygreen);
 //xtick(Label("$e$",align=S),exp(1),S,heavygreen);
 //labelx("$e$",exp(1),0.3S,heavygreen);

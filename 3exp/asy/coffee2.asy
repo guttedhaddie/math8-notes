@@ -15,20 +15,21 @@ pen lGreen=rgb("00a000");
 import graph;
 
 
-size(170,120,IgnoreAspect);
+size(170,110,IgnoreAspect);
 
 real Ts=50;
 real k=log(4/3);
 
 real T(real t){return 50+160exp(-k*t);}
-draw(graph(T,0,12),blue);
+path p=graph(T,0,12);
+draw(p,blue);
+
+draw(rotate(180,(6,(210+T(12))/2))*p,Magenta);
+
+draw((0,210)--(12,T(12)),Brown);
 
 
-xaxis("$t$",0,12,red,RightTicks);
+xaxis(0,12,red,RightTicks(new real[]{0}));
 yaxis("$T$",0,210,red,LeftTicks(Step=50,step=25));
 
-draw((3,0)--(3,T(3))--(0,T(3)),dashed+lGreen);
-
-draw((0,50)--(12,50),dashed+blue);
-
-
+labelx("$t$",11.5,2S,red);

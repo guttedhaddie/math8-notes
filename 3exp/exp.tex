@@ -27,15 +27,15 @@ where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if
 
 \begin{example}{}{naturalgrowth}
 	The simplest natural growth equation has $k=1$:\par
-	\begin{minipage}[t]{0.7\linewidth}\vspace{-10pt}
+	\begin{minipage}[t]{0.72\linewidth}\vspace{-10pt}
 		\[
 			\diff[y]{x}=y
 		\]
-		If a point $(x,y)$ lies on a \textcolor{Green}{solution curve,} then the differential equation tells us the \emph{direction of travel} of the solution. We may visualize this by drawing an arrow with \text{slope} $\diff[y]{x}=y$; the arrows are \emph{tangent} to any solution.\footnotemark{} You should easily be able to sketch some other solution curves.\smallbreak
+		If a point $(x,y)$ lies on a \textcolor{Green}{solution curve,} then the differential equation tells us the solution's \emph{direction of travel}. Visualize this by drawing an arrow with \text{slope} $\diff[y]{x}=y$; the arrows are \emph{tangent} to any solution.\footnotemark{} You should easily be able to sketch some other solution curves.\smallbreak
 		You should, of course, recognize the graph\ldots
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.29\linewidth}\vspace{-20pt}
+	\begin{minipage}[t]{0.27\linewidth}\vspace{-22pt}
 		\hfill\includegraphics[alt={slope field for natural growth equation}]{slopefields-01}
 	\end{minipage}
 \end{example}
@@ -45,7 +45,7 @@ where $k$ is a constant; if $k>0$ this is the \emph{natural growth equation}, if
 }
 
 
-\pagebreak[3]
+%\pagebreak[3]
 
 
 \begin{defn}{}{}
@@ -58,27 +58,28 @@ Recall the \emph{exponential laws,}\phantomsection\label{pg:explaws} which are v
 	a^{x-y}=\frac{a^x}{a^y}\qquad 
 	(a^x)^r=a^{rx}}
 \]
-These hold for all exponents, with the same continuity caveats we saw previously. 
-For modelling, the crucial property of exponential functions is that they have proportional derivative.
+These hold for all exponents, with the same continuity caveats mentioned previously. 
+For modeling, the crucial property of exponential functions is that they have proportional derivatives.
 
 \begin{thm}{}{}
 	The rate of change of $f(x)=a^x$ is proportional to $f(x)$. Specifically,
 	\[
 		f'(x) =\lim_{h\to 0}\frac{a^{x+h}-a^x}h
 		=a^x\lim_{h\to 0}\frac{a^{h}-1}h
+		=\left(\lim_{h\to 0}\frac{a^{h}-1}h\right)a^x
 	\]
-	so that $f(x)=a^x$ satisfies the natural growth/decay equation $\diff[y]{x}=ky$ with proportionality constant
+	Otherwise said, $f(x)=a^x$ satisfies the natural growth/decay equation $\diff[y]{x}=ky$ with proportionality constant
 	\[
 		k =f'(0) =\lim_{h\to 0}\frac{a^{h}-1}h
 	\]
 \end{thm}
 
 
-
+It is, again, a matter for a more advanced course to see that the limit $\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}$ always exists. For our purposes, estimation is enough.
 
 
 \begin{example}{}{}
-	We estimate the proportionality constant $\displaystyle k=\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}$ to 3\,d.p.\ using a calculator for four values of $h$:
+	We estimate the proportionality constant $k=\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}$ to 3\,d.p.\ using a calculator for four values of $h$:
 	\[
 		\def\arraystretch{1.5}
 		\begin{array}{c|cccccc}
@@ -86,18 +87,18 @@ For modelling, the crucial property of exponential functions is that they have p
 			\frac{a^{0.1}-1}{0.1}&0.718&0.960&1.044&1.065&1.161&1.746\\\hline
 			\frac{a^{0.01}-1}{0.01}&0.696&0.921&0.998&1.017&1.105&1.622\\\hline
 			\frac{a^{0.001}-1}{0.001}&0.693&0.917&0.994&1.012&1.099&1.611\\\hline
-			\frac{a^{0.0001}-1}{0.0001}&0.693&0.916&0.993&1.012&1.099&1.610
-			%\frac{a^{0.01}-1}{0.01}&0.696&&&&&\\\hline
-			%\frac{a^{0.001}-1}{0.001}&0.693&&&&&
+			\frac{a^{0.0001}-1}{0.0001}&0.693&0.916&0.993&1.012&1.099&1.610\\\hline
+			\frac{a^{0.00001}-1}{0.00001}&0.693&0.916&0.993&1.012&1.099&1.609
 		\end{array}
 	\]
-	What is happening to the proportionality constant as $a$ increases?
+	What appears to be happening to the proportionality constant as $a$ increases?
 \end{example}
 
-It appears as if there is a special number somewhere between 2.7 and 2.75 for which the proportionality constant is precisely $k=1$.
 
 
+\subsubsection*{The Natural Exponential Function}
 
+It certainly appears as if there is a special number somewhere between 2.7 and 2.75 for which the proportionality constant is precisely $k=\smash[b]{\lim\limits_{h\to 0}\frac{a^{h}-1}h}=1$.
 
 
 \begin{defn}{}{}
@@ -106,50 +107,57 @@ It appears as if there is a special number somewhere between 2.7 and 2.75 for wh
 \end{defn}
 
 \footnotetext{%
-	\emph{Natural} here means \emph{unavoidable}: an old cliche suggests that if aliens were to land on Earth, they'd have to understand $e$ given the technology they'd require to get here. Of course they'd likely use a different symbol; ours comes from Leonhard Euler around 1728. Like $\pi$ and $\sqrt 2$, the constant $e$ is an \emph{irrational number}: its decimal representation contains no repeating pattern. There isn't the same geeky fascination with memorizing the digits of $e$ as there is with $\pi$, neither is there an `$e$-day' (Feb 7\th{} at 6:28\,p.m.?).%
+	\emph{Natural} here means \emph{unavoidable}. It is now cliché to suggest that if aliens were to land on Earth, they'd have to understand $e$ given the technology required to get here. Of course they'd likely use a different symbol; ours comes from Leonhard Euler around 1728. Like $\pi$ and $\sqrt 2$, the constant $e$ is an \emph{irrational number}: its decimal representation contains no repeating pattern. There isn't the same geeky fascination with memorizing the digits of $e$ as there is with $\pi$, neither is there an `$e$-day' (Feb 7\th{} at 6:28\,p.m.{} perhaps?).%
 }
 
 The function $f(x)=\frac 12e^x$ is plotted in Example \ref{ex:naturalgrowth}. Of course there are many other solutions to the natural growth equation $\smash{\diff[y]{x}=y}$: for any constants $c,k$,
 \[
 	y=ce^{kx}\implies \diff[y]{x}=\diff x ce^{kx} =ck e^{kx} =ky
 \]
-In fact the converse also holds; for the details, take a differential equations course!
+In fact the converse also holds.
 
 \begin{thm}{}{natgrowth}
 	The solutions to the natural growth equation $\diff[y]{x}=ky$ are precisely the functions
 	\[
-		y(x)=y_0e^{kx} =y_0\exp(kx)
+		y(x)=y_0e^{kx} =y_0\exp(kx) \tag{$\exp(x)=e^x$ is alternative notation}
 	\]
 	where $y_0=y(0)$ is the initial value.
 \end{thm}
 
+The converse can be verified using the standard technique of separation of variables as seen in any differential equations course.\footnote{%
+	Ignoring the trivial case when $y(x)\equiv 0$, the substitution rule from integration says
+	\[
+		\diff[y]{x}=ky\Longrightarrow \int \frac 1y\diff[y]{x}\,\dx=\int k\,\dx \Longrightarrow \int \frac 1y\,\dy=\int k\,\dx \Longrightarrow \ln\nm y=kx+C\ldots
+	\]
+}
 
 
 \begin{example}{}{}
 	A Petri dish contains a population $P(t)$ of bacteria satisfying the natural growth equation $\diff[P]{t}=0.5P$ where time is measured in weeks from the start of the year.\par
-	\begin{minipage}[t]{0.63\linewidth}\vspace{-2pt}
+	\begin{minipage}[t]{0.65\linewidth}\vspace{-2pt}
 		If $P(0)=100$ bacteria, then $P(t)=100e^{0.5t}$. Specifically, at the end of January ($4\frac 37$ weeks) one expects there to be
 		\[
 			P(\tfrac{31}7)=100\exp\tfrac{31}{14}=915\text{ bacteria}
 		\]
-		Note that the exponential doesn't return 915 exactly; this is only an approximation. Models like this work best for large populations where integer rounding errors are of minimal concern.
+		The exponential doesn't return 915 exactly; this is only an approximation. Models like this work best for large populations where integer rounding errors are of minimal concern.
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
-		\hfill\includegraphics{bacteria}
+	\begin{minipage}[t]{0.34\linewidth}\vspace{-2pt}
+		\hfill\includegraphics[alt={exponential growth of bacteria}]{bacteria}
 	\end{minipage}
 \end{example}
 
 
+
 \subsubsection*{Compound Interest and the Discovery of $e$}
 
-The first description of $e$ came in 1683 when Jacob Bernoulli tried to model the growth of money in a hypothetical bank account. We give a modernized version of his approach.
+The first description of $e$ as a number came in 1683 when Jacob Bernoulli tried to model the growth of money in a hypothetical bank account. Here is a modernized version of his approach.
 
 \begin{example}{}{}
-	\$1 is deposited in an account paying 100\% interest per year (nice!). Bernoulli observed that the money in the account at the end of the year depends on \emph{when} the interest is paid.
+	\$1 is deposited in an account paying 100\% interest per year (nice!). Bernoulli observed that account balance at the end of the year depends on \emph{when} the interest is paid.
 	\begin{itemize}
-	  \item If the interest is paid once at the end of the year (this is called \emph{simple} interest), you'll have \$2.
-	  \item If half the interest (50\textcent) is paid at six months, then the balance (\$1.50) earns $\frac 12\cdot 1.50=75$\textcent\ interest for the rest of the year; you'll finish the year with \$2.25 in the account.
+	  \item If the interest is paid once at the end of the year (\emph{simple} interest), the final balance is \$2.
+	  \item If half the interest (50\textcent) is paid at six months, then \$1.50 earns $\frac 12\cdot 1.50=75$\textcent\ interest for the rest of the year; at year's end, the account contains \$2.25.
 	  \item If the interest is paid in four installments, we have the following table of transactions (data is rounded to the nearest cent)
 	  \begin{quote}
 		  \begin{tabular}{c|c|c}
@@ -161,26 +169,26 @@ The first description of $e$ came in 1683 when Jacob Bernoulli tried to model th
 			  New Year&$\frac 14\cdot 1.95=49$\textcent&\$2.44
 		  \end{tabular}
 	  \end{quote}
-	  More succinctly, the year-end balance is $\left(1+\frac 14\right)^4=$ \textdollar 2.44.
+	  In brief, the year-end balance is $\left(1+\frac 14\right)^4=$ \textdollar 2.44.
 
 	  
-	  \item More generally, if the interest is paid over $n$ equally spaced intervals, the account balance at the end of the year would be \textdollar$\left(1+\frac 1n\right)^n$. Here are a few examples rounded things to 5\,d.p.
+	  \item In general, if the interest is paid over $n$ equally spaced intervals, the account balance at year's end is \textdollar$\left(1+\frac 1n\right)^n$. Here are a few examples rounded to 5\,d.p.
 	  \begin{quote}
 	  	\def\arraystretch{1.5}
 		  \begin{tabular}{l|l}
-			  Frequency&Balance after 1 year (\textdollar)\\\hline\hline
+			  Frequency&Balance at year's end (\textdollar)\\\hline\hline
 			  Every month&$\left(1+\frac 1{12}\right)^{12}=2.61304$\\\hline
 			  Every day&$\left(1+\frac 1{365}\right)^{365}=2.71457$\\\hline
 			  Every hour&$\left(1+\frac 1{8760}\right)^{8760}=2.71813$\\\hline
 			  Every second&$\left(1+\frac 1{31536000}\right)^{31536000}=2.71828$
 		  \end{tabular}
 	  \end{quote}
-	 	As the frequency of payment increases, it appears as if the balance is increasing to \textdollar$e$\ldots
+	 	As the frequency of payment increases, it appears as if the balance is approaching \textdollar$e$\ldots
 	\end{itemize}
 \end{example}
 
 
-In fact this is a theorem, though it requires significant work (beyond this class) to prove it:
+In fact this is a theorem, though its proof requires significant work (beyond this class):
 \[
 	\tcbhighmath{
 		e =\lim_{n\to\infty}\left(1+\frac 1n\right)^n
@@ -188,66 +196,73 @@ In fact this is a theorem, though it requires significant work (beyond this clas
 		e^x =\lim_{n\to\infty}\left(1+\frac xn\right)^n
 	}
 \]
-This again shows that $e$ arises very naturally.
+This again shows that $e$ arises very naturally as the limit of a process of repeated multiplication.
 
 
 \paragraph{Simple, Monthly \& Continuous Interest}
 
 In finance, interest is typically computed in one of three ways. In each case we describe the result of investing \$1 at an annual interest rate of $r\%=\frac r{100}$.
 \begin{description}
-	\item[\normalfont\emph{Simple interest}] You are paid $\frac r{100}$ dollars at the end of the year. Your invested dollar becomes $1+\frac r{100}$ dollars.
-	\item[\normalfont\emph{Monthly interest}] Each month you are paid $\frac r{12}$\% of your current balance. This amounts to a balance of $(1+\frac r{1200})^{12}$ dollars at year's end. The period need not be monthly: if interest is paid in $n$ installments, the balance would be $(1+\frac r{100n})^{n}$.
-	\item[\normalfont\emph{Continuous interest}] After $t$ years (can be any fraction of a year!) your dollar-balance is
+	\item[\normalfont\emph{Simple interest}] The account pays \$$\frac r{100}$ at year's end. Your invested dollar becomes \$$\left(1+\frac r{100}\right)$.
+	\item[\normalfont\emph{Monthly interest}] The account pays simple interest of $\frac r{12}$\% each month, so that each month's interest itself earns interest in future months. At year's end, the account balance\footnotemark{} will be \$$(1+\frac r{1200})^{12}$.
+	\item[\normalfont\emph{Continuous interest}] After $t$ years (any fraction of a year) the dollar-balance of the account will be
 	\[
 		e^{\frac{rt}{100}}=\exp\frac{rt}{100} =\lim_{n\to\infty}\left(1+\frac{rt}{100n}\right)^n
 	\]
 \end{description}
 
+\footnotetext{%
+	The period need not be monthly, though this is most common in practice: if interest is paid in $n$ equally-spaced installments, the final balance is \$$(1+\frac r{100n})^{n}$.%
+}
+
+
 
 \begin{example}{}{}
-	A bank account earns 6\% annual interest paid monthly. To what simple annual interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
-	At the end of the year, \$1 becomes
+	A bank account pays 6\% annual interest in equal monthly installments. To what simple annual interest rate does this correspond? Would you perfer an account paying 6\% continuously?\smallbreak
+	Investing \$1 for a year in this account, results in a dollar-balance
 	\[
-	 	\left(1+{0.06}{12}\right)^{12}=1.005^{12}\approx 1.06168\ldots
+	 	\left(1+\frac{0.06}{12}\right)^{12}=1.005^{12}\approx 1.06168\ldots
 	\]
-	corresponding to a simple interest rate of 6.17\%. By cobntrast, 6\% continuous interest would result in your dollar becoming $e^{6/100}\approx 1.06184$, corresponding to a (marginally) higher simple interest rate of 6.18\%. You should prefer this, particularly if you have a lot of money to invest! The difference is more noticable with an investment of \$1000 over ten years:
+	This corresponds to a simple interest rate (one payment at year's end) of 6.17\%.\smallbreak
+	By contrast, 6\% continuous interest result in your dollar becoming \$$e^{6/100}\approx 1.06184$, corresponding to a (marginally higher) simple interest rate of 6.18\%. This is plainly preferable, particularly if you have a lot of money to invest! The difference is more noticable with an investment of \$1,000,000 over ten years:
 	\[
-		1000\times 1.005^{120}=\$1819.40
+		1,\!000,\!000\times 1.005^{120}=\$1,\!819,\!396.73
 		\quad\text{versus}\quad
-		1000e^{0.6}=\$1822.12
+		1,\!000,\!000e^{0.6}=\$1,\!822,\!118.80
 	\]
 \end{example}
-
-
 
 
 
 There are several reasons for these varying approaches, not all of them consumer-friendly:
 \begin{enumerate}
-  \item Simple interest is simple! It is easy to understand and compute, but hard to decide how or even whether to compute interest for parts of a year.
-  \item Monthly interest fits with most paychecks, so is sensible for loans, particularly mortgages.
-  \item Continuous interest allows the balance of an account to be found easily at any time, even between interest payment dates. It is also much easier to apply mathematical analysis (calculus).
-  \item A company can make an interest rate appear \emph{higher} (if a savings account) or \emph{lower} (if a loan) by choosing which way to quote an interest rate.
+  \item Simple interest is simple! It is easy to understand and compute, but hard to decide how or even whether to compute interest if an account is closed part-way through a year.
+  \item Monthly interest fits with the frequency of most paychecks, and is therefore commonly how basic savings accounts, loans and mortgages compute interest.
+  \item Continuous interest allows the balance of an account to be computed easily at any time. It is also much easier to apply mathematical analysis (calculus).
+  \item A bank can make an interest rate appear \emph{higher} (if a savings account) or \emph{lower} (if a loan) by choosing different ways to quote interest rates.
 \end{enumerate}
 
 
 \begin{example}{}{}
-	A bank quotes you a loan with a continuously compounded interest rate of 7\%. If you borrow \textdollar 100,000, then at the end of the year you'll owe
+	A bank quotes you a loan with an interest rate of 7\% (continuously compounded). If you borrow \textdollar 100,000, then at the end of the year you'll owe
 		\[
-			100000e^{0.07} =\$107,250.82
+			100000e^{0.07} =\$107,\!250.82
 		\]
 		not the \$107,000 you might have expected! This corresponds to a simple interest rate (one payment at the end of the year) of 7.25\%.\footnotemark{}
 \end{example}
 
 \footnotetext{%
-	In the US, mortgage companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,
+	In the US, loan companies typically quote an interest rate which they use to compound \emph{monthly.} For example, if the quoted rate is 7\%,
   then the effective annual (simple) interest rate is $\left(1+\frac{0.07}{12}\right)^{12}-1=7.229\%$.
-  By law, this higher \emph{effective APR} must be quoted somewhere, though it is unlikely to be as prominently posted\ldots%
+  By law, this higher \emph{effective APR} must be quoted somewhere, though it is unlikely to be as prominently posted.%
  }
 
 
 
-\begin{exercises}{}{}	
+\begin{exercises}{}{}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Exponentials are naturally related to calculus and limits, \ Compound interest (simple, regular, continuous)}
+	
 	\begin{enumerate}
 		\item Draw a slope field for the natural decay equation $\diff[y]{x}=-\frac 13y$ and use it to sketch the solution curve with initial condition $y(0)=6$. What is the \emph{function} $y(x)$ in this case?
 		
@@ -292,19 +307,26 @@ There are several reasons for these varying approaches, not all of them consumer
 
 Since $e>1>0$, the natural exponential function satisfies several properties:
 \[
-	\lim_{x\to -\infty}e^x=0,\qquad \lim_{x\to\infty}e^x=\infty,\qquad \diff xe^x=e^x>0
+	\lim_{x\to -\infty}e^x=0,\qquad 
+	\lim_{x\to\infty}e^x=\infty,\qquad 
+	\diff xe^x=e^x>0
 \]
-Thus $\exp:\R\to(0,\infty)$ is a \emph{differentiable (so continuous), increasing} function with domain $\R$ and range $(0,\infty)$. It is therefore \emph{invertible.}
+It follows that $\exp:\R\to(0,\infty)$ is a \emph{differentiable} (thus continuous), \emph{increasing} (thus 1--1) function onto its range $(0,\infty)$. It is therefore \emph{invertible.}
 
 
-\begin{defn}{}{}
-	The \emph{natural logarithm} $\ln:(0,\infty)\to\R$ is the inverse function to the natural exponential. That is,
-	\begin{itemize}
-		\item If $x>0$, then $e^{\ln x}=x$;
-		\item If $y\in\R$, then $\ln e^y=y$.
-	\end{itemize}
-	\tcblower
-	\hfill\includegraphics{log}
+\begin{defn}{}{natlog}
+	The \emph{natural logarithm} $\ln:(0,\infty)\to\R$ is the inverse function to the natural exponential. That is,\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+		\begin{itemize}
+			\item If $x>0$, then $e^{\ln x}=x$;
+			\item If $y\in\R$, then $\ln e^y=y$.
+		\end{itemize}
+		Its graph is obtained from that of the natural exponential in the usual manner: reflect in the line $y=x$.
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.39\linewidth}\vspace{-20pt}
+		\hfill\includegraphics[alt={graph of the natural logarithm}]{log}
+	\end{minipage}
 \end{defn}
 
 Since $\exp$ and $\ln$ are inverse functions, we can solve equations in the usual way: for instance,
@@ -315,7 +337,7 @@ Since $\exp$ and $\ln$ are inverse functions, we can solve equations in the usua
 
 
 
-One of the great advantages of logarithms is that they allow every exponential function to be expressed in terms of the natural exponential: by the exponential laws,
+One of the great advantages of logarithms is that they allow every exponential function to be expressed in terms of the natural exponential: by the exponential laws (page \pageref{pg:explaws}),
 \[
 	a^x=(e^{\ln a})^x=e^{x\ln a}
 \]
@@ -337,7 +359,7 @@ This identity is crucial for interpreting and analyzing natural growth models.
 	  \end{minipage}
 	  \hfill
 	  \begin{minipage}[t]{0.39\linewidth}\vspace{-10pt}
-	  	\hfill\includegraphics{rabbits}
+	  	\hfill\includegraphics[alt={growth of a rabbit population}]{rabbits}
 	  \end{minipage}\par\vspace{-3pt}
 	  \[
 	  	\diff tP(t)=\diff t10e^{\frac t6\ln 2}
@@ -345,21 +367,19 @@ This identity is crucial for interpreting and analyzing natural growth models.
 	  	\implies P'(9)=\frac{10\ln 2}62^{3/2}
 	  	\approx 3.27\text{ rabbits/month}
 	  \]
-	  If you ask students this question, what do you expect to be the most common \emph{incorrect} answers? Why?
+	  If you ask students this question, what do you expect to be the most common \emph{incorrect} answers?
 \end{example}
 
 
 
+\subsubsection*{The Logarithm Laws and General Logarithms}\label{pg:loglaws}
 
-
-\subsubsection*{The Logarithm Laws and General Logarithms}
-
-The logarithm laws should be familiar; they follow immediately from the above definition and the exponential laws (page \pageref{pg:explaws})
+The logarithm laws should be familiar. They follow immediately from Definition \ref{defn:natlog} and the exponential laws (page \pageref{pg:explaws})
 \begin{gather*}
 	e^{\ln x+\ln y}=e^{\ln x}e^{\ln y}=xy=e^{\ln xy}\implies \tcbhighmath{\ln xy=\ln x+\ln y}\\
 	\text{Similarly}\quad \tcbhighmath{\ln\tfrac xy=\ln x-\ln y\quad\text{and}\quad \ln x^r=r\ln x}\tag{$\ast$}
 \end{gather*}
-These laws allow us to solve more general exponential equations.
+These laws allow us to solve more general exponential equations by taking logs of both sides:
 \[
 	2^{x}=5\implies x\ln 2=\ln 5\implies x=\frac{\ln 5}{\ln 2}\approx 2.322
 \]
@@ -383,89 +403,81 @@ As the inverse of the base $a$ exponential function $y=a^x$, the base $a$ logari
 The natural logarithm has base $e$. Unless the base is very simple (e.g.{} $a=2$ or 10), we typically stick to using the natural logarithm. On a calculator, the `log' button means $\log_{10}$.
 
 
-\begin{exercises}{}{}
-	\begin{enumerate}
-		\item Find the solution to the equation $4^{2-\sqrt x}=10$.
-		
-	  \item Find the value of $x$ which satisfies the equation $4^{6x}=8$. Your answer should not contain any logarithms\ldots
-	  
-	  \item Over one year, find the continuous interest rate $s\%$ corresponding to a simple rate of 5\%.
-	
-	  \item $y=a^x$ satisfies the natural growth equation $\diff[y]x=ky$; what is the value of $k$?
-	  
-		\item Verify the remaining logarithm laws $(\ast)$.
-	
-	  \item By differentiating the expression $e^{\ln x}=x$, verify that $\diff x\ln x=\frac 1x$.
-	  
-	  \item Sketch a graph of the functions $f(x)=\log_2x$ and $g(x)=\log_{0.5}x$. How are they related? What happens to the graph of $\log_ax$ as $a$ changes?
-	
-	  \item Logarithms were originally invented not for calculus but to simplify and multiply large numbers. In the pre-calculator era, it was common for students to carry a book of \emph{log tables} for this purpose. Look up a log table and investigate how to use it.
-	\end{enumerate}
-\end{exercises}
+\subsubsection*{Modifying the Natural Growth Model}
 
-
-\clearpage
-
-
-
-\subsection{Modifying the Natural Growth Model}
-
-In this section we discuss several examples of exponential models motivated by real-world situations. Remember that \emph{modelling} always involves some guesswork and assumptions, which necessarily come with trade-offs: simpler assumptions/models are easier to analyze, but tend to be less accurate. Modelling is always a part of a feedback loop:
-\begin{quote}
-	Data/theory suggest a model whose predictions are tested against real-world data, suggesting changes/improvements to the model.
-\end{quote}
-Applied mathematicians typically desire a `Goldilocks' model: complicated enough to make accurate predictions without being too complicated to use.
-
-
-\subsubsection*{Newton's Law of Cooling}
-
-A just-poured cup of coffee at \ang{210}F is left outside when the air temperature is \ang{50}F. It seems obvious that the coffee will cool down slowly \emph{towards} \ang{50}F; but how?\smallbreak
-
-To help decide how to model this, ask yourself some questions:
-
+Remember that \emph{modeling} always involves some guesswork and assumptions, which necessarily come with trade-offs. Simpler assumptions \& models are easier to analyze, but tend to be less accurate. Modeling is therefore always a part of a feedback loop:
 \begin{enumerate}
-  \item When should the rate of cooling be most rapid?
-  \item What happens to the rate of change in the long run (large time)?
-  \item Can you suggest a family of functions which behave in this manner?
+  \item Model: Data \& theory suggest a mathematical model.
+  \item Solution: The model is solved, whether exactly using algebra or approximately using numerical techniques.
+  \item Test: The solutions provide predictions which may be tested against real-world experiments. Perhaps this suggests a tweak to the model\ldots
 \end{enumerate}
+Applied mathematicians typically desire a `Goldilocks' model: complicated enough to make accurate predictions without being too difficult to analyze and apply.
 
 
-Hopefully it seems reasonable to model this with a shifted exponential function, where  the temperature $T(t)$ of the coffee at time $t$ satisfies\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{-8pt}
+
+\paragraph{Newton's Law of Cooling}
+
+Here is a standard example of an exponential model motivated by a real-world situation.
+
+\begin{example}{}{newtoncooling}
+	A just-poured cup of coffee has temperature \ang{210}F. The coffee is left outside where the air temperature is \ang{50}F. It seems obvious that the coffee will cool slowly \emph{towards} \ang{50}F; but how?\smallbreak
+
+	To help decide how to model this, ask yourself some questions:\par
+	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
+		\begin{enumerate}
+		  \item When should the rate of cooling be most rapid?
+		  \item What happens to the rate of change in the long run?
+			\item Which of the three graphs drawn seems most likely?
+		  \item Can you suggest a family of functions which behave in this manner?
+		\end{enumerate}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-5pt}
+		\hfill\includegraphics[alt={different possible graphs for coffee cooling}]{coffee2}
+	\end{minipage}
+	\bigbreak
+
+	Hopefully it seems reasonable to model this problem using a shifted exponential function, where the temperature $T(t)$ of the coffee at time $t$ satisfies
 	\[
 		T(t)=50+160e^{-kt}
 	\]
-	for some positive constant $k$. This satisfy all our criteria:
-	\begin{itemize}
-	  \item $T(0)=\ang{210}$F.
-	  \item As $t$ increases, $e^{-kt}$ decreases to zero, so $T(t)$ decreases towards \ang{50}F.
-	\end{itemize}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{-15pt}
-	\hfill\includegraphics{coffee}
-\end{minipage}\par
-\begin{itemize}
-  \item The rate of cooling $\smash[t]{\nm{\diff[T]{t}}}=160ke^{-kt}$ is largest at $t=0$ and decreases as $t$ increases. 
-\end{itemize}
+	for some positive constant $k$. This satisfies all our criteria:\par
+	\begin{minipage}[t]{0.63\linewidth}\vspace{0pt}
+		\begin{itemize}
+		  \item $T(0)=\ang{210}$F.
+		  \item As $t$ increases, $e^{-kt}$ decreases to zero, so $T(t)$ decreases towards \ang{50}F.
+	  	\item The rate of cooling $\smash[t]{\nm{\diff[T]{t}}}=160ke^{-kt}$ is largest at $t=0$ and decreases as $t$ increases. 
+		\end{itemize}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.35\linewidth}\vspace{-20pt}
+		\hfill\includegraphics[alt={Graph of coffee temperature against time decreases first quickly and then more slowly}]{coffee}
+	\end{minipage}
+	\smallbreak
+	
+	To complete the model (find $k$), it is enough to supply one further data point. We continue the problem:
+	\begin{quote}
+		Suppose after 2 minutes that the temperature of the coffee is \ang{140}F. How long does it take for the coffee to cool to \ang{100}F?
+	\end{quote}
 
-To complete the model, it is enough to supply one further data point.\par
-
-Suppose after 2 minutes that the temperature of the coffee is \ang{140}F. How long does it take for the coffee to cool to \ang{100}F?\smallbreak
-
-We know that $140=T(2)=50+160e^{-2k}$, whence
-\[
-	e^{-2k}=\frac{140-50}{160}=\frac 9{16}\implies e^{-k}=\frac 34\implies T(t)=50+160\left(\frac 34\right)^t
-\]
-When $T(t)=100$, we see that
-\[
-	\left(\frac 34\right)^t=\frac{100-50}{160}=\frac 5{16}\implies t=\frac{\ln\frac 5{16}}{\ln\frac 34} =\frac{\ln 16-\ln 5}{\ln 4-\ln 3}\approx 4.043\text{ minutes}
-\]
+	We know that $140=T(2)=50+160e^{-2k}$, whence
+	\[
+		e^{-2k}=\frac{140-50}{160}=\frac 9{16}\implies e^{-k}=\frac 34\implies T(t)=50+160\left(\frac 34\right)^t
+	\]
+	When $T(t)=100$, we see that
+	\[
+		\left(\frac 34\right)^t=\frac{100-50}{160}=\frac 5{16}\implies t=\frac{\ln\frac 5{16}}{\ln\frac 34} =\frac{\ln 16-\ln 5}{\ln 4-\ln 3}\approx 4.043\text{ minutes}
+	\]
+	Of course, all this should really be compared against experimental data!
+\end{example}
 
 
+The above is an example of a general model called \emph{Newton's law of cooling.} This model arises theoretically by asserting a sensible answer to the first two of our motivating questions:
+\begin{quote}
+	The rate of temperature change of a body is proportional to the \emph{difference} between the body and its surroundings.
+\end{quote}
 
-
-This is an example of a general model called \emph{Newton's law of cooling,} which asserts that the rate of temperature change of a body is proportional to the \emph{difference} between the body and its surroundings. We have a simple modification of Theorem \ref{thm:natgrowth}
+This theoretical approach results in a simple modification of Theorem \ref{thm:natgrowth}.
 
 \begin{cor}{}{newtoncool}
 	If $M$ and $k$ are constant, then
@@ -474,6 +486,52 @@ This is an example of a general model called \emph{Newton's law of cooling,} whi
 	\]
 	where $y_0=y(0)$ is the initial value.
 \end{cor}
+
+Many other modifications of the natural growth model exist, though they are more appropriate for other courses.
+
+
+\begin{exercises}{}{}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Exponentials are naturally related to calculus and limits, \ Compound interest (simple, regular, continuous), \ Newton's Law of Cooling}
+	
+	\begin{enumerate}
+		\item Find the solution to the equation $4^{2-\sqrt x}=10$.
+		
+	  \item Find the value of $x$ which satisfies the equation $4^{6x}=8$.\par
+	  (\emph{Your answer should not contain any logarithms})
+	  
+	  \item Over one year, find the continuous interest rate $s\%$ corresponding to a simple rate of 5\%.
+	
+	  \item The function $y=a^x$ satisfies the natural growth equation $\diff[y]x=ky$; what is the value of $k$?
+	  
+		\item Verify the remaining logarithm laws $(\ast)$ on page \pageref{pg:loglaws}.
+	
+	  \item By differentiating the expression $e^{\ln x}=x$, verify that $\diff x\ln x=\frac 1x$.
+	  
+	  \item Sketch graphs of the functions $f(x)=\log_2x$ and $g(x)=\log_{0.5}x$. How are they related? What happens to the graph of $\log_ax$ as $a$ changes?
+	  
+	  
+	  \item A cup of coffee is left outside on a warm day when the surrounding temperature is \ang{90}F. Suppose the initial temperature of the coffee is \ang{200}F and that its temperature after 2 minutes is \ang{170}F. Find the temperature as a function of time.
+		
+		
+	  \item\begin{enumerate}
+		  \item Check that $y(x)=M+(y_0-M)e^{-kt}$ solves the differential equation in Corollary \ref{cor:newtoncool}.
+		  \item Suppose a student believes Theorem \ref{thm:natgrowth}. Use a substitution to convince them that the \emph{only} solution to $y'=k(M-y)$ is as given in part (a).
+		\end{enumerate}
+		
+		
+% 		\item A body with initial temperature $T_0$ is placed in an environment with constant temperature $M<T_0$. Suppose that the temperature $T(t)$ obeys Newton's law of cooling, and that it takes $t_1$ seconds for the body to cool to $\frac{T_0+M}2$. Find the temperature at time $t$ and determine how long it takes for the body to cool to $\frac 13(T_0+2M)$.
+
+	  \item Logarithms were originally invented not for calculus but to simplify the multiplication of large numbers. In the pre-calculator era, students commonly consulted a book of \emph{log tables} for this purpose. Investigate log tables and how to use them.
+	\end{enumerate}
+\end{exercises}
+
+
+\clearpage
+
+
+
+\iffalse
 
 
 
@@ -624,13 +682,7 @@ It is much easier to analyze this problem using a \href{http://math.uci.edu/~ndo
 \begin{exercises}
 
 	\begin{enumerate}
-		\item A cup of coffee is left outside on a warm day when the surrounding temperature is \ang{90}F. Suppose the initial temperature of the coffee is \ang{200}F and that its temperature after 2 minutes is \ang{170}F. Find the temperature as a function of time.
-		
-	  \item Consider Corollary \ref{cor:newtoncool}.
-		\begin{enumerate}
-		  \item Check that $y(x)=M+(y_0-M)e^{-kt}$ satisfies the differential equation.
-		  \item A student believes that Theorem \ref{thm:natgrowth} is true. How would you convince them, \emph{in the simplest possible way,} that the \emph{only} solution to $y'=k(M-y)$ is as given in part (a)?
-		\end{enumerate}
+
 		
 		\item For both models in Example \ref{ex:wort}, what is the maximum growth rate of the yeast population, and at what time does it occur?
 	
@@ -638,7 +690,7 @@ It is much easier to analyze this problem using a \href{http://math.uci.edu/~ndo
 		\item In Example \ref{ex:fish}, suppose the initial population is 3000 fish and 1000 fish are harvested per month, how long does it take for the population to recover to 6000 fish?
 		
 		
-% 	\item A body with initial temperature $T_0$ is placed in an environment with constant temperature $M<T_0$. Suppose that the temperature $T(t)$ obeys Newton's law of cooling, and that it takes $t_1$ seconds for the body to cool to $\frac{T_0+M}2$. Find the temperature at time $t$ and determine how long it takes for the body to cool to $\frac 13(T_0+2M)$.
+
 	
 	
 	  \item Plutonium-238 has a \emph{half-life} of 88 years, meaning that after 88 years half of the isotope has decayed to another element (in this case uranium-234).
@@ -654,3 +706,5 @@ It is much easier to analyze this problem using a \href{http://math.uci.edu/~ndo
 		\end{enumerate}
 	\end{enumerate}
 \end{exercises}
+
+\fi

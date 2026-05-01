@@ -1,11 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -29,27 +35,27 @@ label("$y=\ln x$",(5.9,1.3),blue);
 
 real x=exp(1);
 real ht=f(x);
-draw((x,0)--(x,ht)--(0,ht),heavygreen+dashed);
+draw((x,0)--(x,ht)--(0,ht),lGreen+dashed);
 //dot((x,f(x)),heavygreen);
 //xtick(Label("$e$",align=S),exp(1),S,heavygreen);
-labelx("$e$",exp(1),0.3S,heavygreen);
+labelx("$e$",exp(1),0.3S,lGreen);
 
 
 real x=exp(-1);
 real ht=f(x);
-draw((x,0)--(x,ht)--(0,ht),heavygreen+dashed);
+draw((x,0)--(x,ht)--(0,ht),lGreen+dashed);
 //dot((x,f(x)),heavygreen);
 //xtick(Label("$e^{-1}$",align=N),exp(-1),N,heavygreen);
-labelx("$e^{-1}$",exp(-1),0.8dir(70),heavygreen);
+labelx("$e^{-1}$",exp(-1),0.8dir(70),lGreen);
 
 real x=exp(2);
 real ht=f(x);
-draw((x,0)--(x,ht)--(0,ht),heavygreen+dashed);
+draw((x,0)--(x,ht)--(0,ht),lGreen+dashed);
 //dot((x,f(x)),heavygreen);
 //xtick(Label("$e^2$",align=S),exp(2),S,heavygreen);
-labelx("$e^2$",exp(2),0.4dir(290),heavygreen);
+labelx("$e^2$",exp(2),0.4dir(290),lGreen);
 
 real x=4;
 real ht=f(x);
-draw((x,0)--(x,ht)--(0,ht),heavygreen+dashed);
-ytick(Label("$\ln 4$",align=W),log(4),W,heavygreen);
+draw((x,0)--(x,ht)--(0,ht),lGreen+dashed);
+ytick(Label("$\ln 4$",align=W),log(4),W,lGreen);
