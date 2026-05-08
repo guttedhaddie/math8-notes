@@ -6,41 +6,43 @@ We've seen several types of function in this course and used them to model vario
 
 \subsection{Polynomial Sequences: First, Second, and Higher Differences}
 
-To begin to answer this, first ask yourself, ``What is a sequence?'' Hopefully you have a decent intuitive idea already. More formally, a sequence a function whose domain is a set like the natural numbers, for example\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{-8pt}
+To begin to answer this, it is helpful to think of a very basic type of function: a \emph{sequence.} Loosely speaking, a sequence a function whose domain is a set like the natural numbers, for example\par
+\begin{minipage}[t]{0.65\linewidth}\vspace{-12pt}
 	\[
 		f:\N\to\R:n\mapsto 3n^2-2
 	\]
 	defines the sequence
 	\[
-		\bigl(f(1),f(2),f(3),\ldots\bigr)=\bigl(1,10,25,46,73,\ldots\bigr)
+		\big(f(1),f(2),f(3),\ldots\big)
+		=\big(1,10,25,46,73,\ldots\big)
 	\]
-	This is indeed the intuitive idea of a function to many grade-school students: continuity and domains including fractions or even irrational numbers are more advanced concepts.\medbreak
-	Suppose instead that all you have is a data set
-	\[
-		\begin{array}{c|ccccc}
-			x&1&2&3&4&5\\\hline
-			y&1&10&25&46&73
-		\end{array}
-	\]
+	Sequences are an intuitive way to expose even elementary school students to the idea of a function without requiring any formal acknowledgement of a formula/rule or even a domain: the \emph{first} term is 1, the \emph{second} is 10, the \emph{third} is 25, etc.
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{-12pt}
-	\hfill\includegraphics[scale=0.95]{seqquadex}
-\end{minipage}
-\bigbreak
-
-perhaps arising from an experiment. Could you recover the original function $y=f(x)$ directly from this data? You could try plotting data points as we've done, though it is hard to decide directly from the plot whether we should try a quadratic model, some other power function/polynomial, or perhaps an exponential. Of course, the physical source of real-world data might also provide clues.
+\begin{minipage}[t]{0.34\linewidth}\vspace{-8pt}
+	\hfill\includegraphics[alt={quadratic data plot}]{seqquadex}
+\end{minipage}\smallbreak
+Such a function might arise from an experiment; indeed it is particularly common to take measurements at fixed time intervals. Suppose this has been done, and that what you therefore have is the data set
+\[
+	\begin{array}{c|ccccc}
+		x&1&2&3&4&5\\\hline
+		y&1&10&25&46&73
+	\end{array}
+\]
+Could you recover the function $y=f(x)=3x^2-2$ directly from this data? Plotting the data (as above) is a good place to start, though it is hard to decide directly from the plot whether we should be hunting for a quadratic function, or some other power function/polynomial, or even an exponential. Of course, the physical source of real-world data might also provide clues.
 \medbreak
 
 A more mathematical approach involves considering how data values \emph{change}:
-\[
+\begin{quote}
+	\includegraphics[alt={first differences and second differences for the sequence y}]{xy1}
+\end{quote}
+%\[
 % 	\xymatrix @R0pt @C15pt{
 % 		x & 1 \ar@/^/[r]^{\textcolor{blue}{+1}} & 2 \ar@/^/[r]^{\textcolor{blue}{+1}} & 3 \ar@/^/[r]^{\textcolor{blue}{+1}} & 4 \ar@/^/[r]^{\textcolor{blue}{+1}} & 5\\
 % 		y & 1 \ar@/_/[r]_{\textcolor{blue}{+9}}="a" & 10 \ar@/_/[r]_{\textcolor{blue}{+15}}="b" & 25 \ar@/_/[r]_{\textcolor{blue}{+21}}="c" & 46 \ar@/_/[r]_{\textcolor{blue}{+27}}="d" & 73
 % 		\ar @/_/_{\textcolor{red}{+6}} "a";"b" \ar @/_/_{\textcolor{red}{+6}} "b";"c" \ar @/_/_{\textcolor{red}{+6}} "c";"d"
 % 	}
-\]
+%\]
 The \textcolor{Blue}{first-differences} in the $x$-values are constant whereas those for the $y$-values are increasing
 \[
 	\bigl(y_{n+1}-y_n\bigr)=\bigl(9,15,21,27,\ldots\bigr)
