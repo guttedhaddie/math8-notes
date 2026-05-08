@@ -2,7 +2,7 @@
 
 \section{Sequences as Functions}
 
-We've seen many different types of function in this course and used them to model various situations. In practice, one is often faced with the opposite problem: given experimental data, what type of function should you try?
+We've seen several types of function in this course and used them to model various situations. In practice, one is often faced with the opposite problem: given experimental data, what type of function should you try?
 
 \subsection{Polynomial Sequences: First, Second, and Higher Differences}
 
@@ -26,7 +26,7 @@ To begin to answer this, first ask yourself, ``What is a sequence?'' Hopefully y
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.39\linewidth}\vspace{-12pt}
-	\flushright\includegraphics[scale=0.95]{seqquadex}
+	\hfill\includegraphics[scale=0.95]{seqquadex}
 \end{minipage}
 \bigbreak
 
@@ -35,13 +35,13 @@ perhaps arising from an experiment. Could you recover the original function $y=f
 
 A more mathematical approach involves considering how data values \emph{change}:
 \[
-	\xymatrix @R0pt @C15pt{
-		x & 1 \ar@/^/[r]^{\textcolor{blue}{+1}} & 2 \ar@/^/[r]^{\textcolor{blue}{+1}} & 3 \ar@/^/[r]^{\textcolor{blue}{+1}} & 4 \ar@/^/[r]^{\textcolor{blue}{+1}} & 5\\
-		y & 1 \ar@/_/[r]_{\textcolor{blue}{+9}}="a" & 10 \ar@/_/[r]_{\textcolor{blue}{+15}}="b" & 25 \ar@/_/[r]_{\textcolor{blue}{+21}}="c" & 46 \ar@/_/[r]_{\textcolor{blue}{+27}}="d" & 73
-		\ar @/_/_{\textcolor{red}{+6}} "a";"b" \ar @/_/_{\textcolor{red}{+6}} "b";"c" \ar @/_/_{\textcolor{red}{+6}} "c";"d"
-	}
+% 	\xymatrix @R0pt @C15pt{
+% 		x & 1 \ar@/^/[r]^{\textcolor{blue}{+1}} & 2 \ar@/^/[r]^{\textcolor{blue}{+1}} & 3 \ar@/^/[r]^{\textcolor{blue}{+1}} & 4 \ar@/^/[r]^{\textcolor{blue}{+1}} & 5\\
+% 		y & 1 \ar@/_/[r]_{\textcolor{blue}{+9}}="a" & 10 \ar@/_/[r]_{\textcolor{blue}{+15}}="b" & 25 \ar@/_/[r]_{\textcolor{blue}{+21}}="c" & 46 \ar@/_/[r]_{\textcolor{blue}{+27}}="d" & 73
+% 		\ar @/_/_{\textcolor{red}{+6}} "a";"b" \ar @/_/_{\textcolor{red}{+6}} "b";"c" \ar @/_/_{\textcolor{red}{+6}} "c";"d"
+% 	}
 \]
-The \textcolor{blue}{first-differences} in the $x$-values are constant whereas those for the $y$-values are increasing
+The \textcolor{Blue}{first-differences} in the $x$-values are constant whereas those for the $y$-values are increasing
 \[
 	\bigl(y_{n+1}-y_n\bigr)=\bigl(9,15,21,27,\ldots\bigr)
 \]
@@ -49,9 +49,9 @@ You likely already notice the pattern: the sequence of first-differences is incr
 \[
 	y_{n+1}-y_n=3+6n
 \]
-To make this even clearer, note that the sequence of \textcolor{red}{second-differences} in the $y$-values is \emph{constant} ($+6$). These facts are huge clues that we expect a quadratic function.
+To make this even clearer, note that the sequence of \textcolor{mRed}{second-differences} in the $y$-values is \emph{constant} ($+6$). These facts are huge clues that we expect a quadratic function.
 
-\goodbreak
+
 
 But why? Well we can certainly check the following directly: 
 \begin{description}
@@ -84,7 +84,7 @@ The relationship between these results and the \emph{derivative(s)} of the origi
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-	\flushright\includegraphics{seqquadex2}
+	\hfill\includegraphics{seqquadex2}
 \end{minipage}
 \bigbreak
 
@@ -135,7 +135,7 @@ There are at least two issues with our method:
 
   \item It is very unlikely that experimental data will fit such precise patterns (why not?). However, if the differences are \emph{close} to satisfying such patterns, then you should feel confident that a linear/quadratic model is a good choice.
 \end{enumerate}
-\goodbreak
+
 
 
 \begin{example}{}{almostquadseq}
@@ -155,7 +155,7 @@ There are at least two issues with our method:
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-		\flushright\includegraphics{seqquadex3}
+		\hfill\includegraphics{seqquadex3}
 	\end{minipage}\smallbreak
 	do you think a linear or quadratic model would be superior?\smallbreak
 	If you wanted a linear model, you'd likely be inclined to try $f(x)=9x+b$ for some constant $b$. Here are two options:
@@ -178,28 +178,29 @@ There are at least two issues with our method:
 
 
 
-\begin{exercises}{}{}
-	\exstart For each data set, find a function $y=f(x)$ modelling the data.
-	\begin{align*}
-		&\text{(a)}\lstsp
-		\begin{array}[t]{c|ccccc}
-			x&2&4&6&8\\\hline
-			y&-1&2&7&14
-		\end{array}
-		&&\text{(b)}\lstsp
-		\begin{array}[t]{c|ccccc}
-			x&2&5&8&11&14\\\hline
-			y&-6&-15&-6&21&66
-		\end{array}
-		&&\text{(c)}\lstsp
-		\begin{array}[t]{c|ccccc}
-			x&0&6&9&15\\\hline
-			y&3&15&21&33
-		\end{array}
-	\end{align*}
-	(\emph{Be careful with (c): the $x$-differences aren't constant!})
-	
-	\begin{enumerate}\setcounter{enumi}{1}  
+\begin{exercises}{}{}	
+	\begin{enumerate}
+		\item For each data set, find a function $y=f(x)$ modelling the data.
+		\begin{align*}
+			&\text{(a)}\lstsp
+			\begin{array}[t]{c|ccccc}
+				x&2&4&6&8\\\hline
+				y&-1&2&7&14
+			\end{array}
+			&&\text{(b)}\lstsp
+			\begin{array}[t]{c|ccccc}
+				x&2&5&8&11&14\\\hline
+				y&-6&-15&-6&21&66
+			\end{array}
+			&&\text{(c)}\lstsp
+			\begin{array}[t]{c|ccccc}
+				x&0&6&9&15\\\hline
+				y&3&15&21&33
+			\end{array}
+		\end{align*}
+		(\emph{Be careful with (c): the $x$-differences aren't constant!})
+		
+
 	  \item Suppose a table of data values containing $(x_0,y_0)$ has constant first-differences in both variables
 	  \[
 	  	\Delta x=x_{n+1}-x_n=a,\quad  \Delta y=b
@@ -233,27 +234,27 @@ To observe relationships between data values, you might also have to consider \e
 \begin{example}{}{}
 	From a first glance at the given data, it is hard to decide whether an exponential or a quadratic (or higher degree polynomial) model is more suitable. If we try to apply the constant-difference method, we don't seem to get anything helpful:\par
 	\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-		\[
-			\xymatrix @R0pt @C15pt{
-				x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
-				y & 15 \ar@/_/[r]_{\textcolor{blue}{+120}}="a" & 135 \ar@/_/[r]_{\textcolor{blue}{+1080}}="b" & 1215 \ar@/_/[r]_{\textcolor{blue}{+9720}}="c" & 10935 
-				\ar @/_/_{\textcolor{red}{+960}} "a";"b" \ar @/_/_{\textcolor{red}{+8640}} "b";"c" 
-			}
-		\]
+% 		\[
+% 			\xymatrix @R0pt @C15pt{
+% 				x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
+% 				y & 15 \ar@/_/[r]_{\textcolor{blue}{+120}}="a" & 135 \ar@/_/[r]_{\textcolor{blue}{+1080}}="b" & 1215 \ar@/_/[r]_{\textcolor{blue}{+9720}}="c" & 10935 
+% 				\ar @/_/_{\textcolor{red}{+960}} "a";"b" \ar @/_/_{\textcolor{red}{+8640}} "b";"c" 
+% 			}
+% 		\]
 		By the time we're looking at second-differences, any conclusion would be very weak since we only have two data values!
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-		\flushright\includegraphics{seqquadex4}
+		\hfill\includegraphics{seqquadex4}
 	\end{minipage}\medbreak
 
 	If instead we think about \emph{ratios} of $y$-values, then a different pattern emerges:
-	\[
-		\xymatrix @R0pt @C15pt{
-			x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
-			y & 15 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 135 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 1215 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 10935 
-		}
-	\]
+% 	\[
+% 		\xymatrix @R0pt @C15pt{
+% 			x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
+% 			y & 15 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 135 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 1215 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 10935 
+% 		}
+% 	\]
 	The question remains: what type of function scales its output by 9 when 2 is added to its input: $f(x+2)=9f(x)$? This is a function that converts \emph{addition} to \emph{multiplication}: an exponential! If we try $y=f(x)=ba^x$ for some constants $a,b$, then
 	\[
 		f(x+2)=ba^{x+2}=ba^2b^x=a^2f(x)
@@ -283,7 +284,7 @@ Such a simple pattern is often disguised:
 	then the $x$-values are not in a strictly arithmetic sequence.
 	\item As in Example \ref{ex:almostquadseq}, real-world/experimental data will only \emph{approximately} exhibit such patterns.
 \end{itemize}
-\goodbreak
+
 
 
 \begin{example}{}{poprabbits}
@@ -299,12 +300,12 @@ Such a simple pattern is often disguised:
 		\Delta P=\bigl(2,3,4,5,9\bigr),\qquad \Delta\Delta P=\bigl(1,1,1,4\bigr)
 	\]
 	However, the last difference doesn't fit the pattern. Instead, the fact that we expect an exponential model is buried in the experiment: the data is measuring population growth! We therefore instead consider the ratios of $P$-values:
-	\[
-		\xymatrix @R0pt @C15pt{
-			t & 0 \ar@/^/[r]^{\textcolor{blue}{+2}} & 2 \ar@/^/[r]^{\textcolor{blue}{+2}} & 4 \ar@/^/[r]^{\textcolor{blue}{+2}} & 6 \ar@/^/[r]^{\textcolor{blue}{+2}} & 8 \ar@/^/[r]^{\textcolor{blue}{+2}} & 10\\
-			P & 5 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 7 \ar@/_/[r]_{\textcolor{blue}{\times 1.43}} & 10 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 14 \ar@/_/[r]_{\textcolor{blue}{\times 1.36}} & 19 \ar@/_/[r]_{\textcolor{blue}{\times 1.47}} & 28
-		}
-	\]
+% 	\[
+% 		\xymatrix @R0pt @C15pt{
+% 			t & 0 \ar@/^/[r]^{\textcolor{blue}{+2}} & 2 \ar@/^/[r]^{\textcolor{blue}{+2}} & 4 \ar@/^/[r]^{\textcolor{blue}{+2}} & 6 \ar@/^/[r]^{\textcolor{blue}{+2}} & 8 \ar@/^/[r]^{\textcolor{blue}{+2}} & 10\\
+% 			P & 5 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 7 \ar@/_/[r]_{\textcolor{blue}{\times 1.43}} & 10 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 14 \ar@/_/[r]_{\textcolor{blue}{\times 1.36}} & 19 \ar@/_/[r]_{\textcolor{blue}{\times 1.47}} & 28
+% 		}
+% 	\]
 	The ratios are very close to being constant, whence an exponential model is suggested! To exactly match the first and last data values, we could take the model
 	\[
 		P(t)\approx 5\left(\frac{28}5\right)^{\frac t{10}}\qquad
@@ -369,15 +370,15 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 		\begin{enumerate}
 		  \item For a linear (addition-addition) model we know that $\Delta x=2$ corresponds to $\Delta y=6$, so
 		  \[
-		  	\textcolor{blue}{g(8)} =g(4+2\Delta x)=g(4)+2\Delta y =9+12= \textcolor{blue}{21}
+		  	\textcolor{Blue}{g(8)} =g(4+2\Delta x)=g(4)+2\Delta y =9+12= \textcolor{Blue}{21}
 		  \]
 		  \item For an exponential (addition-product) model, $\Delta x=2$ corresponds to a $y$-\emph{ratio} $r_y=\frac 93=3$, so
 		  \[
-		  	\textcolor{Magenta}{g(8)} =r_yg(6)=r_y^2g(4) =9\cdot 9= \textcolor{Magenta}{81}
+		  	\textcolor{mMagenta}{g(8)} =r_yg(6)=r_y^2g(4) =9\cdot 9= \textcolor{mMagenta}{81}
 		  \]
 		  \item For a power (product-product) model, $r_x=2$ corresponds to a $r_y=3$, so
 		  \[
-		  	\textcolor{Green}{g(8)} =g(2\cdot 4)=g(4r_x)=r_yg(4) =3\cdot 9 =\textcolor{Green}{27}
+		  	\textcolor{mGreen}{g(8)} =g(2\cdot 4)=g(4r_x)=r_yg(4) =3\cdot 9 =\textcolor{mGreen}{27}
 		  \]
 		\end{enumerate}
 	\end{minipage}
@@ -386,9 +387,9 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 		\hfill\def\arraystretch{1.4}
 		\begin{tabular}{@{}l@{}}
 			\includegraphics[scale=0.95]{seqquadex5}\\
-			\qquad\qquad 1.\lstsp $\textcolor{blue}{g(x)=3x-3}$\\
-			\qquad\qquad 2.\lstsp $\textcolor{Magenta}{g(x)=3^{x/2}}$\\
-			\qquad\qquad 3.\lstsp $\textcolor{Green}{g(x)=x^{\log_23}}$
+			\qquad\qquad 1.\lstsp $\textcolor{Blue}{g(x)=3x-3}$\\
+			\qquad\qquad 2.\lstsp $\textcolor{mMagenta}{g(x)=3^{x/2}}$\\
+			\qquad\qquad 3.\lstsp $\textcolor{mGreen}{g(x)=x^{\log_23}}$
 		\end{tabular}
 	\end{minipage}
 	\smallbreak
@@ -400,9 +401,9 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 
 
 \begin{exercises}{}{}
-	\exstart Find the patterns in the following data sets and use them to find a model $y=f(x)$.
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item[]\makebox[190pt][l]{%
+	\begin{enumerate}
+	  \item Find the patterns in the following data sets and use them to find a model $y=f(x)$.
+	  \makebox[190pt][l]{%
 	  	(a)\lstsp
 	  	$\begin{array}[t]{c|ccccc}
 				x&0&1&2&3&4\\\hline
@@ -507,11 +508,11 @@ A rigorous proof that the sequence converges requires more detail than is approp
   \end{minipage}
   \hfill
   \begin{minipage}[t]{0.38\linewidth}\vspace{0pt}
-  	\flushright\includegraphics[scale=0.95]{newton-raphson}
+  	\hfill\includegraphics[]{newton-raphson}
   \end{minipage}
 \end{enumerate}
 
-\goodbreak
+
 
 
 This geometric idea generalizes\ldots
@@ -540,7 +541,7 @@ This geometric idea generalizes\ldots
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
-	\flushright\includegraphics{newton-raphson3}
+	\hfill\includegraphics{newton-raphson3}
 \end{minipage}\bigbreak
 
 Newton's method is particularly nice for polynomials with integer coefficients, since the iterates form a sequence of \emph{rational numbers}. This approach was often used obtain rational approximations to irrational numbers before the advent of calculators.
@@ -549,10 +550,9 @@ Newton's method is particularly nice for polynomials with integer coefficients, 
 	
 
 \begin{examples}{}{}
-	\exstart To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
+	  \item To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate\par
 		\begin{minipage}[t]{0.62\linewidth}\vspace{-10pt}
-			\item[]
 			\[
 				x_{n+1}=x_n-\frac{x_n^4+4x_n-6}{4x_n^3+4} =\frac{3(x_n^4+2)}{4(x_n^3+1)}
 			\]
@@ -564,7 +564,7 @@ Newton's method is particularly nice for polynomials with integer coefficients, 
 		\end{minipage}
 		\hfill
 		\begin{minipage}[t]{0.37\linewidth}\vspace{-8pt}
-			\flushright\includegraphics[scale=0.95]{newton-raphson2}
+			\hfill\includegraphics[scale=0.95]{newton-raphson2}
 		\end{minipage}
 	
 		\item The irrational number $x=\sqrt 2+\sqrt 3$ is a root of the polynomial
@@ -579,17 +579,15 @@ Newton's method is particularly nice for polynomials with integer coefficients, 
 	\end{enumerate}
 \end{examples}
 
-\goodbreak
 
 Newton's method can be attempted for any differentiable function, though the sequence isn't guaranteed to converge: see for instance Exercise \ref{exs:newtonbad}. You can find graphical interfaces online for this (for instance with Geogebra).
 
 
 
-\begin{exercises}{}{}
-	\exstart Use Newton's method to find a root of the given function to 4 decimal places.\vspace{-5pt}
-	
-	\begin{enumerate}\setcounter{enumi}{1}
-  	\item[](\emph{Use a calculator, but explain what you are doing!})
+\begin{exercises}{}{}	
+	\begin{enumerate}
+  	\item Use Newton's method to find a root of the given function to 4 decimal places.\par
+  	(\emph{Use a calculator, but explain what you are doing!})
   	\begin{enumerate}
     	\item $f(x)=x^3-4$\qquad (b) \ $f(x)=2x^3+x-1$\qquad (c) \ $f(x)=e^x-\sqrt x-2$
   	\end{enumerate}

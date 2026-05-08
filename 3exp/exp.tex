@@ -16,7 +16,7 @@ The problem with this approach is that it doesn't help you understand what shoul
 Rigorously addressing this problem requires \emph{continuity} and other ideas which you'll encounter in upper-division analysis; topics unsuitable for this course. Instead, we assume some familiarity with exponential functions in the context of introductory calculus, and offer two ways to introduce exponential functions and $e$ via modeling.
 
 
-\subsection{The Natural Growth Model}
+\subsection{The Natural Growth Model and the Natural Exponential}
 
 A basic model for any variable quantity is that its \emph{rate of change be proportional to the quantity itself.} This idea necessarily needs some calculus; as a differential equation,
 \[
@@ -502,7 +502,7 @@ Many other modifications of the natural growth model exist, though they are more
 	  
 	  \item Over one year, find the continuous interest rate $s\%$ corresponding to a simple rate of 5\%.
 	
-	  \item The function $y=a^x$ satisfies the natural growth equation $\diff[y]x=ky$; what is the value of $k$?
+	  \item The function $y=a^x$ satisfies the natural growth equation $\diff[y]x=ky$. How does the value of $k$ depend on $a$ (use logarithms, not limits)?
 	  
 		\item Verify the remaining logarithm laws $(\ast)$ on page \pageref{pg:loglaws}.
 	
@@ -515,12 +515,34 @@ Many other modifications of the natural growth model exist, though they are more
 		
 		
 	  \item\begin{enumerate}
-		  \item Check that $y(x)=M+(y_0-M)e^{-kt}$ solves the differential equation in Corollary \ref{cor:newtoncool}.
+		  \item Check that
+		  \[
+		  	y(x)=M+(y_0-M)e^{-kt}
+		  \]
+		  solves the differential equation in Corollary \ref{cor:newtoncool}.
+		  
 		  \item Suppose a student believes Theorem \ref{thm:natgrowth}. Use a substitution to convince them that the \emph{only} solution to $y'=k(M-y)$ is as given in part (a).
 		\end{enumerate}
 		
 		
-% 		\item A body with initial temperature $T_0$ is placed in an environment with constant temperature $M<T_0$. Suppose that the temperature $T(t)$ obeys Newton's law of cooling, and that it takes $t_1$ seconds for the body to cool to $\frac{T_0+M}2$. Find the temperature at time $t$ and determine how long it takes for the body to cool to $\frac 13(T_0+2M)$.
+ 		\item A body with initial temperature $T_0$ is placed in an environment with constant temperature $M<T_0$. Suppose that the temperature $T(t)$ obeys Newton's law of cooling, and that it takes $t_1$ seconds for the body to cool to $\frac 12(T_0+M)$.\par
+ 		Find the temperature at time $t$, and determine how long it takes for the body to cool to $\frac 13(T_0+2M)$.
+ 		
+ 		
+ 		\item\begin{enumerate}
+ 		  \item Sketch the graph of the function
+ 		  \[
+ 		  	y(t)=\frac{100}{1+9e^{-t}}
+ 		  \]
+ 		  What happens as $t\to\infty$, and when is the slope maximal?
+ 		  \item Check that $y(t)$ satisfies the differential equation
+ 		  \[
+ 		  	\diff[y]{t}=\frac y{100}(100-y)
+ 		  \]
+ 		  For what values of $y$ is the derivative positive? Negative? Zero? Comment on how the graph of the solution in part (a) fits with this.
+ 		  \item Can you think of a real-world situation that might be modeled by such and equation? 
+ 		\end{enumerate}
+
 
 	  \item Logarithms were originally invented not for calculus but to simplify the multiplication of large numbers. In the pre-calculator era, students commonly consulted a book of \emph{log tables} for this purpose. Investigate log tables and how to use them.
 	\end{enumerate}
