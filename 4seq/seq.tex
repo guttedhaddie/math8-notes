@@ -19,7 +19,7 @@ To begin to answer this, it is helpful to think of a very basic type of function
 	Sequences are an intuitive way to expose even elementary school students to the idea of a function without requiring any formal acknowledgement of a formula/rule or even a domain: the \emph{first} term is 1, the \emph{second} is 10, the \emph{third} is 25, etc.
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.34\linewidth}\vspace{-8pt}
+\begin{minipage}[t]{0.34\linewidth}\vspace{-4pt}
 	\hfill\includegraphics[alt={quadratic data plot}]{seqquadex}
 \end{minipage}\smallbreak
 Such a function might arise from an experiment; indeed it is particularly common to take measurements at fixed time intervals. Suppose this has been done, and that what you therefore have is the data set
@@ -52,7 +52,7 @@ You likely already notice the pattern: the sequence of first-differences is incr
 	y_{n+1}-y_n=3+6n
 \]
 To make this even clearer, note that the sequence of \textcolor{mRed}{second-differences} in the $y$-values is \emph{constant} ($+6$). These facts are huge clues that we expect a quadratic function.
-
+\medbreak
 
 
 But why? Well we can certainly check the following directly: 
@@ -63,11 +63,11 @@ But why? Well we can certainly check the following directly:
   \]
   \item[Quadratic Model] If $f(n)=an^2+bn+c$, then the sequence of first-differences is linear and the second-differences are constant:
   \[
-  	g(n):=f(n+1)-f(n)=2an+a+b,\qquad g(n+1)-g(n)=2a
+  	g(n):=f(n+1)-f(n)=2an+a+b,\qquad g(n+1)-g(n)=2a \tag{$\ast$}
   \]
 \end{description}
   
-The relationship between these results and the \emph{derivative(s)} of the original function $f(x)$ should feel intuitive: what happens if you differentiate a quadratic twice?
+The relationship between these results and the \emph{derivative(s)} of the original function $f(x)$ should feel intuitive: what happens if you differentiate a quadratic twice? This is yet another reason to cover this topic at grade-school level: it is getting students ready for calculus.
 
 \begin{example}{}{easyquadmodel}
 	You are given the following data set\par
@@ -86,29 +86,31 @@ The relationship between these results and the \emph{derivative(s)} of the origi
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-	\hfill\includegraphics{seqquadex2}
+	\hfill\includegraphics[alt={quadratic data}]{seqquadex2}
 \end{minipage}
 \bigbreak
 
-We therefore suspect a quadratic model $y=f(n)=an^2+bn+c$. Rather than using the above formulae, particularly since the $x$-differences are not 1, it is easier just to substitute:
+We therefore \emph{suspect} a quadratic model $y=f(x)=ax^2+bx+c$. But how to find it?\smallbreak
+We \emph{could} try using the above formulæ ($\ast$), but this is ugly, not least because the constant $x$-differences are not 1. It is easier just to substitute in the first three values:
 \[
-	2=y(0)=c,\quad
 	\begin{cases}
-		16=f(2)=4a+2b+2\\
-		22=f(4)=16a+4b+2
+		2=f(0)=c\\
+		16=f(2)=4a+2b+c\\
+		22=f(4)=16a+4b+c
 	\end{cases}
 	\implies
 	\begin{cases}
-		2a+b=7\\
+		c=2\\
+		4a+2b=14\\
 		8a+2b=10
 	\end{cases}
 	\implies 4a=-4
 \]
 whence $a=-1$, $b=9$ and $c=2$. A quadratic model is therefore
 \[
-	y=f(n)=-n^2+9n+c= -n^2+9n+2
+	y=f(x)=-x^2+9x+2
 \]
-It is easily verified that the remaining data values satisfy this relationship.
+It is easily verified that the remaining data values satisfy this relationship. Indeed, we could have used substituted any three data pairs from the table and found the same model. 
 % we should compute explicitly.\footnotemark
 % \begin{itemize}
 %   \item[]First-differences:\lstsp $f(n+2)-f(n)=a\bigl((n+2)^2-n^2\bigr)+b\bigl((n+2)-n\bigr) =4an+4a+2b$
@@ -127,15 +129,20 @@ It is easily verified that the remaining data values satisfy this relationship.
 
 % \footnotetext{We could alternatively substitute $2x=z$ and use the above formulæ.}
 
-There are at least two issues with our method:
-\begin{enumerate}
-  \item The question we're answering is, ``Find a quadratic model satisfying given data.'' Constant second-differences don't guarantee that only a quadratic model is suitable. For example,
-  \[
-  	y=-n^2+9n+2 +297n(n-2)(n-4)(n-6)(n-8)(n-10)
-  \]
-  is a very complicated model satisfying the same data set!
 
-  \item It is very unlikely that experimental data will fit such precise patterns (why not?). However, if the differences are \emph{close} to satisfying such patterns, then you should feel confident that a linear/quadratic model is a good choice.
+%\pagebreak[3]
+
+\subsubsection*{Limitations of the Sequential Approach}
+
+Consider the question we're answering in Example \ref{ex:easyquadmodel}, ``Find a model satisfying given data.'' There are at least two issues with our method:
+\begin{enumerate}
+  \item Constant second-differences don't guarantee that \emph{only} a quadratic model is suitable. For example,
+  \[
+  	y=-n^2+9n+2 +n(n-2)(n-4)(n-6)(n-8)(n-10)
+  \]
+  is a very complicated model satisfying the same given data set! Our old model would have predicted $y(1)=10$, but the new model gives $y(1)=-935$ (!). Since the usefulness of a model often lies in its ability to \emph{predict} as yet unseen results, this is potentially a big problem. Of course simplicity is also a desired property of a model, and our original quadratic certainly provides that.
+
+  \item Experimental data is very unlikely to fit such precise patterns: the real-world is noisy with all sorts of error, not least that of the observer. However, if the differences are \emph{close} to satisfying such patterns, then you should feel confident that a linear/quadratic model is a good choice.
 \end{enumerate}
 
 
@@ -157,7 +164,7 @@ There are at least two issues with our method:
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-		\hfill\includegraphics{seqquadex3}
+		\hfill\includegraphics[alt={almost linear data}]{seqquadex3}
 	\end{minipage}\smallbreak
 	do you think a linear or quadratic model would be superior?\smallbreak
 	If you wanted a linear model, you'd likely be inclined to try $f(x)=9x+b$ for some constant $b$. Here are two options:
@@ -173,34 +180,35 @@ There are at least two issues with our method:
 			\implies \sum_x f(x)-y=0
 		\]
 	\end{enumerate}
-	Neither model is perfect, but then this is what you expect with real-world data!
+	Neither model is perfect, but then this is what you expect with real-world data!\smallbreak
+	Exercise \ref{exs:altquadmodel} suggests an approach for finding an approximate quadratic model.
 	 %What happens if you ask a spreadsheet?
 	%f(x)\approx 3+10n-0.1n^2 rounded to nearest integer 
 \end{example}
 
 
 
-\begin{exercises}{}{}	
+\begin{exercises}{}{}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Sequences are simple functions, \ Recognizing linear and quadratic models from constant first- and second-differences}
+	
 	\begin{enumerate}
 		\item For each data set, find a function $y=f(x)$ modelling the data.
-		\begin{align*}
-			&\text{(a)}\lstsp
-			\begin{array}[t]{c|ccccc}
+		\begin{enumerate}
+		  \item $\begin{array}[t]{c|ccccc}
 				x&2&4&6&8\\\hline
 				y&-1&2&7&14
-			\end{array}
-			&&\text{(b)}\lstsp
-			\begin{array}[t]{c|ccccc}
+			\end{array}$
+			\item $\begin{array}[t]{c|ccccc}
 				x&2&5&8&11&14\\\hline
 				y&-6&-15&-6&21&66
-			\end{array}
-			&&\text{(c)}\lstsp
-			\begin{array}[t]{c|ccccc}
+			\end{array}$
+			\item $\begin{array}[t]{c|ccccc}
 				x&0&6&9&15\\\hline
 				y&3&15&21&33
-			\end{array}
-		\end{align*}
-		(\emph{Be careful with (c): the $x$-differences aren't constant!})
+			\end{array}$\qquad
+		(\emph{Be careful here: the $x$-differences aren't constant!})
+		\end{enumerate}
 		
 
 	  \item Suppose a table of data values containing $(x_0,y_0)$ has constant first-differences in both variables
@@ -209,17 +217,38 @@ There are at least two issues with our method:
 	  \]
 	  Find the equation of the linear function $y=f(x)$ through the data.
 	  
-	%   \item Suppose data has constant $x$-differences $\Delta x=a$ and constant second $y$-differences $b$. Explain how to find the formula for the \emph{quadratic} function $y=f(x)$ passing through the data.\\
-	%   (\emph{Don't compute the full expression unless you're feeling masochistic!})
+	  
+% 	  \item Suppose data has constant $x$-differences $\Delta x=a$ and constant second $y$-differences $b$. Explain how to find the formula for the \emph{quadratic} function $y=f(x)$ passing through the data.\\
+% 	  (\emph{Don't compute the full expression unless you're feeling masochistic!})
 	
-	  \item What relationship do you expect to find with the sequential differences of a cubic function $f(n)=an^3+bn^2+cn+d$? What about a degree-$m$ polynomial $f(n)=an^m+bn^{m-1}+\cdots$?
+	
+	  \item What relationship do you expect to find with the sequential differences of a cubic function $f(n)=an^3+bn^2+cn+d$? What about a degree-$m$ polynomial $f(n)=an^m+bn^{m-1}+\cdots$? Why?
 	  
-	  \item If $f(n)=an^2+bn+c$ is a quadratic model for the data in Example \ref{ex:almostquadseq} with constant second-differences $-1$, show that $a=-\frac 18$. What might be reasonable values for $b,c$?  
 	  
-	  \item (Hard)\lstsp Suppose $f(x)$ is a twice-differentiable function and $h>0$ is constant. Use the mean value theorem from calculus to explain the following.
+	  \item\label{exs:altquadmodel} Suppose $f(n)=an^2+bn+c$ is an approximate quadratic model for the data in Example \ref{ex:almostquadseq} that has constant second-differences equalling $-1$.
 	  \begin{enumerate}
-	    \item First-differences $f(x+h)-f(x)$ are proportional to $f'(\xi)$ for some $\xi\in (x,x+h)$.
-	    \item Second-differences satisfy $\bigl(f(x+2h)-f(x+h)\bigr)-\bigl(f(x+h)-f(x)\bigr)=f''(\xi)h\alpha$ for some $\xi$ between $x$ and $x+h$ and some $\alpha$. Why is it unlikely that $\alpha$ is constant?
+	    \item By computing the first- and second-differences for the model $f$, show that $a=-\frac 18$.
+	    \item Now compute the sequence $y+\frac 18x^2$. What \emph{might} be reasonable values for $b,c$?
+	  \end{enumerate}
+	  
+	  
+	  \item Suppose $f(x)$ is a twice-differentiable function and $h>0$ is constant.
+	  \begin{enumerate}
+	    \item Use the mean value theorem from calculus to explain the following.
+	  	\begin{enumerate}
+	    	\item First-differences satisfy $f(x+h)-f(x)=f'(\xi) h$ for some $\xi\in (x,x+h)$.
+	    	\item (Hard)\lstsp Second-differences satisfy
+	    	\[
+	    		\big(f(x+2h)-f(x+h)\big)-\big(f(x+h)-f(x)\big)=f''(\xi)h(\xi_1-\xi_2)
+	    	\]
+	    	for some $\xi,\xi_1,\xi_2$ satisfying
+	    	\[
+	    		x<\xi_2<x+h,\qquad
+	    		x+h<\xi_2<x+2h,\qquad
+	    		\xi_2<\xi<\xi_1
+	    	\]
+	    \end{enumerate}
+	    \item Find the $\xi$ terms in the above formulæ when $f(x)=ax^2+bx+c$ is quadratic.
 	  \end{enumerate}
 	\end{enumerate}
 \end{exercises}
@@ -227,7 +256,7 @@ There are at least two issues with our method:
 
 \clearpage
 
-
+\iffalse
 
 \subsection{Exponential, Logarithmic \& Power Sequences}
 
@@ -627,3 +656,5 @@ Newton's method can be attempted for any differentiable function, though the seq
 	\end{enumerate}
 
 \end{exercises}
+
+\fi
