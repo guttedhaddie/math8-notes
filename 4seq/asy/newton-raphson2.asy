@@ -1,22 +1,27 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
-size(160,130,IgnoreAspect);
+size(150,130,IgnoreAspect);
 
 real f(real x){return x^4+4x-6;}
 real ff(real x){return 4x^3+4;}
 
 
 
-draw(graph(f,0.75,2.1),blue);
+draw(graph(f,0.75,2.1),Blue);
 real[] x={2};
 
 xaxis("$x$",red,RightTicks(new real[]{-3,-2,-1,1,2,3}));
@@ -29,13 +34,13 @@ for(int k=0; k<=n; ++k){
 }
 
 for(int k=0; k<=n; ++k){
-	draw((x[k],0)--(x[k],f(x[k]))--(x[k+1],0),(n-k)/n*heavygreen+(k/n)*orange+linewidth(0.5));
+	draw((x[k],0)--(x[k],f(x[k]))--(x[k+1],0),lGreen);
 }
 
 
 
-xtick(Label("$x_1$",align=S),x[1],S);
-xtick(Label("$x_2$",align=S),x[2],S);
+xtick(Label("$x_1$",align=S),x[1],S,lGreen);
+xtick(Label("$x_2$",align=S),x[2],S,lGreen);
 
 write(x[n-1]);
 write(f(x[n-1]));

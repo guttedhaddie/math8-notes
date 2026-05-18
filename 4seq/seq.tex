@@ -67,7 +67,7 @@ But why? Well we can certainly check the following directly:
   \]
 \end{description}
   
-The relationship between these results and the \emph{derivative(s)} of the original function $f(x)$ should feel intuitive: what happens if you differentiate a quadratic twice? This is yet another reason to cover this topic at grade-school level: it is getting students ready for calculus.
+The relationship between these results and the \emph{derivative(s)} of the original function $f(x)$ should feel intuitive: what happens if you differentiate a quadratic twice? The sequential approach in this chapter is a form of \emph{discrete calculus}: using a pattern of \emph{differences} to predict the original function is similar to how we use knowledge of a derivative $f'(x)$ to find $f(x)$.
 
 \begin{example}{}{easyquadmodel}
 	You are given the following data set\par
@@ -256,15 +256,19 @@ Consider the question we're answering in Example \ref{ex:easyquadmodel}, ``Find 
 
 \clearpage
 
-\iffalse
+
 
 \subsection{Exponential, Logarithmic \& Power Sequences}
 
-To observe relationships between data values, you might also have to consider \emph{ratios} between successive terms or skip values.
+Instaed of differences, you might also have to consider \emph{ratios} between successive terms.
 
 \begin{example}{}{}
-	From a first glance at the given data, it is hard to decide whether an exponential or a quadratic (or higher degree polynomial) model is more suitable. If we try to apply the constant-difference method, we don't seem to get anything helpful:\par
-	\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
+	Consider the data below. At first glance, you might believe that the data to be approximately quadratic, but how can we tell? Well, \emph{if} the data were quadratic, \emph{then} we should get constant second-differences. However, applying the constant-difference method doesn't seem to yield anything helpful:\vspace{-10pt}
+	\begin{center}
+		\includegraphics[alt={successive y values are in constant ratio}]{xy2}
+		\qquad\qquad
+		\includegraphics[alt={the data points plotted}]{seqquadex4}
+	\end{center}
 % 		\[
 % 			\xymatrix @R0pt @C15pt{
 % 				x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
@@ -272,109 +276,107 @@ To observe relationships between data values, you might also have to consider \e
 % 				\ar @/_/_{\textcolor{red}{+960}} "a";"b" \ar @/_/_{\textcolor{red}{+8640}} "b";"c" 
 % 			}
 % 		\]
-		By the time we're looking at second-differences, any conclusion would be very weak since we only have two data values!
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.34\linewidth}\vspace{-10pt}
-		\hfill\includegraphics{seqquadex4}
-	\end{minipage}\medbreak
-
-	If instead we think about \emph{ratios} of $y$-values, then a different pattern emerges:
+	Regardless, since we only have two \textcolor{mRed}{second-differences}, any conclusion relying on this would be very weak.	If instead we think about successive \textcolor{mGreen}{ratios} of $y$-values, then a different pattern emerges:
 % 	\[
 % 		\xymatrix @R0pt @C15pt{
 % 			x & 1 \ar@/^/[r]^{\textcolor{blue}{+2}} & 3 \ar@/^/[r]^{\textcolor{blue}{+2}} &  5 \ar@/^/[r]^{\textcolor{blue}{+2}} & 7 \\
 % 			y & 15 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 135 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 1215 \ar@/_/[r]_{\textcolor{blue}{\times 9}} & 10935 
 % 		}
 % 	\]
-	The question remains: what type of function scales its output by 9 when 2 is added to its input: $f(x+2)=9f(x)$? This is a function that converts \emph{addition} to \emph{multiplication}: an exponential! If we try $y=f(x)=ba^x$ for some constants $a,b$, then
+	the output scales by 9 when 2 is added to the input, $f(x+2)=9f(x)$. \emph{Exponential} functions convert addition to multiplication,\footnotemark{} so we try such a function. If $y=f(x)=ba^x$ for some constants $a,b$, then 
 	\[
-		f(x+2)=ba^{x+2}=ba^2b^x=a^2f(x)
+		9f(x)=f(x+2)=ba^{x+2}=ba^2b^x=a^2f(x) \implies a^2=9
 	\]
-	from which a suitable model is $y=5\cdot 3^x$.
+	A suitable model is therefore $y=5\cdot 3^x$.
 \end{example}
 
+\footnotetext{%
+	This is exactly what the exponential law says: $a^{x+y}=a^x\cdot a^y$.	
+}
 
-We can see the pattern in the example more generally:
+
+
+We can see the pattern in the example more generally.
+
 \begin{description}
 	\item[Exponential Model] If $f(x)=ba^x$, then adding a constant to $x$ results in
 		\[
 			f(x+k)=ba^{x+k}=a^kf(x)
 		\]
-		If $x$-values have constant differences ($+k$), then $y$-values will be related by a constant \emph{ratio} ($\times a^k$). You might remember this as `addition--product' or `arithmetic--geometric.'
+		If $x$-values have constant differences ($\Delta x=k$), then $y$-values will be related by a constant \emph{ratio} ($r_y= a^k$). You might remember this as `addition--product' or `arithmetic--geometric.'
 \end{description}
 
 Such a simple pattern is often disguised:
 \begin{itemize}
-  \item Complete data might not be given so you might have to skip some data values to see a pattern. For example, if our original data was
+  \item Complete data might not be given, so you might have to skip some data values to see a pattern. For example, if our original data was
   \[
   	\begin{array}[t]{c|ccccc}
 			x&1&3&4&5&7\\\hline
 			y&15&135&405&1215&10935
 		\end{array}
 	\]
-	then the $x$-values are not in a strictly arithmetic sequence.
-	\item As in Example \ref{ex:almostquadseq}, real-world/experimental data will only \emph{approximately} exhibit such patterns.
+	then the $x$-values are not in a strictly arithmetic sequence. Ignoring the third pair produces the exponential model above, which is then seen to satisfy $f(4)=5\cdot 3^4=405$. 
+	\item As in Example \ref{ex:almostquadseq}, experimental data will likely only \emph{approximately} exhibit such patterns.
 \end{itemize}
 
 
 
 \begin{example}{}{poprabbits}
-	A population of rabbits is measured every two months resulting in the data set
+	A population $P$ of rabbits is measured every two months, producing the data set
 	\[
 		\begin{array}{c|cccccc}
 			t&0&2&4&6&8&10\\\hline
 			P&5&7&10&14&19&28
 		\end{array}
 	\]
-	The data seems very close to being quadratic; consider the first and second sequences of $P$-differences
+	This data seems very close to being quadratic. Consider the first and second sequences of $P$-differences
 	\[
-		\Delta P=\bigl(2,3,4,5,9\bigr),\qquad \Delta\Delta P=\bigl(1,1,1,4\bigr)
+		\Delta P=\big(2,3,4,5,9\big),\qquad \Delta\Delta P=\big(1,1,1,4\big)
 	\]
-	However, the last difference doesn't fit the pattern. Instead, the fact that we expect an exponential model is buried in the experiment: the data is measuring population growth! We therefore instead consider the ratios of $P$-values:
+	The last difference doesn't fit the pattern. Should we look for an exponential model instead? Indeed we \emph{expect} such a model precisely because the data is measuring population growth! We therefore consider the ratios of $P$-values:
+	\[
+		(r_y)=\big(1.4,1.43,1.4,1.36,1.47\big)
+	\]
 % 	\[
 % 		\xymatrix @R0pt @C15pt{
 % 			t & 0 \ar@/^/[r]^{\textcolor{blue}{+2}} & 2 \ar@/^/[r]^{\textcolor{blue}{+2}} & 4 \ar@/^/[r]^{\textcolor{blue}{+2}} & 6 \ar@/^/[r]^{\textcolor{blue}{+2}} & 8 \ar@/^/[r]^{\textcolor{blue}{+2}} & 10\\
 % 			P & 5 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 7 \ar@/_/[r]_{\textcolor{blue}{\times 1.43}} & 10 \ar@/_/[r]_{\textcolor{blue}{\times 1.4}} & 14 \ar@/_/[r]_{\textcolor{blue}{\times 1.36}} & 19 \ar@/_/[r]_{\textcolor{blue}{\times 1.47}} & 28
 % 		}
 % 	\]
-	The ratios are very close to being constant, whence an exponential model is suggested! To exactly match the first and last data values, we could take the model
+	The ratios are \emph{very close} to being constant $r_y\approx 1.4=\frac{28}5$, strongly suggesting an exponential model! To exactly match the first and last data values, we could take the model
 	\[
-		P(t)\approx 5\left(\frac{28}5\right)^{\frac t{10}}\qquad
+		P(t)\approx 5\left(\frac{28}5\right)^{\frac t{10}}
+		\qquad\quad
 		\begin{array}{c|cccccc}
 			t&0&2&4&6&8&10\\\hline
-			P&5&7.057&9.960&14.057&19.839&28
+			P&5&7.06&9.96&14.06&19.84&28
 		\end{array}
 	\]
-	Only $P(8)$ doesn't match when we take rounding to the nearest integer into account.
-	% 
-	% Since this is population growth, we expect an exponential model $P(t)=e^{mt+c}$. After taking logarithms of the population values, the data is very close to linear. Now perform a linear regression (this is much easier using a \href{http://math.uci.edu/~ndonalds/math8/rabbits.xlsx}{spreadsheet}---play with it!).\par
-	% 
-	% Ratio of $P_i$ is sequence $1.4$, $1.43$, $1.4$, $1.36$, $1.47$, so might try model with base $a=\sqrt{1.4}=1.183$: $P(t)=5(1.183)^t$. Results in
-	% \[\begin{array}{c|cccccc}
-	% t&0&2&4&6&8&10\\\hline
-	% P(t)&5&6.997&9.793&13.705&19.180&26.84
-	% \end{array}\]
-	% Better comes from geometric mean $aa=1.188077675$ ($P(10)=28.0168$)
+	where predictions are given to 2 decimal places. Only $P(8)$ doesn't match the original data set when rounding to the nearest integer.
 \end{example}
+
+
+\subsubsection*{Logarithmic and Power Models}
 
 
 We've seen that addition-addition corresponds to a linear model and that addition-multiplication to an exponential. There are two other natural combinations.
 
 \begin{description}
-	\item[Logarithms] These operate exactly as exponentials but in reverse. If $f(n)=\log_a x+b$, then \emph{multiplying} $x$ by a constant results in a constant \emph{addition/subtraction} to $y$:
+	\item[Logarithms] These operate exactly as exponential models but in reverse. If $f(n)=\log_a x+b$, then
 		\[
 			f(kx)=\log_a(kx)+b=\log_ak+\log_ax+b=\log_ak+f(x)
 		\]
-		This could be summarized as `product--addition.'
-	\item[Power Functions] If $f(x)=ax^m$, then multiplying $x$ by a constant will do the same to $y$
+		Otherwise said,	\emph{multiplying} the input by a constant $r_x=k$ \emph{adds} a constant $\Delta y=\log_ak$ to the output.	This could be summarized as `product--addition.' Since it is typically easier to work with exponential models, the suggested approach to such cases is simply to switch the roles of $x$ and $y$: find an exponential model $x=pq^x$.
+	\item[Power Functions] If $f(x)=ax^m$, then 
 		\[
 			f(kx)=a(kx)^m=ak^mx^m=k^mf(x)
 		\]
+		That is, \emph{multiplying} the input by a constant $r_x=k$ also \emph{multiplies} the output $r_y=k^m$.
 		We have a `product--product' relationship between successive terms.
 \end{description}
 
 
-\begin{examples}{}{}
+\begin{examples}{}{modelex}
 	Find the patterns in the following data and suggest a model $y=f(x)$ in each case.
 	\[
 		\begin{array}[t]{c|cccc}
@@ -387,107 +389,115 @@ We've seen that addition-addition corresponds to a linear model and that additio
 			y&135&1080&3645&8640
 		\end{array}
 	\]
+	Start by computing the $x$- and $y$-differences and ratios\ldots
 \end{examples}
 
-The sequential approach in this chapter is a form of \emph{discrete calculus}: using a pattern of \emph{differences} to predict the original function is similar to how we use knowledge of a derivative $f'(x)$ to find $f(x)$.
 
-\goodbreak
+\subsubsection*{Predicting Values Given Limited Data}
+
+Suppose you are given two data points. Can you predict the output for another given input? The answer depends on what type of model you choose. Here is a typical problem.
 
 
-\begin{example}{}{}
-	Suppose $g(2)=3$ and $g(4)=9$. What do you think should be the value of $g(8)$?\par
+\begin{example}{}{predictex}
+	Suppose a function $y=g(x)$ satisfies $g(2)=3$ and $g(4)=9$. What do you think should be the value of $g(8)$?\smallbreak
+	Everything depends on the type of model you try\ldots\par
 	\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-		It depends on the type of model you try.
 		\begin{enumerate}
-		  \item For a linear (addition-addition) model we know that $\Delta x=2$ corresponds to $\Delta y=6$, so
-		  \[
-		  	\textcolor{Blue}{g(8)} =g(4+2\Delta x)=g(4)+2\Delta y =9+12= \textcolor{Blue}{21}
-		  \]
-		  \item For an exponential (addition-product) model, $\Delta x=2$ corresponds to a $y$-\emph{ratio} $r_y=\frac 93=3$, so
-		  \[
-		  	\textcolor{mMagenta}{g(8)} =r_yg(6)=r_y^2g(4) =9\cdot 9= \textcolor{mMagenta}{81}
-		  \]
-		  \item For a power (product-product) model, $r_x=2$ corresponds to a $r_y=3$, so
-		  \[
-		  	\textcolor{mGreen}{g(8)} =g(2\cdot 4)=g(4r_x)=r_yg(4) =3\cdot 9 =\textcolor{mGreen}{27}
-		  \]
+		  \item For a linear (addition-addition) model we know that $\Delta x=4-2=2$ corresponds to $\Delta y=9-3=6$. It follows that
+		  \begin{align*}
+		  	\mathcolor{Blue}{g(8)} &=g(4+2\Delta x)=g(4)+2\Delta y =9+12\\
+		  	&=\mathcolor{Blue}{21}
+		  \end{align*}
+		  \item For an exponential (addition-product) model, the constant $x$-differences $\Delta x=2$ correspond to a constant $y$-\emph{ratio} $r_y=\frac 93=3$. We therefore have
+		  \begin{align*}
+		  	\mathcolor{mMagenta}{g(8)} &=r_yg(6)=r_y^2g(4) =9\cdot 9\\
+		  	&= \mathcolor{mMagenta}{81}
+		  \end{align*}
+		  \item For a power (product-product) model, $r_x=\frac 42=2$ corresponds to $r_y=3$, whence
+		  \begin{align*}
+		  	\mathcolor{mGreen}{g(8)} &=g(4\cdot 2)=g(4r_x)=r_yg(4) =3\cdot 9\\
+		  	&=\mathcolor{mGreen}{27}
+		  \end{align*}
 		\end{enumerate}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
 		\hfill\def\arraystretch{1.4}
 		\begin{tabular}{@{}l@{}}
-			\includegraphics[scale=0.95]{seqquadex5}\\
+			\includegraphics[alt={predicting the output using different models}]{seqquadex5}\\
 			\qquad\qquad 1.\lstsp $\textcolor{Blue}{g(x)=3x-3}$\\
 			\qquad\qquad 2.\lstsp $\textcolor{mMagenta}{g(x)=3^{x/2}}$\\
 			\qquad\qquad 3.\lstsp $\textcolor{mGreen}{g(x)=x^{\log_23}}$
 		\end{tabular}
 	\end{minipage}
-	\smallbreak
-	
-	We do not need to calculate the models explicitly(!), though they are stated below the graph for convenience.
-	
+	\par
+	Notice how we didn't need to calculate the models explicitly, though they are stated below the graph for convenience. We could also use a logarithmic model to predict $g(8)$. The details of all this are left as an exercise.	
 \end{example}
 
 
+\pagebreak[3]
+
 
 \begin{exercises}{}{}
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Exponential sequences (addition-product), \ Logarithmic sequences (product-addition), \ Power sequences (product-product), \ Predicting the next term in a sequence}
+	
 	\begin{enumerate}
 	  \item Find the patterns in the following data sets and use them to find a model $y=f(x)$.
-	  \makebox[190pt][l]{%
-	  	(a)\lstsp
-	  	$\begin{array}[t]{c|ccccc}
+	  \begin{enumerate}
+	    \item $\begin{array}[t]{c|ccccc}
 				x&0&1&2&3&4\\\hline
 				y&80&120&180&270&405
-	  	\end{array}$\hfill%
-	  }
-		(b)\lstsp
-		$\begin{array}[t]{c|cccc}
-			x&2&4&8&10\\\hline
-			y&1&16&256&625
-		\end{array}$\\[5pt]
-		\makebox[190pt][l]{%
-			(c)\lstsp
-			$\begin{array}[t]{c|ccccc}
+	  	\end{array}$
+	  	\item	$\begin{array}[t]{c|cccc}
+				x&2&4&8&10\\\hline
+				y&1&16&256&625
+			\end{array}$
+			\item $\begin{array}[t]{c|ccccc}
 				x&1&3&5&7&9\\\hline
 				y&15&5&19&57&119
-			\end{array}$\hfill%
-		}
-		(d)\lstsp
-		$\begin{array}[t]{c|ccccc}
-			x&1&3&4&6\\\hline
-			y&1&36&216&7776&
-		\end{array}$\\[5pt]
-		\makebox[190pt][l]{%
-			(e)\lstsp
-			$\begin{array}[t]{c|ccccc}
+			\end{array}$
+			\item	$\begin{array}[t]{c|ccccc}
+				x&1&3&4&6\\\hline
+				y&1&36&216&7776&
+			\end{array}$
+			\item	$\begin{array}[t]{c|ccccc}
 				x&20&60&180&540\\\hline
 				y&2&4&6&8
-			\end{array}$\hfill%
-		}
-		(f)\lstsp
-		$\begin{array}[t]{c|ccccc}
-			x&2&6&54&486&4374\\\hline
-			y&2&4&8&12&16
-		\end{array}$
+			\end{array}$
+			\item	$\begin{array}[t]{c|ccccc}
+				x&2&6&54&486&4374\\\hline
+				y&2&4&8&12&16
+			\end{array}$
 			%y=2.5x-1
 			%y=x^4/16
 			%y=3x^2-17x+29
 			%\frac{1/6}6^x
 			%x=2\cdot 3^{y/2-1} \leftrightsquigarrow y=2+2\log_3\frac x2
-	
+		\end{enumerate}
+		
 	
 		\item Take logarithms of the power relationship $y=ax^m$. What is the relationship between $\ln y$ and $\ln x$? Use this to give another reason why the inputs and outputs of power functions satisfy a `product--product' relationship.
 		
+		
 		\item How does our analysis of exponential functions change if we add a constant to the model? That is, how might you recognize a sequence arising from a function $f(x)=ba^x+c$?
+	  
 	  
 	  \item Suppose $f(5)=12$ and $f(10)=18$. Find the value of $f(20)$ supposing $f(x)$ is a:
 	  \begin{enumerate}
 	    \item Linear function;
 	    \item Exponential function;
-	    \item Power function.
+	    \item Power function;
+	    \item Logarithmic function.
 	  \end{enumerate}
-	  If $f(20)=39$, which of the three \emph{models} do you think would be more appropriate?
+	  If an experiment returns $f(20)=39$, which of the four models do you think would be more appropriate?
+	
+		\item Recall Example \ref{ex:predictex}.
+		\begin{enumerate}
+		  \item Derive the equations for the \textcolor{Blue}{linear}, \textcolor{mMagenta}{exponential} and \textcolor{mGreen}{power} models.
+		  \item Find the predicted value of $g(8)$ if we use a logarithmic model. Find the model's equation.
+		\end{enumerate}
+	
 	\end{enumerate}
 \end{exercises}
 
@@ -495,58 +505,60 @@ The sequential approach in this chapter is a form of \emph{discrete calculus}: u
 \clearpage
 
 
+
 \subsection{Newton's Method}
 
-To finish our discussion of sequences we revisit a (hopefully) familiar technique for approximating solutions to equations. Variations of this approach have been in use for thousands of years.
+Sequences are often used as a way to \emph{approximate} something useful. In this section we discuss a general approach for approximating solutions to equations.
 
 
 \begin{example}{}{}
-	We motivate the method by considering an ancient method for approximating $\sqrt 2$, known to the Babylonians 2500 years ago!\smallbreak
-	Suppose $x_n>\sqrt 2$. Then $\frac 2{x_n}<\frac 2{\sqrt 2}=\sqrt 2$. It seems reasonable to guess that their average
+	Suppose $x_n>\sqrt 2$. Then $\frac 2{x_n}<\frac 2{\sqrt 2}=\sqrt 2$. It seems reasonable that the average
 	\[
-		x_{n+1}=\frac 12\left(x_n+\frac 2{x_n}\right)
+		x_{n+1}:=\frac 12\left(x_n+\frac 2{x_n}\right) \tag{$\ast$}
 	\]
-	should be a more accurate approximation to $\sqrt 2$. If start with an initial guess $x_0=2$, then we obtain the sequence
+	should be closer to $\sqrt 2$. Starting with an initial guess, say $x_0=2$, we obtain the sequence
 	\[
-		x_1=\frac 12\left(2+\frac 12\right)=\frac 32,\quad x_2=\frac{17}{12} =1.4166\ldots,\quad x_3=\frac{577}{408}=1.4142\ldots,\quad \ldots
+		x_1=\frac 12\left(2+\frac 22\right)=\frac 32,\quad x_2=\frac{17}{12} =1.4166\ldots,\quad x_3=\frac{577}{408}=1.4142\ldots,\quad \ldots
 	\]
 	This sequence certainly \emph{appears} to be converging to $\sqrt 2$\ldots
+	\medbreak
+
+	A rigorous proof that the sequence converges to $\sqrt 2$ requires more detail than is appropriate for this discussion (see Exercise \ref{exs:newtonconverge}). Two observations should make it seem more believable:
+	\begin{enumerate}
+	  \item \emph{If} the sequence defined by $(\ast)$ has a limit $L$, then it must satisfy
+	  \[
+	  	L=\frac 12\left(L+\frac 2L\right) \implies 2L^2=L^2+2\implies L^2=2\implies L=\sqrt 2
+	  \]
+	  where we take the positive root since all terms $x_n$ are plainly positive.
+	  \item The algorithm can be interpreted \emph{geometrically}.\par
+	  \begin{minipage}[t]{0.65\linewidth}\vspace{-14pt}
+	  	The \textcolor{mGreen}{tangent line} to the \textcolor{Blue}{curve} $y=f(x)=x^2-2$ at $\big(x_n,f(x_n)\big)$ has equation
+	  	\begin{align*}
+	  		y&=f(x_n)+f'(x_n)(x-x_n)\\
+	  		&=x_n^2-2+2x_n(x-x_n)\\
+	  		&=2x_nx-x_n^2-2
+	  	\end{align*}
+	  	Its intersection with the $x$-axis yields the next iterate:
+	  	\[
+	  		y=0\implies x=\frac{x_n^2+2}{2x_n}=\frac 12\left(x_n+\frac 2{x_n}\right) =x_{n+1}
+	  	\] 
+	  \end{minipage}
+	  \hfill
+	  \begin{minipage}[t]{0.33\linewidth}\vspace{-18pt}
+	  	\hfill\includegraphics[alt={the method of the mean approximating the square root of two}]{newton-raphson}
+	  \end{minipage}
+	\end{enumerate}
 \end{example}
 
-Since it makes use of the average, this approach is sometimes called the \emph{method of the mean}. It may be applied to any square-root $\sqrt a$ where $a>0$: let $x_0>0$ and define,
-\[
-	x_{n+1}:=\frac 12\left(x_n+\frac a{x_n}\right) \tag{$\ast$}
-\]
-A rigorous proof that the sequence converges requires more detail than is appropriate for us (though see Exercise \ref{exs:newtonconverge}), but two observations should make it seem more believable:
-\begin{enumerate}
-  \item \emph{If} the sequence $(\ast)$ has a limit $L$, then the limit must satisfy
-  \[
-  	L=\frac 12\left(L+\frac aL\right) \implies 2L^2=L^2+a\implies L^2=a\implies L=\sqrt a
-  \]
-  where we take the positive root since all terms $x_n$ are plainly positive.
-  
-  \begin{minipage}[t]{0.61\linewidth}\vspace{0pt}
-  	\item The iterations have a convincing \emph{geometric} interpretation. The sequence of iterates can be found by repeatedly taking the \textcolor{Green}{tangent line} to the \textcolor{blue}{curve} $y=f(x)=x^2-a$ and intersecting it with the $x$-axis. To see why, observe that the tangent line at $x_n$ has equation
-  	\begin{align*}
-  		y&=f(x_n)+f'(x_n)(x-x_n)\\
-  		&=x_n^2-a+2x_n(x-x_n)\\
-  		&=2x_nx-x_n^2-a
-  	\end{align*}
-  	which intersects the $x$-axis ($y=0$) when
-  	\[
-  		x=\frac{x_n^2+a}{2x_n}=\frac 12\left(x_n+\frac a{x_n}\right) =x_{n+1}
-  	\] 
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.38\linewidth}\vspace{0pt}
-  	\hfill\includegraphics[]{newton-raphson}
-  \end{minipage}
-\end{enumerate}
 
+Since it makes use of the average, this approach is sometimes called the \emph{method of the mean}. It may be applied to approximate any square root $\sqrt a$ where $a>0$ (Exercise \ref{exs:methodmeangen}). Variations of this approach have been in use for thousands of years.
+% It may be applied to any square-root $\sqrt a$ where $a>0$: let $x_0>0$ and define,
+% \[
+% 	x_{n+1}:=\frac 12\left(x_n+\frac a{x_n}\right) \tag{$\ast$}
+% \]
+\medbreak
 
-
-
-This geometric idea generalizes\ldots
+More importantly, this geometric interpretation generalizes\ldots
 
 \begin{defn}{}{}
 	Given a differentiable function $f(x)$ with non-zero derivative, the \emph{Newton--Raphson iterates} of an initial value $x_0$ are defined by the recurrence formula
@@ -555,35 +567,34 @@ This geometric idea generalizes\ldots
 	\]
 \end{defn}
 
-\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
 	Our two previous observations still hold:
 	\begin{enumerate}
 	  \item If $L=\lim\limits_{n\to\infty}x_n$ exists and $f'(L)\neq 0$, then
 	  \[
 	  	L=L-\frac{f(L)}{f'(L)}\implies f(L)=0
 	  \]
-		That is, the limit $L$ is a root of the \textcolor{blue}{function $f(x)$}.
-		\item The \textcolor{Green}{tangent line} at $\bigl(x_n,f(x_n)\bigr)$ forms a \textcolor{Green}{right-triangle} with base $x_n-x_{n+1}$ and height $f(x_n)$, from which its slope is
+		That is, the limit $L$ is a root of the \textcolor{Blue}{function $f(x)$}.
+		\item The \textcolor{mGreen}{tangent line} at $\big(x_n,f(x_n)\big)$ forms a \textcolor{mGreen}{right-triangle} with base $x_n-x_{n+1}$ and height $f(x_n)$. Its slope is
 		\[
-			f'(x_n)=\frac{f(x_n)}{x_n-x_{n+1}} %y=f(x_n)+f'(x_n)(x-x_n)
+			f'(x_n)=\frac{f(x_n)}{x_n-x_{n+1}}
 		\]
-		Rearranging this gives the formula $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$.
+		which rearranges to give the formula $x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}$.
 	\end{enumerate}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
-	\hfill\includegraphics{newton-raphson3}
-\end{minipage}\bigbreak
+\begin{minipage}[t]{0.33\linewidth}\vspace{0pt}
+	\hfill\includegraphics[alt={newton's iterates using the tangent line}]{newton-raphson3}
+\end{minipage}\smallbreak
 
-Newton's method is particularly nice for polynomials with integer coefficients, since the iterates form a sequence of \emph{rational numbers}. This approach was often used obtain rational approximations to irrational numbers before the advent of calculators.
+For polynomials with integer coefficients, the iterates form a sequence of \emph{rational numbers}.
 
 
-	
-
-\begin{examples}{}{}
+\begin{examples}{}{newtonex}
+	We use Newton's method to find approximations to two irrational numbers.
 	\begin{enumerate}
-	  \item To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate\par
-		\begin{minipage}[t]{0.62\linewidth}\vspace{-10pt}
+	  \item\label{ex:newtonex1} To find a root of $f(x)=x^4+4x-6$, start with $x_0=2$ and iterate\par
+		\begin{minipage}[t]{0.65\linewidth}\vspace{-12pt}
 			\[
 				x_{n+1}=x_n-\frac{x_n^4+4x_n-6}{4x_n^3+4} =\frac{3(x_n^4+2)}{4(x_n^3+1)}
 			\]
@@ -591,60 +602,74 @@ Newton's method is particularly nice for polynomials with integer coefficients, 
 			\[
 				\left(2,\frac 32,\frac{339}{280},\ldots\right)=(2,1.5,1.211,1.121,1.114,1.114,\ldots)
 			\]
-			You can check with a calculator that $1.114$ is approximately a root.
+			A calculator shows that 1.114 is approximately a root.
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.37\linewidth}\vspace{-8pt}
-			\hfill\includegraphics[scale=0.95]{newton-raphson2}
+		\begin{minipage}[t]{0.33\linewidth}\vspace{-12pt}
+			\hfill\includegraphics[alt={newton's method for a quartic polynomial}]{newton-raphson2}
 		\end{minipage}
 	
 		\item The irrational number $x=\sqrt 2+\sqrt 3$ is a root of the polynomial
 		\[
 			f(x)=x^4-10x^2+1
 		\]
-		By applying Newton's method with $x_0=3$, we obtain the sequence (to 3\,d.p.)
+		Applying Newton's method with $x_0=3$ results in the sequence (to 3\,d.p.)
 		\[
-			x_{n+1}=x_n-\frac{x_n^4-10x_n^2+1}{4x_n^3-20x_n} =\frac{3x_n^4-10x_n^2-1}{4x_n(x_n^2-5)} \implies (x_n)=\left(3,\ \frac{19}6=3.167,\ %\frac{86569}{27512}=
+			x_{n+1}=x_n-\frac{x_n^4-10x_n^2+1}{4x_n^3-20x_n} \implies (x_n)=\left(3,\ \frac{19}6=3.167,\ %\frac{86569}{27512}=
 			3.147,\ \ldots \right)
 		\]
 	\end{enumerate}
 \end{examples}
 
 
-Newton's method can be attempted for any differentiable function, though the sequence isn't guaranteed to converge: see for instance Exercise \ref{exs:newtonbad}. You can find graphical interfaces online for this (for instance with Geogebra).
+Newton's method can be attempted for any differentiable function, though the sequence isn't guaranteed to converge: see for instance Exercise \ref{exs:newtonbad}. You can find graphical interfaces online for playing with this. Newton's method is one of the most important algorithms in numerical analysis, with many applications and generalizations to other contexts.
 
 
 
 \begin{exercises}{}{}	
+	\hangindent\leftmargini
+	\emph{Key concepts: \ Visualizing and computing with Newton's method}
+	
 	\begin{enumerate}
   	\item Use Newton's method to find a root of the given function to 4 decimal places.\par
   	(\emph{Use a calculator, but explain what you are doing!})
   	\begin{enumerate}
-    	\item $f(x)=x^3-4$\qquad (b) \ $f(x)=2x^3+x-1$\qquad (c) \ $f(x)=e^x-\sqrt x-2$
+    	\item $f(x)=x^3-4$
+    	\item $f(x)=2x^3+x-1$
+    	\item $f(x)=e^x-\sqrt x-2$
+    	\item $f(x)=\cos x-x$\quad (\emph{remember to use radians})
   	\end{enumerate}
+  	
+  	
+  	\item In Example \ref*{ex:newtonex}.\ref{ex:newtonex1}, we claimed that the sequence of iterates approaches an \emph{irrational} number. Why is this obvious?
+  	
   
-  
-  	\item Use Newton's method to find a rational number approximation to $\sqrt[3]{2}$ in lowest terms $\frac pq$ where $10<q<100$.
-  
-  %\item Factorize the polynomial $2x^3-3\sqrt 5x^2+5\sqrt 5$ by first observing that $\sqrt 5$ is a root.
-   
- 
-  	\item\label{exs:newtonconverge} Suppose you perform Newton's method for the function $f(x)=x^2-2$ starting with some positive $x_0>0$.
+  	\item\label{exs:sqrt32} Use Newton's method to find a rational number approximation to $\sqrt[3]{2}$ in lowest terms $\frac pq$ where $10<q<100$.
+  	
+  	
+  	\item\label{exs:methodmeangen} Here is the general \emph{method of the mean}. To approximate $\sqrt a$, choose any positive $x_0$ and define
+  	\[
+  		x_{n+1}:=\frac 12\left(x_n+\frac a{x_n}\right)
+  	\]\vspace{-3pt}
   	\begin{enumerate}
-    	\item If $x_n>0$, show that $x_{n+1}-\sqrt 2=\frac 1{2x_n}(x_n-\sqrt 2)^2 =\left(\frac 12-\frac 1{2\sqrt 2x_n}\right)(x_n-\sqrt 2)$.
-    	\item Explain why $\nm{x_n-\sqrt 2}<\frac 1{2^n}\nm{x_0-\sqrt 2}$. Hence conclude that the sequence of iterates $(x_n)$ converges to $\sqrt 2$.
-  	\end{enumerate}
-	
+  	  %\item Show that $x_n<\sqrt a\iff \frac a{x_n}>\sqrt a$.
+  	  \item If the sequence $(x_n)$ has a limit $L$, prove that $L=\sqrt a$.
+  	  \item Show that this is Newton's method in disguise. What is the relevant function $f(x)$? 
+		\end{enumerate}
+		
 		
 		\item We might consider a \emph{method of the mean} for approximating $\sqrt[3]{2}$: given $x_0$, define
 		\[
 			x_{n+1}=\frac 12\left(x_n+\frac 2{x_n^2}\right)
-		\]
+		\]\vspace{-3pt}
 		\begin{enumerate}
 		  \item If the sequence $(x_n)$ converges, show that its limit is $\sqrt[3]{2}$.
 		  \item If $x_n>\sqrt[3]{2}$, show that $\frac 2{x_n^2}<\sqrt[3]{2}$.
-		  \item Let $x_0=1$. Compute $x_1$ and $x_2$. Compare these with the values obtained using Newton's method for the function $f(x)=x^3-2$ with the same initial condition $x_0=1$.
+		  \item Let $x_0=1$. Compute $x_1$ and $x_2$. Compare these with the values obtained using Newton's method for the function $f(x)=x^3-2$ with the same initial condition $x_0=1$ (e.g., Exercise \ref{exs:sqrt32}).
 		\end{enumerate}
+		
+		
+		\pagebreak[3]
 	
 	
   	\item\label{exs:newtonbad} Let $f(x)=x^3-5x$.
@@ -653,8 +678,22 @@ Newton's method can be attempted for any differentiable function, though the seq
 
     	\item (Just for fun!)\lstsp Investigate what happens for other values of $x_0$. Can you make any conjectures? Is is possible for $x_0$ to be \emph{positive} and yet for $x_n\to-\sqrt 5$? Can you make any sense of what happens if $1<x_0<\sqrt{\frac 53}$?
   	\end{enumerate}
+   
+ 
+  	\item\label{exs:newtonconverge} Suppose you perform Newton's method for $f(x)=x^2-2$ starting with some $x_0>0$.
+  	\begin{enumerate}
+  	  \item Check that
+  	  \[
+  	  	x_{n+1}-\sqrt 2=\frac 1{2x_n}\big(x_n-\sqrt 2\big)^2\tag{$\ast$}
+  	  \]
+  	  so that all terms of the sequence (except perhaps the first) are larger than $\sqrt 2$.
+  	  \item If $n\ge 1$, use ($\ast$) to verify that
+  	  \[
+  	  	x_{n+1}-\sqrt 2	\le\frac 12\big(x_n-\sqrt 2\big)
+  	  \]
+  	  Hence argue that $\lim\limits_{n\to\infty}x_n=\sqrt 2$.
+  	\end{enumerate}
 	\end{enumerate}
 
 \end{exercises}
 
-\fi
