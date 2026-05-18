@@ -16,6 +16,10 @@ import graph;
 
 size(150,130,IgnoreAspect);
 
+
+real f(real x){return exp(x)-7x^2;}
+real ff(real x){return exp(x)-14x;}
+
 real f(real x){return x^4+4x-6;}
 real ff(real x){return 4x^3+4;}
 
