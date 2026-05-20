@@ -9,7 +9,7 @@ texpreamble("\usepackage{amsmath}
 import graph;
 
 
-size(140,120,IgnoreAspect);
+size(140,110,IgnoreAspect);
 
 pair[] dat={(1,4),(2,8),(3,10),(5,21)};
 real[] errsq={};
@@ -17,10 +17,8 @@ real[] errsq={};
 real m=21/5;
 real c=-4/5;
 
-real m=4;
-real c=0;
-
-label("$y=4t$",(2.6,-9),blue);
+real m=3;
+real c=3;
 
 int n=dat.length;
 for(int i=0; i<n; ++i){
@@ -35,7 +33,9 @@ real SS=sum(errsq);
 
 draw(graph(f,0,5.5),blue+dashed);
 
-xaxis(0,5.5,red,RightTicks);
+dot((5,24),white);
+
+xaxis(0,5.5,red,RightTicks(new real[]{0,2,4},new real[]{1,3,5}));
 yaxis("$y$",0,red,LeftTicks());
 labelx("$t$",5.5,2S,red);
 
