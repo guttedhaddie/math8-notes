@@ -1,12 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -21,7 +26,7 @@ yaxis("$T$",0,170,red,LeftTicks(Step=40,step=20));
 
 
 for(int i=0; i<n; ++i){
-	dot((datw[i],datl[i]),heavygreen);
+	dot((datw[i],datl[i]));
 }
 
 

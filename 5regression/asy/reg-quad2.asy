@@ -15,7 +15,7 @@ pen lGreen=rgb("00a000");
 import graph;
 
 
-size(175,140,IgnoreAspect);
+size(180,140,IgnoreAspect);
 
 pair[] dat={(1,2),(2,5),(3,7),(4,4)};
 int n=dat.length;
@@ -27,20 +27,16 @@ real c=-5;
 
 real f(real t){return a*t^2+b*t+c;}
 
-real h(real t){return (1/6)*(-4t^3+21t^2-17*t+12);}
+
+for(int i=0; i<n; ++i){
+draw(dat[i]--(dat[i].x,f(dat[i].x)),lGreen);
+}
 
 real g(real t){return 0.8*t+2.5;}
 
-//for(int i=0; i<n; ++i){
-//draw(dat[i]--(dat[i].x,f(dat[i].x)),lightgreen);
-//draw(dat[i]--(dat[i].x,g(dat[i].x)),lightgreen);
-//}
-
 draw(graph(g,0,4.8),Brown);
 
-draw(graph(h,0,4.5),Magenta);
-
-draw(graph(f,0.7,4.8),Blue);
+draw(graph(f,0.7,4.8),blue);
 
 for(int i=0; i<n; ++i){
 	dot(dat[i]);

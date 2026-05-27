@@ -1,11 +1,17 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -19,8 +25,8 @@ real w=0.6;
 real y1=1.2;
 real y2=y1+w;
 fill((y1,0)--(y2,0)--(y2,L(y2))--(0,L(y2))--(0,L(y1))--(y1,L(y1))--cycle,0.5*lightgreen+0.5*white);
-draw((y1,0)--(y2,0),heavygreen+linewidth(2));
-draw((0,L(y1))--(0,L(y2)),heavygreen+linewidth(2));
+draw((y1,0)--(y2,0),lGreen+linewidth(2));
+draw((0,L(y1))--(0,L(y2)),lGreen+linewidth(2));
 
 
 real y3=2.5;

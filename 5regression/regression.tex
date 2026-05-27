@@ -191,7 +191,7 @@ In the next section, we'll see that having at least two distinct $t$-values guar
 	\begin{minipage}[t]{0.6\linewidth}\vspace{-\parsep}\vspace{-\abovedisplayskip}
 		\[
 			\def\arraystretch{1.2}
-			\begin{array}[t]{|c|ccccc||c|c|}\hline
+			\begin{array}{|c|ccccc||c|c|}\hline
 				\multicolumn{6}{|c||}{\text{Data}}&\sum&\text{Average}\\\hline\hline
 				t_i&8&10&6&7&4&35&7\\\hline
 				y_i&10&7&5&8&6&36&7.2\\\hline
@@ -204,7 +204,7 @@ In the next section, we'll see that having at least two distinct $t$-values guar
 	\begin{minipage}[t]{0.39\linewidth}\vspace{-\parsep}
 		\hfill\includegraphics[alt={linear regression predictor for quiz 2 in terms of quiz 1}]{reg-line3}
 	\end{minipage}
-	\vspace{-35pt}
+	\vspace{-11\parsep}
 
 	\begin{gather*}
 		m=\frac{52-7\times 7.2}{53-7^2}= \frac{1.6}{4} =0.4,\quad c=7.2-0.4\times 7=4.4\\[3pt]
@@ -294,39 +294,42 @@ In the next section, we'll see that having at least two distinct $t$-values guar
 	    (\emph{What does this have to do with part (a)?})
 	    \item	For the data set in part (b), show that there are \emph{infinitely many} lines $\hat y=mt+c$ which minimize the sum of the absolute errors $\sum_{i=1}^3\nm{\hat y_i-y_i}$.
 	  \end{enumerate}
+	  
+	  
+	  \item\label{exs:reglinemean} Suppose $\hat y(t)=mt+c$ is the regression line for a data set. Verify that the average of the predicted outputs $\hat y_i=\hat y(t_i)$ equals that of the original outputs $y$: that is
+	  \[
+	  	\cl{\hat y}=\frac 1n\sum_{i=1}^n\hat y_i=\frac 1n\sum_{i=1}^ny_i=\cl y
+	  \]
 	\end{enumerate}
 \end{exercises}
 
 
 
-
 \clearpage
 
-\iffalse
 
 \subsection{The Coefficient of Determination}
 
-In the sense that it minimizes the sum of the squared errors $S=\sum e_i^2$, the linear regression model is as good as it can be---but \emph{how} good? We could use $S$ as a \emph{quantitative} measure of the model's accuracy, but it doesn't do a good job at comparing the accuracy of models for \emph{different} data sets. The standard approach to this problem relies the concept of variance.
+In the sense that it minimizes the sum of the squared errors $S=\sum e_i^2$, the linear regression model is as good as it can be---but \emph{how} good? We could use $S$ as a \emph{quantitative} measure of the model's accuracy, but this doesn't do a good job at comparing the accuracy of models for \emph{different} data sets. The standard approach to this problem relies the concept of variance, a measure of how a data set deviates from being constant.
 
 \begin{defn}{}{}
-	The \emph{variance} of data sequence $(y_1,\ldots,y_n)$ is the average of the squared deviations from their mean $\cl y=\frac 1n\sum_{i=1}^ny_i$,
+	The \emph{variance} of a data set $\{y_1,\ldots,y_n\}$ is the average of the squared deviations from the mean $\cl y=\frac 1n\sum_{i=1}^ny_i$,
 	\[
 		\Var y:=\frac 1n\sum_{i=1}^n\bigl(y_i-\cl y\bigr)^2
 	\]
 	The \emph{standard deviation} is $\sigma_y:=\sqrt{\Var y}$.
 \end{defn}
 
-Variance and standard-deviation are measures of how data deviates from being constant.
+
 
 \begin{example}{}{vareasy}
 	Suppose $(y_i)=(1,2,5,4)$. Then
 	\begin{align*}
-		&\cl y=\frac 14(1+2+5+4)=3
-		&&\Var y=\frac 14\Bigl((-2)^2+(-1)^2+ 2^2+1^2\Bigr) =\frac 52
-		&\sigma_y=\frac{\sqrt{10}}2%\\
-		%&\cl z=\frac 14(2+6+10+6)=6&&\Var z=\frac 14\Bigl((-4)^2+(-2)^2+ 4^2+2^2\Bigr)=10&\sigma_z=\sqrt{10}
+		&\cl y=\frac{1+2+5+4}4=3
+		&&\Var y=\frac{(-2)^2+(-1)^2+ 2^2+1^2}4 =\frac 52
+		&\sigma_y=\frac{\sqrt{10}}2
 	\end{align*}
-	The square-root means that $\sigma_y$ has the same units as $y$. Loosely speaking, a typical data value is expected to lie approximately $\sigma_y=\frac 12\sqrt{10}\approx 1.58$ from the mean $\cl y=3$.
+	The square-root means that $\sigma_y$ has the same units as $y$. Loosely speaking, a typical data value is about twice as likely as not to lie within $\smash{\sigma_y=\frac 12\sqrt{10}\approx 1.58}$ of the mean $\cl y=3$.
 \end{example}
 
 To obtain a measure for how well a regression line fits given data $(t_i,y_i)$, we ask what \emph{fraction} of the variance in $y$ is explained by the model.
@@ -335,144 +338,184 @@ To obtain a measure for how well a regression line fits given data $(t_i,y_i)$, 
 	The \emph{coefficient of determination} of a model $\hat y=mt+c$ is the ratio
 	\[
 		R^2:=\frac{\Var\hat y}{\Var y}
-	\]
+	\]\vspace{-\parsep}
 \end{defn}
 
 \begin{examples}{}{}
-	We start by considering two extreme examples.\vspace{-1pt}
+	We start by considering two extreme examples.
 	\begin{enumerate}
-	  \item If the data were perfectly linear, then $y_i=mt_i+c$ for all $i$. The regression line is therefore $\hat y=mt+c$ and the coefficient of determination is precisely $R^2=\frac{\Var y}{\Var y}=1$. All the variance in the output $y$ is explained by the model's transfer of the variance in the input $t$.\par
-		\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-		  \item By contrast, consider the data in the table where we work out all necessary details to find the regression line:
-		  \[
-		  	m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2}=0,\quad c=\cl y-m\cl t=2
-		  \]
-		  The regression line is the \emph{constant} $\hat y\equiv 2$, whence $\hat y$ has \emph{no variance} and the coefficient of determination is $R^2=0$.
+	 	\item Suppose data is perfectly linear: $\mathcolor{mGreen}{y_i=mt_i+c}$ for all $i$. It is both intuitive and easy to verify that the regression line also has equation\par
+	  \begin{minipage}[t]{0.7\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
+	  	\[
+	  		\mathcolor{Blue}{\hat y=mt+c}
+	  	\]
+	  	Since $\hat y_i=y_i$ for all $i$, the variances are identical and the coefficient of determination is therefore
+	  	\[
+	  		R^2=\frac{\Var \hat y}{\Var y}=1
+	  	\]
+	  	All variance in the output $y$ is explained by the model.
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
-			\hfill
-			$\renewcommand{\arraystretch}{1.2}
-			\begin{array}{|c|cccc|c|}
-				\hline
-				\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
-				t_i&0&0&2&2&\cl t=1\\\hline
-				y_i&1&3&1&3&\cl y=2\\\hline
-				t_i^2&0&0&4&4&\cl{t^2}=2\\\hline
-				%y_i^2&1&16&4&25&\cl{y^2}=11.5\\\hline
-				t_iy_i&0&0&2&6&\cl{ty}=2\\\hline%\hline
-				%(\hat y_i-\cl y)^2&1&1&1&1&\Var\hat y=1\\\hline
-			\end{array}$
-		\end{minipage}\par
-		In this example, the regression model doesn't help explain the $y$-data in any way: the $t$-values have no obvious impact on the $y$-values.
+		\begin{minipage}[t]{0.28\linewidth}\vspace{-\abovedisplayskip}
+	  	\hfill
+	  	\begin{tabular}{@{}c@{}}
+	  		\includegraphics[alt={perfectly linear data}]{reg-rsq1}
+	  		\\
+	  		Perfect model $R^2=1$
+	  	\end{tabular}
+		\end{minipage}
+		
+		\pagebreak[3]
+	
+
+	  \item Consider the data in the table. We work out all necessary details to find the regression line.\par
+		\begin{minipage}[t]{0.7\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
+		  \begin{gather*}
+		  	\renewcommand{\arraystretch}{1.2}
+				\begin{array}{|c|cccc|c|}
+					\hline
+					\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
+					t_i&1&1&4&4&\cl t=2.5\\\hline
+					y_i&1&3&1&3&\cl y=2\\\hline
+					t_i^2&1&1&16&16&\cl{t^2}=8.5\\\hline
+					t_iy_i&1&3&4&12&\cl{ty}=5\\\hline
+				\end{array}
+				\\[2\parsep]
+			 	m =\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2} =\frac{5-2.5\cdot 2}{8.5-2.5^2}=0,\quad 
+			 	c =\cl y-m\cl t =2
+		  \end{gather*}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+		 	\begin{tabular}{@{}c@{}}
+	  	\includegraphics[alt={constant regression line has no predictive power}]{reg-rsq2}
+	  	\\
+	  	Useless model $R^2=0$
+		 	\end{tabular}			
+		\end{minipage}
+		The regression line is therefore the \emph{constant} 
+		\[
+			\hat y(t) =mt+c =2
+		\]
+		Since $\hat y$ has \emph{no variance}, the coefficient of determination is $R^2=0$. The $t$-values have no impact on the predicted $y$-values.
 	\end{enumerate}
 \end{examples}
 
+These extreme examples are just that.
 
+\begin{thm}{}{}
+	If $\big\{(t_i,y_i)\big\}$ has at least two distinct $t$-values, then the coefficient of determination satisfies $0\le R^2\le 1$. Moreover:
+	\begin{itemize}
+	  \item $R^2=1$ if and only if the data is precisely linear $y_i=mt_i+c$.
+	  \item $R^2=0$ if and only if the regression line has slope $m=0$.
+	\end{itemize}
+\end{thm}
 
-In fact, the coefficient of determination always lies somewhere between these extremes $0\le R^2\le 1$: Exercise \ref{exs:Rsqalt} demonstrates this and that the extreme situations are essentially those just encountered; in practice, therefore, $0<R^2<1$. Before we revisit our examples from the previous section, observe that the average of the model's outputs $\hat y_i$ is the same as that of the original data:
-\[
-	\frac 1n\sum_{i=1}^n\hat y_i=\frac 1n\sum_{i=1}^n(mt_i+c)=m\cl t+c=\cl y
-\]
-This makes computing the variance of $\hat y$ a breeze!
+A proof is in Exercise \ref{exs:Rsqalt}. In practice, therefore, $0<R^2<1$. We now revisit two earlier examples. Note how Exercise \ref*{sec:reg1}.\ref{exs:reglinemean} makes computing the variance of $\hat y$ easier.
 
-\begin{tcolorbox}[exstyle]{}\vspace{-5pt}
+\begin{tcolorbox}[exstyle]{}\vspace{-\parsep}
 	\begin{description}
-		\begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
-		  \item[Example \ref{ex:reg1}.]\lstsp Recall that $\hat y=\frac 15(21t-4)$. Everything necessary is in the table
+		\item[Example \ref{ex:reg1}.] Recall that $\hat y=\frac 15(21t-4)$. Everything necessary is in the table\par
+		\begin{minipage}[t]{0.7\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
 		  \begin{gather*}
-		  	\Var y=\frac{6.75^2+2.75^2+0.75^2+10.25^2}4 =39.6875\\
-		  	\Var\hat y=\frac{7.35^2+3.15^2+1.05^2+9.45^2}4=38.5875
-		  \end{gather*}
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
+				\renewcommand{\arraystretch}{1.15}
+				\begin{array}{|c|cccc|c|}
+					\hline
+					\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
+					t_i&1&2&3&5&\cl t=2.75\\\hline
+					y_i&4&8&10&21&\cl y=10.75\\\hline
+					\hat y_i&3.4&7.6&11.8&20.2&\cl{ty}=10.75\\\hline
+				\end{array}\\[2\parsep]
+		  	\Var y=\frac{6.75^2+2.75^2+0.75^2+10.25^2}4 \approx 39.69\\
+		  	\Var\hat y=\frac{7.35^2+3.15^2+1.05^2+9.45^2}4\approx 38.59
+		  \end{gather*}	
+			\end{minipage}
 			\hfill
-			$\renewcommand{\arraystretch}{1.2}
-			\begin{array}{|c|cccc|c|}
-				\hline
-				\multicolumn{5}{|c|}{\text{data}}&\text{average}\\\hline
-				t_i&1&2&3&5&\cl t=2.75\\\hline
-				y_i&4&8&10&21&\cl y=10.75\\\hline
-				\hat y_i&3.4&7.6&11.8&20.2&\cl{\hat y}=10.75\\\hline
-			\end{array}$
-		\end{minipage}\par
-	
-	  from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{3087}{3175}\approx 97.23\%$. The interpretation here is that the data is very close to being linear; the output $y_i$ is very closely approximated by the regression model with approximately 97\% of its variance explained by the model.\par
+			\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+		  	\begin{tabular}{@{}c@{}}
+		  		\includegraphics[alt={good model. The regression line is an accurate predictor of the observed output}]{reg-rsq3}
+		  		\\
+		  		Good model $R^2\approx 97\%$
+		  	\end{tabular}			
+			\end{minipage}
+	  	\par
+	  from which $R^2=\frac{\Var\hat y}{\Var y}\approx 97\%$. The data is very close to being linear with approximately 97\% of the variance of $y$ explained by the model.
+
+		\pagebreak[3]
 	  
-	  \begin{minipage}[t]{0.57\linewidth}\vspace{0pt}
-		  \item[Example \ref{ex:reg2}.]\lstsp This time $\hat y=\frac 25(t+11)$.
+	  \item[Example \ref{ex:reg2}.] This time $\hat y=\frac 25(t+11)$.\par
+	  \begin{minipage}[t]{0.7\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
 		  \begin{gather*}
-			  \Var y=\frac{2.8^2+0.2^2+2.2^2+0.8^2+1.2^2}5 =2.96\\
+				\renewcommand{\arraystretch}{1.15}
+				\begin{array}{|c|ccccc|c|}
+					\hline
+					\multicolumn{6}{|c|}{\text{data}}&\text{average}\\\hline
+					t_i&8&10&6&7&4&\cl t=7\\\hline
+					y_i&10&7&5&8&6&\cl y=7.2\\\hline
+					\hat y_i&7.6&8.4&6.8&7.2&6&\cl{\hat y}=7.2\\\hline
+				\end{array}\\[2\parsep]
+		  	\Var y=\frac{2.8^2+0.2^2+2.2^2+0.8^2+1.2^2}5 =2.96\\
 			  \Var\hat y=\frac{0.4^2+1.2^2+0.4^2+0^2+1.2^2}5=0.64
-		  \end{gather*}
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.42\linewidth}\vspace{0pt}
+		  \end{gather*}	
+			\end{minipage}
 			\hfill
-			$\renewcommand{\arraystretch}{1.2}
-			\begin{array}{|c|ccccc|c|}
-				\hline
-				\multicolumn{6}{|c|}{\text{data}}&\text{average}\\\hline
-				t_i&8&10&6&7&4&\cl t=7\\\hline
-				y_i&10&7&5&8&6&\cl y=7.2\\\hline
-				\hat y_i&7.6&8.4&6.8&7.2&6&\cl{\hat y}=7.2\\\hline
-			\end{array}$
-		\end{minipage}\par
-	 	from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{8}{37}\approx 21.62\%$. In this case the coefficient of determination is small, which indicates that the model does not explain much of the variation in the output.
+			\begin{minipage}[t]{0.28\linewidth}\vspace{0pt}
+		  	\begin{tabular}{@{}c@{}}
+		  		\includegraphics[alt={poor model. The regression line is an accurate predictor of the observed output}]{reg-rsq4}
+		  		\\
+		  		Poor model $R^2\approx 22\%$
+		  	\end{tabular}	
+			\end{minipage}\par
+	 	from which $R^2=\frac{\Var\hat y}{\Var y}=\frac{8}{37}\approx 22\%$. In this case the coefficient of determination is small, indicating that the model does not explain much of the variation in the output.
 	\end{description}
 \end{tcolorbox}
 
-The four examples are plotted below for easy visual comparison between the $R^2$-values.
 
-\begin{center}
-	\begin{tabular}{@{}c@{\quad\ }c@{\quad\ }c@{\quad\ }c@{}}
-		\includegraphics[alt={}]{reg-rsq1}
-		&
-		\includegraphics[alt={}]{reg-rsq2}
-		&
-		\includegraphics[alt={}]{reg-rsq3}
-		&
-		\includegraphics[alt={}]{reg-rsq4}
-		\\
-		Perfect model $R^2=1$
-		&
-		Useless model $R^2=0$
-		&
-		Good model $R^2=0.97$
-		&
-		Poor model $R^2=0.22$
-	\end{tabular}
-\end{center}
+\subsubsection*{Efficient computation of $R^2$}
 
-
-\boldinline{Efficient computation of $R^2$}
-
-If you want to compute by hand, our current process is lengthy and awkward. To obtain a more efficient alternative we first consider an alternative expression for the variance of any collection of data:
+Our current process for computing $R^2$ is lengthy and awkward. To obtain a more efficient process, we first consider an alternative expression for the variance of any data set $\{x_i\}$:
+\begin{align*}
+	\Var x
+	&=\frac 1n\sum(x_i-\cl x)^2
+	=\frac 1n\sum\left(x_i^2-x_i\cl x+\cl x^2\right)
+	=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i\\[2pt]
+	&=\cl{x^2}-\cl x^2
+\end{align*}
+Recalling Theorem \ref{thm:linreg}, we see that the regression line has slope
 \[
-	\Var x=\frac 1n\sum(x_i-\cl x)^2=\frac 1n\sum x_i^2-\frac{2\cl x}n\sum x_i+\frac{\cl x}n\sum x_i =\cl{x^2}-\cl x^2
+	m=\frac{\cl{ty}-\cl t\cl y}{\Var t}
 \]
-Plainly $\Var x\ge 0$ with equality if and only if all data values $x_i$ are equal. The alternative expression $\cl{x^2}-\cl x^2$ justifies the uniqueness of the regression line in Definition \ref{defn:regdef} and Theorem \ref{thm:linreg}.
-
-\goodbreak
+Since $\Var t\ge 0$, with equality if and only if $t$ is constant, this justifies the claim of Theorem \ref{thm:linreg}, that the regression line exists and is unique, provided there are at least two distinct $t$-values.\footnote{%
+	Strictly, the system of equations we solve for $m$ has a unique solution if and only if $\Var t\neq 0$.%
+}
 
 Now expand the variance of the predicted outputs:
-\[
-	\Var\hat y=\frac 1n\sum(\hat y_i-\cl y)^2=\frac 1n\sum\bigl(mt_i+c-(m\cl t+c)\bigr)^2 =\frac{m^2}n\sum(t_i-\cl t)^2=m^2\Var t
-\]
-Putting these together, we obtain several equivalent expressions for the coefficient of determination:\phantomsection\label{pg:rsqalt}
+\begin{align*}
+	\Var\hat y&
+	=\frac 1n\sum\big(\hat y_i-\cl y\big)^2
+	=\frac 1n\sum\big(mt_i+c-(m\cl t+c)\big)^2 
+	=\frac{m^2}n\sum\big(t_i-\cl t\big)^2\\
+	&=m^2\Var t
+\end{align*}
+
+\begin{thm}{}{rsquared}
+Putting everything together results in several equivalent expressions for the coefficient of determination:
 \[
 	R^2 =\frac{\Var\hat y}{\Var y} 
 	=m^2\frac{\Var t}{\Var y} 
 	=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2}
-	=\frac{(\cl{ty}-\cl t\cl y)^2}{(\cl{t^2}-\cl t^2)(\cl{y^2}-\cl y^2)}
+	=\frac{\big(\cl{ty}-\cl t\cl y\big)^2}{\big(\cl{t^2}-\cl t^2\big)\big(\cl{y^2}-\cl y^2\big)}
 %=1-\frac{\sum e_i^2}{n\Var y} %=\frac{\Cov(y,t)}{\sqrt{\Var y\Var t}}
-\tag{$\ast$}
 \]
+\end{thm}
+
+
+\pagebreak[3]
+
 
 \begin{example}{}{finalreg}
-	We do one more easy example with simple data $(t_i,y_i):(1,4),(2,1),(3,2),(4,0)$.\par
-	\begin{minipage}[t]{0.55\linewidth}\vspace{-10pt}
+	Consider the data set in the table.\par
+	\begin{minipage}[t]{0.55\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
 		\begin{gather*}\renewcommand{\arraystretch}{1.3}
 			\begin{array}{|c|cccc|c|}
 				\hline
@@ -482,82 +525,89 @@ Putting these together, we obtain several equivalent expressions for the coeffic
 				t_i^2&1&4&9&16&\cl{t^2}=\frac{15}2\\\hline
 				y_i^2&16&1&4&0&\cl{y^2}=\frac{21}4\\\hline
 				t_iy_i&4&2&6&0&\cl{ty}=3\\\hline
-			\end{array}\\[5pt]
+			\end{array}\\[2\parsep]
 			m=\frac{\cl{ty}-\cl t\cl y}{\cl{t^2}-\cl t^2} =\frac{3-\frac{70}{4^2}}{\frac{15}2-\frac{100}{4^2}} =-\frac{11}{10}=-1.1\\
 			c=\cl y-m\cl t=\frac{7}4+\frac{11\cdot 10}{10\cdot 4}=\frac 92 =4.5
 		\end{gather*}
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
-	\hfill\includegraphics[alt={}]{reg-line5}
-\end{minipage}\medbreak
-The regression line is $\hat y=-\frac{11}{10}t+\frac 92=-1.1t+4.5$, and the coefficient of determination is
-\[
-	R^2=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} =\frac{121}{100}\cdot \frac{\frac{15}2-\frac{100}{4^2}}{\frac{21}4-\frac{49}{4^2}}= \frac{121}{100}\cdot \frac{20}{35} =\frac{121}{175} =69.1\%
-\]
-The \textcolor{Green}{minimized square error} is also easily computed:
-\[
-	\sum e_i^2=\sum(\hat y_i-y_i)^2=(3.4-4)^2+(2.3-1)^2+(1.2-2)^2+(0.1-0)^2=2.7
-\] 
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.44\linewidth}\vspace{-\parsep}
+		\hfill\includegraphics[alt={graph of data and its linear regression model}]{reg-line5}
+	\end{minipage}
+	\smallbreak
+	The regression line is $\hat y=-\frac{11}{10}t+\frac 92=-1.1t+4.5$, and the coefficient of determination is
+	\[
+		R^2=m^2\frac{\cl{t^2}-\cl t^2}{\cl{y^2}-\cl y^2} =\frac{121}{100}\cdot \frac{\frac{15}2-\frac{100}{4^2}}{\frac{21}4-\frac{49}{4^2}}= \frac{121}{100}\cdot \frac{20}{35} =\frac{121}{175} \approx 69\%
+	\]
+	The \textcolor{mGreen}{minimized square error} is also easily computed:
+	\[
+		S=\sum e_i^2=\sum(\hat y_i-y_i)^2=(3.4-4)^2+(2.3-1)^2+(1.2-2)^2+(0.1-0)^2=2.7
+	\] 
 \end{example}
 
 
-\boldinline{Reversion to the Mean \& Correlation}
 
-By ($\ast$), the regression model may be re-written in terms of the standard-deviation and $R^2$: 
+\subsubsection*{Reversion to the Mean \& Correlation}
+
+By Theorem \ref{thm:rsquared}, the regression model may be re-written in terms of the standard-deviation and $R^2$: 
 \[
-	\hat y(t)=mt+c=\cl y+m(t-\cl t) =\cl y+\textcolor{red}{\sqrt{R^2}}\frac{\sigma_y}{\sigma_t}(t-\cl t) \implies \hat y(\cl t+\lambda\sigma_t)=\cl y+\lambda\textcolor{red}{\sqrt{R^2}}\sigma_y
+	\hat y(t) =mt+c =\cl y+m(t-\cl t) 
+	=\cl y+\mathcolor{mRed}{\sqrt{R^2}}\frac{\sigma_y}{\sigma_t}(t-\cl t) 
+	\implies \hat y(\cl t+\lambda\sigma_t)
+	=\cl y+\lambda\mathcolor{mRed}{\sqrt{R^2}}\sigma_y
 \]
 
 \begin{defn}{}{}
-	The \emph{correlation coefficient} is the value $r:=\pm\sqrt{R^2}$ (sign equal to that of $m$).
+	The \emph{correlation coefficient} is $r:=\pm\sqrt{R^2}$, whose sign is equal to that of $m$.
 \end{defn}
 
-An input $\lambda$ standard-deviations above the mean ($t=\cl t+\lambda\sigma_t$) results in a prediction $\lambda r$ standard-deviations above the mean ($\hat y=\cl y+\lambda r\sigma_y$). Unless the data is perfectly linear, we have $R^2<1$; relative to the `neutral' measure given by the standard-deviation a prediction $\hat y(t)$ is closer to the mean than the input $t$
+An input $\lambda$ standard-deviations from the mean ($t=\cl t+\lambda\sigma_t$) results in a prediction $\lambda r$ standard-deviations from the mean ($\hat y=\cl y+\lambda r\sigma_y$). Unless data is perfectly linear, the correlation coefficient satisfies $\nm r<1$, whence a prediction $\hat y$ is \emph{closer to the mean} than the input $t$, relative to the `neutral' measure given by the standard-deviation
 \[
-	\frac{\nm{\hat y(t)-\cl y}}{\sigma_y} =r\frac{\nm{\hat t-\cl t}}{\sigma_t}
+	\frac{\nm{\hat y(t)-\cl y}}{\sigma_y} =\nm r\frac{\nm{\hat t-\cl t}}{\sigma_t}
 	<\frac{\nm{\hat t-\cl t}}{\sigma_t}
 \]
 
 
-
-
-\goodbreak
+\pagebreak[3]
 
 
 \begin{example*}{\ref{ex:finalreg}, cont}{}
-	We compute the details. The correlation coefficient is $r=-\sqrt{R^2}\approx -0.832$; we say that the data is \emph{negatively correlated,} since the output $y$ seems to \emph{decrease} as $t$ increases. The standard deviations may be read off from the table:
+	The correlation coefficient is $r=-\sqrt{R^2}\approx -0.832$. We say that the data is \emph{negatively correlated}: the output $y$ tends to \emph{decrease} as $t$ increases. The standard deviations may be read from the table:
 	\[
-		\sigma_t=\sqrt{\Var t}=\sqrt{\cl{t^2}-\cl t^2}=\frac{\sqrt 5}2\approx 1.118,\qquad \sigma_y=\sqrt{\Var y}=\sqrt{\cl{y^2}-\cl y^2}=\frac{\sqrt{35}}4\approx 1.479
+		\sigma_t=\sqrt{\Var t}=\sqrt{\cl{t^2}-\cl t^2}=\frac{\sqrt 5}2\approx 1.12,\qquad \sigma_y=\sqrt{\Var y}=\sqrt{\cl{y^2}-\cl y^2}=\frac{\sqrt{35}}4\approx 1.48
 	\]
 	The predictor may therefore be written (approximately)
 	\[
 		\hat y(\cl t+\lambda\sigma_t)=\hat y(2.5+1.12\lambda) =\cl y+\lambda r\sigma_y =1.75-1.23\lambda
 	\]
-	As a sanity check,
+	As a sanity check, the input $t=2.5+1.12=3.62$ is one standard-deviation above the mean; its predicted output
 	\[
-		\hat y(2.5+1.12)=\hat y(3.62)=-1.1\times -3.98+4.5=0.52 =1.75-1.23
+		\hat y(3.62)=-1.1\times (-3.62)+4.5=0.52 =1.75-1.23
 	\]
+	is \emph{less than one standard-deviation below} the mean.
 \end{example*}
 
 
-\boldinline{Weaknesses of Linear Regression}
+\subsubsection*{Weaknesses of Linear Regression}
 
 There are two obvious issues:
 \begin{itemize}
-  \item Outliers massively influence the regression line. Dealing with this problem is complicated and there are a variety of approaches that can be used. It is important to remember that any approach to modelling, including our regression model, requires some \emph{subjective choice.}
-  \item If the data is not very linear then the regression model will produce a weak predictor. There are several ways around this as we'll see in the remaining sections: higher-degree polynomial regression can be performed, and data sometimes becomes more linear after some manipulation, say by an exponential or logarithmic function.
+  \item Outliers massively influence the regression line. Dealing with this problem is complicated and a variety of approaches can be used. It is important to remember that any approach to modeling requires some subjective choice.
+  \item If the data is not very linear then the regression model will produce a weak predictor. There are several simple ways around this as we'll see in the remaining sections: higher-degree polynomial regression can be performed, and data sometimes becomes more linear after some manipulation, say by an exponential or logarithmic function.
 \end{itemize}
 
 
 \begin{exercises}{}{}
-	\exstart Suppose $(z_i)=(2,4,10,8)$ is \emph{double} the data set in Example \ref{ex:vareasy}. Find $\cl z,\Var z$ and $\sigma_z$. Why are you not surprised?
+	\hangindent\leftmargini\emph{Key Concepts: \ $R^2$, its meaning and computation, \ Reversion to the Mean} 
 	
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
+	  \item Suppose $(z_i)=(2,4,10,8)$ is \emph{double} the data set in Example \ref{ex:vareasy}. Find $\cl z$, $\Var z$ and $\sigma_z$. Why are you not surprised?
+	  
+	  
 	  \item Use a spreadsheet to find $R^2$ for the predictor in Exercise \ref*{sec:reg1}.\ref{exs:kidsheights}. How confident do you feel in your prediction?
 	  
 	  
-	  \item Find the standard deviations and correlation coefficients for the data in Examples \ref{ex:reg1} and \ref{ex:reg2}.
+	  \item For the data in both Examples \ref{ex:reg1} and \ref{ex:reg2}, find the standard deviations and correlation coefficients.
 	  
 	  
 	  \item The adult heights of men and women in a given population satisfy the following:
@@ -565,17 +615,58 @@ There are two obvious issues:
 	  	Men:\lstsp average 69.5\,in, \ $\sigma=3.2$\,in.\qquad
 	  	Women:\lstsp average 63.7\,in, \ $\sigma=2.5$\,in.
 	  \end{quote}
-	  The height of a father and his adult daughter have correlation coefficient $0.35$. If a father's height is 72\,in (mother's height unknown), how tall do you expect their daughter to be?
+	  The height of a father and his adult daughter have correlation coefficient $r=0.35$. If all you know is that a father's height is 72\,in, how tall do you expect his daughter to grow up to be?
+	  
+	  
+	  \item Suppose a data set is perfectly linear: for each $i$, we have $y_i=mt_i+c$. Prove that the regression line really is $\hat y=mt+c$.
+	  
+	  
+	  \item Consider the data set
+	  \[
+	  	\big\{(t_i,y_i)\big\}=\big\{(3,1),(3,5),(3,6)\big\}
+	  \]
+	  Find the equations of \emph{all} lines $\hat y(t)=mt+c$ that minimize the sum of the squares of the vertical errors $S=\sum(\hat y_i-y_i)^2$. What is going on?
+% 	  	It is worth considering what happens when there is only one $t$-value.\par
+% 	\begin{minipage}[t]{0.65\linewidth}\vspace{-\parsep}
+% 		The data set $$ yields
+% 		\[
+% 			P=
+% 		  \begin{pmatrix}
+% 		   3&1\\
+% 		   3&1\\
+% 		   3&1
+% 		  \end{pmatrix}
+% 		  \implies P^TP=
+% 		  \begin{pmatrix}
+% 		   27&9\\
+% 		   9&3
+% 		  \end{pmatrix}
+% 		\] 
+% 		This matrix isn't invertible ($27\cdot 3-9\cdot 9=0$), so the method doesn't work!
+% 	\end{minipage}
+% 	\hfill
+% 	\begin{minipage}[t]{0.34\linewidth}\vspace{-\parsep}
+% 		\hfill\includegraphics[alt={}]{reg-line6}
+% 	\end{minipage}\smallbreak
+% 		It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{Blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{mGreen}{average} $(3,4)$. However, it could have \emph{any} slope!\par
+% 		This illustrates our fundamental assumption: linear regression requires at least two distinct $t$-values.
 	
 	  
-	  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. Use one of the alternative expressions for $R^2$ (page \pageref{pg:rsqalt}) to find the coefficient of determination for the reversed predictor $\hat t(y)$? Are you surprised?
+	  \item Suppose $R^2$ is the coefficient of determination for a linear regression model $\hat y=mt+c$. Use one of the alternative expressions for $R^2$ (Theorem \ref{thm:rsquared}) to find the coefficient of determination for the reversed predictor $\hat t(y)$? Are you surprised?
 	  	  
 	  
-	  \item\label{exs:Rsqalt} Suppose that a data set $\{(t_i,y_i)\}_{1\le i\le n}$ has at least two distinct $t$- and $y$-values (some $t_i\neq t_j$, etc.), that it has regression line $\hat y=mt+c$ and coefficient of determination $R^2$.
+	  \item\label{exs:Rsqalt} Suppose that a data set $\big\{(t_i,y_i)\big\}_{1\le i\le n}$ has at least two distinct $t$-values (some $t_i\neq t_j$), that it has regression line $\hat y=mt+c$, and coefficient of determination $R^2$.
 	  \begin{enumerate}
 	    \item Show that $R^2=0\Longleftrightarrow m=0$.
-	    \item (Hard)\lstsp Prove that the sum of squared errors equals $S=\sum_{i=1}^ne_i^2 =n(\Var y-\Var\hat y)$.
-	    \item Obtain the alternative expression $R^2=1-\frac S{n\Var y}$. Hence conclude that $R^2\le 1$, with equality if and only if the original data set is perfectly linear.
+	    \item (Hard)\lstsp Prove that the sum of squared errors equals
+	    \[
+	    	S=\sum_{i=1}^ne_i^2 =n(\Var y-\Var\hat y)
+	    \]
+	    \item Suppose additionally that $\Var y\neq 0$ (at least two distinct $y$-values). Obtain the alternative expression
+	    \[
+	    	R^2=1-\frac S{n\Var y}
+	    \]
+	    Hence conclude that $R^2\le 1$, with equality if and only if the original data set is perfectly linear.
 		\end{enumerate}	
 	\end{enumerate}
 
@@ -585,10 +676,81 @@ There are two obvious issues:
 
 
 
-\subsection{Matrix Multiplication \& Polynomial Regression}
+\subsection{Polynomial Regression \& Matrices}\label{sec:regpoly}
 
-In this section we consider how to find a best-fitting least-squares polynomial for given data. To see how to do this, it helps to rephrase the linear approach using matrices.\footnote{Matrix computations are non-examinable. The purpose of this section is to be see how the regression may easily be automated and generalized by computer and to understand a little of how a spreadsheet calculates best-fitting curves of different types.}
-\bigskip
+In this section we consider how to find a best-fitting least-squares polynomial for given data. The structure is almost identical to what we did in Section \ref{sec:reg1}, though the algebra is nastier.\smallbreak
+
+Suppose, for instance, that we want to find a \emph{quadratic} polynomial predictor $\hat y(t)=at^2+bt+c$ for a data set $\big\{(t_i,y_i):1\le i\le n\big\}$. As before, our criteria is that this model minimizes the sum of the squared vertical errors
+\[
+	S(a,b,c)=\sum_{i=1}^n e_i^2=\sum_{i=1}^n(at_i^2+bt_i+c-y_i)^2
+\]
+This might look terrifying, but can be attacked exactly as before using differentiation: to minimize $S$, we require that its derivatives with respect to the coefficients $a,b,c$ be zero.
+\begin{gather*}
+	\def\arraystretch{1.9}
+	\left\{
+	\begin{array}{@{}lll}
+		\displaystyle\partials[S]{a}=2\sum at_i^4+bt_i^3+ct_i^2-t_i^2y_i=0\\
+		\displaystyle\partials[S]{b}=2\sum at_i^3+bt_i^2+ct_i-t_iy_i=0\\
+		\displaystyle\partials[S]{c}=2\sum at_i^2+bt_i+c-y_i=0
+	\end{array}
+	\right.
+	\iff
+	\left\{
+	\begin{array}{@{}lll}
+		\displaystyle \left(\sum t_i^4\right)a +\left(\sum t_i^3\right)b +\left(\sum t_i^2\right)c =\sum t_i^2y_i\\
+		\displaystyle \left(\sum t_i^3\right)a +\left(\sum t_i^2\right)b +\left(\sum t_i\right)c =\sum t_iy_i\\
+		\displaystyle \left(\sum t_i^2\right)a +\left(\sum t_i\right)b +nc =\sum y_i
+	\end{array}
+	\right.
+\end{gather*}
+This is just a linear system of equations for $a,b,c$. It might look nasty, but for a given example it is not hard to solve. The idea extends naturally. If you want a \emph{cubic} predictor $\hat y(t)=at^3+bt^2+ct+d$, then you'll need to solve a system of \emph{four} equations.
+
+\begin{example}{}{polyreg}
+	Consider the \href{http://math.uci.edu/~ndonalds/math8/poly-ex.xlsx}{data} set shown.\par
+	\begin{minipage}[t]{0.6\linewidth}\vspace{-\parsep}
+		The system of equations satisfied by the coefficients of the least-squares quadratic predictor amounts to
+		\[
+			\begin{cases}
+				354a+100b+30c=149\\
+				100a+30b+10c=49\\
+				30a+10b+4c=18
+			\end{cases}
+		\]
+		This has solution $a=-1.5$, $b=8.3$, $c=-5$, yielding the \textcolor{Blue}{quadratic model}
+		\[
+			\hat y(t)=-1.5t^2+8.3t-5
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.38\linewidth}\vspace{-2\parsep}\vspace{-\baselineskip}
+		\hfill\def\arraystretch{1.2}
+		$\begin{array}[t]{c|cccc}
+			t&1&2&3&4\\\hline
+			y&2&5&7&4
+		\end{array}$
+		\smallbreak
+		\hfill\includegraphics[alt={a quadratic best-fitting curve}]{reg-quad2}
+	\end{minipage}
+	\smallbreak
+	This certainly seems to fit the data more accurately than the \textcolor{Brown}{linear regression model}. Indeed, one may compute the coefficient of determination in the usual way and compare:
+	\[
+		\mathcolor{Blue}{R^2_{\text{quad}}}=\frac{\Var\hat y}{\Var y}\approx 94\%
+		\qquad\qquad
+		\mathcolor{Brown}{R^2_{\text{linear}}}\approx 25\%
+	\]
+	Extending the problem, it can be shown that there is a unique \emph{cubic} function passing through the four data points: since $\hat y=y$, such a model necessarily has $R^2=1$.
+\end{example}
+
+
+\pagebreak[3]
+
+
+\subsubsection*{Polynomial Regression using Matrices}
+
+Even for a small data set, finding a quadratic predictor by hand is ugly. Instead of continuing with this approach, we rephrase the problem in terms of matrices in the hope of finding a cleaner, more unifying, exposition.\footnote{%
+	Matrix computations are non-examinable. Our purpose is to be see how regression may easily be extended by computer and to understand a little of how a spreadsheet calculates best-fitting curves of different types.%
+}
+\medskip
 
 \iffalse
 This is a very quick primer on how to multiply matrices. It is very easy if you are comfortable with the dot product! As an application, we obtain a useful way to think about the system of equations involved in linear regression which extends easily to polynomial regression. 
@@ -641,15 +803,20 @@ This is a very quick primer on how to multiply matrices. It is very easy if you 
 \end{itemize}
 \fi
 
-We start by observing that the system of equations in Theorem \ref{thm:linreg} can be written in as a $2\times 2$ matrix problem. For a data set with $n$ pairs, the coefficients $m,c$ satisfy
+Start by observing that the system of equations in Theorem \ref{thm:linreg} can be written in as a $2\times 2$ matrix problem. For a data set with $n$ pairs, the coefficients $m,c$ satisfy
 \[
+	\begin{cases}
+		\left(\sum t_i^2\right)m+\left(\sum t_i\right)c=\sum t_iy_i\\
+		\left(\sum t_i\right)m+nc=\sum y_i
+	\end{cases}
+	\leftrightsquigarrow\quad
 	\begin{pmatrix}
 		\sum t_i^2&\sum t_i\\
 		\sum t_i&n
 	\end{pmatrix}
 	\twovec mc=\twovec{\sum t_iy_i}{\sum y_i}
 \]
-This is nice because we can decompose the square matrix on the left as the product of a simple $2\times n$ matrix and its transpose (switch the rows and columns);
+The square matrix on the left can be decomposed as the product of a simple $n\times 2$ matrix $P$ and its transpose $P^T$;
 \[
 	\begin{pmatrix}
 		\sum t_i^2&\sum t_i\\
@@ -668,7 +835,7 @@ This is nice because we can decompose the square matrix on the left as the produ
 	\end{pmatrix}
 	=:P^TP
 \]
-We can also view the right side as the product of $P^T$ and the column vector of output values $y_i$:
+The right side is moreover the product of $P^T$ and the column vector of outputs $\vy$:
 \[
 	\twovec{\sum t_iy_i}{\sum y_i}=
 	\begin{pmatrix}
@@ -677,14 +844,14 @@ We can also view the right side as the product of $P^T$ and the column vector of
 	\end{pmatrix}
 	\threevec{y_1}{\vdots}{y_n}=:P^T\vy
 \]
-A little theory tells us that if \emph{at least two} of the $t_i$ are distinct, then the $2\times 2$ matrix $P^TP$ is invertible;\footnote{%
-For those who've studied linear algebra, $P$ and $P^TP$ have the same null space and thus rank, since
+If \emph{at least two} of the $t_i$ are distinct, then the $2\times 2$ matrix $P^TP$ is invertible;\footnote{%
+	For those who've studied linear algebra, $P$ and $P^TP$ have the same nullspace:
 	\[
 		P\vx=\V0\implies P^TP\vx=\V0\quad\text{and}\quad P^TP\vx=\V0\implies \vx^TP^TP\vx=\V0\implies \Nm{P\vx}=\V0\implies P\vx=\V0
 	\]
-	For linear regression, having at least two distinct $t_i$ values means $\Rank P=2$, whence $P^TP$ is invertible.
+	By the rank-nullity theorem, they have the same rank. For linear regression, having at least two distinct $t_i$ values means $\Rank P=2$, whence $P^TP$ (being rank 2) is invertible.
 }
-there is a \emph{unique} regression line whose coefficients may be found by taking the matrix inverse
+in which case there is a \emph{unique} regression line whose coefficients may be found by taking the matrix inverse
 \[
 	\twovec mc=(P^TP)^{-1}P^T\vy \implies \hat y=mt+c=(t\ \ 1)\twovec mc=(t\ \ 1)(P^TP)^{-1}P^T\vy
 \]
@@ -703,11 +870,12 @@ and the squared error $\sum e_i^2=\sum\nm{\hat y_i-y_i}^2=\Nm{\hat\vy-\vy}^2$, w
 \]
 where $\Nm\vy$ is the \emph{length} of a vector.
 
-\goodbreak
+
+\pagebreak[3]
 
 
-\begin{examples}{}{}
-	\exstart We revisit the Example \ref{ex:finalreg} in this language.
+\begin{example*}{\ref{ex:finalreg}, cont.}
+	As an illustration, we revisit an old example in this language.
 	\[
 		P=
 		\begin{pmatrix}
@@ -740,7 +908,7 @@ where $\Nm\vy$ is the \emph{length} of a vector.
 			10&4
 		\end{pmatrix}
 	\]
-	from which
+	The coefficients of the regression model are as we found previously:
 	\begin{align*}
 		\twovec mc&=(P^TP)^{-1}P^T\vy =
 		\begin{pmatrix}
@@ -757,9 +925,10 @@ where $\Nm\vy$ is the \emph{length} of a vector.
 			4&-10\\
 			-10&30
 		\end{pmatrix}
-		\twovec{12}{7} =\frac 1{20}\twovec{48-70}{-120+210}=\frac 1{10}\twovec{-11}{45}
+		\twovec{12}{7} %=\frac 1{20}\twovec{48-70}{-120+210}\\
+		=\frac 1{10}\twovec{-11}{45}
 	\end{align*}
-	The prediction vector given inputs $t_i$ is therefore
+	Moreover, the prediction vector $\hat\vy$ given inputs $t_i$ is
 	\[
 		\hat\vy=P\twovec mc=\frac 1{10}
 		\begin{pmatrix}
@@ -771,108 +940,46 @@ where $\Nm\vy$ is the \emph{length} of a vector.
 	from which the coefficient of determination is, as before
 	\[
 		R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2} =\frac{\frac 1{100}(34^2+23^2+12^2+1^2)-4\cdot\frac{7^2}{4^2}}{(4^2+1^1+2^2+0^2)-4\cdot\frac{7^2}{4^2}} =\frac{121}{175}
+		\tag{$\ast$}
 	\]
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \begin{minipage}[t]{0.65\linewidth}\vspace{0pt}
-		  \item Given the data set $\{(3,1),(3,5),(3,6)\}$, we have $P=
-		  \begin{smatrix}
-		   3&1\\
-		   3&1\\
-		   3&1
-		  \end{smatrix}$ and $P^TP=
-		  \begin{smatrix}
-		   27&9\\9&3
-		  \end{smatrix}$ 
-		  which isn't invertible: $27\cdot 3-9\cdot 9=0$. The linear regression method doesn't work!\smallbreak
-		  It is easy to understand this from the picture. Since the three data points are vertically aligned, any \textcolor{blue}{line} minimizing the sum of the squared errors must pass through the \textcolor{Green}{average} $(3,4)$, though it could have \emph{any} slope!\par
-		  This illustrates our fundamental assumption: linear regression requires at least two distinct $t$-values.
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.34\linewidth}\vspace{0pt}
-		  \hfill\includegraphics[alt={}]{reg-line6}
-	  \end{minipage}
-	\end{enumerate}
-\end{examples}
+\end{example*}
 
-It is unnecessary ever to use the matrix approach for linear regression, though the method has significant advantages.
-\begin{itemize}\itemsep2pt
-  \item Computers store and manipulate data in matrix format, so this method is computer-ready.
-  \item Suppose you repeat an experiment several times, taking measurements $y_i$ at times $t_i$. Since $P$ depends only on the $t$-data, you need only compute the matrix $(P^TP)^{-1}P^T$ \emph{once}, making computation of the regression line for repeat experiments very efficient. 
-  \item The method generalizes (easily for computers!) to polynomial regression\ldots
+
+\pagebreak[3]
+
+
+It is unnecessary ever to use the matrix approach, though it does have some advantages.
+\begin{itemize}
+  \item Computers store and manipulate data in matrix format, so this approach is computer-ready.
+  \item Suppose you repeat an experiment several times, taking measurements $y_i$ at times $t_i$. Since the matrix $P$ depends only on the $t$-data, you need only compute the matrix $(P^TP)^{-1}P^T$ \emph{once}, making computation of the regression line for repeat experiments very efficient. 
+  \item The method generalizes to a larger class of least-squares problems. Indeed, the same method produces best-fitting least-squares \emph{polynomial} models. Indeed the system of equations on page \pageref{sec:regpoly} can also be written in matrix format:
+	\[
+		\begin{pmatrix}
+			\sum t_i^4 & \sum t_i^3 & \sum t_i^2\\
+			\sum t_i^3 & \sum t_i^2 & \sum t_i\\
+			\sum t_i^2 & \sum t_i & cn
+		\end{pmatrix}
+		\threevec abc=\threevec{\sum t_i^2y_i}{\sum t_iy_i}{\sum y_i}
+		\leftrightsquigarrow
+		P^TP\threevec abc=P^T\vy
+		\quad\text{where}\quad
+		P=
+		\begin{pmatrix}
+			t_1^2&t_1&1\\
+			\vdots&\vdots&\vdots\\
+			t_n^2&t_n&1
+		\end{pmatrix}
+	\]
+	This is guaranteed to have a unique solution provided we have \emph{at least three} distinct $t$-values. Everything else proceeds as above. For cubic, or higher-degree, polynomial regression, simply add another column of powers of $t_i$ to the start of $P$\ldots 
 \end{itemize}
 
 
-\goodbreak
+\pagebreak[3]
 
-
-\boldsubsubsection{Polynomial Regression}
-
-The pattern is almost identical when we use matrices; you just need to make the matrix $P$ a little larger\ldots We work through the approach for a quadratic approximation.\smallbreak
-
-Suppose we have a data set $\{(t_i,y_i):1\le i\le n\}$ and that we desire a quadratic polynomial predictor $\hat y=at^2+bt+c$ which minimizes the sum of the squared vertical errors
-\[
-	S(a,b,c)=\sum_{i=1}^n e_i^2=\sum_{i=1}^n(at_i^2+bt_i+c-y_i)^2
-\]
-This might look terrifying, but can be attacked exactly as before using differentiation: to minimize $S$, we need the derivatives of $S$ with respect to the coefficients $a,b,c$ to be zero.
-\begin{gather*}
-	\def\arraystretch{1.9}
-	\left\{
-	\begin{array}{@{}lll}
-		\displaystyle\partials[S]{a}=2\sum at_i^4+bt_i^3+ct_i^2-t_i^2y_i=0\\
-		\displaystyle\partials[S]{b}=2\sum at_i^3+bt_i^2+ct_i-t_iy_i=0\\
-		\displaystyle\partials[S]{c}=2\sum at_i^2+bt_i+c-y_i=0
-	\end{array}
-	\right.
-	\iff
-	\left\{
-	\begin{array}{@{}lll}
-		\displaystyle a\sum t_i^4+b\sum t_i^3+c\sum t_i^2=\sum t_i^2y_i\\
-		\displaystyle a\sum t_i^3+b\sum t_i^2+c\sum t_i=\sum t_iy_i\\
-		\displaystyle a\sum t_i^2+b\sum t_i+cn=\sum y_i
-	\end{array}
-	\right.
-\end{gather*}
-As a system of equations for $a,b,c$ this looks fairly nasty, but by rephrasing in terms of matrices, we see that it is exactly the same problem as before!
-\[
-	\begin{pmatrix}
-		\sum t_i^4 & \sum t_i^3 & \sum t_i^2\\
-		\sum t_i^3 & \sum t_i^2 & \sum t_i\\
-		\sum t_i^2 & \sum t_i & cn
-	\end{pmatrix}
-	\threevec abc=\threevec{\sum t_i^2y_i}{\sum t_iy_i}{\sum y_i}
-\]
-corresponds to
-\[
-	P^TP\threevec abc=P^T\vy
-	\quad\text{where}\quad
-	P=
-	\begin{pmatrix}
-		t_1^2&t_1&1\\
-		\vdots&\vdots&\vdots\\
-		t_n^2&t_n&1
-	\end{pmatrix}
-	\quad \text{and}
-	\quad\vy=\threevec{y_1}{\vdots}{y_n}
-\]
-The only change is that $P$ is now an $n\times 3$ matrix so that $P^TP$ is $3\times 3$. Analogous to the linear situation, provided at least three of the $t_i$ are distinct, the matrix $P^TP$ is invertible and there is a unique least-squares quadratic minimizer
-\[
-	\hat y=at^2+bt+c=\bigl(t^2\ \ t\ \ 1\bigr)\threevec a bc =\bigl(t^2\ \ t\ \ 1\bigr)(P^TP)^{-1}P^T\vy
-\]
-The predictions $\hat y_i=\hat y(t_i)$ therefore form a vector $\hat\vy=P\sthreevec ab c=P(P^TP)^{-1}P^T\vy$, and the coefficient of determination may be computed as before.
-\[
-	R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm\vy^2-n\cl y^2}
-\]
-\smallbreak
-The method generalizes in the obvious way: if you want a cubic minimizer, give $P$ an extra column of \emph{cubed} $t_i$-terms! This would be hard work by hand, but is standard fodder for computers: this isn't a linear algebra class, so don't try to invert a $3\times 3$ matrix!
-
-
-\goodbreak
-
-
-\begin{example}{}{}
-	We are given \href{http://math.uci.edu/~ndonalds/math8/poly-ex.xlsx}{data} $\{(t_i,y_i)\}=\{(1,2),(2,5),(3,7),(4,4)\}$.
+\begin{example*}{\ref{ex:polyreg}, cont.}
+	We compute regression models for the data $\big\{(1,2),(2,5),(3,7),(4,4)\big\}$.
 	\begin{enumerate}
-	  \item For the best-fitting linear model, we use the same $P$ (and thus $P^TP$) from the previous example:
+	  \item For the \textcolor{Brown}{linear model} we use the same $P$ (and thus $P^TP$) from the previous example:
 	  \begin{align*}
 	  	\twovec mc&=(P^TP)^{-1}P^T\vy=
 	  	\begin{pmatrix}
@@ -898,11 +1005,11 @@ The method generalizes in the obvious way: if you want a cubic minimizer, give $
 				1&2&3&4\\
 				1&1&1&1
 			\end{pmatrix}
-			\twovec{0.8}{2.5}=\fourvec{3.3}{4.1}{4.9}{5.7}\qquad R^2=\frac{84.2-81}{94-81}\approx 0.2462
+			\twovec{0.8}{2.5}=\fourvec{3.3}{4.1}{4.9}{5.7}\qquad 
+			R^2 =\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm{\vy}^2-4\cl y^2} =\frac{84.2-81}{94-81}\approx 25\%
 		\]
-		The \textcolor{blue}{linear model} predicts only 24.6\% of the variance in the output; not very accurate.
 		
-		\item For a quadratic model; all that changes is the matrix $P$%, though the numbers are significantly less pleasant!
+		\item For the \textcolor{Blue}{quadratic model}, all that changes is the matrix $P$:
 		\begin{gather*}
 			P=
 			\begin{pmatrix}
@@ -937,31 +1044,26 @@ The method generalizes in the obvious way: if you want a cubic minimizer, give $
 			\end{pmatrix}^{-1}
 			\threevec{149}{49}{18}=\threevec{-1.5}{8.3}{-5}
 		\end{gather*}
-		from which $\hat y=-1.5t^2+8.3t-5$. To quantify its accuracy, compute the vector of predicted values $\hat y_i=\hat y(t_i)$ and the coefficient of determination:
+		from which $\hat y=-1.5t^2+8.3t-5$. The predicted outputs are
 		\begin{gather*}
 			\hat\vy=P\threevec{-1.5}{8.3}{-5}=\fourvec{1.8}{5.6}{6.4}{4.2}\qquad\qquad
-			R^2=\frac{\Nm{\hat\vy}^2-4\cl y^2}{\Nm\vy^2-4\cl y^2}=\frac{93.2-81}{94-81} \approx 0.9385
-		\end{gather*}\par
-		
-		\begin{minipage}[t]{0.58\linewidth}\vspace{-5pt}
-			The \textcolor{orange}{quadratic} model is far superior to the \textcolor{blue}{linear}, explaining 94\% of the observed variance.
-			
-			\item We can even find a \textcolor{magenta}{cubic} model ($P$ is a $4\times 4$ matrix!)
-			\[
-				\hat y=\frac 1{6}(-4t^3+21t^2-17t+12)
-			\]
-			The cubic passes through all four data points, there is \emph{no error} and $R^2=1$.
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.4\linewidth}\vspace{-12pt}
-			\hfill\includegraphics[alt={}][scale=1]{reg-quad1}
-		\end{minipage}
-		\smallbreak
-		For real-world data this is possibly \emph{less useful} than the quadratic model---it certainly takes longer to find! More importantly, likely experimental error in the $y$-data has a strong effect on the `perfect' model---we are, in effect, modelling \emph{noise.} Do you expect $y(5)$ to be closer to $\textcolor{orange}{-1}$ or $\textcolor{magenta}{-8}$?
-	\end{enumerate}
-\end{example}
+			R^2=\frac{93.2-81}{94-81} \approx 94\%
+		\end{gather*}
 
-\goodbreak
+		\item For the \textcolor{mMagenta}{cubic} model, $P$ is now a $4\times 4$ matrix! Omitting the details, we obtain\par
+		\begin{minipage}[t]{0.6\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
+			\[
+				\hat y=\frac 16\big(-4t^3+21t^2-17t+12\big)
+			\]
+			This cubic passes through all four data points; there is \emph{no error}, and $R^2=1$.\smallbreak
+			For real-world data this is likely \emph{less useful} than the quadratic model. Not only does it take longer to find, but the original $y$-data likely contained experimental error--- using a cubic to match the data perfectly is, in effect, modeling \emph{noise.} %Do you expect $y(5)$ to be closer to $\textcolor{orange}{-1}$ or $\textcolor{magenta}{-8}$?
+ 		\end{minipage}
+ 		\hfill
+ 		\begin{minipage}[t]{0.38\linewidth}\vspace{-\parsep}
+			\hfill\includegraphics[alt={the linear, quadratic and cubic models for the data}]{reg-quad1}
+		\end{minipage}
+	\end{enumerate}
+\end{example*}
 
 
 % In general, we have the following result:
@@ -980,45 +1082,55 @@ The method generalizes in the obvious way: if you want a cubic minimizer, give $
 % \[R^2=\frac{\Nm{\hat\vy}^2-n\cl y^2}{\Nm{\vy}^2-n\cl y^2}\]
 % \end{thm}
 
+
+\pagebreak[3]
+
+
 \begin{exercises}{}{}
-	\exstart Recall Example \ref{ex:almostquadseq}, with the following \emph{almost} linear data set.
-	\[
-		\begin{array}{c|cccccc}
-			x&0&2&4&6&8&10\\\hline
-			y&3&23&41&59&77&93
-		\end{array}
-	\]
-	Find the best-fitting straight line for the data, then use a spreadsheet to find the best-fitting quadratic. Is the extra effort worth it? 
+	\hangindent\leftmargini\emph{Key Concepts: \ Higher-order polynomial regression, \ Rephrasing as a matrix problem, \ Considering whether the effort is worth it} 
 	
-	\begin{enumerate}\setcounter{enumi}{1}
+	\begin{enumerate}
+	  \item Recall Example \ref{ex:almostquadseq}, with the following \emph{almost} linear data set.
+		\[
+			\begin{array}{c|cccccc}
+				x&0&2&4&6&8&10\\\hline
+				y&3&23&41&59&77&93
+			\end{array}
+		\]
+		Find the least-squares linear model for the data, then use a spreadsheet to find the best-fitting quadratic. Is the extra effort worth it? 
+		
+		
+		\item Consider the data in Example \ref{ex:finalreg}. State the corresponding matrices $P$ and for the least-squares quadratic and cubic models for this data. In each case, use a spreadsheet to compute the models and the coefficients of determination.
+		
+	
 	  \item You are given the following data consisting of measurements from an experiment recorded at times $t_i$ seconds.
 	  \[
 	  	\begin{array}{c|cccccccccc}
 	  		t_i&1&2&3&4&5&6&7&8&9&10\\\hline
 	  		y_i&7&5&3&2&3&5&6&9&8&12
 	  	\end{array}
-	  \]
+	  \]\vspace*{-\parsep}
 	  \begin{enumerate}
 	    \item Given the values
 	  	\[
 	  		\sum t_i=55,\quad \sum t_i^2=385,\quad \sum y_i=60,\quad \sum t_iy_i=385
 	  	\]
-	  	find the best-fitting least-squares linear model for this data, and use it to predict $\hat y(13)$.
+	  	find the least-squares linear model for this data, and use it to predict $\hat y(13)$.
 	    
-	    \item Find the best-fitting quadratic model for the data: feel free to use a spreadsheet!
+	    \item Find the least-squares quadratic model for the data: feel free to use a spreadsheet!
 	    
-	    \item The graphs below show the best-fitting least-squares linear, quadratic, cubic, quartic, and ninth-degree models and their coefficients of determination.
+	    \item The graphs below show the least-squares linear, quadratic, cubic, quartic, and ninth-degree models and their coefficients of determination.
 	    \begin{center}
 	    	\begin{tabular}[t]{@{}c@{\quad}c@{\quad}c@{}}
-	    		\includegraphics[alt={}]{midterm-reg1}
+	    		\includegraphics[alt={a linear model}]{midterm-reg1}
 					&
-	    		\includegraphics[alt={}]{midterm-reg2}
+	    		\includegraphics[alt={a quadratic model}]{midterm-reg2}
 	    		&
-	    		\includegraphics[alt={}]{midterm-reg3}
+	    		\includegraphics[alt={a cubic model}]{midterm-reg3}
 	    		\\
-	    		\includegraphics[alt={}]{midterm-reg4}
+	    		\includegraphics[alt={a quartic model}]{midterm-reg4}
 	    		&
-	    		\includegraphics[alt={}]{midterm-reg9}
+	    		\includegraphics[alt={a degree nine model}]{midterm-reg9}
 	    		&
 	    		\begin{tabular}[b]{c|c}
 		    		Degree&$R^2$\\\hline
@@ -1044,25 +1156,24 @@ The method generalizes in the obvious way: if you want a cubic minimizer, give $
 
 \subsection{Exponential \& Power Regression Models}
 
-If you suspect that your data would be better modelled by a non-polynomial function, there are several things you can try.\medbreak
-
-Minimizing the sum of squared-errors might be very difficult for non-polynomial functions because there is likely no simple tie-in with linear equations/algebra. Attempting this is likely to result in a horrible \emph{non-linear} system for your coefficients which is difficult to analyze either theoretically or using a computer.\footnote{%
-	As an example of how horrific this is, suppose you want to minimize the sum of square-errors for data $(t_i,y_i)$ using an exponential model $\hat y(t)=ae^{kt}$. The coefficients of our model, $a,k$ should minimize
+If you suspect that a non-polynomial function would better fit your data, there are several things you can try. Minimizing the sum of squared-errors is likely very difficult for non-polynomial functions (there is likely no simple tie-in with linear equations/algebra).\footnote{%
+	 Attempting this is likely to result in a horrible \emph{non-linear} system for your coefficients which is difficult to analyze either theoretically or using a computer. As an example, suppose you want to minimize the sum of square-errors for data $(t_i,y_i)$ using an exponential model $\hat y(t)=ae^{kt}$. The coefficients of our model, $a,k$ should minimize
 	\[
-		S(a,k)=\sum_{i=1}^n\bigl(ae^{kt_i}-y_i\bigr)^2
+		S(a,k)=\sum_{i=1}^n\big(ae^{kt_i}-y_i\big)^2
 	\]
 	Differentiating this with respect to $a,k$ and setting equal to zero results in
 	\[
 		\begin{cases}
-			\partials[S]{a}=2\sum e^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0 \\
-			\partials[S]{k}=2a\sum t_ie^{kt_i}\bigl(ae^{kt_i}-y_i\bigr)=0
+			\partials[S]{a}=2\sum e^{kt_i}\big(ae^{kt_i}-y_i\big)=0 \\
+			\partials[S]{k}=2a\sum t_ie^{kt_i}\big(ae^{kt_i}-y_i\big)=0
 		\end{cases}
-		\implies  \bigl(\sum y_ie^{kt_i}\bigr)\bigl(\sum t_ie^{2kt_i}\bigr) =\bigl(\sum e^{2kt_i}\bigr)\bigl(\sum t_iy_ie^{kt_i}\bigr)
+		\implies  \left(\sum y_ie^{kt_i}\right)\left(\sum t_ie^{2kt_i}\right)
+		=\left(\sum e^{2kt_i}\right)\left(\sum t_iy_ie^{kt_i}\right)
 	\]
 	where we substituted for $a$ to obtain the last equation. Remember that this is an equation for $k$; if you think you can solve this easily, think again!
 }
 
-\boldinline{Log Plots}
+\subsubsection*{Log Plots}
 
 The most common approach when trying to fit an exponential model $\hat y=e^{mt+c}$ to data is to use a log plot: taking logarithms of both sides results in
 \[
@@ -1072,95 +1183,111 @@ If we take $\hat Y:=\ln\hat y$ as a new variable, the model is now a \emph{strai
 
 \begin{example*}{\ref{ex:poprabbits}, cont}{}
 	Recall our earlier rabbit-population $P(t)$, repeated in the table below. We previously considered modelling this with an exponential function for two reasons:\par
-	\begin{minipage}[t]{0.55\linewidth}\vspace{-6pt}
-		\begin{enumerate}\itemsep0pt
-		  \item We were told it was population data!
-		  \item The \emph{$t$-differences} are constant $(2)$, while the \emph{$P$-ratios} are approximately so ($\approx 1.41$).
-		\end{enumerate}
+	\begin{minipage}[t]{0.53\linewidth}\vspace{-\parsep}
+		\begin{enumerate}%\itemsep0pt
+		\item We were told we had population data!
+		\item The \emph{$t$-differences} are constant while the \emph{$P$-ratios} are approximately so ($\approx 1.41$).
+	\end{enumerate}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[t]{0.44\linewidth}\vspace{0pt}
+	\begin{minipage}[t]{0.45\linewidth}\vspace{-\parsep}
 		\hfill $\begin{array}{c|cccccc}
 			t_i&0&2&4&6&8&10\\\hline
 			P_i&5&7&10&14&19&28\\\hline\hline
 			\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33
 		\end{array}$
-		\end{minipage}\medbreak
-		After constructing a log-plot, the relationship is much clearer:
-		\begin{center}
-			\includegraphics[alt={}]{rabbits3}
-			\qquad\qquad
-			\includegraphics[alt={}]{rabbits4}
-		\end{center}
-		Since the relationship between $t$ and $\ln P$ appears linear, we perform a linear regression calculation to find the best-fitting least-squares line for the $(t_i,\ln P_i)$ data.\par
+	\end{minipage}
+	\smallbreak
 		
-		\begin{minipage}[t]{0.64\linewidth}\vspace{0pt}
-			Everything necessary comes from extending the table.
-			\begin{gather*}\def\arraystretch{1.2}
-				\begin{array}{c|cccccc|c}
-					\multicolumn{7}{c|}{\text{Data}}&\text{average}\\\hline\hline
-					t_i&0&2&4&6&8&10&5\\\hline
-					P_i&5&7&10&14&19&28&13.83\\\hline\hline
-					\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33&2.46\\\hline
-					t_i^2&0&4&16&36&64&100&36.67\\\hline
-					t_i\ln P_i&0&3.89&9.21&15.83&23.56&33.32&14.30
-				\end{array}\\[5pt]
-				m=\frac{\cl{t\ln P}-\cl t\cdot\cl{\ln P}}{\cl{t^2}-\cl t^2}=\frac{14.30-5\cdot 2.46}{36.67-5^2} =0.171\\[2pt]
-				c=\cl{\ln P}-m\cl t=3.46-0.171\cdot 5=1.609
-			\end{gather*}
-			which yields the exponential model
-			\[
-				\hat P(t)=e^{0.171t+1.609}=4.998(1.186)^t
-			\]
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.35\linewidth}\vspace{0pt}
-			\hfill\includegraphics[alt={}]{rabbits5}\\
-			\includegraphics[alt={}]{rabbits6}
-	\end{minipage}\medbreak
+	After constructing a log-plot, the relationship is much clearer:
+	\begin{center}
+		\includegraphics[alt={plot of rabbit population against time}]{rabbits3}
+		\qquad\qquad
+		\includegraphics[alt={plot of the logarithm of the rabbit population against time}]{rabbits4}
+	\end{center}
+	Since the relationship between $t$ and $\ln P$ is close to linear, we perform a linear regression calculation to find the least-squares line for the $(t_i,\ln P_i)$ data.\smallbreak
+		
+	Everything necessary comes from extending the table.\par
+	\begin{minipage}[t]{0.66\linewidth}\vspace{-\abovedisplayskip}\vspace{-\parsep}
+		\begin{gather*}\def\arraystretch{1.2}
+			\begin{array}{c|cccccc|c}
+				\multicolumn{7}{c|}{\text{data}}&\text{average}\\\hline\hline
+				t_i&0&2&4&6&8&10&5\\\hline
+				P_i&5&7&10&14&19&28&13.83\\\hline\hline
+				\ln P_i&1.61&1.95&2.30&2.64&2.94&3.33&2.46\\\hline
+				t_i^2&0&4&16&36&64&100&36.67\\\hline
+				t_i\ln P_i&0&3.89&9.21&15.83&23.56&33.32&14.30
+			\end{array}\\[\parsep]
+			m=\frac{\cl{t\ln P}-\cl t\cdot\cl{\ln P}}{\cl{t^2}-\cl t^2}=\frac{14.30-5\cdot 2.46}{36.67-5^2} =0.171\\[2pt]
+			c=\cl{\ln P}-m\cl t=3.46-0.171\cdot 5=1.609
+		\end{gather*}
+		which yields the exponential model
+		\[
+			\hat P(t)=e^{0.171t+1.609}=4.998(1.186)^t
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.33\linewidth}\vspace{-\parsep}
+		\hfill\includegraphics[alt={log plot and plot of rabbit population against time}]{rabbits2}
+% 			\hfill\includegraphics[alt={plot of rabbit population against time}]{rabbits5}\\
+% 			\includegraphics[alt={log plot of rabbit population against time}]{rabbits6}
+	\end{minipage}
+	\smallbreak
 	
 	This is very close to the model ($5(1.188)^t$) we obtained previously by pure guesswork. The approximate doubling time $T$ for the population satisfies
 	\[
-		e^{mT}=2\implies T=\frac{\ln 2}{m}=4.06\ \text{months}
-	\]
+		e^{mT}=2\iff T=\frac{\ln 2}{m}=4.06\ \text{months}
+	\]\vspace{-\parsep}
 \end{example*}
 
-When using the log plot method, interpreting errors and the goodness of fit of a model is a little more difficult. Typically one computes the coefficient of determination $R^2$ of the \emph{underlying linear model}: in our example,\footnote{This needs more decimal places of accuracy for the log-values than what's in our table!}
+
+\paragraph{Coefficient of Determination for Log Plots}
+
+Interpreting errors and the goodness of fit of a model is a little more difficult when using a log plot. Typically one computes the coefficient of determination $R^2$ of the \emph{underlying linear model}: in our example,\footnote{%
+	This needs more decimal places of accuracy for the log-values than what's in our table!%
+}
 \[
-	R^2=m^2\frac{\Var t}{\Var\ln P}=99.3\%
+	R^2=\frac{\Var \hat y}{\Var\ln P} =m^2\frac{\Var t}{\Var\ln P} \approx 99\%
 \]
-\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
-	It is important to appreciate that the log plot method does not treat all errors equally: taking logarithms tends to reduce error by a greater amount when the output  $y$ is large. This should be clear from the picture, and more formally by the mean value theorem: if $y_1<y_2$, then there is some $\xi\in(y_1,y_2)$ for which 
+\begin{minipage}[t]{0.6\linewidth}\vspace{-\parsep}
+	The log plot method does not treat all errors equally. As the output $y$ increasing, $\ln y$ increases more slowly, reducing the effect of errors. This should be clear from the picture, and more formally by the mean value theorem: if $1\le y_1<y_2$, then there is some $\xi\in(y_1,y_2)$ for which 
 	\[
-		\ln y_2-\ln y_1=\frac 1{\xi}(y_2-y_1)<\frac 1{y_1}(y_2-y_1)
+		\ln y_2-\ln y_1=\frac 1{\xi}(y_2-y_1)<y_2-y_1
 	\]
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
-	\hfill\includegraphics[alt={}]{logerror}
+\begin{minipage}[t]{0.39\linewidth}\vspace{-\parsep}
+	\hfill\includegraphics[alt={for a log plot, errors in output measurements become less important as the output increases}]{logerror}
 \end{minipage}
-\medbreak
+\smallbreak
 
-The log plot approach therefore places a higher emphasis on accurately matching data when the output $y$ is \emph{small.} This isn't such a bad thing since our intuitive view of error depends on the size of the data. For instance, misplacing a \$100 bill is annoying, but a \$100 mistake in escrow when buying a house is unlikely to concern you very much! Exponential data can more easily vary over large orders of magnitude than linear or quadratic data. 
+The log plot approach places a higher emphasis on accurately matching data when the output $y$ is \emph{small.} This isn't such a bad thing since our intuitive view of error depends on the size of the data. For instance, misplacing a \$100 bill is annoying, but a \$100 mistake in escrow when buying a house is unlikely to concern you very much!
 
-\goodbreak
 
-\boldinline{Log-Log Plots} 
+\subsubsection*{Log-Log Plots} 
 
-If you suspect a \emph{power function model} $\hat y=at^m$, then taking logarithms
+If you suspect a \emph{power function model} $\hat y=at^m$, then taking logarithms of both sides
 \[
 	\ln\hat y=m\ln t+\ln a
 \]
-results in a linear relationship between $\ln y$ and $\ln t$. As before, we can apply a linear regression approach to find a mode; the goodness of fit is again described by the coefficient of determination of the underlying model. 
+results in a linear model between $\hat Y:=\ln\hat y$ and $T:=\ln t$. Similarly to log plots, we apply linear regression to the data $\big\{(\ln t,\ln y)\big\}$ to find a linear model. The goodness of fit is again described by the coefficient of determination of the underlying linear model
+\[
+	R^2=\frac{\Var\ln\hat y}{\Var\ln y}
+\]
+rather than the power model. Remember that regression is still trying to minimize (squared) output-errors: just like an exponential model, the log-log plot approach puts more emphasis on minimizing errors when $y$ is \emph{small}.
+
 
 
 \begin{exercises}{}{}
-	\exstart You suspect a logarithmic model for a data set. Describe how you would approach finding a model in the context of this section.
-	
-	\begin{enumerate}\setcounter{enumi}{1}
-	  \item The table shows the average weight and length of a fish species measured at different ages.\par
-		\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
-			\centering
+	\hangindent\leftmargini\emph{Key concepts: \ Log plots \& Log-log plots}
+
+	\begin{enumerate}
+	  \item You suspect a \emph{logarithmic} model for a data set. Describe how you would approach the search for such a model in the context of this section.
+	  
+	  
+	  \item The average weight and length of a population of fish is measured at different ages.\par
+		\begin{minipage}[t]{0.48\linewidth}\vspace{-\parsep}
+			\centering\renewcommand{\arraystretch}{1.1}
 			\begin{tabular}{c|c|c}
 				Age (years)&Length(cm)& Weight (g)\\\hline\hline
 				1 & 5.2 & 2\\
@@ -1181,53 +1308,64 @@ results in a linear relationship between $\ln y$ and $\ln t$. As before, we can 
 				16 & 34.0 & 537\\
 				17 & 34.9 & 651\\
 				18 & 36.4 & 719\\
-				18 & 37.1 & 726\\
+				19 & 37.1 & 726\\
 				20 & 37.7 & 810
 			\end{tabular}
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.54\linewidth}\vspace{0pt}
-			\hfill\includegraphics[alt={}][scale=0.95]{fishexp}
-			\vspace{-5pt}
+		\begin{minipage}[t]{0.51\linewidth}\vspace{-\parsep}
+			\hfill\includegraphics[alt={data for fish weight against length}]{fishexp}
 			\begin{enumerate}
-		  	\item Do you think an exponential model is a good fit for this data? Take logarithms of the weight values and use a \href{http://math.uci.edu/~ndonalds/math8/fishdata.xlsx}{spreadsheet} to obtain a model $\hat w(\ell)=ae^{m\ell}$ where $w,\ell$ are the weight and length respectively.
-		  	\item What happens if you try a log-log plot? Given what we're measuring, why do you expect a power model to be mode accurate?
+		  	\item Do you think an exponential model is a good fit for this data? Take logarithms of the weight values and use a \href{http://math.uci.edu/~ndonalds/math8/fishdata.xlsx}{spreadsheet} to obtain a model
+		  	\[
+		  		\hat w(\ell)=ae^{m\ell}
+		  	\]
+		  	where $\ell,w$ are, respectively, the length and weight.
+		  	\item What happens if you try a log-log plot? Given what we're measuring, why might you expect a power model to be more accurate?
 			\end{enumerate}
 		\end{minipage}
-		\medbreak
-	  
-	  
-		\begin{minipage}[t]{0.52\linewidth}\vspace{0pt}
-	  	\item Population data for Long Beach CA is given.\smallbreak
+	\end{enumerate}
+
+	
+	\pagebreak[3]
+		
+		
+	\begin{minipage}[t]{0.55\linewidth}\vspace{-\parsep}
+		\begin{enumerate}[resume]
+	  	\item Population data for Long Beach, CA is given.\par
 	   	Using a spreadsheet or otherwise, find linear, quadratic, exponential and logarithmic regression models for this data.\par
 	   	Which of these models seems to fit the data best, and which would you trust to best predict the population in 2020?\par
 	   	Look up the population of Long Beach in 2020; does it confirm your suspicions? What do you think is going on?
-		\end{minipage}
-		\hfill
-		\begin{minipage}[t]{0.45\linewidth}\vspace{0pt}
-	  	\hfill\begin{tabular}{c|c|c}
-			  Year&Years since 1900&Population\\\hline
-			  1900&0&2,252\\
-			  1910&10&17,809\\
-				1920&20&55,593\\
-				1930&30&142,032\\
-				1940&40&164,271\\
-				1950&50&250,767\\
-				1960&60&334,168\\
-				1970&70&358,879\\
-				1980&80&361,498\\
-				1990&90&429,433\\
-				2000&100&461,522\\
-				2010&110&462,257%\\
-				%2020&120&466,742
-	  	\end{tabular}
-		\end{minipage}
+	  \end{enumerate}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.43\linewidth}\vspace{-\parsep}
+	  \hfill\renewcommand{\arraystretch}{1.1}
+	  \begin{tabular}{c|c|c}
+			Year&Years since 1900&Population\\\hline
+			1900&0&2,252\\
+			1910&10&17,809\\
+			1920&20&55,593\\
+			1930&30&142,032\\
+			1940&40&164,271\\
+			1950&50&250,767\\
+			1960&60&334,168\\
+			1970&70&358,879\\
+			1980&80&361,498\\
+			1990&90&429,433\\
+			2000&100&461,522\\
+			2010&110&462,257%\\
+			%2020&120&466,742
+	  \end{tabular}
+	\end{minipage}
 	  
-	  
-	  \item In the early 1600s, Johannes Kepler used observational data to derive his \emph{laws of planetary motion,} the third of which relates the orbital period $T$ of a planet (how long it takes to go round the sun) to its (approximate) distance $r$ from the sun.
+	 
+	\begin{enumerate}[resume]  
+	  \item In the early 1600s, Johannes Kepler used observational data to derive his \emph{laws of planetary motion.} His third law relates the orbital period $T$ of a planet (how long it takes to go round the sun) to its (approximate) distance $r$ from the sun.\par
 	
-		\begin{minipage}[t]{0.59\linewidth}\vspace{0pt}
-			\centering\begin{tabular}{c|c|c}
+		\begin{minipage}[t]{0.59\linewidth}\vspace{-\parsep}
+			\centering\renewcommand{\arraystretch}{1.1}
+			\begin{tabular}{c|c|c}
 				Planet&$T$ (years)&$r$ (millions km)\\\hline\hline
 				Mercury & 0.24 & 58\\
 				Venus & 0.61 & 110\\
@@ -1240,12 +1378,11 @@ results in a linear relationship between $\ln y$ and $\ln t$. As before, we can 
 			\end{tabular}
 		\end{minipage}
 		\hfill
-		\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-			\hfill\includegraphics[alt={}]{kepler}
+		\begin{minipage}[t]{0.4\linewidth}\vspace{-\parsep}
+			\hfill\includegraphics[alt={orbital period against distance from the sun}]{kepler}
 		\end{minipage}\par
-		The table shows the data for all the planets. Use a \href{http://math.uci.edu/~ndonalds/math8/kepler.xlsx}{spreadsheet} to analyze this data and find a model relating $T$ to $r$.\smallbreak
+		The table shows the data for all the planets. Use a \href{http://math.uci.edu/~ndonalds/math8/kepler.xlsx}{spreadsheet} to analyze this data and find a model relating $T$ to $r$.
+		\smallbreak
 		Kepler did not known about Uranus and Neptune and only had relative distances for the planets. Research the correct statement of Kepler's third law and compare it with your findings.
 	\end{enumerate}
 \end{exercises}
-
-\fi

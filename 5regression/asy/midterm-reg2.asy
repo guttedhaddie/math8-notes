@@ -1,12 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -18,11 +23,11 @@ int n=tdat.length;
 
 real f(real t){return (0.27272727)*t^2-2.333333*t+8.333333;}
 
-draw(graph(f,0,10));
+draw(graph(f,0,10),Blue);
 
 
-xaxis("$t$",0,10,RightTicks(Step=2,step=1));
-yaxis("$y$",0,12,LeftTicks(Step=4,step=2));
+xaxis("$t$",0,10,Red,RightTicks(Step=2,step=1));
+yaxis("$y$",0,12,Red,LeftTicks(Step=4,step=2));
 
 
 for(int i=0; i<n; ++i){

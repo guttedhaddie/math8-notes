@@ -1,12 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
@@ -18,7 +23,7 @@ int n=tdat.length;
 
 real f(real t){return 0.000303130512*t^9-0.014310515877*t^8+0.2882275133*t^7-3.2371527759*t^6+22.241087968511*t^5-96.472048634611*t^4+262.799349708265*t^3-430.276488187556*t^2+377.671031819350*t-126;}
 
-draw(graph(f,0.8,10,1000,operator--));
+draw(graph(f,0.8,10,1000,operator--),Blue);
 path p=(1,ydat[0]);
 for(int k=1; k<=9; ++k){
 	p=p..(k,ydat[k]);
@@ -26,8 +31,8 @@ for(int k=1; k<=9; ++k){
 	
 //draw(p);
 
-xaxis("$t$",0,10,RightTicks(Step=2,step=1));
-yaxis("$y$",0,12,LeftTicks(Step=4,step=2));
+xaxis("$t$",0,10,Red,RightTicks(Step=2,step=1));
+yaxis("$y$",0,12,Red,LeftTicks(Step=4,step=2));
 
 
 for(int i=0; i<n; ++i){

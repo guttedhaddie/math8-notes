@@ -1,15 +1,21 @@
-settings.tex="pdflatex";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
-\usepackage{textcomp}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 
 
-size(180,220,IgnoreAspect);
+size(160,220,IgnoreAspect);
 
 real P(real t){return 4.998*(1.186)^t;}
 
@@ -25,15 +31,11 @@ labelx("$t$",10.9,S,red);
 
 
 for(int i=0; i<n; ++i){
-	dot((2i,dat[i]),heavygreen);
+	dot((2i,dat[i]));
 }
 
 
 picture logpic;
-
-for(int i=0; i<n; ++i){
-	dot(logpic,(2i,10*log(dat[i])),heavygreen);
-}
 
 
 xaxis(logpic,0,10,red,RightTicks(N=5,n=2));
@@ -49,5 +51,9 @@ real PP(real t){return 1.71*t+16.09;}
 
 draw(logpic,graph(PP,0,10),blue);
 
-add(shift((0,-50))*logpic);
+for(int i=0; i<n; ++i){
+	dot(logpic,(2i,10*log(dat[i])));
+}
+
+add(shift((0,50))*logpic);
 
