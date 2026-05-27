@@ -32,10 +32,10 @@ draw((0,0),Red);
 xaxis("$Q1=t$",Bottom,0,11,Red,RightTicks);
 yaxis("$Q2=y$",Left,0,10,Red,LeftTicks());
 
-xtick(Label("9",align=S),9,S,Orange);
-ytick(Label("8",align=W),8,W,Orange);
-draw((9,0)--(9,8),Orange+dashed,Arrow(Relative(0.5)));
-draw((9,8)--(0,8),Orange+dashed,Arrow(Relative(0.5)));
+xtick(Label("9",align=S),9,S,Magenta);
+ytick(Label("8",align=W),8,W,Magenta);
+draw((9,0)--(9,8),Magenta+dashed,Arrow(Relative(0.5)));
+draw((9,8)--(0,8),Magenta+dashed,Arrow(Relative(0.5)));
 
 for(int i=0; i<n; ++i){
 	draw(dat[i]--(dat[i].x,f(dat[i].x)),lGreen);
