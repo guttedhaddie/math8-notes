@@ -1,11 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
@@ -16,7 +22,7 @@ real a=0.25;
 real b=0.6;
 
 pair F=(0,a);
-path d=(-0.5M,-a)--(M,-a);
+path d=(-0.4M,-a)--(M,-a);
 real f(real x){return x^2;}
 path p=graph(f,-0.5M,M);
 
@@ -29,14 +35,13 @@ pair SS=(R.x,-a);
 
 for(int i=1; i<=5; ++i){
 	real t=(i-2.5)*6/25;
-	draw((t,0.9)--(t,t^2),dashed+orange,Arrow(Relative(0.5)));
+	draw((t,0.9)--(t,t^2)--(0,a),dashed+Orange,Arrow(Relative(0.25)));
 	}
 
 
-draw(p,heavygreen);
-draw(d);
+draw(p,Blue+linewidth(1));
+draw(Label("$d$",Relative(0)),d);
 label("$F$",F,NW);
-label("$d$",(-0.5M,-a),W);
 
 label("$P$",P,SE);
 label("$Q$",Q,S);
@@ -47,13 +52,13 @@ draw(R--SS);
 
 real k=0.8;
 draw((1+k)*R-k*P--(1+k)*P-k*R);
-draw(arc(P,P+0.08*unit(F-P),P+0.08*unit(Q-P)),StickIntervalMarker(2,1,blue));
-draw(arc(P,P+0.08*unit(P-R),P+0.08*unit(P-Q)),StickIntervalMarker(1,1,blue));
+draw(arc(P,P+0.08*unit(F-P),P+0.08*unit(Q-P)),StickIntervalMarker(2,1,Magenta));
+draw(arc(P,P+0.08*unit(P-R),P+0.08*unit(P-Q)),StickIntervalMarker(1,1,Magenta));
 
-draw(F--R--Q,StickIntervalMarker(2,2,blue));
+draw(F--R--Q,StickIntervalMarker(2,2,Brown));
 
 dot(Label("$R$",black),R,E,red);
 dot(Label("$S$",black),SS,S,red);
-draw(F--P--Q,StickIntervalMarker(2,1,blue,dotframe(red)));
+draw(F--P--Q,StickIntervalMarker(2,1,lGreen,dotframe(red)));
 
 label("$\ell$",(1+k)*R-k*P,W);

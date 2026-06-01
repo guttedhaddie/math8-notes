@@ -1,21 +1,36 @@
-if(!settings.multipleView) settings.batchView=false;
-settings.tex="pdflatex";
-if(settings.render < 0) settings.render=4;
-settings.outformat="pdf";
-//settings.prc=false;
-settings.inlineimage=true;
-settings.embed=true;
-settings.toolbar=false;
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
-include graph;
 
+//OpenGL (default) - no opacity
+
+//PNG - no opacity
+//if(!settings.multipleView) settings.batchView=false;
+//settings.render=4;settings.outformat="png";
+
+//HTML - opacity fine
+settings.outformat="html";
+
+//PDF
+if(!settings.multipleView) settings.batchView=false;
+settings.render=4;settings.outformat="pdf";
+
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
+include graph;
 import solids;
+
 size(0,120);
+
 currentprojection=orthographic(3,-1.5,0.8);
 pen color=lightgreen+opacity(0.4);
 triple F3(real r) {return (r,0,r);}

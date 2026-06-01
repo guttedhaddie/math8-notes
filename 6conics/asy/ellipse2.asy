@@ -1,11 +1,17 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
 import graph;
 import markers;
 
@@ -20,7 +26,7 @@ pair G=(-c,0);
 
 pair P(real t){return (a*cos(t),b*sin(t));}
 
-xaxis("$x$",-1.2a,1.4a,red);
+xaxis("$x$",-1.2a,1.3a,red);
 yaxis("$y$",-1.2b,1.4b,red);
 
 xtick(Label("$a$",align=S),a,S,red);
@@ -28,9 +34,10 @@ xtick(Label("$-a$",align=S),-a,S,red);
 xtick(Label("$c$",align=S),c,S,red);
 xtick(Label("$-c$",align=S),-c,S,red);
 
-draw(graph(P,0,2pi),heavygreen);
+draw(graph(P,0,2pi),Blue+linewidth(1));
 
-draw(F--P(0.9pi/3)--G);
+draw(F--P(0.9pi/3),StickIntervalMarker(1,1,lGreen,dotframe(red)));
+draw(G--P(0.9pi/3),StickIntervalMarker(1,2,Magenta,dotframe(red)));
 
 dot(Label("$P(x,y)$",black),P(0.9pi/3),NE,red);
 
