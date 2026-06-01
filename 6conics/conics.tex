@@ -38,7 +38,7 @@ We consider the traditional conic sections and relate their basic properties to 
 
 The above conic section definitions are hard to work with because they are three dimensional. We instead make alternative definitions as curves in the plane.
 
-\begin{defn}{}{}
+\begin{defn}{}{parabola}
 	Let $d$ be a line and $F$ a point not on that line.\par
 	\begin{minipage}[t]{0.64\linewidth}\vspace{-\parsep}
 		The \emph{\textcolor{Blue}{parabola}} (in the plane spanned by $d$ and $P$) with \emph{directrix} $d$ and \emph{focus} $F$ is the set of points $P$ equidistant from both. As pictured, the parabola is the set of points for which
@@ -75,7 +75,7 @@ The definition is strictly \emph{synthetic} since equidistant really means that 
 
 This simplifies to recover a familiar equation:
 
-\begin{thm}{Canonical form of a parabola}{}
+\begin{thm}{Canonical form of a parabola}{parabolacanon}
 	Given a parabola, there exist rectangular co-ordinates/axes with respect to which the parabola has equation
 	\[
 		x^2=4ay
@@ -170,7 +170,80 @@ Convincing ourselves of this requires only a little triangle geometry. Let $P$ l
 \clearpage
 
 
-\subsection{Eccentricity, Ellipses and Hyperbolæ}
+\subsection{Eccentricity: Ellipses and Hyperbolæ}
+
+The words \emph{hyperbolic} and \emph{elliptical} have connotations of ``more than'' and ``less than.'' But \emph{more} or \emph{less} than what?\footnote{%
+	The prefix \emph{para} means \emph{next to}, or \emph{akin to}: hence \emph{paranormal} or \emph{paralegal}. To speak \emph{hyperbolically} is to say more than you mean, to exaggerate. To be \emph{elliptical} is to be \emph{brief} or \emph{condensed}, possibly evasive.%
+}
+We simply modify Definition \ref{defn:parabola}.
+
+\begin{defn}{Conics via Eccentricity}{}
+	Let $d$ be a line and $F$ a point not on that line. Let $e>0$ be a constant. The \emph{conic} with focus $F$, \emph{directrix} $d$ and \emph{eccentricity} $e$ is the set of points $P$ for which
+	\[
+		\mathcolor{dGreen}{\nm{FP}}=e\mathcolor{dMagenta}{\nm{PQ}}
+	\]
+	where $Q\in d$ makes a perpendicular $\cl{PQ}\perp d$. The value of $e$ determines the type of conic:
+	\begin{itemize}
+	  \item $e<1$ yields an \textbf{\emph{ellipse}}; $P$ is \emph{closer} to the focus than the directrix.
+	  \item $e=1$ a \textbf{\emph{parabola}};
+	  \item $e>1$ a \textbf{\emph{hyperbola}}; $P$ is \emph{farther} from the focus than the directrix.
+	\end{itemize}
+\end{defn}
+
+\begin{minipage}[t]{0.6\linewidth}\vspace{-\parsep}
+	To better understand these, draw the perpendicular $\lin{FD}$ to $d$ through $F$ and ask how many points of the curve lie on this line. Plainly there is a point $X_1$ \emph{between} $F$ and $d$, breaking the segment in the ratio $e:1$. Label distances $q,et,t$ as shown, where $q$ is the distance from $F$ to some other point $X_2$ on the curve. If $X_2$ exists, then
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.39\linewidth}\vspace{-\parsep}
+	\hfill\includegraphics[alt={finding a second point on the axis of symmetry}]{conic-def}
+\end{minipage}
+
+\[
+	\nm{X_2F}=e\nm{X_2D}\iff q=e(q+et+t)\iff q(1-e)=e(1+e)t
+\]
+A unique second point $X_2$ therefore exists if and only if $e\neq 1$. To standardize things, choose axes so that $X_1,X_2$ lie on the $x$-axis at $x=\pm a$ ($a>0$). Then
+\[
+	q+et=2a\implies \left(\frac{e(1+e)}{1-e}+e\right)t=2a\implies t=\frac{1-e}ea=\left(\frac 1e-1\right)a,\quad q=(1+e)a
+\]
+The upshot is that we obtain two co-ordinate descriptions, where $F=(ae,0)$ and $d$ is the line $x=\frac ae$. We draw $F$ to the right of $d$ for the hyperbola since $t<0\Leftrightarrow e>1$. 
+\begin{center}
+	\begin{tabular}{c@{\qquad\qquad}c}
+		\includegraphics[alt={the second point on the axis lies to the left on an ellipse}]{ellipse-def}
+		&
+		\includegraphics[alt={the second point on the axis lies to the right on a hyperbola}]{hyperbola-def}
+		\\
+		Ellipse: $e<1$
+		&
+		Hyperbola: $e>1$
+	\end{tabular}
+\end{center}
+
+\pagebreak[3]
+
+We need now only re-run the algebra from before Theorem \ref{thm:parabolacanon}: supposing $e\neq 1$,
+  \begin{align*}
+	  \nm{FP}=e\nm{PQ}
+	  &\iff \nm{FP}^2=e^2\nm{PQ}^2\\
+	  &\iff (x-ae)^2+y^2=e^2\left(\frac ae-x\right)^2\\
+	  &\iff (1-e^2)x^2+y^2=a^2(1-e^2)\\
+	  &\iff x^2+\frac{y^2}{a^2(1-e^2)}=1
+  \end{align*}
+  Not only is this familiar, it is \emph{symmetric} in $x$\ldots
+
+\begin{thm}{Canonical form of Ellipse and Hyperbola}{}
+	\phantom{bob}\par
+	Given an ellipse, there exist rectangular co-ordinates/axes with respect to which the ellipse has equation
+	\[
+		\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,\qquad 0<b\le a,\quad e=\sqrt{1-\frac{b^2}{a^2}}<1
+	\]
+	For a hyperbola, the corresponding equation is
+	\[
+		\frac{x^2}{a^2}-\frac{y^2}{b^2}=1,\qquad e=\sqrt{1+\frac{b^2}{a^2}}>1 \tag{$b$ can be larger than $a$ here}
+	\]
+	Both conics have \emph{two} foci $F,G=(\pm ae,0)$ and \emph{two} directrices $x=\pm\frac ae$.
+\end{thm}
+
+Both directrices/foci in double picture
 
 While a parabola has only one focus, typical ellipses and hyperbolæ have \emph{two}. 
 
