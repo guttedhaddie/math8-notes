@@ -27,7 +27,7 @@ real f(real x){return x^2;}
 path p=graph(f,-M,M);
 
 draw(p,Blue+linewidth(1));
-draw(d);
+draw(d,dashed);
 dot("$F$",F,NW);
 label("$d$",(-M,-a),W);
 label("$P$",(b,f(b)),N);

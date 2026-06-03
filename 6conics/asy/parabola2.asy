@@ -35,12 +35,12 @@ pair SS=(R.x,-a);
 
 for(int i=1; i<=5; ++i){
 	real t=(i-2.5)*6/25;
-	draw((t,0.9)--(t,t^2)--(0,a),dashed+Orange,Arrow(Relative(0.25)));
+	draw((t,0.9)--(t,t^2)--(0,a),dashed+Orange+0.3Red,Arrow(Relative(0.25)));
 	}
 
 
 draw(p,Blue+linewidth(1));
-draw(Label("$d$",Relative(0)),d);
+draw(Label("$d$",Relative(0)),d,dashed);
 label("$F$",F,NW);
 
 label("$P$",P,SE);

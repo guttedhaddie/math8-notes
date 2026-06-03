@@ -32,35 +32,35 @@ pair PP(real t){return (a*cos(t),b*sin(t));}
 
 pair P=PP(pi/4);
 pair Q=(a/e,P.y);
-pair P2=PP(-0.8pi);
-pair Q2=(a/e,P2.y);
+pair P2=PP(0.65pi);
+pair Q2=(-a/e,P2.y);
 
 draw(xscale(a)*yscale(b)*unitcircle,Blue+linewidth(1));
 
 draw(Label("$d$",Relative(0)),(a/e,-0.9b)--(a/e,1.1b),dashed);
+draw(Label("$d'$",Relative(0)),(-a/e,-0.9b)--(-a/e,1.1b),dashed);
 draw(shift(Q)*box((-0.1,-0.1),(0,0)));
-draw(shift(Q2)*box((-0.1,-0.1),(0,0)));
+draw(shift(Q2)*box((0.1,-0.1),(0,0)));
 
 draw(Label("$Q$",Relative(0)),Q--P,StickIntervalMarker(1,2,Magenta,dotframe(red)));
 draw(F--P,StickIntervalMarker(1,1,lGreen,dotframe(red)));
 
 draw(Label("$Q'$",Relative(0)),Q2--P2,StickIntervalMarker(1,2,Magenta,dotframe(red)));
-draw(F--P2,StickIntervalMarker(1,1,lGreen,dotframe(red)));
+draw(G--P2,StickIntervalMarker(1,1,lGreen,dotframe(red)));
 
-//draw("$q$",X2--F);
-//draw("$et$",F--X1);
-//draw("$t$",X1--D);
 
 dot(Label("$P$",black),P,NE,red);
 dot(Label("$F$",black),F,NW,red);
-dot(Label("$P'$",black),P2,SW,red);
-dot(Label("$D$",black),D,NE,red);
-dot(Label("$X$",black),X1,NE,red);
-//dot(Label("$X_2$",black),X2,W,red);
+dot(Label("$P'$",black),P2,N,red);
+dot(Label("$G$",black),G,NW,red);
 
-xaxis("$x$",-1.15a,1.2a/e,red);
-yaxis("$y$",-1.15b,1.25b,red);
-xtick(Label("$-a$",align=SW),-a,S,red);
+xaxis("$x$",red);
+yaxis("$y$",-1.15b,1.35b,red);
+ytick(Label("$b$",align=dir(150)),b,W,red);
+ytick(Label("$-b$",align=dir(200)),-b,W,red);
+xtick(Label("$-a$",align=dir(245)),-a,S,red);
 xtick(Label("$a$",align=S),a,S,red);
 xtick(Label("$ae$",align=S),a*e,S,red);
-xtick(Label("$\frac ae$",align=SE),a/e,S,red);
+xtick(Label("$\frac ae$",align=SW),a/e,S,red);
+xtick(Label("$-ae$",align=S),-a*e,S,red);
+xtick(Label("$-\frac ae$",align=SE),-a/e,S,red);

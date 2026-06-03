@@ -1,15 +1,22 @@
-settings.prc=false;
-settings.outformat="pdf";
+settings.tex="lualatex";
+defaultpen(fontsize(12pt));
 
 texpreamble("\usepackage{amsmath}
 \usepackage{amsthm,amssymb}
-\usepackage{mathpazo}
-\usepackage[svgnames]{xcolor}
+\usepackage{unicode-math}
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[svgnames,x11names]{xcolor}
 ");
+
+import x11colors;
+pen lGreen=rgb("00a000");
+
+
 import graph;
 import markers;
 
-size(160);
+size(160,0);
 
 real a=1.5;
 real b=1;
@@ -30,9 +37,9 @@ for(int k=0; k<n; ++k){
 dot(Label("$G$",black),G,SW,red);
 dot(Label("$F$",black),F,SE,red);
 
-draw(graph(P,0,2pi),heavygreen);
+draw(graph(P,0,2pi),Blue+linewidth(1));
 
-real tt=0.4pi;
+real tt=0.45pi;
 pair PP=P(tt);
 pair TT=(-a*sin(tt),b*cos(tt));
 pair R=PP-0.8*TT;

@@ -92,17 +92,18 @@ Of course, parabolas are often not always presented in canonical co-ordinates.
 	\[
 		y=x^2-6x+7=(x-3)^2-2
 	\]
+	By defining new co-ordinates $X=x-3$ and $Y=y+2$, we obtain the canonical form
+	\[
+		X^2=Y=4aY
+		\quad\text{where}\quad 
+		a=\frac 14
+	\]
 	\begin{minipage}[t]{0.65\linewidth}\vspace{-\parsep}
-		By defining new co-ordinates $X=x-3$ and $Y=y+2$, we obtain the canonical form
-		\[
-			X^2=Y=4aY
-			\quad\text{where}\quad 
-			a=\frac 14
-		\]
-		The focus has co-ordinates $(X,Y)=(0,\frac 14)$ and the directrix is $Y=-\frac 14$. Translating back to our original co-ordinates $(x,y)$, we see that the focus and directrix are
-		\[
-			F=\left(0+3,\frac 14-2\right)=\left(3,-\frac 74\right),\qquad d:y=-\frac 14-2=-\frac 94
-		\]
+		The focus has co-ordinates $(X,Y)=(0,\frac 14)$ and the directrix is $\smash{Y=-\frac 14}$. Translating back to our original co-ordinates $(x,y)$, we see that the focus and directrix are
+		\begin{gather*}
+			F=\left(0+3,\frac 14-2\right)=\left(3,-\frac 74\right)\\
+			d:y=-\frac 14-2=-\frac 94
+		\end{gather*}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[t]{0.34\linewidth}\vspace{-\parsep}
@@ -113,22 +114,22 @@ Of course, parabolas are often not always presented in canonical co-ordinates.
 Canonical co-ordinates can also be rotated relative to given axes, but this would take us too far afield. You will likely return to such ideas in an upper-division linear algebra course.
 
 
-\subsubsection*{Why call it the \emph{Focus}?}
+\subsubsection*{Why call it the \emph{Focus}?}\label{pg:parabolafocus}
 
-Imagine a \emph{parabolic mirror}: a reflective surface obtained by rotating a parabola around its canonical $y$-axis. The rays from a light source at `vertical infinity' (e.g., the sun) would arrive parallel to the $y$-axis. The parabolic mirror will \emph{focus} these rays onto the focus of the original parabola! This is the reason satellite dishes are parabolic, with the receiver placed at the focus.
+Imagine a \emph{parabolic mirror}: a reflective surface obtained by rotating a parabola around its canonical $y$-axis. The rays from a light source at `vertical infinity' (e.g., the sun) would arrive parallel to the $y$-axis. The parabolic mirror will \emph{focus} these rays onto the focus of the original parabola! This is the reason satellite dishes are parabolic with the receiver placed at the focus.
 \smallbreak
 
-Convincing ourselves of this requires only a little triangle geometry. Let $P$ lie on the parabola, $Q$ be its nearest point on the directrix, and bisect angle $\angle FPQ$ with the line $\ell$. Let $R\neq P$ be any other point on $\ell$ and drop the perpendicular to $d$ at $S$.\par
-\begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+Convincing ourselves of this requires only a little triangle geometry. Let $P$ lie on the parabola, $Q$ be the nearest point on the directrix, and bisect angle $\angle FPQ$ with the line $\ell$. Let $R\neq P$ be any other point on $\ell$ and drop the perpendicular to $d$ at $S$.\par
+\begin{minipage}[t]{0.61\linewidth}\vspace{0pt}
 	\begin{enumerate}
 	  \item Side-Angle-Side for $\triangle FPR\cong\triangle QPR$ tells us that $\mathcolor{Brown}{\nm{FR}}=\mathcolor{Brown}{\nm{RQ}}$.
 	  \item Since $\cl{RQ}$ is the hypotenuse of a right-triangle, we see that $\nm{RS}<\nm{RQ}=\nm{FR}$.
-	  \item It follows that all points $R\neq P$ on $\ell$ \emph{lie on the same side of the parabola} (closer to $d$ than $F$), whence $\ell$ is \emph{tangent} to the parabola.
-	  \item A vertical ray hitting the parabola at $P$ is reflected so that its angle of incidence equals its angle of reflection. Since $\ell$ is tangent, this angle equals $\mathcolor{mMagenta}{\angle QPR}\cong\mathcolor{mMagenta}{\angle FPR}$. The ray therefore reflected onto $\cl{PF}$ and passes through $F$.
+	  \item All points $R\neq P$ on $\ell$ therefore \emph{lie on the same side of the parabola} (closer to $d$ than $F$), whence $\ell$ is \emph{tangent} to the parabola.
+	  \item A vertical ray hitting the parabola at $P$ is reflected so that its angle of incidence equals its angle of reflection. Since $\ell$ is tangent, this angle is $\mathcolor{mMagenta}{\angle QPR}\cong\mathcolor{mMagenta}{\angle FPR}$. The ray is therefore reflected to $\cl{PF}$ and passes through $F$.
 	\end{enumerate}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+\begin{minipage}[t]{0.37\linewidth}\vspace{0pt}
 	\hfill\includegraphics[alt={a parabola reflecting parallel rays onto its focus}]{parabola2}
 \end{minipage}
 
@@ -140,28 +141,16 @@ Convincing ourselves of this requires only a little triangle geometry. Let $P$ l
 	  \item Put each parabola in canonical form, and thus find its focus and the equation of its directrix. Sketch each parabola.
 	  \begin{enumerate}
 	    \item $x^2+2x-y=0$
+	    \item $4y=x^2-6x+1$
 	    \item $4y^2-3x+4y+1=0$
 	  \end{enumerate}
 	  
 	  \item A common design for a flashlight places a lightbulb at the focus of a parabolic mirror. Explain why. What would happen to the light beam if the bulb were placed just a little further that the focus from the mirror?
 	  
-	  
-	  \item A right-circular cone centered on the $z$-axis has equation $z^2=x^2+y^2$ (horizontal cross-sections are circles).
-		\begin{enumerate}
-		  \item Intersect this cone with the plane with equation $z=y+k$ for some constant $k$. Show that the resulting curve is indeed a parabola.
-		  \item Determine the focus and directrix, and how the constant $a$ in the canonical form relates to $k$.\par
-		  (\emph{Hint: You'll need to consider a factor of $\sqrt{2}$ with $y$ to compensate for the slope of the intersecting plane---why?})
-		\end{enumerate}
-% 	  
-% 	  Substitute
-% 		\[
-% 			\begin{cases}
-% 				z^2=x^2+y^2\\
-% 				z=y+k
-% 			\end{cases}
-% 			\implies (y+k)^2=x^2+y^2\implies x^2=2ky+k^2=4\cdot\frac k2(y+\frac k2)
-% 		\]
-% 		this is the canonical form $x^2=4\tilde aY$ of a parabola with $\tilde a=\frac k2$ and $Y=y+\frac k2$. Strictly, this parabola lies in the $x,y$-plane, with focus $(0,0)$ and directrix $y=-k$. Translating to the sloped plane, we see that the focus is $F=(0,0,k)$ and the directrix is the line $y=-k,z=0$. The correct value is therefore $a=\sqrt 2\tilde a=\frac k{\sqrt 2}$.
+	  \item A right-circular cone centered on the $z$-axis has equation $z^2=x^2+y^2$ (horizontal cross-sections are circles).\par
+		Intersect this cone with the plane with equation $z=y+k$ for some constant $k$. Show that the resulting curve is indeed a parabola. Determine its focus and directrix, and the value of $a$ in its canonical form.\par
+		(\emph{Hint: You'll need to consider a factor of $\sqrt{2}$ with $y$ to compensate for the slope of the intersecting plane---why?})
+
 
 	\end{enumerate}
 \end{exercises}
@@ -173,10 +162,10 @@ Convincing ourselves of this requires only a little triangle geometry. Let $P$ l
 
 \subsection{Eccentricity: Ellipses and Hyperbolæ}
 
-The words \emph{hyperbolic} and \emph{elliptical} have connotations of ``more than'' and ``less than.'' But \emph{more} or \emph{less} than what?\footnote{%
-	The prefix \emph{para} means \emph{next to}, or \emph{akin to}: hence \emph{paranormal} or \emph{paralegal}. To speak \emph{hyperbolically} is to say more than you mean, to exaggerate. To be \emph{elliptical} is to be \emph{brief} or \emph{condensed}, possibly evasive.%
+The words \emph{hyperbola} and \emph{ellipse} have connotations of ``more than'' and ``less than.'' But \emph{more} or \emph{less} than what?\footnote{%
+	The prefix \emph{para} means \emph{next to}, or \emph{akin to}, alike but not equal: e.g., \emph{parallel}, \emph{paranormal} or \emph{paralegal}. To speak \emph{hyperbolically} is to say more than you mean, to exaggerate. To be \emph{elliptical} is to be brief or condensed, possibly evasive; \emph{ellipsis} are dots (\ldots) indicating something omitted.%
 }
-We simply modify Definition \ref{defn:parabola}.
+The answer lies in a simple modification of Definition \ref{defn:parabola}.
 
 \begin{defn}{Conics via Eccentricity}{}
 	Let $d$ be a line and $F$ a point not on that line. Let $e>0$ be a constant. The \emph{conic} with focus $F$, \emph{directrix} $d$ and \emph{eccentricity} $e$ is the set of points $P$ for which
@@ -185,28 +174,23 @@ We simply modify Definition \ref{defn:parabola}.
 	\]
 	where $Q\in d$ makes a perpendicular $\cl{PQ}\perp d$. The value of $e$ determines the type of conic:
 	\begin{itemize}
-	  \item $e<1$ yields an \textbf{\emph{ellipse}}; $P$ is \emph{closer} to the focus than the directrix.
+	  \item $e<1$ yields an \textbf{\emph{ellipse}}; $P$ is \emph{closer} to the focus than the directrix ($\mathcolor{dGreen}{\nm{FP}}$ is smaller than $\mathcolor{dMagenta}{\nm{PQ}}$).
 	  \item $e=1$ a \textbf{\emph{parabola}};
 	  \item $e>1$ a \textbf{\emph{hyperbola}}; $P$ is \emph{farther} from the focus than the directrix.
 	\end{itemize}
 \end{defn}
 
-\begin{minipage}[t]{0.6\linewidth}\vspace{-\parsep}
-	To better understand these, draw the perpendicular $\lin{FD}$ to $d$ through $F$ and ask how many points of the curve lie on this line. Plainly there is a point $X_1$ \emph{between} $F$ and $d$, breaking the segment in the ratio $e:1$. Label distances $q,et,t$ as shown, where $q$ is the distance from $F$ to some other point $X_2$ on the curve. If $X_2$ exists, then
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.39\linewidth}\vspace{-\parsep}
-	\hfill\includegraphics[alt={finding a second point on the axis of symmetry}]{conic-def}
-\end{minipage}
 
-\[
-	\nm{X_2F}=e\nm{X_2D}\iff q=e(q+et+t)\iff q(1-e)=e(1+e)t
-\]
-A unique second point $X_2$ therefore exists if and only if $e\neq 1$. To standardize things, choose axes so that $X_1,X_2$ lie on the $x$-axis at $x=\pm a$ ($a>0$). Then
-\[
-	q+et=2a\implies \left(\frac{e(1+e)}{1-e}+e\right)t=2a\implies t=\frac{1-e}ea=\left(\frac 1e-1\right)a,\quad q=(1+e)a
-\]
-The upshot is that we obtain two co-ordinate descriptions, where $F=(ae,0)$ and $d$ is the line $x=\frac ae$. We draw $F$ to the right of $d$ for the hyperbola since $t<0\Leftrightarrow e>1$. 
+To better understand these, it is helpful to draw axes. We do this explicitly for the ellipse:
+\begin{enumerate}
+	\item Let the $x$-axis be the perpendicular $\lin{FD}$ to $d$ through $F$, where $D$ is to the right of $F$.
+	\item There exists a point $X$ on the curve \emph{between} $F$ and $d$, breaking the segment in the ratio $e:1$.
+	\item Define $a=\frac{\nm{FX}}{1-e}$ and slide the axis left or right until $X=(a,0)$.
+	\item Then $F=\big(a-\nm{FX},0\big)=\big(a-a(1-e),0\big)=(ae,0)$ and the directrix is $x=a+\frac 1e\nm{FX}=\frac ae$.
+\end{enumerate} 
+
+The picture is drawn below. In the limit $e\to 0^+$, the focus becomes $F=(0,0)$, the point $Q$ moves to $\infty$, and the ellipse becomes a \emph{circle} of radius $a$ (circles do not have a directrix).\smallbreak
+For the hyperbola, convention places $D$ to the \emph{left} of $F$ (step 1) and defines $a=\frac{\nm{FX}}{e-1}$ (step 3). This results in identical expressions for the focus and directrix.
 \begin{center}
 	\begin{tabular}{c@{\qquad\qquad}c}
 		\includegraphics[alt={the second point on the axis lies to the left on an ellipse}]{ellipse-def}
@@ -221,216 +205,266 @@ The upshot is that we obtain two co-ordinate descriptions, where $F=(ae,0)$ and 
 
 \pagebreak[3]
 
-We need now only re-run the algebra from before Theorem \ref{thm:parabolacanon}: supposing $e\neq 1$,
-  \begin{align*}
-	  \nm{FP}=e\nm{PQ}
-	  &\iff \nm{FP}^2=e^2\nm{PQ}^2\\
-	  &\iff (x-ae)^2+y^2=e^2\left(\frac ae-x\right)^2\\
-	  &\iff (1-e^2)x^2+y^2=a^2(1-e^2)\\
-	  &\iff x^2+\frac{y^2}{a^2(1-e^2)}=1
-  \end{align*}
-  Not only is this familiar, it is \emph{symmetric} in $x$\ldots
+We need now only re-run the algebra prior to Theorem \ref{thm:parabolacanon} to obtain the familiar co-ordinate form: supposing $e\neq 1$,
+\begin{align*}
+	\nm{FP}=e\nm{PQ}
+	&\iff \nm{FP}^2=e^2\nm{PQ}^2\\
+	&\iff (x-ae)^2+y^2=e^2\left(\frac ae-x\right)^2\\
+	&\iff (1-e^2)x^2+y^2=a^2(1-e^2)\\
+	&\iff x^2+\frac{y^2}{a^2(1-e^2)}=1
+\end{align*}
+
 
 \begin{thm}{Canonical form of Ellipse and Hyperbola}{}
 	\phantom{bob}\par
-	Given an ellipse, there exist rectangular co-ordinates/axes with respect to which the ellipse has equation
+	Given an ellipse with eccentricity $e$, there exist rectangular co-ordinates/axes with respect to which the ellipse has equation
 	\[
 		\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,\qquad 0<b\le a,\quad e=\sqrt{1-\frac{b^2}{a^2}}<1
 	\]
 	For a hyperbola, the corresponding equation is
 	\[
-		\frac{x^2}{a^2}-\frac{y^2}{b^2}=1,\qquad e=\sqrt{1+\frac{b^2}{a^2}}>1 \tag{$b$ can be larger than $a$ here}
+		\frac{x^2}{a^2}-\frac{y^2}{b^2}=1,\qquad 0<a,b,\quad e=\sqrt{1+\frac{b^2}{a^2}}>1 \tag{$b$ can be larger than $a$ for a hyperbola}
 	\]
-	Both conics have \emph{two} foci $F,G=(\pm ae,0)$ and \emph{two} directrices $x=\pm\frac ae$.
+	By symmetry in $x$, both conics have two foci $F,G=(\pm ae,0)$ and two directrices $x=\pm\frac ae$. The conics may be defined using either pair.\smallbreak
+	The values $a,b$ are, respectively, the \textbf{semi-major} and \textbf{semi-minor} axes. 
 \end{thm}
 
-Both directrices/foci in double picture
+\begin{center}
+	\begin{tabular}{c@{\qquad}c}
+		\includegraphics[alt={a canonical ellipse with two foci and two directrices}]{ellipse-def2}
+		&
+		\includegraphics[alt={a canonical hyperbola with two foci and two directrices}]{hyperbola-def2}
+		\\
+		Ellipse $e<1$
+		&
+		Hyperbola $e>1$
+	\end{tabular}
+\end{center}
 
-While a parabola has only one focus, typical ellipses and hyperbolæ have \emph{two}. 
-
-\begin{defn}{Ellipse and Hyperbola using Foci}{}
-	Let $F,G$ be points in the plane.
-	\begin{enumerate}
-	  \item The \emph{ellipse} with \emph{foci} $F,G$ and \emph{semi-major axis} $a>\frac 12\nm{FG}$ is the set of points $P$ satisfying
-		\[
-			\mathcolor{dGreen}{\nm{FP}}+\mathcolor{dMagenta}{\nm{GP}}=2a
-		\]
-		\begin{center}\vspace{-\belowdisplayskip}\vspace{-2\parsep}
-			\begin{tabular}{c@{\qquad\qquad}c}
-				\includegraphics[alt={an ellipse is the locus of points for which the sum of the distances to two fixed points is constant}]{ellipse1}
-				&
-				\includegraphics[alt={a hyperbola is the locus of points for which the difference of the distances to two fixed points is constant}]{hyperbola1}
-				\\
-				An ellipse with foci $F,G$
-				&
-				A hyperbola with foci $F,G$
-			\end{tabular}\vspace{-\parsep}
-		\end{center}
-		\item The \emph{hyperbola} with \emph{foci} $F,G$ and \emph{semi-major axis} $a<\frac 12\nm{FG}$ is the set of points $P$ such that
-		\[
-			\mathcolor{dGreen}{\nm{FP}}-\mathcolor{dMagenta}{\nm{GP}}=\pm 2a
-		\]
-	\end{enumerate}\vspace{-\belowdisplayskip}
-\end{defn}
-
-The interior and boundary of an ellipse are the locations you stand while holding a rope of fixed length whose ends are attached to the foci $F,G$. If $F=G$, the ellipse is a circle with radius $a$.\smallbreak
-
-Choosing co-ordinates so that $F=(c,0)$ and $G=(-c,0)$ lie on the $x$-axis, we see that the points $P=(x,y)$ on the ellipse have co-ordinates satisfying\par
-\begin{minipage}[b]{0.65\linewidth}\vspace{-\parsep}
-\begin{gather*}
-	\begin{aligned}
-		(x-c)^2+y^2&=\nm{FP}^2
-			=\big(2a-\nm{GP}\big)^2
-			=\left(2a-\sqrt{(x+c)^2+y^2}\right)^2\hspace{-50pt}\\
-		&=4a^2+(x+c)^2+y^2-4a\sqrt{(x+c)^2+y^2}
-	\end{aligned}\\
-	\implies a\sqrt{(x+c)^2+y^2}=a^2+cx\\
-	\implies a^2\left(x^2+2cx+c^2+y^2\right)=a^4+2a^2cx+c^2x^2\\
-	\implies (a^2-c^2)x^2+a^2y^2=a^2(a^2-c^2)
-\end{gather*}
-Divide through by $a^2(a^2-c^2)$ to obtain\ldots
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.34\linewidth}\vspace{-\parsep}
-	\hfill\includegraphics[alt={the canonical equation of an ellipse}]{ellipse2}
-\end{minipage}
-
-
-\begin{thm}{Canonical form of an ellipse}{}
-	%\phantom{bob}\par
-	The ellipse with \textbf{foci} $(\pm c,0)$, \textbf{semi-major axis} $2a$, and \textbf{semi-minor axis} $2b$ has equation
-	\[
-		\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
-		\quad\text{where}\quad 
-		b^2=a^2-c^2
-	\]\vspace{-\parsep}
-\end{thm}
-
+The canonical forms make clear why there are precisely two points of an ellipse or hyperbola on the $x$-axis: $x=\pm a$. For a hyperbola, $b$ is mostly irrelevant except inasmuch as the curve is seen to approach its \emph{\textcolor{Brown}{asymptotes}} $y=\pm\frac ba$.
 
 \pagebreak[3]
 
+
+\begin{examples}[breakable=false]{}{}
+	In general, to put a conic in canonical form we must complete the square \emph{twice}.
+	\begin{enumerate}
+	  \item The canonical form hyperbola
+	  \[
+	  	\frac{(x+1)^2}{9}-\frac{(y-7)^2}{16}=1
+	  \]
+	  has canonical co-ordinates $X=x+1$, $Y=y-y$ and parameters
+	  \[
+	  	a=3,\quad b=4,\quad e=\sqrt{1+\frac{b^2}{a^2}}=\frac 53
+	  \]
+	  Its foci and directrices are
+	  \begin{gather*}
+	  	F,G=(-1,7)\pm(ae,0)=(4,7),(-6,7)\\
+			x=-1\pm\frac ae =-1\pm\frac 95=-\frac{14}5,\frac 45
+	  \end{gather*}
 	
-\begin{enumerate}[resume]
-  \item Similarly to Example \ref{ex:parabola}, complete the square for both $x$ and $y$ to show that the equation
-\[9x^2+4y^2-36x-8y+4=0\]
-represents an ellipse. Sketch it and find the co-ordinates of its foci.
+		\item Given the conic with equation
+		\[
+			9x^2+4y^2-36x-8y+4=0\tag{$\ast$}
+		\]
+		we complete the square.\par
+		\begin{minipage}[t]{0.68\linewidth}\vspace{-\parsep}\vspace{-\abovedisplayskip}
+			\begin{align*}
+				(\ast)&\iff 9(x-2)^2+4(y-1)^2+4-36-4=0\\
+				&\iff \frac{(y-1)^2}{9}+\frac{(x-2)^2}{4}=1
+			\end{align*}
+			Be careful with the denominators! This is an \emph{ellipse} with canonical co-ordinates $X=y-1$, $Y=x-2$ and parameters
+			\[
+				a=3>b=2,\quad e=\sqrt{1-\frac 49}=\frac{\sqrt 5}3
+			\]
+			The foci and directrices are
+			\begin{gather*}
+				F,G=(1,2\pm ae)=(1,2\pm\sqrt 5)\\
+				y=1\pm\frac ae=1\pm\frac 9{\sqrt 5}
+			\end{gather*}\vspace{-\parsep}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.31\linewidth}\vspace{-\parsep}
+			\hfill\includegraphics[alt={an ellipse in non-canonical co-ordinates}]{ellipse-ex}
+		\end{minipage}
+	\end{enumerate}
+\end{examples}
 
+Rotated co-ordinates $(X,Y)$ can be used if there is an $xy$-term, though such is beyond this course. We are now in a position to describe any conic whose equation has the form
+\[
+	\lambda x^2+\kappa y^2+\sigma x+\tau y+\mu=0
+\]
+The type of conic depends on the signs of $\lambda$ and $\kappa$.
 
-	\item A reflection principle also applies to the ellipse. It is a little different from the parabola since we now have two foci.\par
-  \begin{minipage}[t]{0.6\linewidth}\vspace{0pt}
+\pagebreak[3]
+
+\subsubsection*{The Reflection Principle for an Ellipse}
+
+An ellipse has \emph{two} foci: so what are they focusing? First we make a simple observation.
+
+\begin{lemm}{Distance Sum from the Foci}{}
+	\phantom{bob}\par
+	\begin{minipage}[t]{0.55\linewidth}\vspace{-\parsep}
+		Suppose an ellipse has foci $F,G$ and semi-major axis $a$.\par
+		Then the points on the ellipse are precisely those satisfying
+		\[
+			\mathcolor{Brown}{\nm{FP}}+\mathcolor{dMagenta}{\nm{GP}}=e\nm{QQ'}=2a
+		\]
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.44\linewidth}\vspace{-4.8\parsep}
+		\hfill\includegraphics[alt={for an ellipse, the sum of the distances to the foci is constant}]{ellipse-def3}
+	\end{minipage}	
+\end{lemm}
+
+Imagine holding onto a rope (length $2a$) whose ends are tied to two posts ($F,G$). The \textcolor{Blue}{ellipse} marks the locations where the rope would be fully taut.
+\medbreak
+
+We are now in a position to mimic the parabolic discussion on page \pageref{pg:parabolafocus}.\par
+\begin{minipage}[t]{0.64\linewidth}\vspace{-\parsep}
 	\begin{itemize}
-	  \item Extend $\cl{GP}$ to $Q$ such that $\nm{PQ}=\nm{PF}$.
-	  \item Bisect $\angle FPQ$ by the line $\ell$.
-	  \item If $R$ is any other point on $\ell$, explain why
-	  \[\nm{FR}+\nm{GR}>2a\]
-	  and thus why $R$ lies \emph{outside} the ellipse.
-	  \item Hence explain why a light source placed at one focus will have its rays reflected by an elliptical mirror onto the other focus.
+	  \item Given $P$ on an ellipse with foci $F,G$, extend $\cl{GP}$ to $Q$ such that $\mathcolor{Brown}{\nm{PQ}}=\mathcolor{Brown}{\nm{PF}}$, and bisect $\mathcolor{mGreen}{\angle FPQ}$ by a line $\ell$.
+	  \item If $R$ is any other point on $\ell$, then
+	  \begin{align*}
+	  	\mathcolor{mGreen}{\nm{FR}}+\nm{GR}
+	  	&=\mathcolor{mGreen}{\nm{QR}}+\nm{GR}\\
+	  	&\overset{\triangle}{>}\nm{GQ}
+	  	=\mathcolor{Brown}{\nm{PQ}}+\mathcolor{mMagenta}{\nm{GP}}\\
+	  	&=\mathcolor{Brown}{\nm{FP}}+\mathcolor{mMagenta}{\nm{GP}}=2a
+	  \end{align*}
+	  where we used the \emph{triangle-inequality.}
+	  \item All points $R\neq P$ on $\ell$ therefore lie \emph{outside} the ellipse, whence $\ell$ is \emph{tangent} to the ellipse at $P$.
+	  \item If the ellipse is thought of as a mirror, a light source placed at one focus will have its rays reflected onto the other focus.
 	\end{itemize}
 \end{minipage}
-\begin{minipage}[t]{0.4\linewidth}\vspace{0pt}
-\hfill\includegraphics{ellipse3}\\
-\includegraphics{ellipse4}
-\end{minipage}
-\end{enumerate}
-
-
-
-\begin{tcolorbox}[exercisestyle]{}{}
-\hangindent\leftmargini
-\textup{1. } Exactly as above, verify that by choosing $F=(c,0)$ and $G=(-c,0)$, a hyperbola has equation
-\[\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\quad\text{where}\quad b^2=c^2-a^2\]
-\begin{enumerate}\setcounter{enumi}{1}
-  \item As $x\to\infty$ show that the hyperbola approaches its \emph{asymptotes} $y=\pm \frac bax$.
-  \item (Challenge!)\quad Verify the `reflection' principle for hyperbolæ: if a light source is placed at a focus, then the reflected rays will appear to have emanated from the \emph{other} focus.
-\end{enumerate}
-\hfill\includegraphics{hyperbola2}
-\end{tcolorbox}
-
-
-
-
-
-\subsubsection*{Eccentricity}
-
-The obvious difference between our descriptions of the ellipse/hyperbola versus the parabola is the \emph{directrix.}
-
-\begin{thm}{}{}
-Let $F$ be a point (the \emph{focus}) not on a line $d$ (the \emph{directrix}) and choose a number $e>0$ (the \emph{eccentricity}). Consider the set of points $P$ satisfying
-\[\nm{PF}=e\nm{PQ}\]
-where $Q$ is the nearest point to $P$ on the directrix.
-\begin{enumerate}
-  \item Depending on the value of $e$ we obtain one of the three conic sections. For the ellipse and the hyperbola this construction only produces half of the conic; there are in fact \emph{two} directrices.
-	\begin{center}
-		\begin{tabular}{c@{\qquad}c@{\qquad\qquad}c}
-		\includegraphics{eccentricity2}
-		&
-		\includegraphics{eccentricity}
-		&
-		\includegraphics{eccentricity3}
-		\\
-		Ellipse $e<1$&Parabola $e=1$&Hyperbola $e>1$
-		\end{tabular}
-	\end{center}
-	\item For the ellipse and hyperbola $e=\frac ca$, where $c=\frac 12\nm{FG}$.
-	%\item If a plane intersects a right circular cone $z^2=x^2+y^2$ at an angle of $\alpha$ to the horizontal (i.e. $z=\tan\alpha y+k$), then $e=\sqrt 2\sin\alpha$ (max $e=\sqrt 2$, whence plane vertical)
-\end{enumerate}
-\end{thm}
-
-By convention, a circle is considered to have eccentricity $e=0$, even though the above doesn't apply. We could imagine obtaining a circle of radius $a$ by taking the limit $e\to 0^+$ (i.e.\ $c\to 0^+$). In such a limit, the point $Q$ on the directrix must go to infinity: circles therefore do not have directrices!
-
-\begin{example}{}{}
-The canonical form ellipse $\frac{x^2}{25}+\frac{y^2}{16}=1$ has $a=5,b=4$ and $c=\sqrt{a^2-b^2}=3$. Its eccentricity is therefore $e=\frac ca=\frac 35$. Since its foci have co-ordinates $(\pm\frac 35,0)$, its right directrix must be a vertical line which intersects the $x$-axis when
-\[e(x-a)=(a-c)\implies x=a+\frac{a-c}e=5+\frac{10}3=\frac{25}3\]
-\end{example}
-
-\begin{exercises}{}{}
-\hangindent\leftmargini
-\textup{1. } Find the foci and directrices of the hyperbola $\frac{x^2}{16}-\frac{y^2}{9}=1$. Sketch the curve.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item Verify some of the theorem. 
-\end{enumerate}
-\end{exercises}
-
-After refreshing some trigonometry, we'll return to conics. In particular we'll see how they may be parametrized, and how the eccentricity relates to the cone/plane combination which created the conic in the first place!
-
-
-\subsubsection*{Conics in Polar Co-ordinates}
-
-\begin{minipage}[t]{0.7\linewidth}\vspace{0pt}
-A fun application is to recover polar forms for the standard conics. We use the focus/directrix/eccentricity definition, place the origin at a focus $F$ and directrix $d$ vertically to the right of the origin. Recall that a conic with eccentricity $e$ may be described as the set of points $P$ such that $\nm{PF}=e\nm{Pd}$. Exactly one point on the conic ($K$) lies between the focus and directrix. If we let $\nm{KF}=k$, it should be clear from the picture that
-\[\frac re+r\cos\theta=k+\frac ke \implies r=\frac{k(1+e)}{1+e\cos\theta}\]
-This is \emph{independent} of the type of conic, and even works when $e=0$; $r=2k$ is a circle with radius $k$!
-\end{minipage}
 \hfill
-\begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
-\hfill\includegraphics{eccentric}
+\begin{minipage}[t]{0.35\linewidth}\vspace{-\parsep}
+	\hfill\includegraphics[alt={constructing a line tangent to the ellipse by angle bisection}]{ellipse3}\smallbreak
+	\hfill\includegraphics[alt={light rays bouncing from one focus to another}]{ellipse4}
 \end{minipage}
+\medbreak
 
-\begin{itemize}
-  \item If $e<0$, then $1+e\cos\theta>0$ for all $\theta$ and $r$ is always defined. We obtain a closed curve: an ellipse.
-  \item If $e=1$, then $1+\cos\theta=0$ when $\theta=\pi$. We obtain a parabola opening leftwards.
-  \item If $e>1$, then $1+e\cos\theta=0$ at two values $\theta=\pm\cos^{-1}\frac 1e$. These lines are parallel to the asymptotes of the hyperbola. Permitting $r<0$, the remaining values of $\theta$ give the other branch of the hyperbola!
-\end{itemize}
+
+Equivalently, suppose you were playing mini-golf with the ball at one focus and the hole at the other. You could play your stroke \emph{in any direction} and, provided you hit it hard enough,\footnote{%
+	And the ball bounced off the wall perfectly so that the angle of incidence equalled that of reflection; due to the complex nature of collisions, this typically \emph{does not happen} in real life.%
+}
+the ball would land in the hole!
+
+\bigbreak
+
+Hyperbolæ also have a reflection principle, though it is a little harder to visualise: see Exercise \ref{exs:hyperrefl}.
+% 
+% 
+% \subsubsection*{Conics in Polar Co-ordinates}
+% 
+% \begin{minipage}[t]{0.7\linewidth}\vspace{0pt}
+% 	A fun application is to recover polar forms for the standard conics. We use the focus/directrix/eccentricity definition, place the origin at a focus $F$ and directrix $d$ vertically to the right of the origin. Recall that a conic with eccentricity $e$ may be described as the set of points $P$ such that $\nm{PF}=e\nm{Pd}$. Exactly one point on the conic ($K$) lies between the focus and directrix. If we let $\nm{KF}=k$, it should be clear from the picture that
+% 	\[\frac re+r\cos\theta=k+\frac ke \implies r=\frac{k(1+e)}{1+e\cos\theta}\]
+% 	This is \emph{independent} of the type of conic, and even works when $e=0$; $r=2k$ is a circle with radius $k$!
+% \end{minipage}
+% \hfill
+% \begin{minipage}[t]{0.29\linewidth}\vspace{0pt}
+% 	\hfill\includegraphics{eccentric}
+% \end{minipage}
+% 
+% \begin{itemize}
+%   \item If $e<0$, then $1+e\cos\theta>0$ for all $\theta$ and $r$ is always defined. We obtain a closed curve: an ellipse.
+%   \item If $e=1$, then $1+\cos\theta=0$ when $\theta=\pi$. We obtain a parabola opening leftwards.
+%   \item If $e>1$, then $1+e\cos\theta=0$ at two values $\theta=\pm\cos^{-1}\frac 1e$. These lines are parallel to the asymptotes of the hyperbola. Permitting $r<0$, the remaining values of $\theta$ give the other branch of the hyperbola!
+% \end{itemize}
+
+
+\vfil\vfil
+
+
+\pagebreak[4]
 
 
 \begin{exercises}{}{}
-\def\hvr{\hat{\vr}}
-\def\hth{\hat{\pmb\theta}}
-\hangindent\leftmargini
-\textup{1. } If $e=1$, find the \emph{rectangular} equation of the parabola described by the above.
-\begin{enumerate}\setcounter{enumi}{1}
-  \item (If you know a little Physics\ldots)\quad Let $\hvr=\stwovec{\cos\theta}{\sin\theta}$ be the unit vector pointing away from the origin, and $\hth=\stwovec{-\sin\theta}{\cos\theta}$ be the unit vector obtained by rotating $\hvr$ counter-clockwise by \ang{90}.
-  \begin{enumerate}
-    \item Check that $\diff t\hvr=\dot r\hth$, where $\dot r=\diff[r]{t}$ means differentiation with respect to time. What is $\diff t\hth$ in terms of $\hvr$?
-    \item Verify that
-    \[\diff[^2]{t^2}(r\hvr) =(\ddot r-r\dot\theta^2)\hvr+\frac 1r\left[\diff t(r^2\dot\theta)\right]\hth\]
-    \item Note that $r\hvr$ is the position vector of a point with polar co-ordinates $(r,\theta)$. If an inverse-square attractive \emph{force} acts on a particle, Newton's second law tells use that
-    \[\diff[^2]{t^2}(r\hvr) =-\frac b{r^2}\hvr\]
-    for some positive constant $b$. This is Newton's model of gravity.\par
-    Check that \emph{every conic} is a solution to this differential equation.\par
-    (\emph{Hint: use the fact that $r^2\dot\theta$ is constant! This is essentially conservation of angular momentum}) 
-  \end{enumerate}
-  This explains Kepler's 1\st\ law, that planets orbit the sun in ellipses with the sun at one focus. The other conical orbits are indeed possible: comets regularly pass the sun along hyperbolic orbits, never to return to the solar system.
-\end{enumerate}
+	\hangindent\leftmargini\emph{Key concepts: \ Eccentricity \& definitions of ellipse and hyperbola, \ Foci and Directrices, \ Distance sum for an ellipse}
+
+	\begin{enumerate}
+	  \item Find the foci and directrices of the hyperbola $\frac{y^2}{16}-\frac{x^2}{9}=1$. Sketch the curve.
+	  
+	  \item For each of the following, complete the square to find the foci and directrices. Then sketch the curve.
+	  \begin{enumerate}
+	    \item $x^2+4y^2-2x+16y=17$ %\frac{(x-1)^2}4+(y+2)^2=1
+	    \item $2x^2-3y^2+8x-18y=5$%\frac{(x+2)^2}3-\frac{(y-3)^2}2=-1
+	  \end{enumerate}
+	  
+	  
+	 	\item The equation $xy=1$ is a hyperbola. By making the substitution
+	 	\[
+	 		x=\frac 1{\sqrt 2}(u-v),\quad y=\frac 1{\sqrt 2}(u+v)
+	 	\]
+	 	show that this is indeed the case. Find the foci and directrices of this hyperbola.\par
+	 	(\emph{This change of co-ordinates amounts to rotating the plane by \ang{45}})
+	 	
+	  
+	  \item As $x\to\infty$ show that a canonical hyperbola approaches its \emph{asymptotes} $y=\pm \frac bax$.
+	  
+	  
+		\item Show that the hyperbola with foci $F,G$ and semi-major axis $a$ is the set of points $P$ for which the \emph{difference} is constant:
+		\[
+			\nm{FP}-\nm{GP}=\pm 2a
+		\]
+	  
+	  \item\label{exs:hyperrefl} (Hard)\lstsp Verify the `reflection' principle for hyperbolæ: if a light source is placed at a focus, then the reflected rays will appear to have emanated from the \emph{other} focus.
+	 
+			
+	 	\item Let $p\ge 0$ be a constant and consider the intersection of the cone $z^2=x^2+y^2$ with the plane $pz=y-1$.
+	 	\begin{enumerate}
+	 	  \item Describe how the type of conic you obtain relates to the value $p$.
+	 	  \item (Hard)\lstsp What is the eccentricity of such a conic, and what happens when $p=0$?
+	 	\end{enumerate}
+	\end{enumerate}
+
+
+	\begin{minipage}[t]{0.74\linewidth}\vspace{-2\parsep}
+		\begin{enumerate}[resume]
+		  \item\label{exs:polarconic} Place the focus $F$ of a conic with eccentricity $e$ at the origin and orient so that the nearest point of the conic lies on the positive $x$-axis at $K=(k,0)$.
+		  \begin{enumerate}
+		    \item Prove that the conic has polar equation
+		  	\[
+		  		r=\frac{k(1+e)}{1+e\cos\theta}
+		  	\]
+		  	Describe how the resulting curve depends on $e$. In particular, explain why don't we get all of a \emph{hyperbola} when $e>1$.
+		  	\item Find the \emph{rectangular} ($x,y$) equation of this conic.
+	  	\end{enumerate}
+	  \end{enumerate}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.25\linewidth}\vspace{-2\parsep}
+		\hfill\includegraphics[alt={a conic in polar co-ordinates}]{eccentric}
+	\end{minipage}
+  
+  
+	\begin{enumerate}[resume]	
+	\def\hvr{\hat{\vr}}
+	\def\hth{\hat{\text{\btheta θ}}}
+	  \item (Hard---if you like Physics)\lstsp At a point $P=(x,y)=\big(r\cos\theta,r\sin\theta\big)$ on a curve ($x,y,r,t$ are functions of time $t$), define the unit vectors
+	  \[
+	  	\hvr=\twovec{\cos\theta}{\sin\theta},\qquad \hth=\twovec{-\sin\theta}{\cos\theta}
+	  \]
+	  The first points away from the origin; the second is obtained by rotating the first counter-clockwise \ang{90}.
+	  \begin{enumerate}
+	    \item Use the chain rule to verify that $\diff t\hvr=\dot\theta\hth$, where $\dot r=\diff[r]{t}$ means differentiation with respect to time. What is $\diff t\hth$ in terms of $\hvr$?
+	    
+	    \item Verify that
+	    \[
+	    	\diff[^2]{t^2}\big(r\hvr\big) =(\ddot r-r\dot\theta^2)\hvr+\frac 1r\left[\diff t\big(r^2\dot\theta\big)\right]\hth
+	    \]
+	    Note that $r\hvr$ is the position vector of the point $P$.
+	     
+	    \item Suppose an object travels along \emph{any conic} whose focus is at the origin in such a fashion that its \emph{speed} $r\dot\theta\propto \frac 1r$ is inversely proportional to its distance from the origin: equivalently $r^2\dot\theta=L$ is constant.\par
+	    Use the polar form (Exercise \ref{exs:polarconic}) to show that the curve satisfies the differential equation
+	    \[
+	    	\diff[^2]{t^2}\big(r\hvr\big) =-\frac c{r^2}\hvr \tag{$\ast$}
+	    \]
+	    where $c$ is a positive constant. Compute $c$.
+	  \end{enumerate}
+	  This is Newton's model of gravity: following his second law ($\vF=m\va$), the object is subject to an \emph{inverse-square} attractive force. If you want a challenge, the converse is also true: ($\ast$) implies that the orbit is a conic whose focus is at the origin.\par
+	  This discussion relates to Kepler's 1\st\ law, that planets orbit the sun in ellipses with the sun at one focus. The constancy of $r^2\dot\theta$ is essentially the conservation of angular momentum. The other types of orbit are also possible: while recurring comets (e.g., Halley's) follow elliptic orbits, some have been known to pass the sun along hyperbolic orbits, never to return to the solar system.
+	\end{enumerate}
 \end{exercises}
 
